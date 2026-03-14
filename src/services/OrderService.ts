@@ -1,6 +1,6 @@
 import { randomUUID } from "crypto";
 import { CustomerInput } from "../models/CustomerInput";
-import { Order } from "../models\Order";
+import { Order } from "../models/Order";
 import { StorageService } from "./StorageService";
 import { TemplateService } from "./TemplateService";
 import { PdfService } from "./PdfService";

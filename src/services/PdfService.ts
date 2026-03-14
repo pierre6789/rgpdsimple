@@ -9,7 +9,7 @@ export interface PdfDocumentBuffer {
 export class PdfService {
   async htmlDocumentsToPdfs(documents: GeneratedDocument[]): Promise<PdfDocumentBuffer[]> {
     const browser = await puppeteer.launch({
-      headless: "new",
+      headless: true,
     });
 
     try {
@@ -18,7 +18,7 @@ export class PdfService {
       for (const doc of documents) {
         const page = await browser.newPage();
         await page.setContent(doc.html, { waitUntil: "networkidle0" });
-        const pdfBuffer = await page.pdf({
+        const pdfUint8Array = await page.pdf({
           format: "A4",
           printBackground: true,
         });
@@ -27,7 +27,7 @@ export class PdfService {
 
         results.push({
           filename: safeName,
-          buffer: pdfBuffer,
+          buffer: Buffer.from(pdfUint8Array),
         });
 
         await page.close();

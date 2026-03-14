@@ -10,11 +10,7 @@ if (!stripeSecretKey) {
   console.warn("STRIPE_SECRET_KEY manquante dans le fichier .env");
 }
 
-export const stripe: Stripe | null = stripeSecretKey
-  ? new Stripe(stripeSecretKey, {
-      apiVersion: "2024-04-10",
-    })
-  : null;
+export const stripe: Stripe | null = stripeSecretKey ? new Stripe(stripeSecretKey) : null;
 
 export const STRIPE_PRODUCT_CONFIG = {
   name: "Pack documents RGPD TPE / artisans",

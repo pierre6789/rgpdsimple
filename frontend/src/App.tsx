@@ -80,8 +80,8 @@ function Navbar() {
             className="shimmer-btn inline-flex items-center justify-center rounded-full bg-white text-zinc-950 hover:bg-zinc-200 px-4 py-2 text-sm font-medium transition-colors"
           >
             Obtenir mes documents
-          </a>
-        </div>
+        </a>
+      </div>
 
         <button
           className="md:hidden p-2 text-zinc-400 hover:text-white"
@@ -790,8 +790,8 @@ function LegalPage() {
           <h2 className="text-xl font-semibold text-white mb-2">5. Cookies</h2>
           <p className="text-sm text-zinc-400 mb-4">
             Les modalités d’utilisation des cookies sont détaillées sur la page <a href="/cookies" className="underline text-zinc-300">Cookies</a>.
-          </p>
-        </div>
+        </p>
+      </div>
       </section>
     </main>
   )
