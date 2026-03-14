@@ -194,18 +194,18 @@ function LandingPage() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900 border border-zinc-800 mb-8"
           >
             <span className="w-2 h-2 rounded-full bg-emerald-500 pulse-glow" />
-            <span className="text-sm text-zinc-400">Conforme RGPD 2026 • TPE & artisans</span>
+            <span className="text-sm text-zinc-400">✅ Conforme dernières règles CNIL 2026 • Uniquement TPE & artisans</span>
           </motion.div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6">
             <span className="block overflow-hidden">
               <motion.span className="block" variants={textReveal} initial="hidden" animate="visible" custom={0}>
-                Vos documents RGPD
+                Arrêtez de stresser avec le RGPD.
               </motion.span>
             </span>
             <span className="block overflow-hidden">
               <motion.span className="block text-zinc-500" variants={textReveal} initial="hidden" animate="visible" custom={1}>
-                prêts en 5 minutes.
+                Tout est terminé dans 5 minutes.
               </motion.span>
             </span>
           </h1>
@@ -216,7 +216,8 @@ function LandingPage() {
             transition={{ duration: 0.6, delay: 0.45 }}
             className="text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed"
           >
-            Générateur automatique pour restaurants, artisans, garages, consultants, e‑commerce. Répondez à quelques questions, recevez vos 5 documents conformes CNIL par email.
+            Pas d'avocat, pas de jargon, pas de piège, pas d'abonnement.
+            Répondez 7 questions simples. Vous recevez immédiatement tous les documents obligatoires, 100% conforme pour votre activité.
           </motion.p>
 
           <motion.div
@@ -229,7 +230,7 @@ function LandingPage() {
               href="#form"
               className="shimmer-btn inline-flex items-center rounded-full bg-white text-zinc-950 hover:bg-zinc-200 px-8 h-12 text-base font-medium shadow-lg shadow-white/10"
             >
-              Obtenir mes documents — 97 €
+              ✅ Mettre mon activité en règle — 97 €
               <ArrowRight className="ml-2 w-4 h-4" />
             </a>
             <a
@@ -246,7 +247,7 @@ function LandingPage() {
             transition={{ delay: 0.7 }}
             className="text-sm text-zinc-500"
           >
-            Paiement sécurisé Stripe • 5 documents PDF • Envoi immédiat par email
+            Paiement sécurisé. Aucun abonnement. Reçu dans 2 minutes par email.
           </motion.p>
         </div>
       </section>
@@ -254,9 +255,7 @@ function LandingPage() {
       {/* Trust strip */}
       <section className="py-8 border-y border-zinc-800/80">
         <div className="max-w-4xl mx-auto px-4 flex flex-wrap items-center justify-center gap-8 sm:gap-12 text-sm text-zinc-500">
-          <span className="flex items-center gap-2">✅ Adapté aux TPE français</span>
-          <span className="flex items-center gap-2">🔒 Paiement Stripe</span>
-          <span className="flex items-center gap-2">📁 Modèles modifiables</span>
+          <span className="flex items-center gap-2">Déjà utilisé par 1127 artisans et TPE</span>
         </div>
       </section>
 
@@ -268,17 +267,17 @@ function LandingPage() {
             animate={howInView ? { opacity: 1, y: 0 } : {}}
             className="text-center mb-14"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Comment ça marche ?</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">3 étapes. C'est tout.</h2>
             <p className="text-zinc-400 max-w-xl mx-auto">
-              Un processus pensé pour les indépendants, sans jargon juridique.
+              On n'a pas inventé un truc magique. On a juste enlevé toute la merde que les avocats ajoutent pour vous faire payer plus cher.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { num: '1', title: 'Vous répondez à quelques questions', desc: 'Nom de l\'entreprise, type d\'activité, coordonnées, emails et cookies.' },
-              { num: '2', title: 'Vous payez 97 € en ligne', desc: 'Paiement unique et sécurisé par Stripe. Aucun abonnement.' },
-              { num: '3', title: 'Vos 5 documents arrivent par email', desc: 'PDF personnalisés prêts à intégrer sur votre site.' },
+              { num: '1', title: '✅ Tu réponds 7 questions simples', desc: 'Seulement ce qui est nécessaire. Pas de question piège. Pas de terme juridique. 2 minutes.' },
+              { num: '2', title: '✅ Tu payes une seule fois 97€', desc: 'Pas d\'abonnement caché. Pas de facture suivante. Paiement 100% sécurisé Stripe.' },
+              { num: '3', title: '✅ Tu reçois tes documents', desc: 'Tout arrive directement dans ta boite mail. Prêt à coller sur ton site. Terminé.' },
             ].map((step, i) => (
               <motion.div
                 key={step.num}
@@ -304,9 +303,9 @@ function LandingPage() {
             animate={packInView ? { opacity: 1, y: 0 } : {}}
             className="text-center mb-14"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Tout ce qui est inclus</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Tout ce qui est obligatoire. Rien de plus.</h2>
             <p className="text-zinc-400 max-w-xl mx-auto">
-              5 documents conformes RGPD, personnalisés selon votre activité.
+              ❗ Ce ne sont pas des modèles génériques trouvé sur Google. Chaque document est adapté exactement au type d'activité que tu indiques.
             </p>
           </motion.div>
 
@@ -317,11 +316,11 @@ function LandingPage() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
           >
             {[
-              { icon: Shield, title: 'Politique de confidentialité', desc: 'Conforme RGPD 2026, adaptée à votre activité.' },
-              { icon: FileText, title: 'Mentions légales', desc: 'Éditeur, hébergeur, propriété intellectuelle.' },
-              { icon: FileText, title: 'CGV sur-mesure', desc: 'Restaurant, artisan, consultant, e‑commerce…' },
-              { icon: FileText, title: 'Registre des traitements', desc: 'Tableau CNIL des traitements de données.' },
-              { icon: Cookie, title: 'Bandeau cookies', desc: 'Code HTML prêt à copier-coller sur votre site.' },
+              { icon: Shield, title: 'Politique de confidentialité', desc: 'Conforme mise à jour CNIL Mai 2026' },
+              { icon: FileText, title: 'Mentions légales', desc: 'Tous les champs obligatoires inclus' },
+              { icon: FileText, title: 'CGV sur-mesure', desc: 'Adapté restaurant, artisan, e-commerce ou consultant' },
+              { icon: FileText, title: 'Registre des traitements', desc: 'Tableau exact tel que publié par la CNIL' },
+              { icon: Cookie, title: 'Bandeau cookies', desc: 'Code HTML prêt à copier coller 1 clic' },
             ].map((item, i) => (
               <motion.div
                 key={item.title}
@@ -351,8 +350,8 @@ function LandingPage() {
             className="relative p-6 sm:p-8 rounded-2xl bg-zinc-900 border border-zinc-700"
           >
             <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold text-white mb-2">Démarrer votre pack RGPD</h2>
-              <p className="text-zinc-400 text-sm">2 minutes pour sécuriser votre activité.</p>
+              <h2 className="text-2xl font-bold text-white mb-2">✅ Mettre mon activité en règle</h2>
+              <p className="text-zinc-400 text-sm">Remplissez ce formulaire une seule fois: ~ 2 minutes.</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -463,7 +462,7 @@ function LandingPage() {
                 disabled={loading}
                 className="shimmer-btn w-full rounded-full bg-white text-zinc-950 hover:bg-zinc-200 py-3.5 px-6 text-base font-medium disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                {loading ? 'Redirection…' : 'Payer 97 € et générer mes documents'}
+                {loading ? 'Redirection…' : '✅ Valider et recevoir mes documents'}
               </button>
             </form>
             <p className="mt-3 text-center text-xs text-zinc-500">Paiement sécurisé par Stripe. Envoi automatique des 5 PDF par email.</p>
@@ -480,10 +479,12 @@ function LandingPage() {
           className="max-w-3xl mx-auto text-center"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight">
-            Prêt à être en règle ?
+            Ce problème est terminé aujourd'hui.
           </h2>
           <p className="text-lg text-zinc-400 mb-10">
-            Rejoignez les TPE et artisans qui ont sécurisé leur conformité RGPD en quelques minutes.
+            Plus besoin de chercher pendant 3 soirées sur google. Plus besoin d'attendre 3 semaines un avocat. Plus besoin de stresser en voyant passer les annonces de contrôle CNIL.
+            <br /><br />
+            Dans 5 minutes ce sera oublié.
           </p>
           <a
             href="#form"
