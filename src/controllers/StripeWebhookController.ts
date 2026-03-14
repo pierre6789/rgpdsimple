@@ -38,17 +38,18 @@ export class StripeWebhookController {
 
     if (event.type === "checkout.session.completed") {
       const session = event.data.object as import("stripe").Stripe.Checkout.Session;
-      const orderId = session.client_reference_id;
+      const orderId = (session.client_reference_id || session.metadata?.order_id) as string | undefined;
       if (!orderId) {
-        console.error("Webhook checkout.session.completed sans client_reference_id");
+        console.error("[Webhook] checkout.session.completed sans order_id / client_reference_id");
         res.status(200).send();
         return;
       }
+      console.log("[Webhook] Traitement commande:", orderId, "email:", session.metadata?.customer_email);
       try {
-        await orderService.processPaidOrder(orderId);
-        console.log("Commande traitée via webhook:", orderId);
+        await orderService.processPaidOrder(orderId, session);
+        console.log("[Webhook] Commande traitée et email envoyé:", orderId);
       } catch (err) {
-        console.error("Erreur processPaidOrder (webhook):", err);
+        console.error("[Webhook] Erreur processPaidOrder:", err);
         res.status(500).send("Erreur traitement commande");
         return;
       }

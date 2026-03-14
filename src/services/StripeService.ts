@@ -29,6 +29,16 @@ export class StripeService {
       ],
       success_url: successUrl,
       cancel_url: cancelUrl,
+      metadata: {
+        order_id: order.id,
+        customer_email: order.customer.email,
+        customer_companyName: order.customer.companyName,
+        customer_businessType: order.customer.businessType,
+        customer_address: order.customer.address,
+        customer_website: order.customer.website || "",
+        customer_collectsEmails: order.customer.collectsEmails ? "1" : "0",
+        customer_hasCookies: order.customer.hasCookies ? "1" : "0",
+      },
     });
 
     return session;
