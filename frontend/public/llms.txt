@@ -1,0 +1,14 @@
+# RGPD Simple
+
+> Service de génération de documents RGPD conformes CNIL pour TPE et artisans français. Politique de confidentialité, mentions légales, CGV, registre des traitements, bandeau cookies. Paiement unique 97 €, livraison par email.
+
+## Liens principaux
+
+- Accueil: https://www.rgpdsimple.fr/
+- Politique de confidentialité: https://www.rgpdsimple.fr/politique-confidentialite
+- Mentions légales: https://www.rgpdsimple.fr/mentions-legales
+- Cookies: https://www.rgpdsimple.fr/cookies
+
+## Contact
+
+- Email: contact@rgpdsimple.fr
