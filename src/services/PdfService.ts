@@ -1,4 +1,5 @@
-import puppeteer from "puppeteer";
+import chromium from "@sparticuz/chromium";
+import puppeteer from "puppeteer-core";
 import { GeneratedDocument } from "./TemplateService";
 
 export interface PdfDocumentBuffer {
@@ -8,8 +9,13 @@ export interface PdfDocumentBuffer {
 
 export class PdfService {
   async htmlDocumentsToPdfs(documents: GeneratedDocument[]): Promise<PdfDocumentBuffer[]> {
+    const executablePath = await chromium.executablePath;
+
     const browser = await puppeteer.launch({
-      headless: true,
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath,
+      headless: chromium.headless,
     });
 
     try {
