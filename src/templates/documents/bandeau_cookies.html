@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Bandeau cookies - {{nomEntreprise}}</title>
+  </head>
+  <body>
+    <h1>Code HTML du bandeau cookies</h1>
+    <p>À intégrer sur votre site (par exemple dans le fichier de layout global) :</p>
+    <pre>
+&lt;div id="cookie-banner" style="position:fixed;bottom:0;left:0;right:0;background:#111827;color:#ffffff;padding:12px 16px;font-size:14px;z-index:9999;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;"&gt;
+  &lt;span style="margin-bottom:8px;"&gt;
+    {{nomEntreprise}} utilise des cookies pour le fonctionnement du site et la mesure d'audience. 
+    Vous pouvez accepter ou refuser les cookies non essentiels.
+  &lt;/span&gt;
+  &lt;div&gt;
+    &lt;button onclick="acceptCookies()" style="margin-right:8px;padding:8px 12px;border-radius:999px;border:none;background:#10b981;color:#ffffff;cursor:pointer;"&gt;Tout accepter&lt;/button&gt;
+    &lt;button onclick="refuseCookies()" style="padding:8px 12px;border-radius:999px;border:1px solid #e5e7eb;background:#111827;color:#ffffff;cursor:pointer;"&gt;Refuser&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + (days*24*60*60*1000));
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+  }
+  function hideBanner() {
+    var banner = document.getElementById("cookie-banner");
+    if (banner) banner.style.display = "none";
+  }
+  function acceptCookies() {
+    setCookie("cookie_consent", "accepted", 180);
+    hideBanner();
+    // Initialiser ici vos outils de mesure d'audience / marketing
+  }
+  function refuseCookies() {
+    setCookie("cookie_consent", "refused", 180);
+    hideBanner();
+  }
+  (function() {
+    if (document.cookie.indexOf("cookie_consent=") !== -1) {
+      hideBanner();
+    }
+  })();
+&lt;/script&gt;
+    </pre>
+  </body>
+</html>
+

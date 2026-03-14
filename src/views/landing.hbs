@@ -1,0 +1,237 @@
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-main">
+      <p class="hero-badge">Conforme RGPD 2026 • Spécial TPE & artisans</p>
+      <h1>Vos documents RGPD prêts en <span class="highlight">5 minutes</span></h1>
+      <p class="hero-subtitle">
+        Générateur automatique de documents légaux pour restaurants, artisans, garages, consultants, e‑commerçants…
+        Vous répondez à quelques questions, nous créons vos documents conformes CNIL.
+      </p>
+      <ul class="hero-benefits">
+        <li>Politique de confidentialité personnalisée</li>
+        <li>Mentions légales + CGV adaptées à votre activité</li>
+        <li>Registre des traitements CNIL + bandeau cookies prêt à intégrer</li>
+      </ul>
+      <div class="hero-actions">
+        <a href="#form" class="btn-cta">
+          Obtenir mes documents RGPD - {{price}} €
+        </a>
+        <p class="hero-small-text">Paiement sécurisé par Stripe • Envoi immédiat par email</p>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item">
+          <span class="trust-dot"></span> Pensé pour les non-juristes
+        </div>
+        <div class="trust-item">
+          <span class="trust-dot"></span> Aucun abonnement, paiement unique
+        </div>
+        <div class="trust-item">
+          <span class="trust-dot"></span> Modèles facilement modifiables
+        </div>
+      </div>
+    </div>
+    <aside class="hero-card" id="form">
+      <h2 class="card-title">Démarrer votre pack RGPD</h2>
+      <p class="card-subtitle">2 minutes pour sécuriser votre activité.</p>
+      <form method="POST" action="/checkout" class="rgpd-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="companyName">Nom de l'entreprise</label>
+            <input type="text" id="companyName" name="companyName" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="businessType">Type d'activité</label>
+            <select id="businessType" name="businessType" required>
+              <option value="">Sélectionnez…</option>
+              <option value="restaurant">Restaurant</option>
+              <option value="coiffeur">Coiffeur</option>
+              <option value="garage">Garage</option>
+              <option value="commerce">Commerce</option>
+              <option value="artisan_btp">Artisan BTP</option>
+              <option value="consultant">Consultant</option>
+              <option value="ecommerce">E-commerce</option>
+              <option value="autre">Autre</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="address">Adresse complète</label>
+            <textarea id="address" name="address" rows="3" required></textarea>
+          </div>
+        </div>
+
+        <div class="form-row two-cols">
+          <div class="form-group">
+            <label for="email">Email de réception</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="website">Site web (optionnel)</label>
+            <input type="url" id="website" name="website" placeholder="https://…" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Collectez-vous des emails clients ?</label>
+            <div class="pill-toggle">
+              <label class="pill-option">
+                <input type="radio" name="collectsEmails" value="yes" required />
+                <span>Oui</span>
+              </label>
+              <label class="pill-option">
+                <input type="radio" name="collectsEmails" value="no" />
+                <span>Non</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Avez-vous un site web avec cookies ?</label>
+            <div class="pill-toggle">
+              <label class="pill-option">
+                <input type="radio" name="hasCookies" value="yes" required />
+                <span>Oui</span>
+              </label>
+              <label class="pill-option">
+                <input type="radio" name="hasCookies" value="no" />
+                <span>Non</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-cta btn-full">
+          Payer {{price}} € et générer mes documents
+        </button>
+        <p class="form-note">Paiement sécurisé par Stripe. Envoi automatique des 5 PDFs par email.</p>
+      </form>
+      <div class="card-meta">
+        <span class="meta-pill">⏱ 2 minutes</span>
+        <span class="meta-pill">📄 5 documents inclus</span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="strip">
+  <div class="container strip-inner">
+    <div class="strip-item">✅ Adapté aux TPE / artisans français</div>
+    <div class="strip-item">🔒 Paiement sécurisé par Stripe</div>
+    <div class="strip-item">📁 Modèles exportables & modifiables</div>
+  </div>
+</section>
+
+<section class="steps" id="how-it-works">
+  <div class="container">
+    <h2>Comment ça marche&nbsp;?</h2>
+    <p class="section-subtitle">Un processus pensé pour les indépendants et petites structures, sans jargon juridique.</p>
+    <div class="steps-grid">
+      <div class="step-item">
+        <span class="step-number">1</span>
+        <h3>Vous répondez à quelques questions</h3>
+        <p>Nom de l'entreprise, type d'activité, coordonnées, collecte d'emails et cookies. Rien de compliqué.</p>
+      </div>
+      <div class="step-item">
+        <span class="step-number">2</span>
+        <h3>Vous payez en ligne (97&nbsp;€)</h3>
+        <p>Paiement unique et sécurisé par Stripe. Aucune création de compte, aucun abonnement caché.</p>
+      </div>
+      <div class="step-item">
+        <span class="step-number">3</span>
+        <h3>Vos 5 documents arrivent par email</h3>
+        <p>Vous recevez immédiatement vos documents RGPD personnalisés au format PDF, prêts à être intégrés sur votre site.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pack" id="pack-content">
+  <div class="container">
+    <h2>Tout ce qui est inclus dans le pack RGPD</h2>
+    <div class="pack-grid">
+      <article class="pack-card">
+        <h3>Politique de confidentialité</h3>
+        <p>Document conforme RGPD 2026, adapté à votre type d'activité et à votre façon de collecter les données.</p>
+      </article>
+      <article class="pack-card">
+        <h3>Mentions légales</h3>
+        <p>Obligatoires sur tout site français : éditeur, hébergeur, propriété intellectuelle, données personnelles.</p>
+      </article>
+      <article class="pack-card">
+        <h3>CGV sur‑mesure</h3>
+        <p>Conditions générales de vente adaptées selon que vous êtes restaurant, artisan, consultant, e‑commerce, etc.</p>
+      </article>
+      <article class="pack-card">
+        <h3>Registre des traitements</h3>
+        <p>Tableau structuré des traitements de données exigé par la CNIL, prêt à être complété si besoin.</p>
+      </article>
+      <article class="pack-card">
+        <h3>Bandeau cookies (HTML)</h3>
+        <p>Code bandeau prêt à copier‑coller sur votre site, avec gestion simple du consentement.</p>
+      </article>
+      <article class="pack-card pack-card-accent">
+        <h3>Évolutif & modifiable</h3>
+        <p>Tous les modèles sont en HTML et peuvent être adaptés facilement si votre activité évolue.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="audience">
+  <div class="container">
+    <h2>Conçu pour votre réalité de terrain</h2>
+    <div class="audience-grid">
+      <div class="audience-pill">Restaurants & cafés</div>
+      <div class="audience-pill">Coiffeurs & salons de beauté</div>
+      <div class="audience-pill">Garages & ateliers</div>
+      <div class="audience-pill">Commerces de proximité</div>
+      <div class="audience-pill">Artisans BTP</div>
+      <div class="audience-pill">Consultants & freelances</div>
+      <div class="audience-pill">Sites e‑commerce</div>
+      <div class="audience-pill">Autres TPE & indépendants</div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="container">
+    <h2>Questions fréquentes</h2>
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary>Est‑ce que ces documents suffisent pour être conforme au RGPD&nbsp;?</summary>
+        <p>
+          Ils couvrent les éléments attendus pour une TPE/artisan classique (information des clients, mentions obligatoires, registre, cookies). 
+          Pour des cas très spécifiques ou sensibles, un accompagnement juridique personnalisé reste recommandé.
+        </p>
+      </details>
+      <details class="faq-item">
+        <summary>Que se passe‑t‑il après mon paiement&nbsp;?</summary>
+        <p>
+          Le paiement est validé par Stripe, vos documents sont générés automatiquement à partir de vos réponses, puis envoyés à l'adresse email indiquée.
+        </p>
+      </details>
+      <details class="faq-item">
+        <summary>Puis‑je modifier les modèles ensuite&nbsp;?</summary>
+        <p>
+          Oui. Tous les modèles sont en HTML, vous pouvez ajuster les formulations, ajouter des clauses ou demander à votre conseil juridique de les adapter.
+        </p>
+      </details>
+      <details class="faq-item">
+        <summary>Et si je veux que quelqu'un installe tout sur mon site&nbsp;?</summary>
+        <p>
+          Après le paiement, nous vous proposons une option d'installation complète sur votre site en 24h pour 147&nbsp;€. 
+          Vous pouvez aussi revenir vers nous plus tard si vous changez d'avis.
+        </p>
+      </details>
+    </div>
+  </div>
+</section>
+
