@@ -154,7 +154,7 @@ function LandingPage() {
     setError(null)
     setLoading(true)
     try {
-      const res = await fetch('/api/checkout', {
+      const res = await fetch('https://rgpdsimple.onrender.com/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
