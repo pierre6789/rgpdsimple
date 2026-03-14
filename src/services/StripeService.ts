@@ -15,6 +15,7 @@ export class StripeService {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       client_reference_id: order.id,
+      customer_email: order.customer.email,
       line_items: [
         {
           price_data: {

@@ -27,8 +27,9 @@ function orderFromStripeSession(session: Stripe.Checkout.Session): Order {
   const m = session.metadata || {};
   const orderId = (session.client_reference_id || m.order_id) as string;
   const now = new Date().toISOString();
+  const emailFromStripe = (session as { customer_details?: { email?: string | null } }).customer_details?.email;
   const customer: CustomerInput = {
-    email: m.customer_email || "",
+    email: m.customer_email || emailFromStripe || "",
     companyName: m.customer_companyName || "",
     businessType: (BUSINESS_TYPES.includes(m.customer_businessType as any) ? m.customer_businessType : "autre") as CustomerInput["businessType"],
     address: m.customer_address || "",

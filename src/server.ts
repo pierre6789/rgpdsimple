@@ -26,6 +26,17 @@ app.use(express.json());
 app.use("/api", checkoutRouter);
 app.use("/", successRouter);
 
+// Diagnostic (sans exposer les secrets) : vérifier que la config webhook + SMTP est prête
+app.get("/api/debug-env", (_req, res) => {
+  res.json({
+    hasStripeWebhookSecret: Boolean(process.env.STRIPE_WEBHOOK_SECRET),
+    hasStripeSecretKey: Boolean(process.env.STRIPE_SECRET_KEY),
+    hasSmtpHost: Boolean(process.env.SMTP_HOST),
+    hasSmtpUser: Boolean(process.env.SMTP_USER),
+    hasSmtpPass: Boolean(process.env.SMTP_PASS),
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Serveur RGPD API démarré sur http://localhost:${PORT}`);
 });
