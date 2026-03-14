@@ -84,9 +84,13 @@ export class OrderService {
   /** Traite une commande payée (PDF + email). order peut venir du fichier ou des metadata Stripe. */
   async processPaidOrder(orderId: string, session?: Stripe.Checkout.Session): Promise<void> {
     let order: Order | undefined = await this.getOrderById(orderId);
-    if (!order && session?.metadata) {
+    if (order?.status === "completed") {
+      console.log("[processPaidOrder] Commande déjà traitée, skip:", orderId);
+      return;
+    }
+    if (!order && session) {
       order = orderFromStripeSession(session);
-      console.log("[processPaidOrder] Commande reconstruite depuis metadata Stripe:", orderId);
+      console.log("[processPaidOrder] Commande reconstruite depuis session Stripe:", orderId);
     } else if (!order) {
       throw new Error("Commande introuvable (fichier et metadata Stripe vides)");
     }

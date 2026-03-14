@@ -26,10 +26,17 @@ export class SuccessController {
         return;
       }
 
-      // Le traitement PDF + email est fait par le webhook Stripe (checkout.session.completed)
+      // Génération PDF + envoi email ici (fallback si le webhook Stripe ne se déclenche pas)
+      try {
+        await orderService.processPaidOrder(orderId, session as import("stripe").Stripe.Checkout.Session);
+      } catch (err) {
+        console.error("Erreur processPaidOrder dans /success:", err);
+        // On redirige quand même pour ne pas bloquer l'utilisateur
+      }
+
       const order = await orderService.getOrderById(orderId);
       const frontendUrl = process.env.APP_URL_FRONTEND || "http://localhost:5173";
-      const email = encodeURIComponent(order?.customer.email ?? "");
+      const email = encodeURIComponent(order?.customer.email ?? (session as any).customer_details?.email ?? "");
       const supportEmail = encodeURIComponent(process.env.SUPPORT_EMAIL || EMAIL_CONFIG.from);
 
       res.redirect(
