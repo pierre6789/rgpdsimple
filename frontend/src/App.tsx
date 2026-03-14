@@ -44,47 +44,48 @@ function Navbar() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-3xl"
+      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-4xl"
     >
-      <nav className="relative flex items-center justify-center gap-6 md:gap-10 px-4 py-3 rounded-full bg-zinc-900/60 backdrop-blur-md border border-zinc-800">
-        <Link to="/" className="flex items-center gap-2 shrink-0">
-          <img src="/logo.png" alt="Logo" className="h-14 w-auto" />
-          <span className="sr-only">Accueil</span>
-        </Link>
-
-        <div className="hidden md:flex items-center gap-1 relative">
-          {navItems.map((item, index) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="relative px-4 py-2 text-sm text-zinc-400 hover:text-white transition-colors"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              {hoveredIndex === index && (
-                <motion.div
-                  layoutId="nav-hover"
-                  className="absolute inset-0 bg-zinc-800 rounded-full"
-                  initial={false}
-                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                />
-              )}
-              <span className="relative z-10">{item.label}</span>
-            </a>
-          ))}
-        </div>
-
-        <div className="hidden md:block shrink-0">
-          <Link
-            to="/#form"
-            className="shimmer-btn inline-flex items-center justify-center rounded-full bg-white text-zinc-950 hover:bg-zinc-200 px-4 py-2 text-sm font-medium transition-colors"
-          >
-            Obtenir mes documents
+      <nav className="relative flex items-center justify-center px-4 py-3 rounded-full bg-zinc-900/60 backdrop-blur-md border border-zinc-800">
+        <div className="flex items-center justify-between md:justify-center gap-4 md:gap-10 w-full md:w-auto">
+          <Link to="/" className="flex items-center gap-2 shrink-0">
+            <img src="/logo.png" alt="Logo" className="h-14 w-auto" />
+            <span className="sr-only">Accueil</span>
           </Link>
-        </div>
 
-        <button
-          className="md:hidden p-2 text-zinc-400 hover:text-white"
+          <div className="hidden md:flex items-center gap-1 relative">
+            {navItems.map((item, index) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="relative px-4 py-2 text-sm text-zinc-400 hover:text-white transition-colors"
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                {hoveredIndex === index && (
+                  <motion.div
+                    layoutId="nav-hover"
+                    className="absolute inset-0 bg-zinc-800 rounded-full"
+                    initial={false}
+                    transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{item.label}</span>
+              </a>
+            ))}
+          </div>
+
+          <div className="hidden md:block shrink-0">
+            <Link
+              to="/#form"
+              className="shimmer-btn inline-flex items-center justify-center rounded-full bg-white text-zinc-950 hover:bg-zinc-200 px-4 py-2 text-sm font-medium transition-colors"
+            >
+              Obtenir mes documents
+            </Link>
+          </div>
+
+          <button
+            className="md:hidden p-2 text-zinc-400 hover:text-white"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Menu"
         >
@@ -193,8 +194,8 @@ function LandingPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900 border border-zinc-800 mb-8"
           >
-            <span className="w-2 h-2 rounded-full bg-emerald-500 pulse-glow" />
-            <span className="text-sm text-zinc-400">🔴 ALERTE : Contrôles CNIL 2026 • Les TPE ne sont plus épargnés</span>
+            <span className="w-2 h-2 rounded-full bg-red-500 pulse-glow" />
+            <span className="text-sm text-zinc-400">ALERTE : Contrôles CNIL 2026 • Les TPE ne sont plus épargnés</span>
           </motion.div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6">
@@ -267,7 +268,7 @@ function LandingPage() {
             viewport={{ once: true }}
             className="text-2xl sm:text-3xl font-bold text-white mb-14 text-center"
           >
-            🔴 Ce n'est pas une menace vague. C'est une réalité depuis janvier 2025.
+            <span className="inline-block border-b-2 border-red-500 pb-2">Ce n'est pas une menace vague. C'est une réalité depuis janvier 2025.</span>
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
@@ -307,7 +308,7 @@ function LandingPage() {
             animate={howInView ? { opacity: 1, y: 0 } : {}}
             className="text-center mb-14"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">🔴 Comment éviter l'amende en 3 étapes</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4"><span className="inline-block border-b-2 border-red-500 pb-2">Comment éviter l'amende en 3 étapes</span></h2>
             <p className="text-zinc-400 max-w-xl mx-auto">
               Processus anti-sanction validé par des juristes.
             </p>
@@ -343,7 +344,7 @@ function LandingPage() {
             animate={packInView ? { opacity: 1, y: 0 } : {}}
             className="text-center mb-14"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">🔴 Votre bouclier anti-amende</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4"><span className="inline-block border-b-2 border-red-500 pb-2">Votre bouclier anti-amende</span></h2>
             <p className="text-zinc-400 max-w-xl mx-auto">
               Les 5 documents que la CNIL exige impérativement. Manquez-en un seul = sanction.
             </p>
@@ -519,7 +520,7 @@ function LandingPage() {
           className="max-w-3xl mx-auto text-center"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight">
-            🔴 Le contrôle ne prévient pas. Il frappe à 9h du matin avec un constat à 4 000€.
+            <span className="inline-block border-b-2 border-red-500 pb-2">Le contrôle ne prévient pas. Il frappe à 9h du matin avec un constat à 4 000€.</span>
           </h2>
           <p className="text-lg text-zinc-400 mb-10">
             Vous avez deux options :
