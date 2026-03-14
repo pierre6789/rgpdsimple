@@ -26,10 +26,12 @@ export class SuccessController {
         return;
       }
 
-      await orderService.processPaidOrder(orderId);
+      // Traitement en arrière-plan pour ne pas faire attendre l'utilisateur (PDF + email)
+      orderService.processPaidOrder(orderId).catch((err) => {
+        console.error("Erreur traitement commande après paiement:", err);
+      });
 
       const order = await orderService.getOrderById(orderId);
-
       const frontendUrl = process.env.APP_URL_FRONTEND || "http://localhost:5173";
       const email = encodeURIComponent(order?.customer.email ?? "");
       const supportEmail = encodeURIComponent(process.env.SUPPORT_EMAIL || EMAIL_CONFIG.from);
