@@ -4,6 +4,7 @@ import cors from "cors";
 
 import checkoutRouter from "./routes/checkout";
 import successRouter from "./routes/success";
+import webhookRouter from "./routes/webhook";
 
 dotenv.config();
 
@@ -15,6 +16,9 @@ app.use(
     origin: process.env.APP_URL_FRONTEND || "http://localhost:5173",
   })
 );
+
+// Webhook Stripe : body brut obligatoire pour la vérification de signature (avant express.json)
+app.use("/api/webhook", express.raw({ type: "application/json" }), webhookRouter);
 
 app.use(express.json());
 

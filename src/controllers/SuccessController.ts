@@ -26,11 +26,7 @@ export class SuccessController {
         return;
       }
 
-      // Traitement en arrière-plan pour ne pas faire attendre l'utilisateur (PDF + email)
-      orderService.processPaidOrder(orderId).catch((err) => {
-        console.error("Erreur traitement commande après paiement:", err);
-      });
-
+      // Le traitement PDF + email est fait par le webhook Stripe (checkout.session.completed)
       const order = await orderService.getOrderById(orderId);
       const frontendUrl = process.env.APP_URL_FRONTEND || "http://localhost:5173";
       const email = encodeURIComponent(order?.customer.email ?? "");
