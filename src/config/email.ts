@@ -8,5 +8,7 @@ export const EMAIL_CONFIG = {
   user: process.env.SMTP_USER || "",
   pass: process.env.SMTP_PASS || "",
   from: process.env.EMAIL_FROM || "rgpd@exemple.local",
+  /** Si défini, on utilise l'API Mailtrap (HTTPS) au lieu du SMTP — plus fiable depuis Render */
+  mailtrapApiToken: process.env.MAILTRAP_API_TOKEN || "",
 };
 

@@ -31,6 +31,7 @@ app.get("/api/debug-env", (_req, res) => {
   res.json({
     hasStripeWebhookSecret: Boolean(process.env.STRIPE_WEBHOOK_SECRET),
     hasStripeSecretKey: Boolean(process.env.STRIPE_SECRET_KEY),
+    hasMailtrapApiToken: Boolean(process.env.MAILTRAP_API_TOKEN),
     hasSmtpHost: Boolean(process.env.SMTP_HOST),
     hasSmtpUser: Boolean(process.env.SMTP_USER),
     hasSmtpPass: Boolean(process.env.SMTP_PASS),

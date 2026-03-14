@@ -2,6 +2,8 @@ import nodemailer from "nodemailer";
 import { EMAIL_CONFIG } from "../config/email";
 import { PdfDocumentBuffer } from "./PdfService";
 
+const MAILTRAP_SEND_URL = "https://send.api.mailtrap.io/api/send";
+
 export class EmailService {
   private transporter = nodemailer.createTransport({
     host: EMAIL_CONFIG.host,
@@ -20,6 +22,48 @@ export class EmailService {
   });
 
   async sendDocuments(recipient: string, pdfs: PdfDocumentBuffer[]): Promise<void> {
+    const useApi = Boolean(EMAIL_CONFIG.mailtrapApiToken);
+    console.log(useApi ? "[Email] Envoi via API Mailtrap (HTTPS)" : "[Email] Envoi via SMTP (MAILTRAP_API_TOKEN non défini)");
+    if (useApi) {
+      await this.sendViaMailtrapApi(recipient, pdfs);
+      return;
+    }
+    await this.sendViaSmtp(recipient, pdfs);
+  }
+
+  /** Envoi via l'API Mailtrap (HTTPS) — évite les blocages SMTP sur Render */
+  private async sendViaMailtrapApi(recipient: string, pdfs: PdfDocumentBuffer[]): Promise<void> {
+    const attachments = pdfs.map((pdf) => ({
+      content: pdf.buffer.toString("base64"),
+      filename: pdf.filename,
+      type: "application/pdf",
+    }));
+
+    const body = {
+      from: { email: EMAIL_CONFIG.from, name: "RGPD Simple" },
+      to: [{ email: recipient }],
+      subject: "Vos documents RGPD personnalisés",
+      text:
+        "Bonjour,\n\nVous trouverez en pièces jointes vos documents RGPD personnalisés (politique de confidentialité, mentions légales, CGV, registre des traitements, bandeau cookies).\n\nConservez-les précieusement et intégrez-les à votre site web.\n\nCordialement,\nL'équipe RGPD.",
+      attachments,
+    };
+
+    const res = await fetch(MAILTRAP_SEND_URL, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${EMAIL_CONFIG.mailtrapApiToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (!res.ok) {
+      const errText = await res.text();
+      throw new Error(`Mailtrap API ${res.status}: ${errText}`);
+    }
+  }
+
+  private async sendViaSmtp(recipient: string, pdfs: PdfDocumentBuffer[]): Promise<void> {
     const attachments = pdfs.map((pdf) => ({
       filename: pdf.filename,
       content: pdf.buffer,
