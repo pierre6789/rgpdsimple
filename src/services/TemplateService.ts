@@ -16,7 +16,7 @@ type TemplateKey =
 
 export class TemplateService {
   private loadTemplate(fileName: string): string {
-    const filePath = path.join(__dirname, "..", "templates", "documents", fileName);
+    const filePath = path.join(process.cwd(), "src", "templates", "documents", fileName);
     return fs.readFileSync(filePath, "utf-8");
   }
 

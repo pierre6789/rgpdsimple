@@ -12,9 +12,9 @@ export class SuccessController {
     const orderId = req.query.orderId as string | undefined;
 
     if (!sessionId || !orderId) {
-      res.status(400).render("error", {
-        message: "Paramètres de confirmation manquants.",
-      });
+      res
+        .status(400)
+        .send("Paramètres de confirmation manquants après le paiement. Merci de contacter le support si besoin.");
       return;
     }
 
@@ -22,9 +22,7 @@ export class SuccessController {
       const session = await stripeService.retrieveSession(sessionId);
 
       if (session.payment_status !== "paid") {
-        res.status(400).render("error", {
-          message: "Le paiement n'est pas confirmé.",
-        });
+        res.status(400).send("Le paiement n'est pas confirmé.");
         return;
       }
 
@@ -42,9 +40,11 @@ export class SuccessController {
       );
     } catch (error) {
       console.error("Erreur lors du traitement du succès", error);
-      res.status(500).render("error", {
-        message: "Un problème est survenu après le paiement. Vos documents seront envoyés manuellement si nécessaire.",
-      });
+      res
+        .status(500)
+        .send(
+          "Un problème est survenu après le paiement. Vos documents seront envoyés manuellement si nécessaire."
+        );
     }
   }
 }
