@@ -9,13 +9,13 @@ export interface PdfDocumentBuffer {
 
 export class PdfService {
   async htmlDocumentsToPdfs(documents: GeneratedDocument[]): Promise<PdfDocumentBuffer[]> {
-    const executablePath = await chromium.executablePath;
+    const executablePath = await chromium.executablePath();
 
     const browser = await puppeteer.launch({
       args: chromium.args,
-      defaultViewport: chromium.defaultViewport,
+      defaultViewport: { width: 1280, height: 720 },
       executablePath,
-      headless: chromium.headless,
+      headless: true,
     });
 
     try {
