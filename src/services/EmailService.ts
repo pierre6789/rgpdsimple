@@ -14,6 +14,9 @@ export class EmailService {
     tls: {
       rejectUnauthorized: false,
     },
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000,
   });
 
   async sendDocuments(recipient: string, pdfs: PdfDocumentBuffer[]): Promise<void> {

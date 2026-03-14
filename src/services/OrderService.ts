@@ -108,7 +108,18 @@ export class OrderService {
     console.log("[processPaidOrder] Génération des PDF...");
     const pdfBuffers = await pdfService.htmlDocumentsToPdfs(documentsHtml);
     console.log("[processPaidOrder] Envoi email à", order.customer.email);
-    await emailService.sendDocuments(order.customer.email, pdfBuffers);
+    try {
+      await Promise.race([
+        emailService.sendDocuments(order.customer.email, pdfBuffers),
+        new Promise<void>((_, reject) =>
+          setTimeout(() => reject(new Error("Envoi email timeout (25s)")), 25000)
+        ),
+      ]);
+      console.log("[processPaidOrder] Email envoyé avec succès");
+    } catch (err) {
+      console.error("[processPaidOrder] Échec envoi email:", err instanceof Error ? err.message : err);
+      // On continue pour ne pas bloquer la redirection ; le client peut contacter le support
+    }
 
     order.status = "completed";
     order.sentAt = new Date().toISOString();
