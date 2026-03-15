@@ -49,7 +49,7 @@ function Navbar() {
     >
       <nav className="relative flex items-center justify-between w-full max-w-4xl py-3 px-5 rounded-full bg-zinc-900/60 backdrop-blur-md border border-zinc-800 md:justify-center md:gap-10">
         <Link to="/" className="flex items-center gap-2 shrink-0">
-          <img src="/logo.png" alt="Logo" className="h-14 w-auto" />
+          <img src="/logo.png" alt="Logo" className="h-10 w-auto" />
           <span className="sr-only">Accueil</span>
         </Link>
 
@@ -567,7 +567,7 @@ function LandingPage() {
         <div className="max-w-5xl mx-auto px-4 py-12">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
             <a href="#" className="flex items-center gap-2">
-              <img src="/logo.png" alt="Logo" className="h-14 w-auto" />
+              <img src="/logo.png" alt="Logo" className="h-10 w-auto" />
               <span className="sr-only">Accueil</span>
             </a>
             <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-900 border border-zinc-800">
