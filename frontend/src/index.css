@@ -36,40 +36,6 @@
   50% { opacity: 0.6; box-shadow: 0 0 10px currentColor; }
 }
 
-/* Lueur blanche légère qui fait le tour de la carte Option 2 */
-.card-border-spin {
-  position: relative;
-  border-radius: 0.75rem;
-  padding: 1px;
-  overflow: hidden;
-}
-.card-border-spin::before {
-  content: "";
-  position: absolute;
-  inset: -50%;
-  width: 200%;
-  height: 200%;
-  background: conic-gradient(
-    from 0deg,
-    transparent 0%,
-    transparent 70%,
-    rgba(255, 255, 255, 0.18) 85%,
-    rgba(255, 255, 255, 0.25) 100%
-  );
-  animation: border-spin 3s linear infinite;
-}
-.card-border-spin .card-border-spin-inner {
-  position: relative;
-  z-index: 1;
-  border-radius: calc(0.75rem - 1px);
-  background: rgb(39 39 42 / 0.8);
-}
-@keyframes border-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 #root {
   min-height: 100vh;
 }
