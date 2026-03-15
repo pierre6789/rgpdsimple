@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Conditions générales de vente - {{nomEntreprise}}</title>
+    <style>
+      body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 12px; line-height: 1.5; color: #1f2937; max-width: 800px; margin: 0 auto; padding: 24px; }
+      h1 { font-size: 18px; color: #111827; margin-top: 0; border-bottom: 1px solid #e5e7eb; padding-bottom: 8px; }
+      h2 { font-size: 14px; color: #111827; margin-top: 20px; }
+      h3 { font-size: 13px; color: #374151; margin-top: 12px; }
+      p { margin: 8px 0; }
+      ul, ol { margin: 8px 0; padding-left: 24px; }
+      table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 11px; }
+      th, td { border: 1px solid #e5e7eb; padding: 8px; text-align: left; }
+      th { background: #f3f4f6; font-weight: 600; }
+      .legal-notice { font-size: 11px; color: #6b7280; margin-top: 24px; }
+      .fill-placeholder { background: #fef3c7; padding: 1px 4px; }
+    </style>
+  </head>
+  <body>
+    <h1>Conditions générales de vente (CGV) / Conditions générales de prestation de services (CGPS)</h1>
+    <p><strong>Dernière mise à jour : 2026.</strong> Conformes au Code de la consommation, à la Directive Omnibus et à la loi AGEC.</p>
+
+    <!-- ========== 1. OBJET ET CHAMP D'APPLICATION ========== -->
+    <h2>1. Objet et champ d'application</h2>
+    <p>Les présentes conditions générales s'appliquent à toutes les ventes de biens ou prestations de services conclues par <strong>{{nomEntreprise}}</strong>, ci-après « le Vendeur » ou « le Prestataire », avec un acheteur ou un client, ci-après « le Client ».</p>
+    <ul>
+      <li><strong>Vendeur / Prestataire :</strong> {{nomEntreprise}}, {{adresseComplete}}. Contact : {{emailContact}}.</li>
+      <li><strong>Client :</strong> toute personne physique ou morale qui achète un bien ou commande une prestation auprès du Vendeur.</li>
+    </ul>
+    <p>Le fait de passer commande ou d'accepter un devis vaut acceptation sans réserve des présentes CGV.</p>
+
+    <!-- ========== 2. TARIFS ========== -->
+    <h2>2. Tarifs</h2>
+    <p><strong>Transparence des prix :</strong></p>
+    <ul>
+      <li><strong>Clients consommateurs (B2C) :</strong> tous les prix sont indiqués <strong>TTC</strong> (TVA française applicable).</li>
+      <li><strong>Clients professionnels (B2B) :</strong> les prix sont indiqués <strong>HT</strong> sauf mention contraire ; la TVA applicable est celle en vigueur au jour de la facture.</li>
+    </ul>
+    <p>{{ecoParticipationMention}}</p>
+    <p>Les tarifs en vigueur sont ceux communiqués au moment de la commande ou du devis. [À compléter : liste des prestations et tarifs ou renvoi vers tarif affiché / catalogue.]</p>
+
+    <!-- ========== 3. MODALITÉS DE PAIEMENT ========== -->
+    <h2>3. Modalités de paiement</h2>
+    <ul>
+      <li><strong>Moyens acceptés :</strong> {{moyensPaiement}}.</li>
+      <li>Les paiements sont sécurisés (protocoles adaptés). Les données de carte bancaire ne sont pas conservées par le Vendeur lorsqu'elles transitent par un prestataire de paiement certifié.</li>
+      <li><strong>Échéances :</strong> {{echeancesPaiement}}.</li>
+    </ul>
+    <h3>3.1 Pénalités de retard</h3>
+    <p>En cas de retard de paiement, des pénalités de retard sont exigibles au taux de <span class="fill-placeholder">{{tauxPenaliteRetard}}</span> (taux légal ou taux conventionnel plafonné). Une indemnité forfaitaire pour frais de recouvrement de <strong>40 €</strong> est due par le Client professionnel (B2B) en cas de retard (art. D.441-5 C. com.).</p>
+    <p>Pour les clients consommateurs (B2C), les pénalités de retard ne peuvent excéder le taux d'intérêt légal.</p>
+
+    <!-- ========== 4. FORCE MAJEURE ========== -->
+    <h2>4. Force majeure</h2>
+    <p>Le Vendeur ne pourra être tenu responsable des retards ou manquements dus à des événements de force majeure (catastrophes naturelles, pandémie, crise sanitaire, conflit armé, crise énergétique majeure, blocage des approvisionnements ou des transports, décision des pouvoirs publics, etc.), dès lors que ces événements présentent les caractères d'externalité, d'imprévisibilité et d'irrésistibilité retenus par la jurisprudence.</p>
+    <p>En cas de force majeure, les obligations du Vendeur sont suspendues. Si la situation se prolonge au-delà de [À compléter : durée, ex. 30 jours], chaque partie pourra résilier le contrat sans indemnité.</p>
+
+    <!-- ========== 5. MÉDIATION DE LA CONSOMMATION (B2C) ========== -->
+    <h2>5. Médiation de la consommation</h2>
+    <p>Conformément à l'article L.612-1 du Code de la consommation, le Client consommateur peut recourir au médiateur de la consommation suivant en cas de litige :</p>
+    <p>
+      <strong>{{mediateurNom}}</strong><br />
+      {{mediateurCoordonnees}}<br />
+      {{mediateurUrl}}
+    </p>
+    <p><em>[Obligatoire pour les professionnels en B2C – à défaut, risque de sanction DGCCRF.]</em></p>
+
+    <!-- ========== 6. PROTECTION DES DONNÉES ========== -->
+    <h2>6. Protection des données personnelles</h2>
+    <p>Les données personnelles collectées dans le cadre de la relation commerciale sont traitées conformément au RGPD et à notre Politique de confidentialité, consultable sur le site {{siteWeb}} ou sur demande à {{emailContact}}.</p>
+
+    <!-- ========== 7. LOI APPLICABLE ET JURIDICTION ========== -->
+    <h2>7. Loi applicable et juridiction compétente</h2>
+    <p>Les présentes CGV sont soumises au droit français.</p>
+    <ul>
+      <li><strong>Client consommateur (B2C) :</strong> compétence des tribunaux du lieu de domicile du consommateur ou du siège du professionnel (art. R.631-3 Code de la consommation).</li>
+      <li><strong>Client professionnel (B2B) :</strong> compétence exclusive du tribunal du siège du Vendeur, sauf règles impératives contraires.</li>
+    </ul>
+
+    <!-- ========== BLOCS CONDITIONNELS PAR SECTEUR ========== -->
+    <h2>8. Clauses spécifiques à l'activité</h2>
+
+    {{#if_restaurant}}
+    <h3>8.1 Restauration</h3>
+    <p><strong>Réservation et acompte :</strong></p>
+    <ul>
+      <li><strong>Arrhes</strong> (art. 1590 C. civ.) : en cas d'annulation par le Client, les arrhes restent acquises au Vendeur ; en cas d'annulation par le Vendeur, les arrhes sont restituées au double.</li>
+      <li><strong>Acompte</strong> : somme versée à titre de paiement partiel ; en cas d'annulation par le Client, l'acompte peut être conservé ou des pénalités appliquées selon les conditions communiquées lors de la réservation. [À compléter : montant ou % de l'acompte, délai d'annulation sans frais.]</li>
+    </ul>
+    <p><strong>Absence de droit de rétractation :</strong> conformément à l'article L.221-28 du Code de la consommation, le droit de rétractation ne s'applique pas aux prestations de services de restauration et aux biens périssables.</p>
+    <p><strong>Click & Collect :</strong> le Client s'engage à retirer sa commande aux horaires indiqués. En cas de retard du Client, les denrées périssables non réclamées pourront être détruites ou cédées sans indemnité, après un délai raisonnable [À compléter : ex. 1 heure]. Aucun remboursement ne sera dû pour les commandes non retirées.</p>
+    {{/if_restaurant}}
+
+    {{#if_coiffeur}}
+    <h3>8.2 Coiffure</h3>
+    <p><strong>Politique d'annulation (No-show) :</strong> en cas d'annulation tardive ou d'absence au rendez-vous sans préavis, [À compléter : pénalités appliquées ou conservation de l'acompte, ex. « l'acompte versé est conservé » ou « des pénalités de X € peuvent être facturées »]. Le Client est informé des conditions d'annulation au moment de la prise de rendez-vous.</p>
+    <p><strong>Vente de produits sur place :</strong> conformément à l'article L.221-28 du Code de la consommation, le droit de rétractation ne s'applique pas aux produits d'hygiène et cosmétiques descellés par le Client après livraison.</p>
+    {{/if_coiffeur}}
+
+    {{#if_garage}}
+    <h3>8.3 Garage / Réparation automobile</h3>
+    <p><strong>Obligation de résultat :</strong> le garagiste est tenu à une obligation de résultat pour les réparations définies au devis. En revanche, le diagnostic peut relever d'une obligation de moyens ; des frais de diagnostic peuvent être facturés si le Client renonce à la réparation.</p>
+    <p><strong>Devis et diagnostic :</strong> le devis est valable [À compléter : ex. 30 jours]. Si le véhicule n'est pas récupéré dans les délais convenus, des frais de gardiennage pourront être appliqués après mise en demeure. [À compléter : montant ou modalités.]</p>
+    <p><strong>Droit de rétention :</strong> conformément à l'article 2286 du Code civil, le Vendeur peut conserver le véhicule jusqu'au paiement intégral des sommes dues (réparations, pièces, gardiennage).</p>
+    <p><strong>Pièces issues de l'économie circulaire (PIEC) :</strong> conformément à la réglementation, le Client est informé qu'il peut demander l'utilisation de pièces de réemploi ou issues de l'économie circulaire lorsque celles-ci sont disponibles et adaptées. Le Vendeur s'engage à proposer cette option lorsque cela est pertinent.</p>
+    {{/if_garage}}
+
+    {{#if_commerce}}
+    <h3>8.4 Commerce</h3>
+    <p><strong>Garanties légales (Loi AGEC – encadré obligatoire) :</strong></p>
+    <ul>
+      <li><strong>Garantie légale de conformité (art. L.217-4 et s. C. consom.) :</strong> le vendeur est tenu de garantir la conformité du bien au contrat. Le Client dispose d'un délai de 2 ans à compter de la délivrance pour agir. Le Client peut choisir entre la réparation et le remplacement du bien, sauf si ce choix entraîne un coût disproportionné. En cas de défaillance de conformité, la garantie peut prévoir la réduction du prix ou la résolution de la vente.</li>
+      <li><strong>Garantie des vices cachés (art. 1641 C. civ.) :</strong> le vendeur est tenu de garantir le bien contre les vices cachés qui le rendent impropre à l'usage ou qui diminuent tellement cet usage que le Client ne l'aurait pas acquis à ce prix.</li>
+    </ul>
+    <p><strong>Reprise (1 pour 1 / 1 pour 0) :</strong> lorsque le Vendeur propose une reprise de produits usagés (ex. DEEE, équipements), le Client est informé des conditions sur le lieu de vente ou sur le site. [À compléter si applicable : modalités de reprise, valorisation éventuelle.]</p>
+    {{/if_commerce}}
+
+    {{#if_artisan_btp}}
+    <h3>8.5 Artisan BTP</h3>
+    <p><strong>Devis :</strong> le devis est valable [À compléter : ex. 30 jours]. Tout travail supplémentaire non prévu au devis initial doit faire l'objet d'un avenant écrit et accepté par le Client avant exécution.</p>
+    <p><strong>Conditions d'exécution :</strong> le Client s'engage à assurer l'accès au chantier et à fournir [À compléter : ex. eau, électricité, selon accord]. Les délais de chantier sont donnés à titre indicatif sous réserve d'aléas (météo, approvisionnement).</p>
+    <p><strong>Réserve de propriété :</strong> les matériaux et équipements fournis restent la propriété du Vendeur jusqu'au paiement intégral. En revanche, les risques sont transférés au Client à la livraison sur chantier.</p>
+    <p><strong>Clause d'imprévision :</strong> en cas de hausse significative du coût des matières premières ou des approvisionnements entre la date du devis et l'exécution, les parties pourront renégocier le prix ou mettre en œuvre la clause de révision prévue au contrat. [À compléter : seuil ou modalités de révision.]</p>
+    {{/if_artisan_btp}}
+
+    {{#if_consultant}}
+    <h3>8.6 Consultant / Profession libérale (B2B)</h3>
+    <p><strong>Obligation de moyens :</strong> le Prestataire est tenu à une obligation de moyens. Il s'engage à mettre en œuvre les compétences et moyens appropriés pour réaliser la mission, sans garantie de résultat particulier.</p>
+    <p><strong>Propriété intellectuelle :</strong> les livrables (études, rapports, supports) restent la propriété du Prestataire jusqu'au paiement intégral des factures. La cession des droits d'utilisation (ou cession des droits de propriété intellectuelle) est subordonnée au règlement complet. À défaut de paiement, le Client ne peut utiliser les livrables.</p>
+    <p><strong>Confidentialité :</strong> le Prestataire s'engage à respecter la confidentialité des informations et documents communiqués par le Client dans le cadre de la mission (secret professionnel / NDA). Cette obligation perdure après la fin de la mission.</p>
+    {{/if_consultant}}
+
+    {{#if_ecommerce}}
+    <h3>8.7 E-commerce</h3>
+    <p><strong>Droit de rétractation (14 jours) :</strong> le Client consommateur dispose d'un délai de 14 jours à compter de la réception du bien pour exercer son droit de rétractation, sans avoir à justifier de motifs. Pour exercer ce droit, il peut utiliser le formulaire type de rétractation disponible en annexe ou sur le site, ou notifier de manière univoque sa décision. Les frais de retour restent à la charge du Client sauf si les produits sont défectueux ou non conformes.</p>
+    <p><strong>Directive Omnibus (réductions de prix) :</strong> toute réduction de prix affichée (prix barré) correspond au prix le plus bas pratiqué sur les 30 derniers jours précédant la date d'application de la réduction, sauf exception prévue par la loi. [À compléter si vous affichez des prix barrés : vérifier la conformité de vos affichages.]</p>
+    <p><strong>Avis clients :</strong> les avis publiés sur le site proviennent de clients ayant effectué un achat. Nous nous réservons le droit de modérer les avis (propos illicites, hors sujet, doublons). Les avis ne reflètent que l'opinion de leurs auteurs.</p>
+    <p><strong>Délais de livraison :</strong> le délai maximal de livraison est de 30 jours à compter de la commande (art. L.216-1 C. consom.). En cas de dépassement, le Client peut résilier le contrat et être remboursé. [À compléter : délais types par zone / mode de livraison.]</p>
+    {{/if_ecommerce}}
+
+    {{#if_autre}}
+    <h3>8.8 Prestation de services (secteur autre)</h3>
+    <p>Les prestations sont exécutées conformément au devis ou à la commande acceptée. Le Client s'engage à fournir les informations et accès nécessaires. Tout retard imputable au Client peut entraîner un report des délais. Les modalités spécifiques (délais, livrables, révisions) sont définies au cas par cas dans le devis ou le bon de commande.</p>
+    {{/if_autre}}
+
+    <p class="legal-notice">Document généré par RGPD Simple. Les zones [À compléter] et les placeholders surlignés doivent être renseignés par le professionnel. Faites relire par un juriste si besoin.</p>
+  </body>
+</html>

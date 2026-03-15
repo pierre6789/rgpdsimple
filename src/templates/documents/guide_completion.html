@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Guide à compléter - {{nomEntreprise}}</title>
+    <style>
+      body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 12px; line-height: 1.5; color: #1f2937; max-width: 800px; margin: 0 auto; padding: 24px; }
+      h1 { font-size: 18px; color: #111827; margin-top: 0; border-bottom: 2px solid #2171d6; padding-bottom: 8px; }
+      h2 { font-size: 14px; color: #111827; margin-top: 20px; }
+      h3 { font-size: 13px; color: #374151; margin-top: 12px; }
+      p { margin: 8px 0; }
+      ul { margin: 8px 0; padding-left: 24px; }
+      .doc-name { background: #e0e7ff; color: #3730a3; padding: 2px 8px; border-radius: 4px; font-weight: 600; }
+      .tip { background: #f0fdf4; border-left: 4px solid #22c55e; padding: 8px 12px; margin: 8px 0; }
+      .intro { background: #f8fafc; padding: 12px; border-radius: 8px; margin-bottom: 20px; }
+    </style>
+  </head>
+  <body>
+    <h1>Guide à compléter – Vos documents RGPD</h1>
+    <p class="intro">Bonjour,<br />Vos 5 documents ont été générés pour <strong>{{nomEntreprise}}</strong> (activité : {{typeActivite}}). Certaines zones sont marquées <strong>[À compléter]</strong> dans les PDF. Ce guide vous indique quoi renseigner et où, pour une conformité optimale.</p>
+
+    <h2>Avant de commencer</h2>
+    <ul>
+      <li>Ouvrez chaque PDF et utilisez la recherche (Ctrl+F) pour trouver « À compléter ».</li>
+      <li>Complétez les champs directement dans le fichier (éditeur PDF) ou recopiez le texte dans votre version finale (site, document Word, etc.).</li>
+      <li>Si une mention ne s’applique pas à vous (ex. pas de salariés), vous pouvez supprimer la section ou indiquer « Non applicable ».</li>
+    </ul>
+
+    <h2>1. Mentions légales</h2>
+    <p><span class="doc-name">Fichier :</span> Mentions légales</p>
+    <ul>
+      <li><strong>Hébergeur :</strong> nom et adresse du siège de l’hébergeur de votre site (ex. OVH, o2switch, Vercel…).</li>
+      <li><strong>Médiateur de la consommation :</strong> nom, coordonnées et lien vers la fiche du médiateur (obligatoire en B2C – sinon risque DGCCRF). Vous pouvez passer par un médiateur sectoriel ou le CMAP.</li>
+      <li><strong>Statut RGAA (accessibilité) :</strong> « Totalement conforme », « Partiellement conforme » ou « Non conforme » selon l’état de votre site.</li>
+      <li><strong>REEN (engagement environnemental) :</strong> courte phrase sur l’éco-conception ou l’hébergement « vert » si vous le souhaitez.</li>
+      <li><strong>Selon votre secteur :</strong> licence débit de boissons (restaurant), n° Répertoire des Métiers (coiffeur, BTP), n° TVA (commerce), assurance décennale (BTP), RC Pro (consultant), IDU REP (e-commerce), etc. Renseignez uniquement les blocs qui concernent votre activité.</li>
+    </ul>
+
+    <h2>2. Politique de confidentialité</h2>
+    <p><span class="doc-name">Fichier :</span> Politique de confidentialité</p>
+    <ul>
+      <li><strong>DPO :</strong> si vous avez un Délégué à la Protection des données, indiquez ses coordonnées. Sinon, la mention par défaut (contacter l’éditeur) suffit.</li>
+      <li><strong>Sous-traitants :</strong> listez les prestataires qui ont accès à des données (hébergeur, outil de paiement, emailing, CRM) avec leur nom et, si pertinent, le pays.</li>
+      <li><strong>Transferts hors UE :</strong> si vous utilisez des outils hébergés hors UE (ex. USA), indiquez les garanties (Clauses Contractuelles Types, adéquation). Sinon : « Aucun transfert hors Union européenne. »</li>
+      <li><strong>Sécurité :</strong> précisez vos mesures (mots de passe, MFA, chiffrement) si vous souhaitez détailler.</li>
+      <li><strong>IA (AI Act) :</strong> si vous utilisez un chatbot ou un outil de décision automatisée, décrivez-le et indiquez la transparence. Sinon, la mention par défaut convient.</li>
+    </ul>
+
+    <h2>3. Conditions générales de vente (CGV)</h2>
+    <p><span class="doc-name">Fichier :</span> Conditions générales de vente</p>
+    <ul>
+      <li><strong>Moyens de paiement :</strong> espèces, chèque, CB, virement, etc.</li>
+      <li><strong>Échéances :</strong> paiement à la commande, à réception, à 30 jours FM pour les pros, etc.</li>
+      <li><strong>Taux de pénalité de retard :</strong> en général « taux d’intérêt légal » (B2C) ou « 3 fois le taux d’intérêt légal » (B2B). L’indemnité forfaitaire de 40 € pour les pros est déjà mentionnée.</li>
+      <li><strong>Médiateur :</strong> même médiateur que dans les mentions légales (nom, coordonnées, URL).</li>
+      <li><strong>Éco-participation :</strong> si vous vendez des produits concernés (DEEE, mobilier…), gardez la phrase ; sinon supprimez-la.</li>
+      <li><strong>Selon votre secteur :</strong> acompte/arrhes (restaurant), politique d’annulation (coiffeur), validité du devis et PIEC (garage), garanties légales (commerce), avenants et clause d’imprévision (BTP), délai de rétractation et Omnibus (e-commerce). Complétez les zones [À compléter] dans la section qui vous concerne.</li>
+    </ul>
+
+    <h2>4. Registre des traitements</h2>
+    <p><span class="doc-name">Fichier :</span> Registre des traitements de données</p>
+    <ul>
+      <li><strong>Date de mise à jour :</strong> déjà renseignée à la date de génération. Pensez à la mettre à jour à chaque modification des traitements.</li>
+      <li><strong>Dirigeant :</strong> nom de la personne à contacter (souvent le dirigeant).</li>
+      <li><strong>DPO :</strong> coordonnées si vous en avez désigné un ; sinon la mention par défaut convient.</li>
+      <li><strong>Destinataires / sous-traitants :</strong> dans chaque fiche, listez les outils et prestataires (hébergeur, CRM, logiciel compta, plateforme de RDV, etc.).</li>
+      <li><strong>Transferts hors UE :</strong> pour chaque fiche, indiquez « Aucun » ou précisez pays et garanties.</li>
+      <li><strong>Fiche 3 (RH/paie) :</strong> à remplir uniquement si vous avez des salariés. Sinon, supprimez cette fiche du registre ou marquez « Non applicable ».</li>
+    </ul>
+
+    <h2>5. Bandeau cookies</h2>
+    <p><span class="doc-name">Fichier :</span> Bandeau cookies (HTML)</p>
+    <ul>
+      <li>Le code HTML du bandeau est prêt à l’emploi. Remplacez <strong>{{nomEntreprise}}</strong> par le nom de votre entreprise si vous copiez-collez le code dans votre site (certains éditeurs le font automatiquement).</li>
+      <li>Intégrez le bandeau sur toutes les pages où des cookies sont déposés, et assurez-vous que le lien « En savoir plus » pointe vers votre page Cookies ou Politique de confidentialité.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Conseil :</strong> après avoir complété les documents, gardez une version à jour sur votre site (mentions légales, politique de confidentialité, CGV) et mettez à jour le registre dès qu’un nouveau traitement ou un nouveau sous-traitant apparaît. En cas de doute, un juriste ou un DPO peut relire vos documents.
+    </div>
+
+    <p style="margin-top: 24px; font-size: 11px; color: #6b7280;">Guide fourni par RGPD Simple – {{nomEntreprise}}</p>
+  </body>
+</html>

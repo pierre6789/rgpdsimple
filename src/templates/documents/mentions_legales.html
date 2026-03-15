@@ -4,43 +4,132 @@
     <meta charset="utf-8" />
     <title>Mentions légales - {{nomEntreprise}}</title>
     <style>
-      body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 12px; }
-      h1, h2, h3 { color: #111827; }
+      body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 12px; line-height: 1.5; color: #1f2937; max-width: 800px; margin: 0 auto; padding: 24px; }
+      h1 { font-size: 18px; color: #111827; margin-top: 0; border-bottom: 1px solid #e5e7eb; padding-bottom: 8px; }
+      h2 { font-size: 14px; color: #111827; margin-top: 20px; }
+      h3 { font-size: 13px; color: #374151; margin-top: 12px; }
+      p { margin: 8px 0; }
+      ul { margin: 8px 0; padding-left: 20px; }
+      .legal-notice { font-size: 11px; color: #6b7280; margin-top: 24px; }
     </style>
   </head>
   <body>
     <h1>Mentions légales</h1>
+    <p><strong>Dernière mise à jour : 2026.</strong> Ce document est fourni à titre d’information et doit être complété avec les données exactes de votre structure.</p>
 
-    <h2>1. Éditeur du site</h2>
+    <!-- ========== SOCLE COMMUN (LCEN) ========== -->
+    <h2>1. Éditeur du site (LCEN)</h2>
+    <p>Le site <strong>{{siteWeb}}</strong> est édité par :</p>
     <p>
-      Le site {{siteWeb}} est édité par {{nomEntreprise}}, situé à {{adresseComplete}}.<br />
+      <strong>{{nomEntreprise}}</strong><br />
+      {{adresseComplete}}<br />
       Email : {{emailContact}}
     </p>
 
     <h2>2. Directeur de la publication</h2>
-    <p>{{nomEntreprise}}</p>
+    <p>{{directeurPublication}}</p>
 
-    <h2>3. Hébergeur</h2>
+    <h2>3. Hébergeur (LCEN, art. 6-III-2)</h2>
+    <p>Le site est hébergé par :</p>
     <p>
-      Le site est hébergé par [à compléter], dont le siège social est [à compléter].
+      <strong>{{hebergeurNom}}</strong><br />
+      {{hebergeurAdresse}}
     </p>
 
+    <!-- ========== PROPRIÉTÉ INTELLECTUELLE ========== -->
     <h2>4. Propriété intellectuelle</h2>
+    <p>L’ensemble des contenus du site (textes, images, graphismes, logo, vidéos, icônes, etc.) sont la propriété exclusive de {{nomEntreprise}}, sauf mention contraire. Toute reproduction ou représentation, totale ou partielle, sans autorisation écrite préalable, est interdite et constitue une contrefaçon sanctionnée par les articles L.335-2 et suivants du Code de propriété intellectuelle.</p>
+
+    <!-- ========== RGPD ========== -->
+    <h2>5. Données personnelles (RGPD)</h2>
+    <p>Les données personnelles collectées via ce site sont traitées conformément au Règlement (UE) 2016/679 (RGPD) et à la loi « Informatique et Libertés ».</p>
+    <p>{{dpoMention}}</p>
+    <p>Pour l’ensemble des traitements et vos droits (accès, rectification, opposition, etc.), consultez notre <strong>Politique de confidentialité</strong> disponible sur le site.</p>
+
+    <!-- ========== COOKIES ========== -->
+    <h2>6. Cookies et traceurs</h2>
+    <p>Le site {{siteWeb}} peut utiliser des cookies et traceurs à des fins de fonctionnement, de mesure d’audience et, le cas échéant, de marketing. Un bandeau d’information et un mécanisme de gestion du consentement sont mis en œuvre conformément aux recommandations de la CNIL.</p>
+
+    <!-- ========== MÉDIATEUR DE LA CONSOMMATION (B2C) ========== -->
+    <h2>7. Médiateur de la consommation (Code de la consommation)</h2>
+    <p>Conformément à l’article L.612-1 du Code de la consommation, en cas de litige, le consommateur peut recourir au médiateur de la consommation suivant :</p>
     <p>
-      L'ensemble des éléments du site (textes, images, graphismes, logo, etc.) sont la propriété exclusive de {{nomEntreprise}}, sauf mention contraire.
-      Toute reproduction ou représentation, totale ou partielle, du site ou de l'un des éléments qui le composent est interdite sans autorisation préalable.
+      <strong>{{mediateurNom}}</strong><br />
+      {{mediateurCoordonnees}}<br />
+      {{mediateurUrl}}
     </p>
 
-    <h2>5. Données personnelles</h2>
-    <p>
-      Pour plus d'informations sur le traitement des données personnelles, veuillez consulter notre politique de confidentialité.
-    </p>
+    <!-- ========== DSA – Point de contact (SPOC) ========== -->
+    <h2>8. Point de contact (Règlement DSA – Services numériques)</h2>
+    <p>Conformément au Règlement (UE) 2022/2065 (Digital Services Act), les autorités compétentes et les utilisateurs peuvent contacter {{nomEntreprise}} à l’adresse suivante :</p>
+    <p><strong>Contact :</strong> {{spocContact}}</p>
 
-    <h2>6. Cookies</h2>
+    <!-- ========== LOI REEN (Numérique responsable) ========== -->
+    <h2>9. Engagement environnemental (Loi REEN)</h2>
+    <p>{{reenMention}}</p>
+
+    <!-- ========== ACCESSIBILITÉ (Directive (UE) 2019/882) ========== -->
+    <h2>10. Accessibilité numérique (RGAA)</h2>
+    <p>Conformément à la directive (UE) 2019/882 et au Référentiel général d’amélioration de l’accessibilité (RGAA), le statut de conformité de ce site est : <strong>{{rgaaStatut}}</strong>.</p>
+    <p>Pour toute demande d’accessibilité, vous pouvez nous contacter à : {{emailContact}}.</p>
+
+    <!-- ========== BLOCS CONDITIONNELS PAR SECTEUR ========== -->
+    <h2>11. Mentions spécifiques à l’activité</h2>
+
+    {{#if_restaurant}}
+    <h3>Activité : Restauration</h3>
+    <p><strong>Licence débit de boissons :</strong> {{licenceDebitBoissons}}</p>
+    <p><strong>Allergènes :</strong> Conformément au Règlement (UE) n°1169/2011, les informations relatives aux allergènes présents dans les plats proposés sont disponibles sur demande auprès du personnel ou via {{lienAllergenes}}.</p>
+    {{/if_restaurant}}
+
+    {{#if_coiffeur}}
+    <h3>Activité : Coiffure</h3>
+    <p><strong>Immatriculation :</strong> {{nomEntreprise}} est immatriculée au Répertoire des Métiers (CMA) sous le numéro {{numeroRM}}.</p>
+    <p><strong>Titre professionnel :</strong> Titulaire du titre professionnel exigé (BP Coiffure ou équivalent), obtenu à {{lieuObtentionTitre}}.</p>
+    {{/if_coiffeur}}
+
+    {{#if_garage}}
+    <h3>Activité : Garage / Réparation automobile</h3>
+    <p><strong>Immatriculation :</strong> {{nomEntreprise}} est immatriculée au RCS et/ou au Répertoire des Métiers (numéros à compléter selon situation).</p>
+    <p><strong>Agrément :</strong> En cas d’activité de dépannage, remorquage ou centre VHU, numéro d’agrément préfectoral : {{agrementPrefectoral}}.</p>
+    <p><strong>Médiation secteur automobile :</strong> En cas de litige, le client peut s’adresser au médiateur de la consommation dédié à l’automobile (ex. FNA, CNPA ou autre), dont les coordonnées figurent au paragraphe 7 ou à compléter.</p>
+    {{/if_garage}}
+
+    {{#if_commerce}}
+    <h3>Activité : Commerce</h3>
+    <p><strong>Immatriculation :</strong> {{nomEntreprise}} est immatriculée au Registre du Commerce et des Sociétés (RCS).</p>
+    <p><strong>Numéro de TVA intracommunautaire :</strong> {{numeroTVA}}.</p>
+    {{/if_commerce}}
+
+    {{#if_artisan_btp}}
+    <h3>Activité : Artisan BTP</h3>
+    <p><strong>Immatriculation :</strong> {{nomEntreprise}} est immatriculée au Répertoire des Métiers.</p>
+    <p><strong>Assurance décennale :</strong> Conformément à l’article L.241-1 du Code des assurances, {{nomEntreprise}} est couverte par une assurance responsabilité décennale souscrite auprès de :</p>
     <p>
-      Le site peut utiliser des cookies et traceurs à des fins de fonctionnement, de mesure d'audience et/ou de marketing.
-      Un bandeau d'information permet à l'utilisateur d'accepter ou de refuser les cookies non strictement nécessaires.
+      <strong>{{assuranceDecennaleNom}}</strong><br />
+      {{assuranceDecennaleCoordonnees}}<br />
+      Couverture géographique : {{assuranceDecennaleZone}}
     </p>
+    {{/if_artisan_btp}}
+
+    {{#if_consultant}}
+    <h3>Activité : Consultant / Profession libérale</h3>
+    <p><strong>Identification :</strong> {{nomEntreprise}} est identifiée sous le numéro SIRET / URSSAF : {{numeroSiret}}.</p>
+    <p><strong>Assurance responsabilité civile professionnelle :</strong> Une assurance RC Professionnelle est souscrite ({{rcProMention}}).</p>
+    <p><strong>Profession réglementée :</strong> {{titreEtOrdreMention}}</p>
+    {{/if_consultant}}
+
+    {{#if_ecommerce}}
+    <h3>Activité : E-commerce</h3>
+    <p><strong>Responsabilité élargie du producteur (REP – Loi AGEC) :</strong> En tant qu’acteur concerné, les numéros d’Identifiant Unique (IDU) au titre de la REP sont les suivants (à compléter selon les flux : emballages, DEEE, etc.) : {{iduRep}}.</p>
+    <p><strong>Conditions générales et retours :</strong> Les conditions générales de vente et la politique de retours sont accessibles directement sur le site : lien vers les CGV et politique de retours.</p>
+    {{/if_ecommerce}}
+
+    {{#if_autre}}
+    <h3>Activité : Prestation de services</h3>
+    <p>Les informations relatives à l’identification de l’entreprise, à la médiation et aux données personnelles figurent dans les sections ci-dessus. Pour toute question relative à l’activité ou aux prestations, contactez-nous à {{emailContact}}.</p>
+    {{/if_autre}}
+
+    <p class="legal-notice">Document généré par RGPD Simple. À compléter et à faire relire par un professionnel du droit si besoin.</p>
   </body>
 </html>
-

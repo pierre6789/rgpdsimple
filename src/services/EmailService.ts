@@ -44,7 +44,7 @@ export class EmailService {
       to: [{ email: recipient }],
       subject: "Vos documents RGPD personnalisés",
       text:
-        "Bonjour,\n\nVous trouverez en pièces jointes vos documents RGPD personnalisés (politique de confidentialité, mentions légales, CGV, registre des traitements, bandeau cookies).\n\nConservez-les précieusement et intégrez-les à votre site web.\n\nCordialement,\nL'équipe RGPD.",
+        "Bonjour,\n\nVous trouverez en pièces jointes vos documents RGPD personnalisés : un guide à compléter (à lire en premier), la politique de confidentialité, les mentions légales, les CGV, le registre des traitements et le bandeau cookies.\n\nConservez-les précieusement, complétez les zones indiquées dans le guide, puis intégrez les documents à votre site web.\n\nCordialement,\nL'équipe RGPD.",
       attachments,
     };
 
@@ -82,7 +82,7 @@ export class EmailService {
       to: recipient,
       subject: "Vos documents RGPD personnalisés",
       text:
-        "Bonjour,\n\nVous trouverez en pièces jointes vos documents RGPD personnalisés (politique de confidentialité, mentions légales, CGV, registre des traitements, bandeau cookies).\n\nConservez-les précieusement et intégrez-les à votre site web.\n\nCordialement,\nL'équipe RGPD.",
+        "Bonjour,\n\nVous trouverez en pièces jointes vos documents RGPD personnalisés : un guide à compléter (à lire en premier), la politique de confidentialité, les mentions légales, les CGV, le registre des traitements et le bandeau cookies.\n\nConservez-les précieusement, complétez les zones indiquées dans le guide, puis intégrez les documents à votre site web.\n\nCordialement,\nL'équipe RGPD.",
       attachments,
     });
   }

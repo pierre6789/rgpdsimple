@@ -2,45 +2,236 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <title>Registre des traitements - {{nomEntreprise}}</title>
+    <title>Registre des activités de traitement - {{nomEntreprise}}</title>
     <style>
-      body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 11px; }
-      table { border-collapse: collapse; width: 100%; }
-      th, td { border: 1px solid #e5e7eb; padding: 4px; text-align: left; }
-      th { background-color: #f3f4f6; }
+      body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 11px; line-height: 1.45; color: #1f2937; max-width: 900px; margin: 0 auto; padding: 24px; }
+      h1 { font-size: 16px; color: #111827; margin-top: 0; border-bottom: 1px solid #e5e7eb; padding-bottom: 8px; }
+      h2 { font-size: 13px; color: #111827; margin-top: 20px; }
+      h3 { font-size: 12px; color: #374151; margin-top: 12px; }
+      p { margin: 6px 0; }
+      ul { margin: 6px 0; padding-left: 20px; }
+      table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 10px; }
+      th, td { border: 1px solid #e5e7eb; padding: 6px 8px; text-align: left; vertical-align: top; }
+      th { background: #f3f4f6; font-weight: 600; width: 22%; }
+      .fiche { margin-bottom: 24px; padding: 12px; border: 1px solid #e5e7eb; border-radius: 6px; background: #fafafa; }
+      .legal-notice { font-size: 10px; color: #6b7280; margin-top: 20px; }
     </style>
   </head>
   <body>
-    <h1>Registre des traitements de données personnelles</h1>
-    <p>Responsable de traitement : {{nomEntreprise}}, {{adresseComplete}} ({{emailContact}})</p>
+    <h1>Registre des activités de traitement (Article 30 RGPD)</h1>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Intitulé du traitement</th>
-          <th>Finalité</th>
-          <th>Catégories de données</th>
-          <th>Base légale</th>
-          <th>Durée de conservation</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Gestion des clients</td>
-          <td>Suivi des commandes, facturation, gestion de la relation client</td>
-          <td>Identité, coordonnées, données de facturation</td>
-          <td>Exécution du contrat, obligations légales</td>
-          <td>Durée de la relation contractuelle + prescription légale</td>
-        </tr>
-        <tr>
-          <td>Prospection commerciale</td>
-          <td>Envoi d'offres et d'actualités par email</td>
-          <td>Identité, email</td>
-          <td>Consentement ou intérêt légitime</td>
-          <td>3 ans à compter du dernier contact</td>
-        </tr>
-      </tbody>
-    </table>
+    <!-- ========== EN-TÊTE ========== -->
+    <h2>Identification du responsable de traitement</h2>
+    <ul>
+      <li><strong>Dénomination :</strong> {{nomEntreprise}}</li>
+      <li><strong>Adresse :</strong> {{adresseComplete}}</li>
+      <li><strong>Contact :</strong> {{emailContact}}</li>
+      <li><strong>Dirigeant (contact DPO si pas de DPO dédié) :</strong> {{contactDirigeant}}</li>
+      <li><strong>DPO (si applicable) :</strong> {{dpoCoordonnees}}</li>
+      <li><strong>Date de dernière mise à jour du registre :</strong> {{dateMiseAJour}}</li>
+    </ul>
+
+    <!-- ========== FICHE 1 – SOCLE COMMUN ========== -->
+    <div class="fiche">
+      <h2>Fiche 1 – Gestion des clients et prospects</h2>
+      <table>
+        <tr><th>Nom du traitement</th><td>Gestion des clients, prospects, devis et communication commerciale</td></tr>
+        <tr><th>Finalités</th><td>Gestion des devis, contrats, commandes ; relation client ; prospection et communication commerciale (newsletter, offres).</td></tr>
+        <tr><th>Catégories de personnes concernées</th><td>Clients, prospects, contacts (personnes physiques ou représentants de personnes morales).</td></tr>
+        <tr><th>Catégories de données</th><td>Identité (nom, prénom), coordonnées (email, téléphone, adresse postale), contenu des échanges et des commandes.</td></tr>
+        <tr><th>Base légale</th><td>Exécution du contrat (art. 6-1-b) ; intérêt légitime (art. 6-1-f) pour la prospection B2B ; consentement (art. 6-1-a) pour la prospection B2C / newsletter.</td></tr>
+        <tr><th>Destinataires / sous-traitants</th><td>{{destinatairesClients}} Hébergeur, outil de messagerie, CRM ou outil de gestion. Si utilisation d’outils SaaS ou IA (ex. CRM, chatbot), les mentionner et vérifier les contrats de sous-traitance (art. 28 RGPD).</td></tr>
+        <tr><th>Transferts hors UE</th><td>{{transfertsHorsUERegistre}}</td></tr>
+        <tr><th>Durée de conservation</th><td><strong>Prospects / contacts non convertis :</strong> 3 ans à compter du dernier contact (recommandation CNIL). <strong>Clients :</strong> durée de la relation contractuelle puis archivage selon prescription (5 ans droit commun ; autres délais selon obligations légales).</td></tr>
+        <tr><th>Mesures de sécurité</th><td>Accès restreint (mot de passe robuste, MFA si disponible) ; chiffrement des flux (HTTPS) ; sauvegardes ; clauses de confidentialité avec les sous-traitants.</td></tr>
+      </table>
+    </div>
+
+    <!-- ========== FICHE 2 – SOCLE COMMUN ========== -->
+    <div class="fiche">
+      <h2>Fiche 2 – Gestion de la comptabilité et de la facturation</h2>
+      <table>
+        <tr><th>Nom du traitement</th><td>Comptabilité, facturation et pièces justificatives</td></tr>
+        <tr><th>Finalités</th><td>Tenue de la comptabilité ; émission et conservation des factures ; respect des obligations légales et fiscales.</td></tr>
+        <tr><th>Catégories de personnes concernées</th><td>Clients, fournisseurs, partenaires (identification sur les pièces comptables).</td></tr>
+        <tr><th>Catégories de données</th><td>Identité, adresse, montants, références de facturation, données bancaires (RIB) pour les virements.</td></tr>
+        <tr><th>Base légale</th><td>Obligation légale (art. 6-1-c) – Code de commerce, Livre des procédures fiscales.</td></tr>
+        <tr><th>Destinataires / sous-traitants</th><td>Expert-comptable, hébergeur du logiciel comptable, administration fiscale. {{sousTraitantsCompta}}</td></tr>
+        <tr><th>Transferts hors UE</th><td>{{transfertsHorsUERegistre}}</td></tr>
+        <tr><th>Durée de conservation</th><td><strong>10 ans à compter de la clôture de l’exercice</strong> (art. L.123-22 Code de commerce, L.102 B LPF). Durée impérative.</td></tr>
+        <tr><th>Mesures de sécurité</th><td>Accès restreint ; sauvegardes régulières ; archivage sécurisé ; chiffrement des données sensibles si stockage cloud.</td></tr>
+      </table>
+    </div>
+
+    <!-- ========== FICHE 3 – RH (SOCLE, SI SALARIÉS) ========== -->
+    <div class="fiche">
+      <h2>Fiche 3 – Gestion des ressources humaines et de la paie</h2>
+      <p><em>À remplir uniquement si l’entreprise a des salariés. Sinon, ne pas renseigner cette fiche ou la supprimer du registre.</em></p>
+      <table>
+        <tr><th>Nom du traitement</th><td>Gestion du personnel, de la paie et des contrats de travail</td></tr>
+        <tr><th>Finalités</th><td>Gestion des contrats, bulletins de paie, déclarations sociales, congés, formation.</td></tr>
+        <tr><th>Catégories de personnes concernées</th><td>Salariés, stagiaires, candidats.</td></tr>
+        <tr><th>Catégories de données</th><td>État civil, coordonnées, données de paie, données de santé (aptitude, arrêts maladie) dans le cadre strict du droit du travail.</td></tr>
+        <tr><th>Base légale</th><td>Obligation légale (art. 6-1-c) ; exécution du contrat de travail (art. 6-1-b). Données de santé : cadre limité (médecine du travail, arrêts) avec garanties renforcées.</td></tr>
+        <tr><th>Destinataires / sous-traitants</th><td>Expert-comptable / cabinet de paie, organismes sociaux, administration. Préciser les outils (logiciel de paie, stockage).</td></tr>
+        <tr><th>Transferts hors UE</th><td>{{transfertsHorsUERegistre}}</td></tr>
+        <tr><th>Durée de conservation</th><td>Bulletins de paie et pièces : <strong>5 ans</strong> (C. trav.). Dossiers candidats non retenus : <strong>2 ans</strong> après le dernier contact (CNIL). Contrats et dossiers personnels : durée légale (prescription, contentieux).</td></tr>
+        <tr><th>Mesures de sécurité</th><td>Accès strictement limité (responsable RH, dirigeant) ; chiffrement ; confidentialité ; formation du personnel.</td></tr>
+      </table>
+    </div>
+
+    <!-- ========== FICHES CONDITIONNELLES PAR SECTEUR ========== -->
+
+    {{#if_restaurant}}
+    <div class="fiche">
+      <h2>Fiche 4 – Gestion des réservations et des spécificités clients (Restauration)</h2>
+      <table>
+        <tr><th>Nom du traitement</th><td>Réservations et gestion des allergies / intolérances alimentaires</td></tr>
+        <tr><th>Finalités</th><td>Prise de réservation ; adaptation du service aux allergies et intolérances déclarées par le client.</td></tr>
+        <tr><th>Catégories de personnes concernées</th><td>Clients qui réservent et/ou déclarent des allergies ou régimes particuliers.</td></tr>
+        <tr><th>Catégories de données</th><td>Nom, téléphone, date/heure de réservation, nombre de convives. <strong>Données de santé (Art. 9 RGPD) :</strong> allergies, intolérances alimentaires, régimes (sans gluten, végétarien, etc.) – catégorie particulière nécessitant un consentement explicite.</td></tr>
+        <tr><th>Base légale</th><td>Exécution du contrat (réservation) ; <strong>consentement explicite</strong> pour les données de santé (art. 9-2-a RGPD).</td></tr>
+        <tr><th>Destinataires / sous-traitants</th><td>Personnel en contact, outil de réservation éventuel. Données de santé : accès strictement limité, pas de partage à des fins commerciales.</td></tr>
+        <tr><th>Transferts hors UE</th><td>{{transfertsHorsUERegistre}}</td></tr>
+        <tr><th>Durée de conservation</th><td>Réservation : jusqu’à la date du service + délai de gestion des réclamations (ex. 1 an). Données de santé (allergies) : durée strictement nécessaire au service du repas ou jusqu’à révocation du consentement ; suppression à la demande.</td></tr>
+        <tr><th>Mesures de sécurité</th><td>Accès restreint ; information claire sur le caractère « données de santé » ; consentement recueilli distinctement ; pas de conservation prolongée des allergies au-delà du besoin.</td></tr>
+      </table>
+    </div>
+    {{/if_restaurant}}
+
+    {{#if_coiffeur}}
+    <div class="fiche">
+      <h2>Fiche 4 – Prise de rendez-vous et suivi technique client (Coiffure)</h2>
+      <table>
+        <tr><th>Nom du traitement</th><td>RDV, historique des prestations et photos avant/après</td></tr>
+        <tr><th>Finalités</th><td>Gestion des rendez-vous ; suivi technique (couleurs, produits) ; photos avant/après avec consentement.</td></tr>
+        <tr><th>Catégories de personnes concernées</th><td>Clients prenant rendez-vous et acceptant un suivi technique ou des photos.</td></tr>
+        <tr><th>Catégories de données</th><td>Identité, téléphone, email ; historique des prestations (couleurs, produits utilisés) ; photos avant/après (image des personnes – droit à l’image). Données pouvant transiter via des plateformes type Planity, Treatwell (sous-traitants).</td></tr>
+        <tr><th>Base légale</th><td>Exécution du contrat / prise de RDV (art. 6-1-b) ; consentement pour les photos et le suivi technique détaillé (art. 6-1-a).</td></tr>
+        <tr><th>Destinataires / sous-traitants</th><td>Plateformes de prise de RDV (Planity, Treatwell ou équivalent) – vérifier politique de confidentialité et contrat de sous-traitance. Stockage local ou cloud à préciser.</td></tr>
+        <tr><th>Transferts hors UE</th><td>{{transfertsHorsUERegistre}}</td></tr>
+        <tr><th>Durée de conservation</th><td>RDV : durée de la relation client + 3 ans après dernier contact. Historique technique : 3 ans ou durée de la relation. Photos : durée limitée avec consentement révocable ; suppression à la demande.</td></tr>
+        <tr><th>Mesures de sécurité</th><td>Accès restreint ; consentement écrit pour les photos ; choix de plateformes conformes RGPD ; sauvegardes sécurisées.</td></tr>
+      </table>
+    </div>
+    {{/if_coiffeur}}
+
+    {{#if_garage}}
+    <div class="fiche">
+      <h2>Fiche 4 – Suivi du parc automobile, réparations et véhicules de courtoisie (Garage)</h2>
+      <table>
+        <tr><th>Nom du traitement</th><td>Véhicules, réparations, prêt de véhicule</td></tr>
+        <tr><th>Finalités</th><td>Gestion des véhicules en réparation ; historique des interventions ; prêt de véhicule de courtoisie (copie permis).</td></tr>
+        <tr><th>Catégories de personnes concernées</th><td>Clients propriétaires ou utilisateurs des véhicules.</td></tr>
+        <tr><th>Catégories de données</th><td><strong>Plaques d’immatriculation</strong> (donnée personnelle très encadrée par la CNIL) ; numéro de châssis ; kilométrage ; historique des réparations. Pour le prêt de véhicule : <strong>copie du permis de conduire</strong> – conservation uniquement pendant la durée du prêt ; interdiction de conservation prolongée après restitution.</td></tr>
+        <tr><th>Base légale</th><td>Exécution du contrat (art. 6-1-b) ; obligation légale pour certaines données véhicule si exigée.</td></tr>
+        <tr><th>Destinataires / sous-traitants</th><td>Logiciel de gestion atelier, assureurs en cas de sinistre. Copie permis : accès strictement limité.</td></tr>
+        <tr><th>Transferts hors UE</th><td>{{transfertsHorsUERegistre}}</td></tr>
+        <tr><th>Durée de conservation</th><td>Données véhicule / réparations : durée de la relation + 5 ans (garanties, contentieux). Copie permis : <strong>suppression immédiate après restitution du véhicule</strong> (pas de conservation « au cas où »).</td></tr>
+        <tr><th>Mesures de sécurité</th><td>Accès restreint ; pas de conservation inutile du permis ; chiffrement des bases contenant plaques et données sensibles ; politique de purge documentée.</td></tr>
+      </table>
+    </div>
+    {{/if_garage}}
+
+    {{#if_commerce}}
+    <div class="fiche">
+      <h2>Fiche 4 – Programme de fidélité et animation commerciale (Commerce)</h2>
+      <table>
+        <tr><th>Nom du traitement</th><td>Fidélité, carte client, historique d’achats</td></tr>
+        <tr><th>Finalités</th><td>Gestion du programme de fidélité ; animation commerciale ; personnalisation des offres.</td></tr>
+        <tr><th>Catégories de personnes concernées</th><td>Clients inscrits au programme de fidélité.</td></tr>
+        <tr><th>Catégories de données</th><td>Identité, coordonnées, historique d’achats, préférences.</td></tr>
+        <tr><th>Base légale</th><td>Exécution du contrat (carte fidélité) ; intérêt légitime (animation commerciale) ou consentement selon le cas.</td></tr>
+        <tr><th>Destinataires / sous-traitants</th><td>Logiciel de caisse, éditeur du programme fidélité. Préciser les outils.</td></tr>
+        <tr><th>Transferts hors UE</th><td>{{transfertsHorsUERegistre}}</td></tr>
+        <tr><th>Durée de conservation</th><td>Durée d’activité de la carte + 3 ans après dernier achat (recommandation CNIL).</td></tr>
+        <tr><th>Mesures de sécurité</th><td>Accès restreint ; séparation des données marketing si consentement ; sauvegardes.</td></tr>
+      </table>
+    </div>
+    <div class="fiche">
+      <h2>Fiche 5 – Vidéosurveillance des locaux (Commerce)</h2>
+      <table>
+        <tr><th>Nom du traitement</th><td>Vidéosurveillance des locaux</td></tr>
+        <tr><th>Finalités</th><td>Sécurité des biens et des personnes ; prévention des vols et des incidents.</td></tr>
+        <tr><th>Catégories de personnes concernées</th><td>Personnes entrant dans le champ des caméras (clients, personnel, tiers).</td></tr>
+        <tr><th>Catégories de données</th><td>Images (données biométriques indirectes – surveillance stricte).</td></tr>
+        <tr><th>Base légale</th><td>Intérêt légitime (sécurité des biens et des personnes) ou obligation légale selon le contexte (art. 6-1-f ou 6-1-c).</td></tr>
+        <tr><th>Destinataires / sous-traitants</th><td>Accès restreint au seul dirigeant et personnel habilité ; pas de diffusion. Enregistrements sur support sécurisé ou prestataire certifié.</td></tr>
+        <tr><th>Transferts hors UE</th><td>Aucun (données locales ou hébergeur UE).</td></tr>
+        <tr><th>Durée de conservation</th><td><strong>Maximum 30 jours</strong> (recommandation CNIL) sauf réquisition des autorités ou conservation pour preuve en cas d’incident (durée limitée et justifiée).</td></tr>
+        <tr><th>Mesures de sécurité</th><td>Accès restreint ; pas d’accès à distance non sécurisé ; information des personnes (panneau à l’entrée) ; droit d’accès aux images sur demande écrite.</td></tr>
+      </table>
+    </div>
+    {{/if_commerce}}
+
+    {{#if_artisan_btp}}
+    <div class="fiche">
+      <h2>Fiche 4 – Gestion des chantiers et accès aux domiciles (Artisan BTP)</h2>
+      <table>
+        <tr><th>Nom du traitement</th><td>Chantiers, plans, accès et photos d’avancement</td></tr>
+        <tr><th>Finalités</th><td>Organisation des chantiers ; accès aux domiciles (digicode, alarme) ; suivi des travaux (photos).</td></tr>
+        <tr><th>Catégories de personnes concernées</th><td>Clients (particuliers ou professionnels) dont le domicile ou le local est concerné.</td></tr>
+        <tr><th>Catégories de données</th><td><strong>Données hautement confidentielles :</strong> plans de domicile, adresses des chantiers, codes d’alarme, digicodes. Photos d’avancement des travaux (domicile visible – droit à l’image).</td></tr>
+        <tr><th>Base légale</th><td>Exécution du contrat (art. 6-1-b) ; consentement pour les photos montrant le domicile (art. 6-1-a).</td></tr>
+        <tr><th>Destinataires / sous-traitants</th><td>Accès strictement limité au(x) responsable(s) de chantier et au siège. Pas de partage à des tiers. Stockage sécurisé (chiffrement recommandé).</td></tr>
+        <tr><th>Transferts hors UE</th><td>{{transfertsHorsUERegistre}}</td></tr>
+        <tr><th>Durée de conservation</th><td>Durée du chantier + 5 ans (garantie décennale, contentieux). Codes d’accès : suppression dès la fin du chantier. Photos : durée limitée avec accord client ; suppression à la demande.</td></tr>
+        <tr><th>Mesures de sécurité</th><td>Chiffrement des supports contenant codes et plans ; accès restreint ; clause de confidentialité ; pas de conservation des codes au-delà du besoin.</td></tr>
+      </table>
+    </div>
+    {{/if_artisan_btp}}
+
+    {{#if_consultant}}
+    <div class="fiche">
+      <h2>Fiche 4 – Gestion des missions et dossiers clients (Consultant)</h2>
+      <table>
+        <tr><th>Nom du traitement</th><td>Missions, dossiers clients et données professionnelles B2B</td></tr>
+        <tr><th>Finalités</th><td>Exécution des missions ; gestion des dossiers ; notes d’entretien et livrables ; relation client B2B.</td></tr>
+        <tr><th>Catégories de personnes concernées</th><td>Clients (personnes morales) et leurs représentants ; contacts professionnels.</td></tr>
+        <tr><th>Catégories de données</th><td>Données professionnelles B2B : identité des contacts, fonctions, échanges, informations stratégiques ou confidentielles des clients ; notes d’entretien ; contenus des livrables.</td></tr>
+        <tr><th>Base légale</th><td>Exécution du contrat (art. 6-1-b) ; intérêt légitime pour la gestion de la relation B2B (art. 6-1-f).</td></tr>
+        <tr><th>Destinataires / sous-traitants</th><td>Outils de gestion (CRM, messagerie, stockage). Vérifier les sous-traitants (hébergeur, outils SaaS) et clauses de confidentialité. Pas d’utilisation d’outils IA non conformes.</td></tr>
+        <tr><th>Transferts hors UE</th><td>{{transfertsHorsUERegistre}}</td></tr>
+        <tr><th>Durée de conservation</th><td>Durée de la mission + 5 ans (prescription commerciale) ou durée contractuelle convenue. Données stratégiques : durée strictement nécessaire ; suppression ou anonymisation en fin de mission si convenu.</td></tr>
+        <tr><th>Mesures de sécurité</th><td>Chiffrement des disques et des flux ; accès restreint ; clause de confidentialité (NDA) ; pas de partage non autorisé ; sauvegardes sécurisées.</td></tr>
+      </table>
+    </div>
+    {{/if_consultant}}
+
+    {{#if_ecommerce}}
+    <div class="fiche">
+      <h2>Fiche 4 – Vente en ligne, expédition et marketing digital (E-commerce)</h2>
+      <table>
+        <tr><th>Nom du traitement</th><td>Commandes en ligne, expédition, SAV et marketing</td></tr>
+        <tr><th>Finalités</th><td>Gestion des commandes, livraisons, SAV ; paniers abandonnés ; marketing (email, cookies) ; gestion des litiges.</td></tr>
+        <tr><th>Catégories de personnes concernées</th><td>Clients (compte client ou invité), visiteurs du site.</td></tr>
+        <tr><th>Catégories de données</th><td>Identité, adresses de livraison/facturation ; historique d’achat ; traces de navigation (cookies) ; paniers abandonnés. <strong>Paiement :</strong> les cryptogrammes et données sensibles de carte bancaire ne sont pas conservés (DSP2 / PCI-DSS) ; traitement délégué à un prestataire certifié (Stripe, PayPal, etc.).</td></tr>
+        <tr><th>Base légale</th><td>Exécution du contrat (art. 6-1-b) ; consentement pour cookies non essentiels et prospection (art. 6-1-a) ; intérêt légitime pour la fraude et la sécurité (art. 6-1-f).</td></tr>
+        <tr><th>Destinataires / sous-traitants</th><td>Hébergeur, prestataire de paiement (certifié PCI-DSS), transporteurs, outil d’emailing, outil d’analyse (cookies). Préciser les outils et vérifier les contrats art. 28 RGPD. Exiger la conformité des prestataires IA si utilisation.</td></tr>
+        <tr><th>Transferts hors UE</th><td>{{transfertsHorsUERegistre}}</td></tr>
+        <tr><th>Durée de conservation</th><td>Compte client : durée de la relation + 3 ans après dernier achat. Facturation : 10 ans (obligation légale). Cookies : 13 mois max (CNIL). Paniers abandonnés : durée limitée (ex. 30 jours). Données CB : non conservées (prestataire de paiement).</td></tr>
+        <tr><th>Mesures de sécurité</th><td>HTTPS ; pas de stockage des cryptogrammes CB ; MFA recommandée pour les accès admin ; sauvegardes ; conformité des sous-traitants (paiement, hébergement).</td></tr>
+      </table>
+    </div>
+    {{/if_ecommerce}}
+
+    {{#if_autre}}
+    <div class="fiche">
+      <h2>Fiche 4 – Gestion courante des prestations de services</h2>
+      <table>
+        <tr><th>Nom du traitement</th><td>Devis, commandes et suivi des prestations</td></tr>
+        <tr><th>Finalités</th><td>Établissement des devis ; exécution des prestations ; facturation et relation client.</td></tr>
+        <tr><th>Catégories de personnes concernées</th><td>Clients et prospects.</td></tr>
+        <tr><th>Catégories de données</th><td>Identité, coordonnées, contenu des devis et commandes, échanges.</td></tr>
+        <tr><th>Base légale</th><td>Exécution du contrat (art. 6-1-b) ; intérêt légitime pour la prospection (art. 6-1-f) ou consentement selon le cas.</td></tr>
+        <tr><th>Destinataires / sous-traitants</th><td>{{destinatairesClients}} Préciser les outils (gestion, messagerie, stockage).</td></tr>
+        <tr><th>Transferts hors UE</th><td>{{transfertsHorsUERegistre}}</td></tr>
+        <tr><th>Durée de conservation</th><td>Prospects : 3 ans après dernier contact. Clients : durée de la relation + 5 ans (prescription) ou 10 ans pour les pièces comptables.</td></tr>
+        <tr><th>Mesures de sécurité</th><td>Accès restreint ; mots de passe robustes ; sauvegardes ; confidentialité des échanges.</td></tr>
+      </table>
+    </div>
+    {{/if_autre}}
+
+    <p class="legal-notice">Registre généré par RGPD Simple. Conforme à l’article 30 du RGPD et aux recommandations CNIL pour les TPE. À maintenir à jour et à compléter avec les noms exacts des sous-traitants et durées appliquées.</p>
   </body>
 </html>
-
