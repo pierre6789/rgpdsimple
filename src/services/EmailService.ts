@@ -57,9 +57,17 @@ export class EmailService {
       body: JSON.stringify(body),
     });
 
+    const responseText = await res.text();
     if (!res.ok) {
-      const errText = await res.text();
-      throw new Error(`Mailtrap API ${res.status}: ${errText}`);
+      console.error("[Email] Mailtrap API error:", res.status, responseText);
+      throw new Error(`Mailtrap API ${res.status}: ${responseText}`);
+    }
+    // Log pour debug livraison (message_ids = accepté par Mailtrap)
+    try {
+      const data = responseText ? JSON.parse(responseText) : {};
+      console.log("[Email] Mailtrap response:", JSON.stringify(data));
+    } catch {
+      console.log("[Email] Mailtrap response (raw):", responseText);
     }
   }
 
