@@ -202,7 +202,12 @@ function LandingPage() {
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6">
             <span className="block overflow-hidden">
               <motion.span className="block" variants={textReveal} initial="hidden" animate="visible" custom={0}>
-                97€ maintenant ou 12 000€ plus tard.
+                Prêt pour l'amende de la CNIL ?
+              </motion.span>
+            </span>
+            <span className="block overflow-hidden">
+              <motion.span className="block text-zinc-500" variants={textReveal} initial="hidden" animate="visible" custom={1}>
+                Vous avez encore 6 heures.
               </motion.span>
             </span>
           </h1>
