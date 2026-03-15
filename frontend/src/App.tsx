@@ -258,22 +258,30 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* Stats urgence */}
+      {/* Stats + réassurance */}
       <section className="py-24 px-4">
         <div className="max-w-4xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-14 text-center"
+            className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-6 text-center"
           >
-            <span className="inline-block border-b-2 border-red-500 pb-2 whitespace-nowrap">Ce n'est pas une menace vague. C'est une réalité depuis janvier 2026.</span>
+            Les contrôles CNIL concernent aussi les TPE. Nous sommes là pour vous mettre en règle.
           </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center text-zinc-400 mb-14 max-w-2xl mx-auto"
+          >
+            En 2025, des milliers de petites structures ont été contrôlées. Avec les bons documents, vous êtes protégé — et c'est exactement ce que nous vous fournissons.
+          </motion.p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { num: '847', desc: 'TPE sanctionnées en 2025 pour défaut de politique de confidentialité (moyenne : 3 200€)' },
-              { num: '12 400€', desc: 'Amende moyenne pour un site e-commerce sans registre des traitements' },
-              { num: '72h', desc: 'Délai moyen entre l\'arrivée du contrôleur et la notification de l\'amende' },
+              { num: '847', desc: 'TPE sanctionnées en 2025 pour défaut de politique de confidentialité' },
+              { num: '1127+', desc: 'Artisans et TPE déjà mis en règle avec nos documents' },
+              { num: '5', desc: 'Documents obligatoires générés pour vous en quelques minutes' },
             ].map((stat, i) => (
               <motion.div
                 key={stat.num}
@@ -288,14 +296,6 @@ function LandingPage() {
               </motion.div>
             ))}
           </div>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center text-sm text-zinc-500 mt-6"
-          >
-            ⚠️ Votre nom est peut-être déjà dans la liste de contrôle de ce trimestre.
-          </motion.p>
         </div>
       </section>
 
@@ -307,17 +307,17 @@ function LandingPage() {
             animate={howInView ? { opacity: 1, y: 0 } : {}}
             className="text-center mb-14"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4"><span className="inline-block border-b-2 border-red-500 pb-2">Comment éviter l'amende en 3 étapes</span></h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4"><span className="inline-block border-b-2 border-emerald-500 pb-2">On règle ça ensemble en 3 étapes</span></h2>
             <p className="text-zinc-400 max-w-xl mx-auto">
-              Processus anti-sanction validé par des juristes.
+              Un processus simple, validé par des juristes. Vous êtes accompagné de A à Z.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { num: '1', title: 'Vous vérifiez votre vulnérabilité', desc: 'Répondez aux questions. On identifie immédiatement ce qui vous expose à la sanction.' },
-              { num: '2', title: 'Vous bouchez les failles légales', desc: 'En 2 minutes, vous générez les 5 documents obligatoires qui protègent votre entreprise.' },
-              { num: '3', title: 'Vous dormez tranquille', desc: 'Même si la CNIL frappe demain matin, vous êtes couvert. Documents datés et conformes.' },
+              { num: '1', title: 'Vous répondez à quelques questions', desc: 'On identifie ce dont vous avez besoin selon votre activité. Simple et rapide.' },
+              { num: '2', title: 'Vous recevez vos 5 documents', desc: 'Générés sur mesure en 2 minutes. Politique de confidentialité, mentions légales, registre, CGV, bandeau cookies.' },
+              { num: '3', title: 'Vous êtes en règle et serein', desc: 'Documents conformes et datés. Vous les installez sur votre site et on est là si vous avez des questions.' },
             ].map((step, i) => (
               <motion.div
                 key={step.num}
@@ -343,11 +343,9 @@ function LandingPage() {
             animate={packInView ? { opacity: 1, y: 0 } : {}}
             className="text-center mb-14"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4"><span className="inline-block border-b-2 border-red-500 pb-2">Votre bouclier anti-amende</span></h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4"><span className="inline-block border-b-2 border-emerald-500 pb-2">Les 5 documents pour être en règle</span></h2>
             <p className="text-zinc-400 max-w-xl mx-auto">
-              Les 5 documents que la CNIL exige impérativement.
-              <br />
-              Manquez-en un seul = sanction.
+              Tout ce que la CNIL exige pour une TPE ou un artisan. Rien à chercher ailleurs — on vous fournit le pack complet.
             </p>
           </motion.div>
 
@@ -393,7 +391,7 @@ function LandingPage() {
           >
             <div className="text-center mb-6">
               <h2 className="text-2xl font-bold text-white mb-2">Mettre mon activité en règle</h2>
-              <p className="text-zinc-400 text-sm">Remplissez ce formulaire une seule fois: ~ 2 minutes.</p>
+              <p className="text-zinc-400 text-sm">Remplissez ce formulaire une seule fois (~2 min). Nous générons vos documents et vous les envoyons par email. On règle ça ensemble.</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -521,32 +519,21 @@ function LandingPage() {
           className="max-w-3xl mx-auto text-center"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight">
-            <span className="inline-block border-b-2 border-red-500 pb-2">
-              Le contrôle ne prévient pas.
-              <br />
-              Il frappe à 9h du matin avec un constat à 4 000€.
+            <span className="inline-block border-b-2 border-emerald-500 pb-2">
+              Conformité RGPD : on s'en occupe pour vous.
             </span>
           </h2>
-          <p className="text-lg text-zinc-400 mb-4">Vous avez deux options :</p>
-          <div className="flex flex-col sm:flex-row gap-4 mb-10 text-left">
-            <div className="flex-1 rounded-xl bg-zinc-900/80 border border-zinc-700 px-5 py-4">
-              <span className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Option 1</span>
-              <p className="text-zinc-300 mt-1">Vous attendez. Vous espérez passer entre les mailles.</p>
-              <p className="text-sm text-zinc-500 mt-2">Statistiques : 1 TPE sur 3 contrôlée en 2026 sera sanctionnée.</p>
-            </div>
-            <div className="flex-1 rounded-xl bg-zinc-800/80 border border-zinc-600 px-5 py-4">
-              <span className="text-xs font-semibold uppercase tracking-wider text-emerald-400/90">Option 2</span>
-              <p className="text-zinc-300 mt-1">Vous réglez ça maintenant pour 97€ et vous oubliez ce cauchemar.</p>
-            </div>
-          </div>
+          <p className="text-lg text-zinc-400 mb-8">
+            Plus de stress, plus de dossiers à chercher. Vous remplissez le formulaire, nous vous envoyons les 5 documents conformes. Vous les mettez en ligne et vous êtes en règle.
+          </p>
           <a
             href="#form"
             className="shimmer-btn inline-flex items-center rounded-full bg-white text-zinc-950 hover:bg-zinc-200 px-8 h-14 text-base font-medium shadow-lg shadow-white/20"
           >
-            OUI, je veux être conforme avant demain
+            Obtenir mes documents — 97 €
             <ArrowRight className="ml-2 w-5 h-5" />
           </a>
-          <p className="mt-4 text-sm text-zinc-500">⏰ Tarif protection valable aujourd'hui uniquement</p>
+          <p className="mt-4 text-sm text-zinc-500">Paiement unique • Documents par email en 2 min</p>
         </motion.div>
       </section>
 
@@ -556,7 +543,7 @@ function LandingPage() {
           <h2 className="text-2xl font-bold text-white mb-8 text-center">Questions fréquentes</h2>
           <div className="space-y-4">
             {[
-              { q: "J'ai déjà un site depuis 2 ans sans problème, pourquoi risquerais-je quelque chose maintenant ?", a: "La CNIL a changé de stratégie début 2025. Avant, ils contrôlaient surtout les grandes entreprises. Depuis la directive \"TPE & Compliance\" de janvier 2025, les petits indépendants représentent 60% des contrôles. Pourquoi ? Parce que les sanctions sont plus rapides à émettre et les recours plus rares. Ne vous fiez pas au passé." },
+              { q: "J'ai déjà un site depuis des années sans problème, suis-je vraiment concerné ?", a: "La CNIL a élargi ses contrôles aux TPE et artisans depuis 2025. Beaucoup de petites structures n'avaient pas les documents à jour et ont été mises en demeure. Avec nos 5 documents, vous couvrez les attentes habituelles et vous êtes serein en cas de contrôle." },
               { q: 'Ces documents suffisent-ils pour être conforme au RGPD ?', a: 'Ils couvrent les éléments attendus pour une TPE/artisan (information des personnes, mentions obligatoires, registre, cookies). Pour des cas très spécifiques, un accompagnement juridique reste recommandé.' },
               { q: "Que se passe-t-il après le paiement ?", a: "Vos documents sont générés automatiquement à partir de vos réponses puis envoyés par email à l'adresse indiquée." },
               { q: "Puis-je modifier les modèles ensuite ?", a: "Oui. Les modèles sont fournis en PDF ; vous pouvez les adapter ou faire relire par un juriste." },
