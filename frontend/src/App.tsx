@@ -195,19 +195,19 @@ function LandingPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900 border border-zinc-800 mb-8"
           >
-            <span className="w-2 h-2 rounded-full bg-red-500 pulse-glow" />
-            <span className="text-sm text-zinc-400">ALERTE : Contrôles CNIL 2026 • Les TPE ne sont plus épargnés</span>
+            <span className="w-2 h-2 rounded-full bg-emerald-500 pulse-glow" />
+            <span className="text-sm text-zinc-400">Conforme RGPD 2026 • TPE & artisans</span>
           </motion.div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6">
             <span className="block overflow-hidden">
               <motion.span className="block" variants={textReveal} initial="hidden" animate="visible" custom={0}>
-                Prêt pour l'amende de la CNIL ?
+                Vos documents RGPD
               </motion.span>
             </span>
             <span className="block overflow-hidden">
               <motion.span className="block text-zinc-500" variants={textReveal} initial="hidden" animate="visible" custom={1}>
-                Vous avez encore 6 heures.
+                prêts en 5 minutes.
               </motion.span>
             </span>
           </h1>
@@ -218,7 +218,7 @@ function LandingPage() {
             transition={{ duration: 0.6, delay: 0.45 }}
             className="text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed"
           >
-            La CNIL a annoncé : 2026 c'est l'année du "grand ménage" chez les petites entreprises. Restaurants, artisans, consultants : vous êtes surveillés comme les grands. Un simple bandeau cookie mal configuré = sanction immédiate.
+            Générateur automatique pour restaurants, artisans, garages, consultants, e‑commerce. Répondez à quelques questions, recevez vos 5 documents conformes CNIL par email.
           </motion.p>
 
           <motion.div
@@ -231,7 +231,7 @@ function LandingPage() {
               href="#form"
               className="shimmer-btn inline-flex items-center rounded-full bg-white text-zinc-950 hover:bg-zinc-200 px-8 h-12 text-base font-medium shadow-lg shadow-white/10"
             >
-              Sécuriser mon activité avant le contrôle — 97 €
+              Obtenir mes documents — 97 €
               <ArrowRight className="ml-2 w-4 h-4" />
             </a>
             <a
@@ -248,7 +248,7 @@ function LandingPage() {
             transition={{ delay: 0.7 }}
             className="text-sm text-zinc-500"
           >
-            Paiement unique • Documents reçus en 2 min • Conformité garantie CNIL 2026
+            Paiement sécurisé Stripe • 5 documents PDF • Envoi immédiat par email
           </motion.p>
         </div>
       </section>
@@ -256,48 +256,9 @@ function LandingPage() {
       {/* Trust strip */}
       <section className="py-8 border-y border-zinc-800/80">
         <div className="max-w-4xl mx-auto px-4 flex flex-wrap items-center justify-center gap-8 sm:gap-12 text-sm text-zinc-500">
-          <span className="flex items-center gap-2">Déjà utilisé par 1127 artisans et TPE</span>
-        </div>
-      </section>
-
-      {/* Stats urgence */}
-      <section className="py-24 px-4">
-        <div className="max-w-4xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-14 text-center"
-          >
-            <span className="inline-block border-b-2 border-red-500 pb-2 whitespace-nowrap">Ce n'est pas une menace vague. C'est une réalité depuis janvier 2026.</span>
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { num: '847', desc: 'TPE sanctionnées en 2025 pour défaut de politique de confidentialité (moyenne : 3 200€)' },
-              { num: '12 400€', desc: 'Amende moyenne pour un site e-commerce sans registre des traitements' },
-              { num: '72h', desc: 'Délai moyen entre l\'arrivée du contrôleur et la notification de l\'amende' },
-            ].map((stat, i) => (
-              <motion.div
-                key={stat.num}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="p-6 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-zinc-600 transition-colors text-center"
-              >
-                <div className="text-3xl sm:text-4xl font-bold text-white mb-3">{stat.num}</div>
-                <p className="text-sm text-zinc-400">{stat.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center text-sm text-zinc-500 mt-6"
-          >
-            ⚠️ Votre nom est peut-être déjà dans la liste de contrôle de ce trimestre.
-          </motion.p>
+          <span className="flex items-center gap-2">✅ Adapté aux TPE français</span>
+          <span className="flex items-center gap-2">🔒 Paiement Stripe</span>
+          <span className="flex items-center gap-2">📁 Modèles modifiables</span>
         </div>
       </section>
 
@@ -309,17 +270,17 @@ function LandingPage() {
             animate={howInView ? { opacity: 1, y: 0 } : {}}
             className="text-center mb-14"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4"><span className="inline-block border-b-2 border-red-500 pb-2">Comment éviter l'amende en 3 étapes</span></h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Comment ça marche ?</h2>
             <p className="text-zinc-400 max-w-xl mx-auto">
-              Processus anti-sanction validé par des juristes.
+              Un processus pensé pour les indépendants, sans jargon juridique.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { num: '1', title: 'Vous vérifiez votre vulnérabilité', desc: 'Répondez aux questions. On identifie immédiatement ce qui vous expose à la sanction.' },
-              { num: '2', title: 'Vous bouchez les failles légales', desc: 'En 2 minutes, vous générez les 5 documents obligatoires qui protègent votre entreprise.' },
-              { num: '3', title: 'Vous dormez tranquille', desc: 'Même si la CNIL frappe demain matin, vous êtes couvert. Documents datés et conformes.' },
+              { num: '1', title: 'Vous répondez à quelques questions', desc: 'Nom de l\'entreprise, type d\'activité, coordonnées, emails et cookies.' },
+              { num: '2', title: 'Vous payez 97 € en ligne', desc: 'Paiement unique et sécurisé par Stripe. Aucun abonnement.' },
+              { num: '3', title: 'Vos 5 documents arrivent par email', desc: 'PDF personnalisés prêts à intégrer sur votre site.' },
             ].map((step, i) => (
               <motion.div
                 key={step.num}
@@ -345,11 +306,9 @@ function LandingPage() {
             animate={packInView ? { opacity: 1, y: 0 } : {}}
             className="text-center mb-14"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4"><span className="inline-block border-b-2 border-red-500 pb-2">Votre bouclier anti-amende</span></h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Tout ce qui est inclus</h2>
             <p className="text-zinc-400 max-w-xl mx-auto">
-              Les 5 documents que la CNIL exige impérativement.
-            <br />
-            Manquez-en un seul = sanction.
+              5 documents conformes RGPD, personnalisés selon votre activité.
             </p>
           </motion.div>
 
@@ -360,11 +319,11 @@ function LandingPage() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
           >
             {[
-              { icon: Shield, title: 'Politique de confidentialité', desc: 'Conforme mise à jour CNIL Mai 2026' },
-              { icon: FileText, title: 'Mentions légales', desc: 'Tous les champs obligatoires inclus' },
-              { icon: FileText, title: 'CGV sur-mesure', desc: 'Adapté restaurant, artisan, e-commerce ou consultant' },
-              { icon: FileText, title: 'Registre des traitements', desc: 'Tableau exact tel que publié par la CNIL' },
-              { icon: Cookie, title: 'Bandeau cookies', desc: 'Code HTML prêt à copier coller 1 clic' },
+              { icon: Shield, title: 'Politique de confidentialité', desc: 'Conforme RGPD 2026, adaptée à votre activité.' },
+              { icon: FileText, title: 'Mentions légales', desc: 'Éditeur, hébergeur, propriété intellectuelle.' },
+              { icon: FileText, title: 'CGV sur-mesure', desc: 'Restaurant, artisan, consultant, e‑commerce…' },
+              { icon: FileText, title: 'Registre des traitements', desc: 'Tableau CNIL des traitements de données.' },
+              { icon: Cookie, title: 'Bandeau cookies', desc: 'Code HTML prêt à copier-coller sur votre site.' },
             ].map((item, i) => (
               <motion.div
                 key={item.title}
@@ -394,8 +353,8 @@ function LandingPage() {
             className="relative p-6 sm:p-8 rounded-2xl bg-zinc-900 border border-zinc-700"
           >
             <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold text-white mb-2">Mettre mon activité en règle</h2>
-              <p className="text-zinc-400 text-sm">Remplissez ce formulaire une seule fois: ~ 2 minutes.</p>
+              <h2 className="text-2xl font-bold text-white mb-2">Démarrer votre pack RGPD</h2>
+              <p className="text-zinc-400 text-sm">2 minutes pour sécuriser votre activité.</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -506,7 +465,7 @@ function LandingPage() {
                 disabled={loading}
                 className="shimmer-btn w-full rounded-full bg-white text-zinc-950 hover:bg-zinc-200 py-3.5 px-6 text-base font-medium disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                {loading ? 'Redirection…' : 'Valider et recevoir mes documents'}
+                {loading ? 'Redirection…' : 'Payer 97 € et générer mes documents'}
               </button>
             </form>
             <p className="mt-3 text-center text-xs text-zinc-500">Paiement sécurisé par Stripe. Envoi automatique des 5 PDF par email.</p>
@@ -523,32 +482,18 @@ function LandingPage() {
           className="max-w-3xl mx-auto text-center"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight">
-            <span className="inline-block border-b-2 border-red-500 pb-2">
-              Le contrôle ne prévient pas.
-              <br />
-              Il frappe à 9h du matin avec un constat à 4 000€.
-            </span>
+            Prêt à être en règle ?
           </h2>
-          <p className="text-lg text-zinc-400 mb-4">Vous avez deux options :</p>
-          <div className="flex flex-col sm:flex-row gap-4 mb-10 text-left">
-            <div className="flex-1 rounded-xl bg-zinc-900/80 border border-zinc-700 px-5 py-4">
-              <span className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Option 1</span>
-              <p className="text-zinc-300 mt-1">Vous attendez. Vous espérez passer entre les mailles.</p>
-              <p className="text-sm text-zinc-500 mt-2">Statistiques : 1 TPE sur 3 contrôlée en 2026 sera sanctionnée.</p>
-            </div>
-            <div className="flex-1 rounded-xl bg-zinc-800/80 border border-zinc-600 px-5 py-4">
-              <span className="text-xs font-semibold uppercase tracking-wider text-emerald-400/90">Option 2</span>
-              <p className="text-zinc-300 mt-1">Vous réglez ça maintenant pour 97€ et vous oubliez ce cauchemar.</p>
-            </div>
-          </div>
+          <p className="text-lg text-zinc-400 mb-10">
+            Rejoignez les TPE et artisans qui ont sécurisé leur conformité RGPD en quelques minutes.
+          </p>
           <a
             href="#form"
             className="shimmer-btn inline-flex items-center rounded-full bg-white text-zinc-950 hover:bg-zinc-200 px-8 h-14 text-base font-medium shadow-lg shadow-white/20"
           >
-            OUI, je veux être conforme avant demain
+            Obtenir mes documents — 97 €
             <ArrowRight className="ml-2 w-5 h-5" />
           </a>
-          <p className="mt-4 text-sm text-zinc-500">⏰ Tarif protection valable aujourd'hui uniquement</p>
         </motion.div>
       </section>
 
@@ -558,7 +503,6 @@ function LandingPage() {
           <h2 className="text-2xl font-bold text-white mb-8 text-center">Questions fréquentes</h2>
           <div className="space-y-4">
             {[
-              { q: "J'ai déjà un site depuis 2 ans sans problème, pourquoi risquerais-je quelque chose maintenant ?", a: "La CNIL a changé de stratégie début 2025. Avant, ils contrôlaient surtout les grandes entreprises. Depuis la directive \"TPE & Compliance\" de janvier 2025, les petits indépendants représentent 60% des contrôles. Pourquoi ? Parce que les sanctions sont plus rapides à émettre et les recours plus rares. Ne vous fiez pas au passé." },
               { q: 'Ces documents suffisent-ils pour être conforme au RGPD ?', a: 'Ils couvrent les éléments attendus pour une TPE/artisan (information des personnes, mentions obligatoires, registre, cookies). Pour des cas très spécifiques, un accompagnement juridique reste recommandé.' },
               { q: "Que se passe-t-il après le paiement ?", a: "Vos documents sont générés automatiquement à partir de vos réponses puis envoyés par email à l'adresse indiquée." },
               { q: "Puis-je modifier les modèles ensuite ?", a: "Oui. Les modèles sont fournis en PDF ; vous pouvez les adapter ou faire relire par un juriste." },
