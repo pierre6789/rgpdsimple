@@ -202,12 +202,7 @@ function LandingPage() {
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6">
             <span className="block overflow-hidden">
               <motion.span className="block" variants={textReveal} initial="hidden" animate="visible" custom={0}>
-                Vous avez encore 48h pour être en règle.
-              </motion.span>
-            </span>
-            <span className="block overflow-hidden">
-              <motion.span className="block text-zinc-500" variants={textReveal} initial="hidden" animate="visible" custom={1}>
-                Après, c'est 12 000€ d'amende minimum.
+                97€ maintenant ou 12 000€ plus tard.
               </motion.span>
             </span>
           </h1>
@@ -248,7 +243,7 @@ function LandingPage() {
             transition={{ delay: 0.7 }}
             className="text-sm text-zinc-500"
           >
-            💳 Paiement unique • Documents reçus en 2 min • Conformité garantie CNIL 2026
+            Paiement unique • Documents reçus en 2 min • Conformité garantie CNIL 2026
           </motion.p>
         </div>
       </section>
@@ -269,7 +264,7 @@ function LandingPage() {
             viewport={{ once: true }}
             className="text-2xl sm:text-3xl font-bold text-white mb-14 text-center"
           >
-            <span className="inline-block border-b-2 border-red-500 pb-2">Ce n'est pas une menace vague. C'est une réalité depuis janvier 2025.</span>
+            <span className="inline-block border-b-2 border-red-500 pb-2">Ce n'est pas une menace vague. C'est une réalité depuis janvier 2026.</span>
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
@@ -392,7 +387,7 @@ function LandingPage() {
             className="relative p-6 sm:p-8 rounded-2xl bg-zinc-900 border border-zinc-700"
           >
             <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold text-white mb-2">✅ Mettre mon activité en règle</h2>
+              <h2 className="text-2xl font-bold text-white mb-2">Mettre mon activité en règle</h2>
               <p className="text-zinc-400 text-sm">Remplissez ce formulaire une seule fois: ~ 2 minutes.</p>
             </div>
 
@@ -504,7 +499,7 @@ function LandingPage() {
                 disabled={loading}
                 className="shimmer-btn w-full rounded-full bg-white text-zinc-950 hover:bg-zinc-200 py-3.5 px-6 text-base font-medium disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                {loading ? 'Redirection…' : '✅ Valider et recevoir mes documents'}
+                {loading ? 'Redirection…' : 'Valider et recevoir mes documents'}
               </button>
             </form>
             <p className="mt-3 text-center text-xs text-zinc-500">Paiement sécurisé par Stripe. Envoi automatique des 5 PDF par email.</p>
