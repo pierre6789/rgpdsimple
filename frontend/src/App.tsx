@@ -327,7 +327,7 @@ function LandingPage() {
                 transition={{ duration: 0.5, delay: 0.15 + i * 0.1 }}
                 className="p-6 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-zinc-600 transition-colors"
               >
-                <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-emerald-400 font-bold mb-4">{step.num}</div>
+                <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-[#2171d6] font-bold mb-4">{step.num}</div>
                 <h3 className="text-lg font-semibold text-white mb-2">{step.title}</h3>
                 <p className="text-sm text-zinc-400">{step.desc}</p>
               </motion.div>
