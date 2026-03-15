@@ -262,9 +262,9 @@ function LandingPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-2xl sm:text-3xl font-bold text-white mb-14 text-center"
+            className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-14 text-center"
           >
-            <span className="inline-block border-b-2 border-red-500 pb-2">Ce n'est pas une menace vague. C'est une réalité depuis janvier 2026.</span>
+            <span className="inline-block border-b-2 border-red-500 pb-2 whitespace-nowrap">Ce n'est pas une menace vague. C'est une réalité depuis janvier 2026.</span>
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
