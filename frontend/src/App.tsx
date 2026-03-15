@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-dom'
-import { Menu, X, ArrowRight, FileText, Shield, Cookie } from 'lucide-react'
+import { Menu, X, ArrowRight, FileText, Shield, Cookie, BookOpen } from 'lucide-react'
 import { CookieBanner } from './CookieBanner'
 import './App.css'
 
@@ -344,7 +344,7 @@ function LandingPage() {
             animate={packInView ? { opacity: 1, y: 0 } : {}}
             className="text-center mb-14"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4"><span className="inline-block border-b-2 border-[#2171d6] pb-2">Les 5 documents pour être en règle</span></h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4"><span className="inline-block border-b-2 border-[#2171d6] pb-2">Les 5 documents + 1 guide pour être en règle</span></h2>
             <p className="text-zinc-400 max-w-xl mx-auto">
               Tout ce que la CNIL exige pour une TPE ou un artisan. Rien à chercher ailleurs — on vous fournit le pack complet.
             </p>
@@ -357,6 +357,7 @@ function LandingPage() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
           >
             {[
+              { icon: BookOpen, title: 'Guide à compléter', desc: 'Envoyé avec les 5 PDF : où et quoi renseigner pour une conformité optimale' },
               { icon: Shield, title: 'Politique de confidentialité', desc: 'Conforme mise à jour CNIL Mai 2026' },
               { icon: FileText, title: 'Mentions légales', desc: 'Tous les champs obligatoires inclus' },
               { icon: FileText, title: 'CGV sur-mesure', desc: 'Adapté restaurant, artisan, e-commerce ou consultant' },
