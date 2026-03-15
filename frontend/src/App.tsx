@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-dom'
 import { Menu, X, ArrowRight, FileText, Shield, Cookie } from 'lucide-react'
+import { CookieBanner } from './CookieBanner'
 import './App.css'
 
 type BusinessType =
@@ -885,6 +886,7 @@ function App() {
         <Route path="/mentions-legales" element={<LegalPage />} />
         <Route path="/cookies" element={<CookiesPage />} />
       </Routes>
+      <CookieBanner />
     </BrowserRouter>
   )
 }
