@@ -308,7 +308,7 @@ function LandingPage() {
             animate={howInView ? { opacity: 1, y: 0 } : {}}
             className="text-center mb-14"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4"><span className="inline-block border-b-2 border-emerald-500 pb-2">On règle ça ensemble en 3 étapes</span></h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4"><span className="inline-block border-b-2 border-[#2171d6] pb-2">On règle ça ensemble en 3 étapes</span></h2>
             <p className="text-zinc-400 max-w-xl mx-auto">
               Un processus simple, validé par des juristes. Vous êtes accompagné de A à Z.
             </p>
@@ -344,7 +344,7 @@ function LandingPage() {
             animate={packInView ? { opacity: 1, y: 0 } : {}}
             className="text-center mb-14"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4"><span className="inline-block border-b-2 border-emerald-500 pb-2">Les 5 documents pour être en règle</span></h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4"><span className="inline-block border-b-2 border-[#2171d6] pb-2">Les 5 documents pour être en règle</span></h2>
             <p className="text-zinc-400 max-w-xl mx-auto">
               Tout ce que la CNIL exige pour une TPE ou un artisan. Rien à chercher ailleurs — on vous fournit le pack complet.
             </p>
@@ -520,7 +520,7 @@ function LandingPage() {
           className="max-w-3xl mx-auto text-center"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight">
-            <span className="inline-block border-b-2 border-emerald-500 pb-2">
+            <span className="inline-block border-b-2 border-[#2171d6] pb-2">
               Conformité RGPD : on s'en occupe pour vous.
             </span>
           </h2>
