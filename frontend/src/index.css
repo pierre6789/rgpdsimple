@@ -36,11 +36,11 @@
   50% { opacity: 0.6; box-shadow: 0 0 10px currentColor; }
 }
 
-/* Rotating border for Option 2 card */
+/* Lueur blanche légère qui fait le tour de la carte Option 2 */
 .card-border-spin {
   position: relative;
   border-radius: 0.75rem;
-  padding: 2px;
+  padding: 1px;
   overflow: hidden;
 }
 .card-border-spin::before {
@@ -49,13 +49,19 @@
   inset: -50%;
   width: 200%;
   height: 200%;
-  background: conic-gradient(from 0deg, #10b981, #34d399, #059669, #34d399, #10b981);
-  animation: border-spin 2.5s linear infinite;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    transparent 70%,
+    rgba(255, 255, 255, 0.18) 85%,
+    rgba(255, 255, 255, 0.25) 100%
+  );
+  animation: border-spin 3s linear infinite;
 }
 .card-border-spin .card-border-spin-inner {
   position: relative;
   z-index: 1;
-  border-radius: calc(0.75rem - 2px);
+  border-radius: calc(0.75rem - 1px);
   background: rgb(39 39 42 / 0.8);
 }
 @keyframes border-spin {
