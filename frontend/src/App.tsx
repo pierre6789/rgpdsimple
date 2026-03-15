@@ -521,15 +521,24 @@ function LandingPage() {
           className="max-w-3xl mx-auto text-center"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight">
-            <span className="inline-block border-b-2 border-red-500 pb-2">Le contrôle ne prévient pas. Il frappe à 9h du matin avec un constat à 4 000€.</span>
+            <span className="inline-block border-b-2 border-red-500 pb-2">
+              Le contrôle ne prévient pas.
+              <br />
+              Il frappe à 9h du matin avec un constat à 4 000€.
+            </span>
           </h2>
-          <p className="text-lg text-zinc-400 mb-10">
-            Vous avez deux options :
-            <br /><br />
-            1. Vous attendez. Vous espérez passer entre les mailles. (Statistiques : 1 TPE sur 3 contrôlée en 2026 sera sanctionnée)
-            <br /><br />
-            2. Vous réglez ça maintenant pour 97€ et vous oubliez ce cauchemar.
-          </p>
+          <p className="text-lg text-zinc-400 mb-4">Vous avez deux options :</p>
+          <div className="flex flex-col sm:flex-row gap-4 mb-10 text-left">
+            <div className="flex-1 rounded-xl bg-zinc-900/80 border border-zinc-700 px-5 py-4">
+              <span className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Option 1</span>
+              <p className="text-zinc-300 mt-1">Vous attendez. Vous espérez passer entre les mailles.</p>
+              <p className="text-sm text-zinc-500 mt-2">Statistiques : 1 TPE sur 3 contrôlée en 2026 sera sanctionnée.</p>
+            </div>
+            <div className="flex-1 rounded-xl bg-zinc-800/80 border border-zinc-600 px-5 py-4">
+              <span className="text-xs font-semibold uppercase tracking-wider text-emerald-400/90">Option 2</span>
+              <p className="text-zinc-300 mt-1">Vous réglez ça maintenant pour 97€ et vous oubliez ce cauchemar.</p>
+            </div>
+          </div>
           <a
             href="#form"
             className="shimmer-btn inline-flex items-center rounded-full bg-white text-zinc-950 hover:bg-zinc-200 px-8 h-14 text-base font-medium shadow-lg shadow-white/20"
