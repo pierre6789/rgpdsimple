@@ -36,6 +36,34 @@
   50% { opacity: 0.6; box-shadow: 0 0 10px currentColor; }
 }
 
+/* Rotating border for Option 2 card */
+.card-border-spin {
+  position: relative;
+  border-radius: 0.75rem;
+  padding: 2px;
+  overflow: hidden;
+}
+.card-border-spin::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, #10b981, #34d399, #059669, #34d399, #10b981);
+  animation: border-spin 2.5s linear infinite;
+}
+.card-border-spin .card-border-spin-inner {
+  position: relative;
+  z-index: 1;
+  border-radius: calc(0.75rem - 2px);
+  background: rgb(39 39 42 / 0.8);
+}
+@keyframes border-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 #root {
   min-height: 100vh;
 }

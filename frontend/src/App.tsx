@@ -347,7 +347,9 @@ function LandingPage() {
           >
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4"><span className="inline-block border-b-2 border-red-500 pb-2">Votre bouclier anti-amende</span></h2>
             <p className="text-zinc-400 max-w-xl mx-auto">
-              Les 5 documents que la CNIL exige impérativement. Manquez-en un seul = sanction.
+              Les 5 documents que la CNIL exige impérativement.
+            <br />
+            Manquez-en un seul = sanction.
             </p>
           </motion.div>
 
@@ -534,16 +536,18 @@ function LandingPage() {
               <p className="text-zinc-300 mt-1">Vous attendez. Vous espérez passer entre les mailles.</p>
               <p className="text-sm text-zinc-500 mt-2">Statistiques : 1 TPE sur 3 contrôlée en 2026 sera sanctionnée.</p>
             </div>
-            <div className="flex-1 rounded-xl bg-zinc-800/80 border border-zinc-600 px-5 py-4">
-              <span className="text-xs font-semibold uppercase tracking-wider text-emerald-400/90">Option 2</span>
-              <p className="text-zinc-300 mt-1">Vous réglez ça maintenant pour 97€ et vous oubliez ce cauchemar.</p>
+            <div className="flex-1 card-border-spin">
+              <div className="card-border-spin-inner rounded-xl bg-zinc-800/80 px-5 py-4">
+                <span className="text-xs font-semibold uppercase tracking-wider text-emerald-400/90">Option 2</span>
+                <p className="text-zinc-300 mt-1">Vous réglez ça maintenant pour 97€ et vous oubliez ce cauchemar.</p>
+              </div>
             </div>
           </div>
           <a
             href="#form"
             className="shimmer-btn inline-flex items-center rounded-full bg-white text-zinc-950 hover:bg-zinc-200 px-8 h-14 text-base font-medium shadow-lg shadow-white/20"
           >
-            OUI, je veux être conforme avant demain — 97 €
+            OUI, je veux être conforme avant demain
             <ArrowRight className="ml-2 w-5 h-5" />
           </a>
           <p className="mt-4 text-sm text-zinc-500">⏰ Tarif protection valable aujourd'hui uniquement</p>
