@@ -635,6 +635,13 @@ function SuccessPage() {
             >
               Demander l'installation
             </a>
+            <p className="mt-3 text-xs text-zinc-500">
+              Si le bouton ne fonctionne pas, envoyez un email à{' '}
+              <a href={`mailto:${supportEmail}`} className="underline text-zinc-400 hover:text-zinc-200">
+                {supportEmail}
+              </a>{' '}
+              avec votre adresse de commande pour demander l&apos;installation.
+            </p>
           </div>
 
           <a href="/" className="inline-block mt-8 text-sm text-zinc-500 hover:text-white transition-colors">
