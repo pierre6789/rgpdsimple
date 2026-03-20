@@ -652,150 +652,72 @@ function PrivacyPage() {
       <Navbar />
       <section className="px-4 pt-28 pb-16">
         <div className="max-w-3xl mx-auto text-zinc-200">
-          <h1 className="text-3xl font-bold text-white mb-2">Politique de Confidentialité</h1>
-          <p className="text-sm text-zinc-500 mb-8">Dernière mise à jour : 08/03/2026</p>
-
+          <h1 className="text-3xl font-bold text-white mb-2">Politique de confidentialité</h1>
+          <p className="text-sm text-zinc-500 mb-8">Dernière mise à jour : 2026</p>
           <p className="text-sm text-zinc-400 mb-6">
-            Nous accordons une importance toute particulière à la protection de vos données personnelles. La présente
-            politique de confidentialité explique comment <strong>RGPDSimple</strong>, ci-après dénommé(e) « nous »,
-            traite vos données personnelles lorsque vous utilisez notre site internet{' '}
-            <a href="https://www.rgpdsimple.fr" className="underline text-zinc-300">
-              www.rgpdsimple.fr
-            </a>{' '}
-            et nos services.
+            Cette politique explique comment <strong>RGPDSimple</strong> traite les données personnelles,
+            conformément au RGPD et à la loi « Informatique et Libertés ».
           </p>
-
-          <h2 className="text-xl font-semibold text-white mb-2">1. Responsable du traitement</h2>
-          <p className="text-sm text-zinc-400 mb-4">
-            Le responsable du traitement de vos données personnelles est :
+          <h2 className="text-xl font-semibold text-white mb-2">1. Responsable du traitement et contact</h2>
+          <p className="text-sm text-zinc-400 mb-6">
+            Responsable : <strong>RGPDSimple</strong>
+            <br />
+            Adresse : 84 rue pélident, 84300, Cavaillon
+            <br />
+            Email : <a href="mailto:contact@rgpdsimple.fr" className="underline text-zinc-300">contact@rgpdsimple.fr</a>
+            <br />
+            DPO : non désigné. Pour l&apos;exercice de vos droits, contactez : <a href="mailto:contact@rgpdsimple.fr" className="underline text-zinc-300">contact@rgpdsimple.fr</a>
           </p>
-          <ul className="text-sm text-zinc-400 mb-4 list-disc list-inside space-y-1">
-            <li>RGPDSimple</li>
-            <li>Auto-entrepreneur</li>
-            <li>Siège social : 24 rue pélident, 84300 Cavaillon</li>
-            <li>SIRET : 921088852</li>
-            <li>
-              Email :{' '}
-              <a href="mailto:contact@rgpdsimple.fr" className="underline text-zinc-300">
-                contact@rgpdsimple.fr
-              </a>
-            </li>
-            <li>Téléphone : 07 69 56 36 76</li>
-          </ul>
-
-          <h2 className="text-xl font-semibold text-white mb-2">2. Les données que nous collectons</h2>
-          <p className="text-sm text-zinc-400 mb-2">Nous collectons les données suivantes :</p>
-          <p className="text-sm text-zinc-300 mb-1 font-medium">Données que vous nous fournissez directement :</p>
-          <ul className="text-sm text-zinc-400 mb-3 list-disc list-inside space-y-1">
-            <li>Nom de l&apos;entreprise</li>
-            <li>Adresse e-mail</li>
-            <li>Type d&apos;activité</li>
-            <li>Adresse postale</li>
-            <li>Site internet</li>
-            <li>
-              Informations de paiement (traitées exclusivement par Stripe ; nous n&apos;avons jamais accès à vos données
-              bancaires complètes)
-            </li>
-            <li>Toute information que vous choisissez de nous communiquer (messages, avis, etc.).</li>
-          </ul>
-          <p className="text-sm text-zinc-300 mb-1 font-medium">Données collectées automatiquement :</p>
+          <h2 className="text-xl font-semibold text-white mb-2">2. Données collectées</h2>
           <ul className="text-sm text-zinc-400 mb-6 list-disc list-inside space-y-1">
-            <li>Adresse IP</li>
-            <li>Cookies et traceurs (voir notre politique cookies)</li>
+            <li>Identité et coordonnées (nom, email, téléphone, adresse).</li>
+            <li>Données liées aux commandes, devis, facturation et relation client.</li>
+            <li>Données de navigation (IP, cookies, logs techniques).</li>
+            <li>Données spécifiques métier (selon votre secteur d&apos;activité).</li>
           </ul>
-
-          <h2 className="text-xl font-semibold text-white mb-2">3. Finalités du traitement</h2>
-          <p className="text-sm text-zinc-400 mb-2">Nous utilisons vos données pour :</p>
+          <h2 className="text-xl font-semibold text-white mb-2">3. Finalités et bases légales</h2>
           <ul className="text-sm text-zinc-400 mb-6 list-disc list-inside space-y-1">
-            <li>Traiter et livrer vos commandes</li>
-            <li>Vous envoyer des e-mails transactionnels (confirmation de commande, etc.)</li>
-            <li>Améliorer notre site et nos services</li>
-            <li>Répondre à vos demandes via le formulaire de contact</li>
-            <li>Respecter nos obligations légales (facturation, comptabilité, etc.)</li>
+            <li>Exécution du contrat : commandes, devis, service client.</li>
+            <li>Obligation légale : comptabilité, facturation, obligations fiscales.</li>
+            <li>Intérêt légitime : sécurité et prévention de la fraude.</li>
+            <li>Consentement : cookies non essentiels et prospection quand requis.</li>
           </ul>
-
-          <h2 className="text-xl font-semibold text-white mb-2">4. Base légale</h2>
-          <p className="text-sm text-zinc-400 mb-2">Vos données sont traitées sur les bases légales suivantes :</p>
+          <h2 className="text-xl font-semibold text-white mb-2">4. Durées de conservation</h2>
           <ul className="text-sm text-zinc-400 mb-6 list-disc list-inside space-y-1">
-            <li>Exécution du contrat (pour les commandes)</li>
-            <li>Votre consentement (newsletter, cookies non essentiels)</li>
-            <li>Intérêt légitime (amélioration du site, sécurité, lutte contre la fraude)</li>
-            <li>Obligation légale (factures, déclarations fiscales)</li>
+            <li>Prospects : 3 ans après le dernier contact.</li>
+            <li>Facturation / comptabilité : 10 ans à compter de la clôture de l&apos;exercice.</li>
+            <li>Cookies non essentiels : 13 mois maximum.</li>
+            <li>Autres données : durée strictement nécessaire à la finalité.</li>
           </ul>
-
-          <h2 className="text-xl font-semibold text-white mb-2">5. Durée de conservation</h2>
-          <ul className="text-sm text-zinc-400 mb-6 list-disc list-inside space-y-1">
-            <li>Données clients : 3 ans après le dernier achat (sauf factures conservées 10 ans pour obligation légale)</li>
-            <li>Données newsletter : jusqu’à votre désinscription</li>
-            <li>Cookies : 13 mois maximum pour les cookies non essentiels</li>
-          </ul>
-
-          <h2 className="text-xl font-semibold text-white mb-2">6. Destinataires de vos données</h2>
-          <p className="text-sm text-zinc-400 mb-2">
-            Vos données sont transmises uniquement aux partenaires indispensables :
-          </p>
-          <ul className="text-sm text-zinc-400 mb-4 list-disc list-inside space-y-1">
-            <li>Notre hébergeur (OVH)</li>
-            <li>Nos outils de paiement sécurisés (Stripe)</li>
-            <li>Nos outils d’emailing (MailTrap)</li>
-            <li>Notre comptable</li>
-          </ul>
+          <h2 className="text-xl font-semibold text-white mb-2">5. Destinataires et transferts hors UE</h2>
+          <p className="text-sm text-zinc-400 mb-2">Destinataires : OVH (hébergement), Stripe (paiement), Mailtrap (email transactionnel).</p>
           <p className="text-sm text-zinc-400 mb-6">
-            Aucun transfert hors Union Européenne n’est effectué sans garanties appropriées (clauses contractuelles types,
-            etc.).
+            Transferts hors UE : Aucun transfert hors UE.
           </p>
-
-          <h2 className="text-xl font-semibold text-white mb-2">7. Vos droits</h2>
-          <p className="text-sm text-zinc-400 mb-2">
-            Conformément au RGPD, vous disposez des droits suivants :
-          </p>
-          <ul className="text-sm text-zinc-400 mb-4 list-disc list-inside space-y-1">
-            <li>Droit d’accès à vos données</li>
-            <li>Droit de rectification</li>
-            <li>Droit à l’effacement (« droit à l’oubli »)</li>
-            <li>Droit à la limitation du traitement</li>
-            <li>Droit à la portabilité</li>
-            <li>Droit d’opposition (notamment à recevoir notre newsletter)</li>
-            <li>Droit de retirer votre consentement à tout moment</li>
-          </ul>
-          <p className="text-sm text-zinc-400 mb-4">
-            Pour exercer ces droits, contactez-nous à{' '}
-            <a href="mailto:contact@rgpdsimple.fr" className="underline text-zinc-300">
-              contact@rgpdsimple.fr
-            </a>
-            . Nous vous répondrons dans un délai maximum d’un mois.
-          </p>
+          <h2 className="text-xl font-semibold text-white mb-2">6. Vos droits</h2>
           <p className="text-sm text-zinc-400 mb-6">
-            Vous avez également le droit d’introduire une réclamation auprès de la CNIL :{' '}
-            <a href="https://www.cnil.fr/plainte" className="underline text-zinc-300" target="_blank" rel="noreferrer">
-              https://www.cnil.fr/plainte
-            </a>
-            .
+            Vous disposez des droits d&apos;accès, rectification, effacement, limitation, opposition, portabilité et directives
+            post-mortem.
+            <br />
+            Contact : <a href="mailto:contact@rgpdsimple.fr" className="underline text-zinc-300">contact@rgpdsimple.fr</a>.
+            <br />
+            Réclamation CNIL : <a href="https://www.cnil.fr/plainte" className="underline text-zinc-300" target="_blank" rel="noreferrer">https://www.cnil.fr/plainte</a>.
           </p>
-
-          <h2 className="text-xl font-semibold text-white mb-2">8. Sécurité</h2>
+          <h2 className="text-xl font-semibold text-white mb-2">7. Sécurité des données</h2>
           <p className="text-sm text-zinc-400 mb-6">
-            Nous mettons en œuvre toutes les mesures techniques et organisationnelles nécessaires pour protéger vos données
-            (chiffrement SSL, accès sécurisés, sauvegardes, etc.).
+            Mesures mises en œuvre : accès restreint, mots de passe robustes, MFA (si disponible), chiffrement et sauvegardes.
           </p>
-
-          <h2 className="text-xl font-semibold text-white mb-2">9. Cookies</h2>
+          <h2 className="text-xl font-semibold text-white mb-2">8. Cookies</h2>
           <p className="text-sm text-zinc-400 mb-6">
-            Notre site utilise des cookies nécessaires au fonctionnement et des cookies analytiques/statistiques. Vous
-            pouvez les refuser ou les paramétrer via le bandeau cookies qui apparaît lors de votre première visite.
+            Nous n&apos;utilisons pas de cookies d&apos;audience ni marketing. Seuls des cookies strictement nécessaires peuvent être déposés pour le fonctionnement du site.
           </p>
-
-          <h2 className="text-xl font-semibold text-white mb-2">10. Modifications de la politique</h2>
-          <p className="text-sm text-zinc-400 mb-4">
-            Nous pouvons être amenés à modifier cette politique de confidentialité. Toute modification sera publiée sur
-            cette page avec la date de mise à jour.
+          <h2 className="text-xl font-semibold text-white mb-2">9. Transparence IA (AI Act)</h2>
+          <p className="text-sm text-zinc-400 mb-6">
+            Nous n&apos;utilisons pas d&apos;outils d&apos;IA pour prendre des décisions automatisées sur les personnes.
           </p>
+          <h2 className="text-xl font-semibold text-white mb-2">10. Mise à jour de la politique</h2>
           <p className="text-sm text-zinc-400">
-            Pour toute question, n’hésitez pas à nous contacter à{' '}
-            <a href="mailto:contact@rgpdsimple.fr" className="underline text-zinc-300">
-              contact@rgpdsimple.fr
-            </a>
-            .
+            Cette politique peut être mise à jour pour tenir compte des évolutions légales et techniques.
           </p>
         </div>
       </section>
@@ -809,35 +731,64 @@ function LegalPage() {
       <Navbar />
       <section className="px-4 pt-28 pb-16">
         <div className="max-w-3xl mx-auto text-zinc-200">
-          <h1 className="text-3xl font-bold text-white mb-6">Mentions légales</h1>
-
-          <h2 className="text-xl font-semibold text-white mb-2">1. Éditeur du site</h2>
-          <p className="text-sm text-zinc-400 mb-4">
-            Le site [Nom du site] est édité par [Nom de l’entreprise], [forme juridique], au capital de [X €], immatriculée sous le numéro [SIREN], dont le siège social est situé [Adresse complète].<br />
-            Email : [email de contact]<br />
-            Directeur de la publication : [Nom du dirigeant]
+          <h1 className="text-3xl font-bold text-white mb-2">Mentions légales</h1>
+          <p className="text-sm text-zinc-500 mb-8">Dernière mise à jour : 2026</p>
+          <h2 className="text-xl font-semibold text-white mb-2">1. Éditeur du site (LCEN)</h2>
+          <p className="text-sm text-zinc-400 mb-6">
+            RGPDSimple, Auto-entrepreneur
+            <br />
+            Adresse : 84 rue pélident, 84300, Cavaillon
+            <br />
+            Email : <a href="mailto:contact@rgpdsimple.fr" className="underline text-zinc-300">contact@rgpdsimple.fr</a>
+            <br />
+            Site : <a href="https://www.rgpdsimple.fr" className="underline text-zinc-300" target="_blank" rel="noreferrer">https://www.rgpdsimple.fr</a>
           </p>
-
-          <h2 className="text-xl font-semibold text-white mb-2">2. Hébergeur</h2>
-          <p className="text-sm text-zinc-400 mb-4">
-            Le site est hébergé par [Nom de l’hébergeur], [adresse de l’hébergeur], [site web de l’hébergeur].
+          <h2 className="text-xl font-semibold text-white mb-2">2. Directeur de la publication</h2>
+          <p className="text-sm text-zinc-400 mb-6">Pierre Vuillermet (Gérant)</p>
+          <h2 className="text-xl font-semibold text-white mb-2">3. Hébergeur</h2>
+          <p className="text-sm text-zinc-400 mb-6">
+            OVH
+            <br />
+            2, rue Kellermann, 59100 Roubaix
+            <br />
+            <a href="https://www.ovhcloud.com/fr/" className="underline text-zinc-300" target="_blank" rel="noreferrer">https://www.ovhcloud.com/fr/</a>
           </p>
-
-          <h2 className="text-xl font-semibold text-white mb-2">3. Propriété intellectuelle</h2>
-          <p className="text-sm text-zinc-400 mb-4">
-            L’ensemble du contenu du site (textes, images, graphismes, logo, vidéos, icônes, etc.) est la propriété exclusive de [Nom de l’entreprise], sauf mention contraire. Toute reproduction ou représentation, même partielle, est interdite sans autorisation écrite préalable.
+          <h2 className="text-xl font-semibold text-white mb-2">4. Propriété intellectuelle</h2>
+          <p className="text-sm text-zinc-400 mb-6">
+            Tous les contenus du site (textes, images, graphismes, logo, etc.) sont protégés. Toute reproduction sans
+            autorisation écrite est interdite.
           </p>
-
-          <h2 className="text-xl font-semibold text-white mb-2">4. Données personnelles</h2>
-          <p className="text-sm text-zinc-400 mb-4">
-            Pour plus d’informations sur notre gestion des données personnelles, consultez la <a href="/politique-confidentialite" className="underline text-zinc-300">Politique de confidentialité</a>.
+          <h2 className="text-xl font-semibold text-white mb-2">5. Données personnelles</h2>
+          <p className="text-sm text-zinc-400 mb-6">
+            DPO : non désigné. Contact RGPD : <a href="mailto:contact@rgpdsimple.fr" className="underline text-zinc-300">contact@rgpdsimple.fr</a>.
+            <br />
+            Politique de confidentialité : <a href="/politique-confidentialite" className="underline text-zinc-300">consulter la page dédiée</a>.
           </p>
-
-          <h2 className="text-xl font-semibold text-white mb-2">5. Cookies</h2>
-          <p className="text-sm text-zinc-400 mb-4">
-            Les modalités d’utilisation des cookies sont détaillées sur la page <a href="/cookies" className="underline text-zinc-300">Cookies</a>.
-        </p>
-      </div>
+          <h2 className="text-xl font-semibold text-white mb-2">6. Médiateur de la consommation (B2C)</h2>
+          <p className="text-sm text-zinc-400 mb-6">
+            En cours d&apos;adhésion.
+            <br />
+            En cas de réclamation : <a href="mailto:contact@rgpdsimple.fr" className="underline text-zinc-300">contact@rgpdsimple.fr</a>
+            <br />
+            Les coordonnées du médiateur seront publiées dès validation de l&apos;adhésion.
+          </p>
+          <h2 className="text-xl font-semibold text-white mb-2">7. Point de contact (DSA)</h2>
+          <p className="text-sm text-zinc-400 mb-6">
+            <a href="mailto:contact@rgpdsimple.fr" className="underline text-zinc-300">contact@rgpdsimple.fr</a>
+          </p>
+          <h2 className="text-xl font-semibold text-white mb-2">8. Engagement environnemental (Loi REEN)</h2>
+          <p className="text-sm text-zinc-400 mb-6">Nous nous engageons à limiter l&apos;empreinte environnementale de nos services numériques en appliquant des principes d&apos;éco-conception (pages allégées, ressources optimisées, limitation des scripts non essentiels) et en nous appuyant sur un hébergement professionnel.</p>
+          <h2 className="text-xl font-semibold text-white mb-2">9. Accessibilité numérique (RGAA)</h2>
+          <p className="text-sm text-zinc-400 mb-6">
+            Statut : Totalement conforme
+            <br />
+            Contact accessibilité : <a href="mailto:contact@rgpdsimple.fr" className="underline text-zinc-300">contact@rgpdsimple.fr</a>
+          </p>
+          <h2 className="text-xl font-semibold text-white mb-2">10. Cookies</h2>
+          <p className="text-sm text-zinc-400">
+            Détails sur la page <a href="/cookies" className="underline text-zinc-300">Cookies</a>.
+          </p>
+        </div>
       </section>
     </main>
   )
@@ -849,27 +800,36 @@ function CookiesPage() {
       <Navbar />
       <section className="px-4 pt-28 pb-16">
         <div className="max-w-3xl mx-auto text-zinc-200">
-          <h1 className="text-3xl font-bold text-white mb-6">Cookies</h1>
-
-          <p className="text-sm text-zinc-400 mb-4">
-            Nous utilisons des cookies strictement nécessaires au fonctionnement du site (sécurité, session) et, le cas échéant, des cookies de mesure d’audience ou marketing uniquement avec votre consentement.
+          <h1 className="text-3xl font-bold text-white mb-2">Politique Cookies</h1>
+          <p className="text-sm text-zinc-500 mb-8">Dernière mise à jour : 2026</p>
+          <p className="text-sm text-zinc-400 mb-6">
+            Cette page explique comment RGPDSimple utilise les cookies et traceurs sur <a href="https://www.rgpdsimple.fr" className="underline text-zinc-300" target="_blank" rel="noreferrer">https://www.rgpdsimple.fr</a>.
           </p>
-
-          <h2 className="text-xl font-semibold text-white mb-2">1. Qu’est-ce qu’un cookie ?</h2>
-          <p className="text-sm text-zinc-400 mb-4">
-            Un cookie est un petit fichier texte enregistré sur votre terminal (ordinateur, smartphone, etc.) lors de la visite d’un site. Il permet, par exemple, de mémoriser vos préférences ou d’établir des statistiques.
+          <h2 className="text-xl font-semibold text-white mb-2">1. Qu&apos;est-ce qu&apos;un cookie ?</h2>
+          <p className="text-sm text-zinc-400 mb-6">
+            Un cookie est un petit fichier texte déposé sur votre terminal lors de la visite d&apos;un site.
           </p>
-
-          <h2 className="text-xl font-semibold text-white mb-2">2. Cookies utilisés</h2>
-          <ul className="list-disc list-inside text-sm text-zinc-400 mb-4">
-            <li>Cookies techniques nécessaires au fonctionnement du site (indispensables).</li>
-            <li>[Optionnel] Cookies de mesure d’audience anonymisés.</li>
-            <li>[Optionnel] Cookies marketing, uniquement si vous y consentez.</li>
+          <h2 className="text-xl font-semibold text-white mb-2">2. Catégories de cookies</h2>
+          <ul className="list-disc list-inside text-sm text-zinc-400 mb-6 space-y-1">
+            <li>Cookies strictement nécessaires (fonctionnement du site).</li>
+            <li>Cookies de mesure d&apos;audience : non utilisés actuellement.</li>
+            <li>Cookies marketing/publicitaires : non utilisés actuellement.</li>
           </ul>
-
-          <h2 className="text-xl font-semibold text-white mb-2">3. Vos choix</h2>
-          <p className="text-sm text-zinc-400 mb-4">
-            Vous pouvez paramétrer votre navigateur pour accepter ou refuser les cookies ou être informé de leur dépôt. Le refus des cookies strictement nécessaires peut dégrader le fonctionnement du site.
+          <h2 className="text-xl font-semibold text-white mb-2">3. Base légale</h2>
+          <p className="text-sm text-zinc-400 mb-6">
+            Cookies nécessaires : intérêt légitime. Cookies non essentiels : consentement.
+          </p>
+          <h2 className="text-xl font-semibold text-white mb-2">4. Durée de conservation</h2>
+          <p className="text-sm text-zinc-400 mb-6">
+            Les cookies non essentiels sont conservés au maximum 13 mois.
+          </p>
+          <h2 className="text-xl font-semibold text-white mb-2">5. Gérer vos choix</h2>
+          <p className="text-sm text-zinc-400 mb-6">
+            Vous pouvez accepter/refuser via le bandeau cookies, puis modifier vos choix à tout moment.
+          </p>
+          <h2 className="text-xl font-semibold text-white mb-2">6. Contact</h2>
+          <p className="text-sm text-zinc-400">
+            Pour toute question : <a href="mailto:contact@rgpdsimple.fr" className="underline text-zinc-300">contact@rgpdsimple.fr</a>.
           </p>
         </div>
       </section>
