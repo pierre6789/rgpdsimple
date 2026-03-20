@@ -735,7 +735,7 @@ function LegalPage() {
           <p className="text-sm text-zinc-500 mb-8">Dernière mise à jour : 2026</p>
           <h2 className="text-xl font-semibold text-white mb-2">1. Éditeur du site (LCEN)</h2>
           <p className="text-sm text-zinc-400 mb-6">
-            RGPDSimple, Auto-entrepreneur
+            RGPDSimple, Entreprise individuelle
             <br />
             Adresse : 84 rue pélident, 84300, Cavaillon
             <br />
