@@ -589,6 +589,9 @@ function LandingPage() {
             <a href="/cookies" className="hover:text-white transition-colors">
               Cookies
             </a>
+            <a href="/cgv" className="hover:text-white transition-colors">
+              CGV
+            </a>
           </div>
           <p className="mt-4 text-sm text-zinc-600">&copy; {new Date().getFullYear()} RGPD Simple</p>
         </div>
@@ -845,6 +848,99 @@ function CookiesPage() {
   )
 }
 
+function CgvSitePage() {
+  return (
+    <main className="min-h-screen bg-zinc-950">
+      <Navbar />
+      <section className="px-4 pt-28 pb-16">
+        <div className="max-w-3xl mx-auto text-zinc-200">
+          <h1 className="text-3xl font-bold text-white mb-2">Conditions générales de vente</h1>
+          <p className="text-sm text-zinc-500 mb-8">Dernière mise à jour : 2026 — RGPDSimple</p>
+
+          <h2 className="text-xl font-semibold text-white mb-2">1. Objet</h2>
+          <p className="text-sm text-zinc-400 mb-6">
+            Les présentes CGV régissent la vente en ligne du pack de documents RGPD personnalisés (fichiers numériques au
+            format PDF et guide, ci-après le « Pack ») proposé sur le site{' '}
+            <a href="https://www.rgpdsimple.fr" className="underline text-zinc-300" target="_blank" rel="noreferrer">
+              www.rgpdsimple.fr
+            </a>{' '}
+            par <strong>RGPDSimple</strong>, entreprise individuelle, 84 rue pélident, 84300 Cavaillon,{' '}
+            <a href="mailto:contact@rgpdsimple.fr" className="underline text-zinc-300">contact@rgpdsimple.fr</a>.
+          </p>
+
+          <h2 className="text-xl font-semibold text-white mb-2">2. Produits et prix</h2>
+          <p className="text-sm text-zinc-400 mb-6">
+            Le Pack comprend la génération et l&apos;envoi par email des documents indiqués sur la page d&apos;accueil au
+            moment de la commande (politique de confidentialité, mentions légales, CGV modèle client, registre des
+            traitements, bandeau cookies, guide à compléter). Le prix TTC en vigueur est affiché sur le site avant le
+            paiement. RGPDSimple se réserve le droit de modifier ses tarifs ; le prix applicable est celui affiché au
+            moment de la validation de la commande.
+          </p>
+
+          <h2 className="text-xl font-semibold text-white mb-2">3. Commande et paiement</h2>
+          <p className="text-sm text-zinc-400 mb-6">
+            La commande est passée via le formulaire du site. Le paiement est réalisé par carte bancaire via le prestataire
+            Stripe. La commande est définitive après confirmation du paiement par Stripe. Vous recevez un accusé de
+            réception par email à l&apos;adresse indiquée lors de la commande.
+          </p>
+
+          <h2 className="text-xl font-semibold text-white mb-2">4. Livraison (contenu numérique)</h2>
+          <p className="text-sm text-zinc-400 mb-6">
+            Le Pack est livré par envoi des fichiers à l&apos;adresse email fournie, en principe dans les minutes suivant la
+            confirmation du paiement. En cas de retard ou d&apos;absence de réception, contactez{' '}
+            <a href="mailto:contact@rgpdsimple.fr" className="underline text-zinc-300">contact@rgpdsimple.fr</a> en
+            indiquant l&apos;email utilisé pour la commande.
+          </p>
+
+          <h2 className="text-xl font-semibold text-white mb-2">5. Droit de rétractation et exécution immédiate</h2>
+          <p className="text-sm text-zinc-400 mb-6">
+            Pour les consommateurs, le délai légal de rétractation est de 14 jours. Le Pack étant un contenu numérique
+            fourni immédiatement après paiement et sur mesure à partir de vos réponses, vous reconnaissez qu&apos;à compter
+            de la livraison par email, l&apos;exécution du contrat a commencé avec votre accord et que, sauf droit légal
+            impératif, vous ne pouvez plus exercer votre droit de rétractation une fois la livraison effectuée. Pour toute
+            demande avant livraison, écrivez à{' '}
+            <a href="mailto:contact@rgpdsimple.fr" className="underline text-zinc-300">contact@rgpdsimple.fr</a>.
+          </p>
+
+          <h2 className="text-xl font-semibold text-white mb-2">6. Conformité et garanties</h2>
+          <p className="text-sm text-zinc-400 mb-6">
+            Vous bénéficiez de la garantie légale de conformité pour les biens numériques et des dispositions du Code de la
+            consommation applicables. Les documents sont des modèles à compléter et à adapter ; ils ne constituent pas un
+            conseil juridique personnalisé. RGPDSimple ne saurait être tenue responsable de l&apos;usage que vous faites
+            des documents sur votre site ou auprès de tiers.
+          </p>
+
+          <h2 className="text-xl font-semibold text-white mb-2">7. Option installation sur site (147 €)</h2>
+          <p className="text-sm text-zinc-400 mb-6">
+            Une prestation d&apos;installation des documents sur votre site peut être proposée séparément, sur devis ou
+            par email après achat. Elle ne fait pas partie du Pack sauf commande expresse acceptée par RGPDSimple.
+          </p>
+
+          <h2 className="text-xl font-semibold text-white mb-2">8. Médiation</h2>
+          <p className="text-sm text-zinc-400 mb-6">
+            Conformément aux articles L.612-1 et suivants du Code de la consommation, en cas de litige, le consommateur
+            peut recourir gratuitement à un médiateur de la consommation. Les coordonnées du médiateur seront communiquées
+            sur les mentions légales dès adhésion effective. En attendant :{' '}
+            <a href="mailto:contact@rgpdsimple.fr" className="underline text-zinc-300">contact@rgpdsimple.fr</a>.
+          </p>
+
+          <h2 className="text-xl font-semibold text-white mb-2">9. Données personnelles</h2>
+          <p className="text-sm text-zinc-400 mb-6">
+            Le traitement des données liées à la commande est décrit dans la{' '}
+            <a href="/politique-confidentialite" className="underline text-zinc-300">Politique de confidentialité</a>.
+          </p>
+
+          <h2 className="text-xl font-semibold text-white mb-2">10. Droit applicable et litiges</h2>
+          <p className="text-sm text-zinc-400 mb-6">
+            Les présentes CGV sont soumises au droit français. Pour les consommateurs, compétence des tribunaux conformément
+            au Code de la consommation.
+          </p>
+        </div>
+      </section>
+    </main>
+  )
+}
+
 function App() {
   return (
     <BrowserRouter>
@@ -854,6 +950,7 @@ function App() {
         <Route path="/politique-confidentialite" element={<PrivacyPage />} />
         <Route path="/mentions-legales" element={<LegalPage />} />
         <Route path="/cookies" element={<CookiesPage />} />
+        <Route path="/cgv" element={<CgvSitePage />} />
       </Routes>
       <CookieBanner />
     </BrowserRouter>
