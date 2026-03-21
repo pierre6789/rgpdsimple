@@ -1,8 +1,6 @@
 import { Request, Response } from "express";
 import { StripeService } from "../services/StripeService";
 import { OrderService } from "../services/OrderService";
-import { EMAIL_CONFIG } from "../config/email";
-
 const stripeService = new StripeService();
 const orderService = new OrderService();
 
@@ -37,7 +35,8 @@ export class SuccessController {
       const order = await orderService.getOrderById(orderId);
       const frontendUrl = process.env.APP_URL_FRONTEND || "http://localhost:5173";
       const email = encodeURIComponent(order?.customer.email ?? (session as any).customer_details?.email ?? "");
-      const supportEmail = encodeURIComponent(process.env.SUPPORT_EMAIL || EMAIL_CONFIG.from);
+      // Toujours pointer vers l'email de contact client (pas EMAIL_FROM qui peut être no-reply)
+      const supportEmail = encodeURIComponent(process.env.SUPPORT_EMAIL || "contact@rgpdsimple.fr");
 
       res.redirect(
         302,

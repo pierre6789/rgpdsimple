@@ -597,10 +597,11 @@ function LandingPage() {
   )
 }
 
+const INSTALLATION_CONTACT_EMAIL = 'contact@rgpdsimple.fr'
+
 function SuccessPage() {
   const query = useQuery()
   const email = query.get('email')
-  const supportEmail = query.get('supportEmail') || 'contact@rgpdsimple.fr'
 
   return (
     <main className="min-h-screen bg-zinc-950">
@@ -630,15 +631,15 @@ function SuccessPage() {
               Nous installons mentions légales, politique de confidentialité, CGV et bandeau cookies sur votre site.
             </p>
             <a
-              href={`mailto:${supportEmail}?subject=Installation%20RGPD%20147€&body=Email%20de%20commande%20:%20${encodeURIComponent(email || '')}`}
+              href={`mailto:${INSTALLATION_CONTACT_EMAIL}?subject=Installation%20RGPD%20147€&body=Email%20de%20commande%20:%20${encodeURIComponent(email || '')}`}
               className="shimmer-btn inline-flex items-center rounded-full bg-white text-zinc-950 hover:bg-zinc-200 px-6 py-2.5 text-sm font-medium"
             >
               Demander l'installation
             </a>
             <p className="mt-3 text-xs text-zinc-500">
               Si le bouton ne fonctionne pas, envoyez un email à{' '}
-              <a href={`mailto:${supportEmail}`} className="underline text-zinc-400 hover:text-zinc-200">
-                {supportEmail}
+              <a href={`mailto:${INSTALLATION_CONTACT_EMAIL}`} className="underline text-zinc-400 hover:text-zinc-200">
+                {INSTALLATION_CONTACT_EMAIL}
               </a>{' '}
               avec votre adresse de commande pour demander l&apos;installation.
             </p>
