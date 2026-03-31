@@ -9,8 +9,10 @@ export class StripeService {
       );
     }
 
+    // Success reste côté backend pour traiter la commande (fallback si webhook Stripe absent)
     const successUrl = `${process.env.APP_URL || "http://localhost:3000"}/success?orderId=${order.id}&session_id={CHECKOUT_SESSION_ID}`;
-    const cancelUrl = `${process.env.APP_URL || "http://localhost:3000"}/`;
+    // Cancel doit renvoyer vers le site frontend, pas vers l'API backend
+    const cancelUrl = `${process.env.APP_URL_FRONTEND || "http://localhost:5173"}/`;
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
