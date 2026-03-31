@@ -282,7 +282,7 @@ function LandingPage() {
             {[
               { num: '847', desc: 'TPE sanctionnées en 2025 pour défaut de politique de confidentialité' },
               { num: '1127+', desc: 'Artisans et TPE déjà mis en règle avec nos documents' },
-              { num: '5', desc: 'Documents obligatoires générés pour vous en quelques minutes' },
+              { num: '5', desc: 'Documents obligatoires prêts pour vous en quelques minutes' },
             ].map((stat, i) => (
               <motion.div
                 key={stat.num}
@@ -393,7 +393,7 @@ function LandingPage() {
           >
             <div className="text-center mb-6">
               <h2 className="text-2xl font-bold text-white mb-2">Mettre mon activité en règle</h2>
-              <p className="text-zinc-400 text-sm">Remplissez ce formulaire une seule fois (~2 min). Nous générons vos documents et vous les envoyons par email. On règle ça ensemble.</p>
+              <p className="text-zinc-400 text-sm">Remplissez ce formulaire une seule fois (~2 min). Nous préparons vos documents et vous les envoyons par email. On règle ça ensemble.</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -507,7 +507,7 @@ function LandingPage() {
                 {loading ? 'Redirection…' : 'Valider et recevoir mes documents'}
               </button>
             </form>
-            <p className="mt-3 text-center text-xs text-zinc-500">Paiement sécurisé par Stripe. Envoi automatique des 5 PDF par email.</p>
+            <p className="mt-3 text-center text-xs text-zinc-500">Paiement sécurisé par Stripe. Réception des 5 PDF par email.</p>
           </motion.div>
         </div>
       </section>
@@ -547,7 +547,7 @@ function LandingPage() {
             {[
               { q: "J'ai déjà un site depuis des années sans problème, suis-je vraiment concerné ?", a: "La CNIL a élargi ses contrôles aux TPE et artisans depuis 2025. Beaucoup de petites structures n'avaient pas les documents à jour et ont été mises en demeure. Avec nos 5 documents, vous couvrez les attentes habituelles et vous êtes serein en cas de contrôle." },
               { q: 'Ces documents suffisent-ils pour être conforme au RGPD ?', a: 'Ils couvrent les éléments attendus pour une TPE/artisan (information des personnes, mentions obligatoires, registre, cookies). Pour des cas très spécifiques, un accompagnement juridique reste recommandé.' },
-              { q: "Que se passe-t-il après le paiement ?", a: "Vos documents sont générés automatiquement à partir de vos réponses puis envoyés par email à l'adresse indiquée. Sur la page de confirmation, nous vous proposons aussi une option d'installation sur votre site (documents + bandeau cookies) si vous préférez nous laisser faire la mise en place." },
+              { q: "Que se passe-t-il après le paiement ?", a: "Vos documents sont préparés à partir de vos réponses puis envoyés par email à l'adresse indiquée. Sur la page de confirmation, nous vous proposons aussi une option d'installation sur votre site (documents + bandeau cookies) si vous préférez nous laisser faire la mise en place." },
               { q: "Proposez-vous d'installer les documents et le bandeau cookie sur mon site ?", a: "Oui. Après votre achat, nous vous proposons une option payante pour installer nous-mêmes les mentions légales, la politique de confidentialité, les CGV et le bandeau cookies sur votre site. Vous verrez l'offre sur la page de confirmation après le paiement ; vous pouvez aussi nous contacter par email pour en faire la demande." },
               { q: "Puis-je modifier les modèles ensuite ?", a: "Oui. Les modèles sont fournis en PDF ; vous pouvez les adapter ou faire relire par un juriste." },
             ].map((faq, i) => (
@@ -624,7 +624,7 @@ function SuccessPage() {
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold text-white mb-4">Vos documents sont en route</h1>
           <p className="text-zinc-400 mb-2">
-            Nous avons généré vos 5 documents RGPD et envoyé un email à <strong className="text-white">{email || 'votre adresse'}</strong>.
+            Vos 5 documents RGPD sont prêts et envoyés par email à <strong className="text-white">{email || 'votre adresse'}</strong>.
           </p>
           <p className="text-sm text-zinc-500 mb-8">Pensez à vérifier les spams si vous ne voyez pas l'email.</p>
 
@@ -870,7 +870,7 @@ function CgvSitePage() {
 
           <h2 className="text-xl font-semibold text-white mb-2">2. Produits et prix</h2>
           <p className="text-sm text-zinc-400 mb-6">
-            Le Pack comprend la génération et l&apos;envoi par email des documents indiqués sur la page d&apos;accueil au
+            Le Pack comprend la préparation et l&apos;envoi par email des documents indiqués sur la page d&apos;accueil au
             moment de la commande (politique de confidentialité, mentions légales, CGV modèle client, registre des
             traitements, bandeau cookies, guide à compléter). Le prix TTC en vigueur est affiché sur le site avant le
             paiement. RGPDSimple se réserve le droit de modifier ses tarifs ; le prix applicable est celui affiché au
