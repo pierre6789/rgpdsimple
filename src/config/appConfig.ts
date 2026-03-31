@@ -1,5 +1,5 @@
 export const APP_CONFIG = {
-  basePriceEuros: 1,
+  basePriceEuros: 97,
   upsellPriceEuros: 147,
   currency: "eur",
 };
