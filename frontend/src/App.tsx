@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-dom'
 import { Menu, X, ArrowRight, FileText, Shield, Cookie, BookOpen } from 'lucide-react'
@@ -605,6 +605,13 @@ const INSTALLATION_CONTACT_EMAIL = 'rgpdsimple@gmail.com'
 function SuccessPage() {
   const query = useQuery()
   const email = query.get('email')
+
+  useEffect(() => {
+    const fbq = (window as any).fbq
+    if (typeof fbq === 'function') {
+      fbq('track', 'Purchase', { value: 97.0, currency: 'EUR' })
+    }
+  }, [])
 
   return (
     <main className="min-h-screen bg-zinc-950">
