@@ -548,7 +548,7 @@ function LandingPage() {
               { q: "J'ai déjà un site depuis des années sans problème, suis-je vraiment concerné ?", a: "La CNIL a élargi ses contrôles aux TPE et artisans depuis 2025. Beaucoup de petites structures n'avaient pas les documents à jour et ont été mises en demeure. Avec nos 5 documents, vous couvrez les attentes habituelles et vous êtes serein en cas de contrôle." },
               { q: 'Ces documents suffisent-ils pour être conforme au RGPD ?', a: 'Ils couvrent les éléments attendus pour une TPE/artisan (information des personnes, mentions obligatoires, registre, cookies). Pour des cas très spécifiques, un accompagnement juridique reste recommandé.' },
               { q: "Que se passe-t-il après le paiement ?", a: "Vos documents sont préparés à partir de vos réponses puis envoyés par email à l'adresse indiquée. Sur la page de confirmation, nous vous proposons aussi une option d'installation sur votre site (documents + bandeau cookies) si vous préférez nous laisser faire la mise en place." },
-              { q: "Proposez-vous d'installer les documents et le bandeau cookie sur mon site ?", a: "Oui. Après votre achat, nous vous proposons une option payante pour installer nous-mêmes les mentions légales, la politique de confidentialité, les CGV et le bandeau cookies sur votre site. Vous verrez l'offre sur la page de confirmation après le paiement ; vous pouvez aussi nous contacter à contact@rgpdsimple.fr pour en faire la demande." },
+              { q: "Proposez-vous d'installer les documents et le bandeau cookie sur mon site ?", a: "Oui. Après votre achat, nous vous proposons une option payante pour installer nous-mêmes les mentions légales, la politique de confidentialité, les CGV et le bandeau cookies sur votre site. Vous verrez l'offre sur la page de confirmation après le paiement ; vous pouvez aussi nous contacter à rgpdsimple@gmail.com pour en faire la demande." },
               { q: "Puis-je modifier les modèles ensuite ?", a: "Oui. Les modèles sont fournis en PDF ; vous pouvez les adapter ou faire relire par un juriste." },
             ].map((faq, i) => (
               <details key={i} className="group rounded-xl bg-zinc-900 border border-zinc-800 overflow-hidden">
@@ -600,7 +600,7 @@ function LandingPage() {
   )
 }
 
-const INSTALLATION_CONTACT_EMAIL = 'contact@rgpdsimple.fr'
+const INSTALLATION_CONTACT_EMAIL = 'rgpdsimple@gmail.com'
 
 function SuccessPage() {
   const query = useQuery()
