@@ -15,7 +15,7 @@
   </head>
   <body>
     <h1>Mentions légales</h1>
-    <p><strong>Dernière mise à jour : 2026.</strong> Ce document est fourni à titre d’information et doit être complété avec les données exactes de votre structure.</p>
+    <p><strong>Dernière mise à jour : 1er avril 2026.</strong> Ce document est fourni à titre d’information et doit être complété avec les données exactes de votre structure.</p>
 
     <!-- ========== SOCLE COMMUN (LCEN) ========== -->
     <h2>1. Éditeur du site (LCEN)</h2>
@@ -23,6 +23,8 @@
     <p>
       <strong>{{nomEntreprise}}</strong><br />
       {{adresseComplete}}<br />
+      SIRET : {{numeroSiret}}<br />
+      Téléphone : {{telephoneContact}}<br />
       Email : {{emailContact}}
     </p>
 
@@ -114,7 +116,6 @@
 
     {{#if_consultant}}
     <h3>Activité : Consultant / Profession libérale</h3>
-    <p><strong>Identification :</strong> {{nomEntreprise}} est identifiée sous le numéro SIRET / URSSAF : {{numeroSiret}}.</p>
     <p><strong>Assurance responsabilité civile professionnelle :</strong> Une assurance RC Professionnelle est souscrite ({{rcProMention}}).</p>
     <p><strong>Profession réglementée :</strong> {{titreEtOrdreMention}}</p>
     {{/if_consultant}}

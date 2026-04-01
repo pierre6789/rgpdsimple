@@ -82,7 +82,7 @@ function Navbar() {
           >
             Obtenir mes documents
           </Link>
-        </div>
+      </div>
 
         <button
           className="md:hidden p-2 text-zinc-400 hover:text-white"
@@ -664,7 +664,7 @@ function PrivacyPage() {
       <section className="px-4 pt-28 pb-16">
         <div className="max-w-3xl mx-auto text-zinc-200">
           <h1 className="text-3xl font-bold text-white mb-2">Politique de confidentialité</h1>
-          <p className="text-sm text-zinc-500 mb-8">Dernière mise à jour : 2026</p>
+          <p className="text-sm text-zinc-500 mb-8">Dernière mise à jour : 1er avril 2026</p>
           <p className="text-sm text-zinc-400 mb-6">
             Cette politique explique comment <strong>RGPDSimple</strong> traite les données personnelles,
             conformément au RGPD et à la loi « Informatique et Libertés ».
@@ -678,6 +678,8 @@ function PrivacyPage() {
             Email : <a href="mailto:contact@rgpdsimple.fr" className="underline text-zinc-300">contact@rgpdsimple.fr</a>
             <br />
             DPO : non désigné. Pour l&apos;exercice de vos droits, contactez : <a href="mailto:contact@rgpdsimple.fr" className="underline text-zinc-300">contact@rgpdsimple.fr</a>
+            <br />
+            Téléphone : <a href="tel:+33756966128" className="underline text-zinc-300">07 56 96 61 28</a>
           </p>
           <h2 className="text-xl font-semibold text-white mb-2">2. Données collectées</h2>
           <ul className="text-sm text-zinc-400 mb-6 list-disc list-inside space-y-1">
@@ -712,11 +714,13 @@ function PrivacyPage() {
             <br />
             Contact : <a href="mailto:contact@rgpdsimple.fr" className="underline text-zinc-300">contact@rgpdsimple.fr</a>.
             <br />
+            Nous répondrons à votre demande dans un délai d&apos;un mois.
+            <br />
             Réclamation CNIL : <a href="https://www.cnil.fr/plainte" className="underline text-zinc-300" target="_blank" rel="noreferrer">https://www.cnil.fr/plainte</a>.
           </p>
           <h2 className="text-xl font-semibold text-white mb-2">7. Sécurité des données</h2>
           <p className="text-sm text-zinc-400 mb-6">
-            Mesures mises en œuvre : accès restreint, mots de passe robustes, MFA (si disponible), chiffrement et sauvegardes.
+            Mesures mises en œuvre : accès restreint, mots de passe robustes, chiffrement et sauvegardes (l&apos;authentification à deux facteurs n&apos;est pas utilisée sur les accès courants).
           </p>
           <h2 className="text-xl font-semibold text-white mb-2">8. Cookies</h2>
           <p className="text-sm text-zinc-400 mb-6">
@@ -743,14 +747,18 @@ function LegalPage() {
       <section className="px-4 pt-28 pb-16">
         <div className="max-w-3xl mx-auto text-zinc-200">
           <h1 className="text-3xl font-bold text-white mb-2">Mentions légales</h1>
-          <p className="text-sm text-zinc-500 mb-8">Dernière mise à jour : 2026</p>
+          <p className="text-sm text-zinc-500 mb-8">Dernière mise à jour : 1er avril 2026</p>
           <h2 className="text-xl font-semibold text-white mb-2">1. Éditeur du site (LCEN)</h2>
           <p className="text-sm text-zinc-400 mb-6">
             RGPDSimple, Entreprise individuelle
             <br />
+            SIRET : 92108885200022
+            <br />
             Adresse : 84 rue pélident, 84300, Cavaillon
             <br />
             Email : <a href="mailto:contact@rgpdsimple.fr" className="underline text-zinc-300">contact@rgpdsimple.fr</a>
+            <br />
+            Téléphone : <a href="tel:+33756966128" className="underline text-zinc-300">07 56 96 61 28</a>
             <br />
             Site : <a href="https://www.rgpdsimple.fr" className="underline text-zinc-300" target="_blank" rel="noreferrer">https://www.rgpdsimple.fr</a>
           </p>
@@ -812,7 +820,7 @@ function CookiesPage() {
       <section className="px-4 pt-28 pb-16">
         <div className="max-w-3xl mx-auto text-zinc-200">
           <h1 className="text-3xl font-bold text-white mb-2">Politique Cookies</h1>
-          <p className="text-sm text-zinc-500 mb-8">Dernière mise à jour : 2026</p>
+          <p className="text-sm text-zinc-500 mb-8">Dernière mise à jour : 1er avril 2026</p>
           <p className="text-sm text-zinc-400 mb-6">
             Cette page explique comment RGPDSimple utilise les cookies et traceurs sur <a href="https://www.rgpdsimple.fr" className="underline text-zinc-300" target="_blank" rel="noreferrer">https://www.rgpdsimple.fr</a>.
           </p>
@@ -841,8 +849,8 @@ function CookiesPage() {
           <h2 className="text-xl font-semibold text-white mb-2">6. Contact</h2>
           <p className="text-sm text-zinc-400">
             Pour toute question : <a href="mailto:contact@rgpdsimple.fr" className="underline text-zinc-300">contact@rgpdsimple.fr</a>.
-          </p>
-        </div>
+        </p>
+      </div>
       </section>
     </main>
   )
@@ -855,7 +863,7 @@ function CgvSitePage() {
       <section className="px-4 pt-28 pb-16">
         <div className="max-w-3xl mx-auto text-zinc-200">
           <h1 className="text-3xl font-bold text-white mb-2">Conditions générales de vente</h1>
-          <p className="text-sm text-zinc-500 mb-8">Dernière mise à jour : 2026 — RGPDSimple</p>
+          <p className="text-sm text-zinc-500 mb-8">Dernière mise à jour : 1er avril 2026 — RGPDSimple</p>
 
           <h2 className="text-xl font-semibold text-white mb-2">1. Objet</h2>
           <p className="text-sm text-zinc-400 mb-6">
@@ -864,8 +872,9 @@ function CgvSitePage() {
             <a href="https://www.rgpdsimple.fr" className="underline text-zinc-300" target="_blank" rel="noreferrer">
               www.rgpdsimple.fr
             </a>{' '}
-            par <strong>RGPDSimple</strong>, entreprise individuelle, 84 rue pélident, 84300 Cavaillon,{' '}
-            <a href="mailto:contact@rgpdsimple.fr" className="underline text-zinc-300">contact@rgpdsimple.fr</a>.
+            par <strong>RGPDSimple</strong>, entreprise individuelle, SIRET 92108885200022, 84 rue pélident, 84300 Cavaillon,{' '}
+            <a href="mailto:contact@rgpdsimple.fr" className="underline text-zinc-300">contact@rgpdsimple.fr</a>,{' '}
+            <a href="tel:+33756966128" className="underline text-zinc-300">07 56 96 61 28</a>.
           </p>
 
           <h2 className="text-xl font-semibold text-white mb-2">2. Produits et prix</h2>
@@ -886,13 +895,22 @@ function CgvSitePage() {
 
           <h2 className="text-xl font-semibold text-white mb-2">4. Livraison (contenu numérique)</h2>
           <p className="text-sm text-zinc-400 mb-6">
-            Le Pack est livré par envoi des fichiers à l&apos;adresse email fournie, en principe dans les minutes suivant la
-            confirmation du paiement. En cas de retard ou d&apos;absence de réception, contactez{' '}
+            Le Pack est livré par envoi des fichiers à l&apos;adresse email fournie, au plus tard sous 24h ouvrées à compter
+            de la confirmation du paiement. En cas de retard ou d&apos;absence de réception, contactez{' '}
             <a href="mailto:contact@rgpdsimple.fr" className="underline text-zinc-300">contact@rgpdsimple.fr</a> en
             indiquant l&apos;email utilisé pour la commande.
           </p>
 
-          <h2 className="text-xl font-semibold text-white mb-2">5. Droit de rétractation et exécution immédiate</h2>
+          <h2 className="text-xl font-semibold text-white mb-2">5. Licence d&apos;utilisation du Pack</h2>
+          <p className="text-sm text-zinc-400 mb-6">
+            Les documents fournis sont destinés à un usage exclusivement lié au site ou à l&apos;activité dont les
+            caractéristiques ont été renseignées lors de la commande (notamment l&apos;URL du site indiquée). Vous pouvez
+            adapter et modifier ces documents pour vos besoins propres. Toute cession, revente, sous-licence ou mise à
+            disposition à des tiers des fichiers livrés, même modifiés, est interdite sans accord écrit préalable de
+            RGPDSimple.
+          </p>
+
+          <h2 className="text-xl font-semibold text-white mb-2">6. Droit de rétractation et exécution immédiate</h2>
           <p className="text-sm text-zinc-400 mb-6">
             Pour les consommateurs, le délai légal de rétractation est de 14 jours. Le Pack étant un contenu numérique
             fourni immédiatement après paiement et sur mesure à partir de vos réponses, vous reconnaissez qu&apos;à compter
@@ -902,7 +920,7 @@ function CgvSitePage() {
             <a href="mailto:contact@rgpdsimple.fr" className="underline text-zinc-300">contact@rgpdsimple.fr</a>.
           </p>
 
-          <h2 className="text-xl font-semibold text-white mb-2">6. Conformité et garanties</h2>
+          <h2 className="text-xl font-semibold text-white mb-2">7. Conformité et garanties</h2>
           <p className="text-sm text-zinc-400 mb-6">
             Vous bénéficiez de la garantie légale de conformité pour les biens numériques et des dispositions du Code de la
             consommation applicables. Les documents sont des modèles à compléter et à adapter ; ils ne constituent pas un
@@ -910,13 +928,13 @@ function CgvSitePage() {
             des documents sur votre site ou auprès de tiers.
           </p>
 
-          <h2 className="text-xl font-semibold text-white mb-2">7. Option installation sur site (147 €)</h2>
+          <h2 className="text-xl font-semibold text-white mb-2">8. Option installation sur site (147 €)</h2>
           <p className="text-sm text-zinc-400 mb-6">
             Une prestation d&apos;installation des documents sur votre site peut être proposée séparément, sur devis ou
             par email après achat. Elle ne fait pas partie du Pack sauf commande expresse acceptée par RGPDSimple.
           </p>
 
-          <h2 className="text-xl font-semibold text-white mb-2">8. Médiation</h2>
+          <h2 className="text-xl font-semibold text-white mb-2">9. Médiation</h2>
           <p className="text-sm text-zinc-400 mb-6">
             Conformément aux articles L.612-1 et suivants du Code de la consommation, en cas de litige, le consommateur
             peut recourir gratuitement à un médiateur de la consommation. Les coordonnées du médiateur seront communiquées
@@ -924,13 +942,13 @@ function CgvSitePage() {
             <a href="mailto:contact@rgpdsimple.fr" className="underline text-zinc-300">contact@rgpdsimple.fr</a>.
           </p>
 
-          <h2 className="text-xl font-semibold text-white mb-2">9. Données personnelles</h2>
+          <h2 className="text-xl font-semibold text-white mb-2">10. Données personnelles</h2>
           <p className="text-sm text-zinc-400 mb-6">
             Le traitement des données liées à la commande est décrit dans la{' '}
             <a href="/politique-confidentialite" className="underline text-zinc-300">Politique de confidentialité</a>.
           </p>
 
-          <h2 className="text-xl font-semibold text-white mb-2">10. Droit applicable et litiges</h2>
+          <h2 className="text-xl font-semibold text-white mb-2">11. Droit applicable et litiges</h2>
           <p className="text-sm text-zinc-400 mb-6">
             Les présentes CGV sont soumises au droit français. Pour les consommateurs, compétence des tribunaux conformément
             au Code de la consommation.

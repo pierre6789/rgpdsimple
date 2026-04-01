@@ -63,6 +63,7 @@ export class TemplateService {
       assuranceDecennaleZone: "[Zone géographique de couverture – À compléter]",
       // Secteur consultant
       numeroSiret: "[SIRET / numéro URSSAF – À compléter]",
+      telephoneContact: "[Téléphone – À compléter]",
       rcProMention: "[Référence et coordonnées de l'assurance RC Pro – À compléter]",
       titreEtOrdreMention: "[Si profession réglementée : titre et ordre professionnel – À compléter ou « Non applicable »]",
       // Secteur e-commerce
@@ -85,7 +86,8 @@ export class TemplateService {
       dureesSecteur: "",
       sousTraitantsMention: "Liste des sous-traitants ayant accès à des données (hébergeur, outil de paiement, emailing, etc.) : [À compléter – nom, finalité, pays]. Ils sont soumis à des obligations contractuelles conformes au RGPD (art. 28).",
       transfertsHorsUEMention: "[À compléter si transferts hors UE : pays concernés et garanties (Clauses Contractuelles Types / Décision d’adéquation / autres garanties appropriées). Si aucun transfert hors UE : « Aucun transfert de données en dehors de l’Union européenne. »]",
-      securiteMention: "Nous mettons en œuvre des mesures techniques et organisationnelles adaptées pour protéger vos données (accès restreint, sauvegardes, protocoles sécurisés). Selon nos moyens, nous pouvons recourir au chiffrement des données sensibles et à des mécanismes d’authentification renforcée (ex. MFA) pour les accès critiques. [Précisez vos mesures si besoin.]",
+      securiteMention:
+        "Nous mettons en œuvre des mesures techniques et organisationnelles adaptées pour protéger vos données (accès restreint, mots de passe robustes, chiffrement lorsque pertinent, sauvegardes). L’authentification à deux facteurs (MFA) n’est pas utilisée sur les accès courants. [Précisez vos mesures complémentaires si besoin.]",
       aiActMention: "Nous n’utilisons pas d’outils d’intelligence artificielle (chatbots IA, algorithme de prise de décision automatisée ou de profilage) pour traiter vos données. Si tel devait être le cas à l’avenir, nous vous en informerions et assurerions la transparence requise par le Règlement (UE) sur l’IA (AI Act). [À adapter si vous utilisez déjà des outils IA.]",
     };
 
@@ -118,6 +120,7 @@ export class TemplateService {
       .replace(/{{assuranceDecennaleCoordonnees}}/g, defaults.assuranceDecennaleCoordonnees)
       .replace(/{{assuranceDecennaleZone}}/g, defaults.assuranceDecennaleZone)
       .replace(/{{numeroSiret}}/g, defaults.numeroSiret)
+      .replace(/{{telephoneContact}}/g, defaults.telephoneContact)
       .replace(/{{rcProMention}}/g, defaults.rcProMention)
       .replace(/{{titreEtOrdreMention}}/g, defaults.titreEtOrdreMention)
       .replace(/{{iduRep}}/g, defaults.iduRep)
