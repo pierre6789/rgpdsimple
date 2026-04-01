@@ -144,6 +144,7 @@ function LandingPage() {
   })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [cgvAccepted, setCgvAccepted] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -152,13 +153,17 @@ function LandingPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!cgvAccepted) {
+      setError('Vous devez accepter les CGV pour continuer.')
+      return
+    }
     setError(null)
     setLoading(true)
     try {
       const res = await fetch('https://rgpdsimple.onrender.com/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, cgvAccepted: true }),
       })
       if (!res.ok) {
         const data = await res.json().catch(() => null)
@@ -497,11 +502,29 @@ function LandingPage() {
                 </div>
               </div>
 
+              <div className="pt-1">
+                <label className="flex items-start gap-3 text-sm text-zinc-300 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={cgvAccepted}
+                    onChange={(e) => setCgvAccepted(e.target.checked)}
+                    className="mt-1 h-4 w-4 rounded border-zinc-600 bg-zinc-800 text-zinc-100 focus:ring-2 focus:ring-zinc-500"
+                  />
+                  <span>
+                    J&apos;accepte les{' '}
+                    <Link to="/cgv" className="text-[#2171d6] underline hover:text-blue-400">
+                      CGV
+                    </Link>{' '}
+                    et je reconnais que la livraison commence immédiatement après paiement.
+                  </span>
+                </label>
+              </div>
+
               {error && <p className="text-sm text-red-400">{error}</p>}
 
               <button
                 type="submit"
-                disabled={loading}
+                disabled={loading || !cgvAccepted}
                 className="shimmer-btn w-full rounded-full bg-white text-zinc-950 hover:bg-zinc-200 py-3.5 px-6 text-base font-medium disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {loading ? 'Redirection…' : 'Valider et recevoir mes documents'}

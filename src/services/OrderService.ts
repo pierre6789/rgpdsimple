@@ -37,17 +37,26 @@ function orderFromStripeSession(session: Stripe.Checkout.Session): Order {
     collectsEmails: m.customer_collectsEmails === "1",
     hasCookies: m.customer_hasCookies === "1",
   };
+  const cgvConsent: Order["cgvConsent"] =
+    m.cgv_consent_accepted === "1"
+      ? {
+          accepted: true,
+          acceptedAt: m.cgv_consent_at || now,
+          clientIp: m.cgv_consent_ip || "",
+        }
+      : undefined;
   return {
     id: orderId,
     customer,
     status: "paid_processing",
     createdAt: now,
     updatedAt: now,
+    cgvConsent,
   };
 }
 
 export class OrderService {
-  async createPendingOrder(customer: CustomerInput): Promise<Order> {
+  async createPendingOrder(customer: CustomerInput, cgvConsent: { acceptedAt: string; clientIp: string }): Promise<Order> {
     const orders = await storage.getAllOrders();
     const now = new Date().toISOString();
 
@@ -57,6 +66,11 @@ export class OrderService {
       status: "pending_payment",
       createdAt: now,
       updatedAt: now,
+      cgvConsent: {
+        accepted: true,
+        acceptedAt: cgvConsent.acceptedAt,
+        clientIp: cgvConsent.clientIp,
+      },
     };
 
     orders.push(order);
@@ -95,6 +109,15 @@ export class OrderService {
       throw new Error("Commande introuvable (fichier et metadata Stripe vides)");
     }
 
+    if (session?.metadata && !order.cgvConsent && session.metadata.cgv_consent_accepted === "1") {
+      const m = session.metadata;
+      order.cgvConsent = {
+        accepted: true,
+        acceptedAt: m.cgv_consent_at || new Date().toISOString(),
+        clientIp: m.cgv_consent_ip || "",
+      };
+    }
+
     order.status = "paid_processing";
     order.updatedAt = new Date().toISOString();
     try {
@@ -124,6 +147,7 @@ export class OrderService {
     order.status = "completed";
     order.sentAt = new Date().toISOString();
     order.updatedAt = new Date().toISOString();
+    order.paymentConfirmedAt = new Date().toISOString();
     try {
       await this.updateOrder(order);
     } catch {

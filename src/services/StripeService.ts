@@ -41,6 +41,9 @@ export class StripeService {
         customer_website: order.customer.website || "",
         customer_collectsEmails: order.customer.collectsEmails ? "1" : "0",
         customer_hasCookies: order.customer.hasCookies ? "1" : "0",
+        cgv_consent_accepted: order.cgvConsent?.accepted ? "1" : "0",
+        cgv_consent_at: order.cgvConsent?.acceptedAt || "",
+        cgv_consent_ip: order.cgvConsent?.clientIp || "",
       },
     });
 
