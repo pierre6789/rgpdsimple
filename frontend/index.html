@@ -40,5 +40,22 @@
     <!-- End Google Tag Manager (noscript) -->
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      (function () {
+        var p = document.location.pathname || '';
+        if (p !== '/success' && !p.endsWith('/success')) return;
+        function track() {
+          if (typeof fbq === 'function') {
+            fbq('track', 'Purchase', {
+              value: 97.0,
+              currency: 'EUR'
+            });
+          } else {
+            setTimeout(track, 50);
+          }
+        }
+        track();
+      })();
+    </script>
   </body>
 </html>
