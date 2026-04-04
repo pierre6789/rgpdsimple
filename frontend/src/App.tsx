@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-dom'
-import { Menu, X, ArrowRight, FileText, Shield, Cookie, BookOpen } from 'lucide-react'
+import { Menu, X, ArrowRight, FileText, Shield, Cookie, BookOpen, Star } from 'lucide-react'
 import { CookieBanner } from './CookieBanner'
 import './App.css'
 
@@ -131,6 +131,51 @@ const textReveal = {
     transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const, delay: i * 0.1 },
   }),
 }
+
+const CLIENT_TESTIMONIALS = [
+  {
+    quote:
+      'Enfin des documents clairs, pas un jargon incompréhensible. J’ai tout mis en ligne en une après-midi, le bandeau cookies inclus.',
+    firstName: 'Sophie',
+    role: 'Coiffeuse indépendante',
+    city: 'Lyon',
+  },
+  {
+    quote:
+      'Je traînais ça depuis des mois. Le pack correspond à mon activité et le registre m’a évité une erreur sur les traitements.',
+    firstName: 'Marc',
+    role: 'Artisan électricien',
+    city: 'Toulouse',
+  },
+  {
+    quote:
+      'Site e-commerce : la politique de confidentialité et les CGV étaient le point bloquant. Reçu par email, je n’ai eu qu’à adapter deux détails.',
+    firstName: 'Julie',
+    role: 'Gérante e-commerce',
+    city: 'Bordeaux',
+  },
+  {
+    quote:
+      'On nous demandait une politique RGPD pour une livraison partenaire. Rapide, propre, et le guide explique quoi modifier sur les allergènes.',
+    firstName: 'Thomas',
+    role: 'Restaurateur',
+    city: 'Nantes',
+  },
+  {
+    quote:
+      'En freelance, je voulais quelque chose de sérieux pour mes clients B2B. Les mentions et la politique sont cohérentes avec mon site.',
+    firstName: 'Claire',
+    role: 'Consultante en stratégie',
+    city: 'Paris',
+  },
+  {
+    quote:
+      'Petit commerce de quartier : pas le temps de m’y mettre. Un paiement, les PDF dans la boîte mail, et j’ai pu me concentrer sur la vente.',
+    firstName: 'Ahmed',
+    role: 'Commerçant',
+    city: 'Lille',
+  },
+] as const
 
 function LandingPage() {
   const [form, setForm] = useState<CheckoutPayload>({
@@ -384,6 +429,53 @@ function LandingPage() {
               </motion.div>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* Avis clients */}
+      <section className="py-24 px-4 border-t border-zinc-800/80">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-14"
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+              <span className="inline-block border-b-2 border-[#2171d6] pb-2">Avis clients</span>
+            </h2>
+            <p className="text-zinc-400 max-w-xl mx-auto">
+              Des TPE et artisans comme vous qui ont mis leur conformité RGPD en place sans s&apos;y perdre.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {CLIENT_TESTIMONIALS.map((t, i) => (
+              <motion.article
+                key={`${t.firstName}-${t.city}`}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: i * 0.06 }}
+                className="flex flex-col p-6 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-zinc-600 transition-colors"
+              >
+                <div className="flex gap-0.5 mb-4" aria-hidden>
+                  {Array.from({ length: 5 }).map((_, si) => (
+                    <Star key={si} className="w-4 h-4 shrink-0 fill-amber-400/90 text-amber-400" strokeWidth={0} />
+                  ))}
+                </div>
+                <p className="text-sm text-zinc-300 leading-relaxed flex-1 mb-6">&ldquo;{t.quote}&rdquo;</p>
+                <div className="pt-4 border-t border-zinc-800">
+                  <p className="text-sm font-semibold text-white">{t.firstName}</p>
+                  <p className="text-xs text-zinc-500 mt-0.5">
+                    {t.role}
+                    <span className="text-zinc-600"> · </span>
+                    {t.city}
+                  </p>
+                </div>
+              </motion.article>
+            ))}
+          </div>
         </div>
       </section>
 
