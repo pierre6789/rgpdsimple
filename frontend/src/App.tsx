@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-dom'
+import { BrowserRouter, Link, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import { Menu, X, ArrowRight, FileText, Shield, Cookie, BookOpen, Star } from 'lucide-react'
 import { CookieBanner } from './CookieBanner'
 import './App.css'
@@ -44,9 +44,26 @@ const navItems = [
   { label: 'FAQ', href: '#faq' },
 ]
 
+function scrollToFormSection() {
+  document.getElementById('form')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
+
 function Navbar() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  const goToForm = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    setMobileOpen(false)
+    if (location.pathname === '/') {
+      scrollToFormSection()
+      return
+    }
+    navigate('/')
+    window.setTimeout(() => scrollToFormSection(), 150)
+  }
 
   return (
     <motion.header
@@ -84,12 +101,13 @@ function Navbar() {
         </div>
 
         <div className="hidden md:block shrink-0">
-          <Link
-            to="/#form"
+          <a
+            href="/#form"
+            onClick={goToForm}
             className="shimmer-btn inline-flex items-center justify-center rounded-full bg-white text-zinc-950 hover:bg-zinc-200 px-4 py-2 text-sm font-medium transition-colors"
           >
             Obtenir mes documents
-          </Link>
+          </a>
       </div>
 
         <button
@@ -118,13 +136,13 @@ function Navbar() {
                 {item.label}
               </a>
             ))}
-            <Link
-              to="/#form"
+            <a
+              href="/#form"
+              onClick={goToForm}
               className="shimmer-btn rounded-full bg-white text-zinc-950 py-3 px-4 text-center text-sm font-medium"
-              onClick={() => setMobileOpen(false)}
             >
               Obtenir mes documents
-            </Link>
+            </a>
           </div>
         </motion.div>
       )}
@@ -488,7 +506,7 @@ function LandingPage() {
       </section>
 
       {/* Form + CTA */}
-      <section id="form" className="py-24 px-4">
+      <section id="form" className="scroll-mt-28 py-24 px-4">
         <div className="max-w-xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
