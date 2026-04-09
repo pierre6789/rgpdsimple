@@ -516,7 +516,12 @@ function LandingPage() {
               </div>
 
               <div>
-                <label htmlFor="businessType" className="block text-sm font-medium text-zinc-300 mb-1">Type d'activité</label>
+                <label htmlFor="businessType" className="block text-sm font-medium text-zinc-300 mb-1">
+                  Type d&apos;activité
+                  <span className="block text-xs font-normal text-zinc-500 mt-0.5">
+                    Regroupé par famille — ordre alphabétique dans chaque groupe
+                  </span>
+                </label>
                 <select
                   id="businessType"
                   name="businessType"
@@ -526,22 +531,34 @@ function LandingPage() {
                   className="w-full px-4 py-2.5 rounded-lg bg-zinc-800 border border-zinc-700 text-white focus:outline-none focus:ring-2 focus:ring-zinc-600"
                 >
                   <option value="">Sélectionnez…</option>
-                  <option value="restaurant">Restaurant</option>
-                  <option value="coiffeur">Coiffeur</option>
-                  <option value="garage">Garage</option>
-                  <option value="commerce">Commerce</option>
-                  <option value="artisan_btp">Artisan BTP</option>
-                  <option value="consultant">Consultant</option>
-                  <option value="ecommerce">E-commerce</option>
-                  <option value="professionnel_sante">Professionnel de santé</option>
-                  <option value="comptable_expert">Comptable / Expert-comptable</option>
-                  <option value="agence_immobiliere">Agence immobilière</option>
-                  <option value="photographe">Photographe</option>
-                  <option value="coach_therapeute">Coach / Thérapeute</option>
-                  <option value="auto_ecole">Auto-école</option>
-                  <option value="veterinaire">Vétérinaire</option>
-                  <option value="avocat">Avocat / Juriste</option>
-                  <option value="autre">Autre</option>
+                  <optgroup label="Commerce, vente & immobilier">
+                    <option value="agence_immobiliere">Agence immobilière</option>
+                    <option value="commerce">Commerce</option>
+                    <option value="ecommerce">E-commerce</option>
+                  </optgroup>
+                  <optgroup label="Bâtiment, automobile & artisanat">
+                    <option value="artisan_btp">Artisan BTP</option>
+                    <option value="auto_ecole">Auto-école</option>
+                    <option value="garage">Garage</option>
+                  </optgroup>
+                  <optgroup label="Conseil, droit & finance">
+                    <option value="avocat">Avocat / Juriste</option>
+                    <option value="comptable_expert">Comptable / Expert-comptable</option>
+                    <option value="consultant">Consultant</option>
+                  </optgroup>
+                  <optgroup label="Santé, bien-être & animaux">
+                    <option value="coach_therapeute">Coach / Thérapeute</option>
+                    <option value="professionnel_sante">Professionnel de santé</option>
+                    <option value="veterinaire">Vétérinaire</option>
+                  </optgroup>
+                  <optgroup label="Accueil du public & création">
+                    <option value="coiffeur">Coiffeur</option>
+                    <option value="photographe">Photographe</option>
+                    <option value="restaurant">Restaurant</option>
+                  </optgroup>
+                  <optgroup label="Autre">
+                    <option value="autre">Autre</option>
+                  </optgroup>
                 </select>
               </div>
 
