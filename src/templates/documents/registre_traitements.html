@@ -215,6 +215,142 @@
     </div>
     {{/if_ecommerce}}
 
+    {{#if_professionnel_sante}}
+    <div class="fiche">
+      <h2>Fiche 4 – Soins, dossiers patients et rendez-vous (Professionnel de santé)</h2>
+      <table>
+        <tr><th>Nom du traitement</th><td>Dossier de soins, rendez-vous en ligne, facturation des actes</td></tr>
+        <tr><th>Finalités</th><td>Prise en charge ; suivi des soins ; prise de RDV ; facturation ; coordination avec d’autres professionnels si nécessaire ; obligations légales et déontologiques.</td></tr>
+        <tr><th>Catégories de personnes concernées</th><td>Patients, représentants légaux des mineurs.</td></tr>
+        <tr><th>Catégories de données</th><td><strong>Données de santé (art. 9 RGPD) :</strong> motifs de consultation, antécédents, comptes rendus, imagerie, questionnaires. Données d’identité et de contact. Données issues des outils de prise de RDV en ligne.</td></tr>
+        <tr><th>Base légale</th><td>Art. 9-2 (h, i) et bases du paragraphe 2 selon le cas ; exécution du contrat de soins ; obligations légales (facturation, déclarations).</td></tr>
+        <tr><th>Destinataires / sous-traitants</th><td>Logiciel métier, hébergeur HDS si applicable, plateforme de RDV, tiers payant ou assurance si concerné. Secret professionnel : accès strictement limité.</td></tr>
+        <tr><th>Transferts hors UE</th><td>{{transfertsHorsUERegistre}}</td></tr>
+        <tr><th>Durée de conservation</th><td>Selon obligations légales et déontologie (souvent longues pour les dossiers médicaux). RDV : données limitées à la gestion du planning.</td></tr>
+        <tr><th>Mesures de sécurité</th><td>Secret professionnel ; accès sur habilitation ; chiffrement ; traçabilité des accès si exigé ; hébergement conforme si données de santé.</td></tr>
+      </table>
+    </div>
+    {{/if_professionnel_sante}}
+
+    {{#if_comptable_expert}}
+    <div class="fiche">
+      <h2>Fiche 4 – Dossiers clients, fiscalité et données bancaires (Comptable / Expert-comptable)</h2>
+      <table>
+        <tr><th>Nom du traitement</th><td>Tenue, révision, certification et conseil — données clients</td></tr>
+        <tr><th>Finalités</th><td>Établissement des comptes, déclarations fiscales et sociales, missions légales (CAC, etc.), conseil ; récupération de pièces et flux bancaires avec mandat du client.</td></tr>
+        <tr><th>Catégories de personnes concernées</th><td>Dirigeants et contacts des entreprises clientes ; salariés des clients lorsque données transmises pour la paie ou les DS.</td></tr>
+        <tr><th>Catégories de données</th><td>Pièces comptables, liasses, RIB, relevés bancaires (via agrégation ou import), données fiscales, parfois données RH agrégées ou nominatives selon mission.</td></tr>
+        <tr><th>Base légale</th><td>Exécution du contrat de mission (art. 6-1-b) ; obligation légale (art. 6-1-c) pour missions réglementées ; mandat du client pour l’accès aux comptes bancaires.</td></tr>
+        <tr><th>Destinataires / sous-traitants</th><td>Logiciels comptables, outils de télétransmission, banques (via mandat), hébergeur. Contrats art. 28 et secret professionnel.</td></tr>
+        <tr><th>Transferts hors UE</th><td>{{transfertsHorsUERegistre}}</td></tr>
+        <tr><th>Durée de conservation</th><td>10 ans pour nombre de documents comptables et fiscaux ; archivage sécurisé des dossiers clients.</td></tr>
+        <tr><th>Mesures de sécurité</th><td>Accès par collaborateur habilité ; cloisonnement des dossiers ; sauvegardes chiffrées ; politique de conservation des mandats bancaires.</td></tr>
+      </table>
+    </div>
+    {{/if_comptable_expert}}
+
+    {{#if_agence_immobiliere}}
+    <div class="fiche">
+      <h2>Fiche 4 – Prospection, visites et dossiers transaction / gestion (Agence immobilière)</h2>
+      <table>
+        <tr><th>Nom du traitement</th><td>Prospection, mandats, visites, dossiers locataires et acquéreurs</td></tr>
+        <tr><th>Finalités</th><td>Recherche de biens et de clients ; organisation des visites ; constitution des dossiers (vente, location) ; transmission aux propriétaires et bailleurs ; obligations légales (Loi Hoguet, lutte anti-blanchiment si applicable).</td></tr>
+        <tr><th>Catégories de personnes concernées</th><td>Prospects vendeurs et acquéreurs ; locataires ; garants ; copropriétaires selon missions.</td></tr>
+        <tr><th>Catégories de données</th><td>Identité, coordonnées, pièces d’identité, justificatifs de ressources, bulletins de salaire, avis d’imposition, références bancaires, historique des visites et offres.</td></tr>
+        <tr><th>Base légale</th><td>Exécution du mandat ou du contrat (art. 6-1-b) ; intérêt légitime pour la prospection (art. 6-1-f) ou consentement ; obligation légale pour certaines vérifications.</td></tr>
+        <tr><th>Destinataires / sous-traitants</th><td>Portails immobiliers, logiciels métier, banques pour dossiers de financement, notaires si transmission. Préciser les flux.</td></tr>
+        <tr><th>Transferts hors UE</th><td>{{transfertsHorsUERegistre}}</td></tr>
+        <tr><th>Durée de conservation</th><td>Durée du mandat + obligations légales et prescription ; prospects : 3 ans après dernier contact si non converti.</td></tr>
+        <tr><th>Mesures de sécurité</th><td>Accès restreint aux dossiers ; conservation sécurisée des pièces sensibles ; formation LCB-FT si applicable.</td></tr>
+      </table>
+    </div>
+    {{/if_agence_immobiliere}}
+
+    {{#if_photographe}}
+    <div class="fiche">
+      <h2>Fiche 4 – Prises de vue, galeries et livrables (Photographe)</h2>
+      <table>
+        <tr><th>Nom du traitement</th><td>Shootings, livraison de fichiers, galeries clients en ligne</td></tr>
+        <tr><th>Finalités</th><td>Exécution des prestations ; mise à disposition sécurisée des galeries ; facturation ; portfolio et promotion avec consentement.</td></tr>
+        <tr><th>Catégories de personnes concernées</th><td>Clients ; modèles et personnes figurant sur les clichés.</td></tr>
+        <tr><th>Catégories de données</th><td>Coordonnées ; images identifiables (données biométriques indirectes) ; métadonnées ; accès par lien/mot de passe aux galeries.</td></tr>
+        <tr><th>Base légale</th><td>Exécution du contrat (art. 6-1-b) ; consentement pour publication et usage commercial des images (art. 6-1-a) ; droit à l’image.</td></tr>
+        <tr><th>Destinataires / sous-traitants</th><td>Hébergeur de galeries (Pixieset, SmugMug, cloud, etc.), retoucheurs externes si sous-traitance.</td></tr>
+        <tr><th>Transferts hors UE</th><td>{{transfertsHorsUERegistre}}</td></tr>
+        <tr><th>Durée de conservation</th><td>Durée contractuelle des galeries ; archivage des fichiers bruts selon accord ; suppression sur demande.</td></tr>
+        <tr><th>Mesures de sécurité</th><td>Liens non indexés, mots de passe, HTTPS ; contrats de cession et d’utilisation d’image.</td></tr>
+      </table>
+    </div>
+    {{/if_photographe}}
+
+    {{#if_coach_therapeute}}
+    <div class="fiche">
+      <h2>Fiche 4 – Accompagnement, séances et formulaires (Coach / Thérapeute)</h2>
+      <table>
+        <tr><th>Nom du traitement</th><td>Suivi d’accompagnement, rendez-vous, contenus des échanges</td></tr>
+        <tr><th>Finalités</th><td>Organisation des séances ; suivi des objectifs ; facturation ; amélioration de la qualité du service (dans la limite du cadre légal).</td></tr>
+        <tr><th>Catégories de personnes concernées</th><td>Clients en accompagnement ; participants à des ateliers.</td></tr>
+        <tr><th>Catégories de données</th><td>Identité, coordonnées, notes de séance, questionnaires (éventuellement données sensibles art. 9 si santé ou vie intime abordées).</td></tr>
+        <tr><th>Base légale</th><td>Exécution du contrat (art. 6-1-b) ; consentement explicite pour données art. 9 si applicable.</td></tr>
+        <tr><th>Destinataires / sous-traitants</th><td>Outils de visioconférence, agenda en ligne, CRM, messagerie. Vérifier DPA.</td></tr>
+        <tr><th>Transferts hors UE</th><td>{{transfertsHorsUERegistre}}</td></tr>
+        <tr><th>Durée de conservation</th><td>Durée de la relation + délai raisonnable ; notes sensibles : durée minimale nécessaire ou anonymisation.</td></tr>
+        <tr><th>Mesures de sécurité</th><td>Confidentialité stricte ; accès restreint ; pas de partage avec des tiers sans base légale.</td></tr>
+      </table>
+    </div>
+    {{/if_coach_therapeute}}
+
+    {{#if_auto_ecole}}
+    <div class="fiche">
+      <h2>Fiche 4 – Élèves, formation et examens (Auto-école)</h2>
+      <table>
+        <tr><th>Nom du traitement</th><td>Inscription, suivi pédagogique, examens, facturation</td></tr>
+        <tr><th>Finalités</th><td>Gestion des dossiers permis ; planning conduite et théorie ; transmission aux autorités compétentes pour les examens ; encaissement.</td></tr>
+        <tr><th>Catégories de personnes concernées</th><td>Élèves majeurs et mineurs ; représentants légaux des mineurs.</td></tr>
+        <tr><th>Catégories de données</th><td>Identité, date de naissance, photo, NEPH, résultats et heures de conduite, données de paiement via prestataire.</td></tr>
+        <tr><th>Base légale</th><td>Exécution du contrat de formation (art. 6-1-b) ; obligation légale pour certaines déclarations ; pour les mineurs : cadre parental (art. 8).</td></tr>
+        <tr><th>Destinataires / sous-traitants</th><td>Préfecture / examinateurs via canaux officiels, logiciel de gestion d’auto-école, banque.</td></tr>
+        <tr><th>Transferts hors UE</th><td>{{transfertsHorsUERegistre}}</td></tr>
+        <tr><th>Durée de conservation</th><td>Selon obligations liées à la formation et aux archives ; données des mineurs : attention aux durées et aux droits des titulaires de l’autorité parentale.</td></tr>
+        <tr><th>Mesures de sécurité</th><td>Accès restreint aux dossiers élèves ; sauvegardes ; minimisation des copies de pièces.</td></tr>
+      </table>
+    </div>
+    {{/if_auto_ecole}}
+
+    {{#if_veterinaire}}
+    <div class="fiche">
+      <h2>Fiche 4 – Clients, animaux et soins vétérinaires</h2>
+      <table>
+        <tr><th>Nom du traitement</th><td>Dossiers cliniques, identifications, rendez-vous, vente de produits</td></tr>
+        <tr><th>Finalités</th><td>Soins aux animaux ; prévention ; traçabilité des médicaments ; facturation ; rappels de vaccins ou soins.</td></tr>
+        <tr><th>Catégories de personnes concernées</th><td>Propriétaires ou détenteurs d’animaux.</td></tr>
+        <tr><th>Catégories de données</th><td>Coordonnées des propriétaires ; identité des animaux, historique de soins, prescriptions, données de paiement.</td></tr>
+        <tr><th>Base légale</th><td>Exécution du contrat (art. 6-1-b) ; obligation légale pour certaines traçabilités vétérinaires.</td></tr>
+        <tr><th>Destinataires / sous-traitants</th><td>Laboratoires, fournisseurs de médicaments, registres obligatoires, logiciel de clinique vétérinaire.</td></tr>
+        <tr><th>Transferts hors UE</th><td>{{transfertsHorsUERegistre}}</td></tr>
+        <tr><th>Durée de conservation</th><td>Selon usages professionnels vétérinaires et obligations réglementaires (médicaments, identifications).</td></tr>
+        <tr><th>Mesures de sécurité</th><td>Accès clinique restreint ; sauvegardes des dossiers ; confidentialité vis-à-vis des tiers.</td></tr>
+      </table>
+    </div>
+    {{/if_veterinaire}}
+
+    {{#if_avocat}}
+    <div class="fiche">
+      <h2>Fiche 4 – Dossiers juridiques et contentieux (Avocat)</h2>
+      <table>
+        <tr><th>Nom du traitement</th><td>Conseil, défense, gestion des dossiers et correspondances</td></tr>
+        <tr><th>Finalités</th><td>Exécution des missions de conseil et de représentation ; gestion du secrétariat et de la facturation ; respect du secret professionnel.</td></tr>
+        <tr><th>Catégories de personnes concernées</th><td>Clients ; adversaires et tiers dans la mesure nécessaire au dossier.</td></tr>
+        <tr><th>Catégories de données</th><td>Identité, pièces du dossier, données sensibles (art. 9) et judiciaires (art. 10) lorsque le dossier l’exige.</td></tr>
+        <tr><th>Base légale</th><td>Art. 6-1-e (mission d’intérêt public) et 6-1-b ; art. 9-2-f ou g pour données sensibles liées au contentieux, selon cas.</td></tr>
+        <tr><th>Destinataires / sous-traitants</th><td>Greffes, auxiliaires de justice, co-traitants avec accord, hébergeur du cabinet, outils de signature ou de visioconférence sous garanties.</td></tr>
+        <tr><th>Transferts hors UE</th><td>{{transfertsHorsUERegistre}}</td></tr>
+        <tr><th>Durée de conservation</th><td>Prescriptions légales et déontologie ; archives du cabinet ; certains dossiers conservés au-delà pour défense de droits.</td></tr>
+        <tr><th>Mesures de sécurité</th><td>Secret professionnel ; habilitations ; chiffrement ; politique d’accès aux pièces électroniques.</td></tr>
+      </table>
+    </div>
+    {{/if_avocat}}
+
     {{#if_autre}}
     <div class="fiche">
       <h2>Fiche 4 – Gestion courante des prestations de services</h2>

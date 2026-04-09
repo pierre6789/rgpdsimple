@@ -1,6 +1,26 @@
 import fs from "fs";
 import path from "path";
+import { CustomerInput } from "../models/CustomerInput";
 import { Order } from "../models/Order";
+
+const BUSINESS_TYPE_LABELS: Record<CustomerInput["businessType"], string> = {
+  restaurant: "Restauration",
+  coiffeur: "Coiffure",
+  garage: "Garage / Automobile",
+  commerce: "Commerce de détail",
+  artisan_btp: "Artisanat du BTP",
+  consultant: "Conseil / Consultant",
+  ecommerce: "E-commerce",
+  professionnel_sante: "Professionnel de santé",
+  comptable_expert: "Comptabilité / Expertise comptable",
+  agence_immobiliere: "Agence immobilière",
+  photographe: "Photographie",
+  coach_therapeute: "Coaching / Thérapie",
+  auto_ecole: "Auto-école",
+  veterinaire: "Médecine vétérinaire",
+  avocat: "Avocat / Conseil juridique",
+  autre: "Prestation de services",
+};
 
 export interface GeneratedDocument {
   name: string;
@@ -97,7 +117,7 @@ export class TemplateService {
       .replace(/{{adresseComplete}}/g, c.address)
       .replace(/{{emailContact}}/g, c.email)
       .replace(/{{siteWeb}}/g, website)
-      .replace(/{{typeActivite}}/g, c.businessType)
+      .replace(/{{typeActivite}}/g, BUSINESS_TYPE_LABELS[c.businessType] ?? c.businessType)
       .replace(/{{collecteEmails}}/g, collectsEmailsText)
       .replace(/{{siteAvecCookies}}/g, hasCookiesText)
       .replace(/{{directeurPublication}}/g, defaults.directeurPublication)

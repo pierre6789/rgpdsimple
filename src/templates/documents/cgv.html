@@ -143,8 +143,64 @@
     <p><strong>Délais de livraison :</strong> le délai maximal de livraison est de 30 jours à compter de la commande (art. L.216-1 C. consom.). En cas de dépassement, le Client peut résilier le contrat et être remboursé. [À compléter : délais types par zone / mode de livraison.]</p>
     {{/if_ecommerce}}
 
+    {{#if_professionnel_sante}}
+    <h3>9.8 Professionnel de santé</h3>
+    <p><strong>Rendez-vous et annulation :</strong> les modalités de réservation (y compris en ligne) et d'annulation sont communiquées au patient. [À compléter : délai d'annulation sans frais, pénalités éventuelles.]</p>
+    <p><strong>Données de santé :</strong> les traitements de données sont réalisés conformément au RGPD, au secret professionnel et aux règles applicables aux données de santé. Les présentes CGV ne remplacent pas les informations détaillées de la politique de confidentialité.</p>
+    <p><strong>Urgences :</strong> en cas d'urgence vitale, le patient est invité à contacter les services d'urgence ou le 15 / 112 selon les cas.</p>
+    {{/if_professionnel_sante}}
+
+    {{#if_comptable_expert}}
+    <h3>9.9 Comptable / Expert-comptable</h3>
+    <p><strong>Mission et responsabilité :</strong> les missions (tenue, révision, certification, conseil) sont définies par une lettre de mission ou un contrat distinct. Le Prestataire est tenu à une obligation de moyens sauf clause contraire expressément prévue pour certaines missions légales.</p>
+    <p><strong>Documents et données fournis par le Client :</strong> le Client garantit l'exactitude et l'exhaustivité des pièces et habilitations (mandats bancaires, accès logiciels) transmis. Les données financières et fiscales sont traitées sous le secret professionnel.</p>
+    <p><strong>Délais :</strong> [À compléter : délais de réalisation des déclarations et livrables selon le calendrier fiscal.]</p>
+    {{/if_comptable_expert}}
+
+    {{#if_agence_immobiliere}}
+    <h3>9.10 Agence immobilière</h3>
+    <p><strong>Mandat :</strong> les honoraires et la durée du mandat de vente ou de gestion sont précisés dans le mandat signé (Loi Hoguet). Sans mandat écrit, aucune obligation de paiement d'honoraires ne peut être opposée au client pour une transaction.</p>
+    <p><strong>Dossiers et pièces :</strong> le client s'engage à fournir des informations sincères ; l'agence peut refuser un dossier incomplet ou non conforme aux obligations légales (LCB-FT si applicable).</p>
+    <p><strong>Visites :</strong> [À compléter : conditions d'accompagnement, clés, responsabilité pendant les visites.]</p>
+    {{/if_agence_immobiliere}}
+
+    {{#if_photographe}}
+    <h3>9.11 Photographe</h3>
+    <p><strong>Cession des droits :</strong> la portée de la cession des droits d'auteur (durée, supports, territoire) est précisée au devis ou au contrat de prestation. Toute utilisation non prévue fait l'objet d'une facturation complémentaire ou d'une autorisation écrite.</p>
+    <p><strong>Droit à l'image :</strong> les personnes photographiées doivent avoir consenti à l'usage prévu (affiche, site, réseaux sociaux). Le photographe peut refuser une exploitation non couverte par les autorisations signées.</p>
+    <p><strong>Galeries en ligne :</strong> [À compléter : durée de mise en ligne, téléchargement, archivage des fichiers.]</p>
+    {{/if_photographe}}
+
+    {{#if_coach_therapeute}}
+    <h3>9.12 Coach / Thérapeute</h3>
+    <p><strong>Cadre de la prestation :</strong> la prestation d'accompagnement ne constitue pas un acte médical ni une psychothérapie au sens réglementaire sauf si le professionnel est habilité et que cela est précisé contractuellement. Le client demeure responsable de ses décisions.</p>
+    <p><strong>Confidentialité :</strong> les échanges sont couverts par une obligation de confidentialité, sous réserve des obligations légales de signalement (ex. mise en danger).</p>
+    <p><strong>Séances et annulation :</strong> [À compléter : politique d'annulation, forfaits, durée des séances.]</p>
+    {{/if_coach_therapeute}}
+
+    {{#if_auto_ecole}}
+    <h3>9.13 Auto-école</h3>
+    <p><strong>Inscription :</strong> l'élève ou, s'il est mineur, son représentant légal, fournit les pièces exigées pour la constitution du dossier permis. Les données des mineurs sont traitées conformément au RGPD et avec l'accord du titulaire de l'autorité parentale lorsque requis.</p>
+    <p><strong>Formation et examens :</strong> la réussite aux épreuves n'est pas garantie. Les conditions d'accès à l'examen sont fixées par la réglementation en vigueur.</p>
+    <p><strong>Paiement :</strong> [À compléter : forfaits heures, remboursement partiel éventuel en cas d'interruption.]</p>
+    {{/if_auto_ecole}}
+
+    {{#if_veterinaire}}
+    <h3>9.14 Vétérinaire</h3>
+    <p><strong>Soins :</strong> les actes vétérinaires sont réalisés selon les règles déontologiques et la réglementation applicable (ordonnances, médicaments, identifications obligatoires).</p>
+    <p><strong>Urgences :</strong> en dehors des horaires d'ouverture, [À compléter : permanence, orientation vers clinique de garde.]</p>
+    <p><strong>Données :</strong> les données relatives aux animaux et à leurs propriétaires sont traitées pour les soins et la facturation ; voir la politique de confidentialité.</p>
+    {{/if_veterinaire}}
+
+    {{#if_avocat}}
+    <h3>9.15 Avocat / Juriste au barreau</h3>
+    <p><strong>Mandat et honoraires :</strong> les conditions de la mission (conseil, représentation, procédure) et les honoraires sont fixées par une convention d'honoraires conforme au règlement intérieur national de la profession d'avocat.</p>
+    <p><strong>Secret professionnel :</strong> le client est informé que les échanges avec l'avocat bénéficient du secret professionnel dans les limites prévues par la loi.</p>
+    <p><strong>Conflits d'intérêts :</strong> l'avocat décline toute mission incompatible avec ses obligations déontologiques.</p>
+    {{/if_avocat}}
+
     {{#if_autre}}
-    <h3>9.8 Prestation de services (secteur autre)</h3>
+    <h3>9.16 Prestation de services (secteur autre)</h3>
     <p>Les prestations sont exécutées conformément au devis ou à la commande acceptée. Le Client s'engage à fournir les informations et accès nécessaires. Tout retard imputable au Client peut entraîner un report des délais. Les modalités spécifiques (délais, livrables, révisions) sont définies au cas par cas dans le devis ou le bon de commande.</p>
     {{/if_autre}}
 

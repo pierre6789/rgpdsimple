@@ -13,6 +13,14 @@ type BusinessType =
   | 'artisan_btp'
   | 'consultant'
   | 'ecommerce'
+  | 'professionnel_sante'
+  | 'comptable_expert'
+  | 'agence_immobiliere'
+  | 'photographe'
+  | 'coach_therapeute'
+  | 'auto_ecole'
+  | 'veterinaire'
+  | 'avocat'
   | 'autre'
 
 interface CheckoutPayload {
@@ -410,7 +418,7 @@ function LandingPage() {
               { icon: BookOpen, title: 'Guide à compléter', desc: 'Envoyé avec les 5 PDF : où et quoi renseigner pour une conformité optimale' },
               { icon: Shield, title: 'Politique de confidentialité', desc: 'Conforme mise à jour CNIL Mai 2026' },
               { icon: FileText, title: 'Mentions légales', desc: 'Tous les champs obligatoires inclus' },
-              { icon: FileText, title: 'CGV sur-mesure', desc: 'Adapté restaurant, artisan, e-commerce ou consultant' },
+              { icon: FileText, title: 'CGV sur-mesure', desc: 'Adapté à votre secteur (santé, immo, photo, BTP, etc.)' },
               { icon: FileText, title: 'Registre des traitements', desc: 'Tableau exact tel que publié par la CNIL' },
               { icon: Cookie, title: 'Bandeau cookies', desc: 'Code HTML prêt à copier coller 1 clic' },
             ].map((item, i) => (
@@ -525,6 +533,14 @@ function LandingPage() {
                   <option value="artisan_btp">Artisan BTP</option>
                   <option value="consultant">Consultant</option>
                   <option value="ecommerce">E-commerce</option>
+                  <option value="professionnel_sante">Professionnel de santé</option>
+                  <option value="comptable_expert">Comptable / Expert-comptable</option>
+                  <option value="agence_immobiliere">Agence immobilière</option>
+                  <option value="photographe">Photographe</option>
+                  <option value="coach_therapeute">Coach / Thérapeute</option>
+                  <option value="auto_ecole">Auto-école</option>
+                  <option value="veterinaire">Vétérinaire</option>
+                  <option value="avocat">Avocat / Juriste</option>
                   <option value="autre">Autre</option>
                 </select>
               </div>

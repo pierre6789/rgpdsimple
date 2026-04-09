@@ -126,6 +126,58 @@
     <p><strong>Conditions générales et retours :</strong> Les conditions générales de vente et la politique de retours sont accessibles directement sur le site : lien vers les CGV et politique de retours.</p>
     {{/if_ecommerce}}
 
+    {{#if_professionnel_sante}}
+    <h3>Activité : Professionnel de santé</h3>
+    <p><strong>Profession réglementée :</strong> {{nomEntreprise}} exerce une activité soumise au Code de la santé publique et aux règles déontologiques de la profession (médecin, chirurgien-dentiste, sage-femme, kinésithérapeute, ostéopathe, psychologue, etc. — à préciser). Numéro d’inscription (ADELI, RPPS ou répertoire applicable) : [À compléter].</p>
+    <p><strong>Données de santé :</strong> traitement de données particulières au sens de l’article 9 du RGPD, sous secret professionnel et obligations HDS le cas échéant.</p>
+    <p><strong>Assurance :</strong> {{rcProMention}}</p>
+    {{/if_professionnel_sante}}
+
+    {{#if_comptable_expert}}
+    <h3>Activité : Comptable / Expert-comptable</h3>
+    <p><strong>Profession réglementée :</strong> {{nomEntreprise}} est inscrit(e) à l’Ordre des experts-comptables (ou exerce une activité de conseil comptable sous le statut prévu par la loi) — [À compléter : n° d’inscription, département].</p>
+    <p><strong>Déontologie et confidentialité :</strong> respect du code de déontologie et du secret professionnel applicable aux missions de commissariat aux comptes, de certification ou de conseil.</p>
+    <p><strong>Assurance RC professionnelle :</strong> {{rcProMention}}</p>
+    {{/if_comptable_expert}}
+
+    {{#if_agence_immobiliere}}
+    <h3>Activité : Agence immobilière</h3>
+    <p><strong>Carte professionnelle (Loi Hoguet) :</strong> {{nomEntreprise}} est titulaire de la carte professionnelle permettant la transaction et/ou la gestion immobilière, délivrée par la CCI ou la CMA : [À compléter : n° de carte, préfecture].</p>
+    <p><strong>Garantie financière et assurance :</strong> [À compléter : nom du garant et de l’assureur RC professionnelle obligatoires].</p>
+    {{/if_agence_immobiliere}}
+
+    {{#if_photographe}}
+    <h3>Activité : Photographe / Vidéaste</h3>
+    <p><strong>Statut :</strong> {{nomEntreprise}} exerce en tant qu’entreprise ou profession libérale — [À compléter : SIRET, forme juridique].</p>
+    <p><strong>Droit à l’image et propriété intellectuelle :</strong> les prestations sont encadrées par des conditions de cession des droits et d’utilisation des images des personnes ; voir CGV.</p>
+    {{/if_photographe}}
+
+    {{#if_coach_therapeute}}
+    <h3>Activité : Coach / Thérapeute</h3>
+    <p><strong>Titres et qualifications :</strong> [À compléter : diplômes, certifications, adhésion à un ordre ou association professionnelle si psychologue ou psychothérapeute réglementé].</p>
+    <p><strong>Limites de la prestation :</strong> sauf mention contraire explicite, la prestation ne se substitue pas à un suivi médical ou psychiatrique.</p>
+    <p><strong>Assurance RC :</strong> {{rcProMention}}</p>
+    {{/if_coach_therapeute}}
+
+    {{#if_auto_ecole}}
+    <h3>Activité : Auto-école</h3>
+    <p><strong>Agrément préfectoral :</strong> {{nomEntreprise}} est agréé(e) pour la formation à la conduite — [À compléter : n° d’agrément, préfecture].</p>
+    <p><strong>Données élèves :</strong> traitement des données des candidats au permis et, le cas échéant, des mineurs avec accord du représentant légal.</p>
+    {{/if_auto_ecole}}
+
+    {{#if_veterinaire}}
+    <h3>Activité : Vétérinaire</h3>
+    <p><strong>Ordre des vétérinaires :</strong> {{nomEntreprise}} est inscrit(e) au tableau de l’Ordre des vétérinaires — [À compléter : n° d’inscription].</p>
+    <p><strong>Données animaux et clients :</strong> traitements liés aux soins vétérinaires et à la traçabilité réglementaire (médicaments, identifications).</p>
+    {{/if_veterinaire}}
+
+    {{#if_avocat}}
+    <h3>Activité : Avocat / Juriste</h3>
+    <p><strong>Barreau :</strong> {{nomEntreprise}} est avocat inscrit(e) au barreau de [À compléter : ville] — n° de toque / identification : [À compléter].</p>
+    <p><strong>Secret professionnel :</strong> soumis aux règles du secret professionnel de l’avocat (loi du 31 décembre 1971 et règlement intérieur national).</p>
+    <p><strong>Assurance RC professionnelle :</strong> {{rcProMention}}</p>
+    {{/if_avocat}}
+
     {{#if_autre}}
     <h3>Activité : Prestation de services</h3>
     <p>Les informations relatives à l’identification de l’entreprise, à la médiation et aux données personnelles figurent dans les sections ci-dessus. Pour toute question relative à l’activité ou aux prestations, contactez-nous à {{emailContact}}.</p>

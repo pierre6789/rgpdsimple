@@ -102,6 +102,85 @@
     </ul>
     {{/if_ecommerce}}
 
+    {{#if_professionnel_sante}}
+    <h3>Données spécifiques – Professionnel de santé</h3>
+    <ul>
+      <li><strong>Données de santé (art. 9 RGPD) :</strong> antécédents, motifs de consultation, comptes rendus, questionnaires de santé, données biométriques si pertinent — traitées dans le cadre de la prise en charge et du secret professionnel.</li>
+      <li><strong>Prise de rendez-vous en ligne :</strong> identité, coordonnées, disponibilités, éventuellement motifs de demande transmis via un outil tiers (agenda en ligne).</li>
+      <li><strong>Dossier patient / client :</strong> courriers, imagerie, facturation des actes, coordination avec d’autres professionnels de santé si nécessaire.</li>
+      <li><strong>Mineurs :</strong> lorsque le patient est mineur, données du représentant légal.</li>
+    </ul>
+    {{/if_professionnel_sante}}
+
+    {{#if_comptable_expert}}
+    <h3>Données spécifiques – Comptable / Expert-comptable</h3>
+    <ul>
+      <li><strong>Dossiers clients :</strong> pièces comptables, liasses fiscales, bilans, liasses sociales, données salariales agrégées transmises par le client.</li>
+      <li><strong>Données financières et bancaires :</strong> RIB, relevés, flux bancaires (via outils type banque en ligne ou placeur agréé), données nécessaires aux déclarations fiscales et sociales.</li>
+      <li><strong>Contacts et représentants :</strong> dirigeants, responsables au sein des entreprises clientes.</li>
+    </ul>
+    {{/if_comptable_expert}}
+
+    {{#if_agence_immobiliere}}
+    <h3>Données spécifiques – Agence immobilière</h3>
+    <ul>
+      <li><strong>Prospection :</strong> coordonnées de prospects vendeurs, acquéreurs, locataires ; historique des contacts et visites.</li>
+      <li><strong>Visites et mandats :</strong> disponibilités, comptes rendus de visites, offres, négociations.</li>
+      <li><strong>Dossiers location / vente :</strong> pièces d’identité, justificatifs de ressources, références, garanties, états des lieux, baux ou promesses.</li>
+      <li><strong>Outils et portails :</strong> données pouvant transiter par des portails immobiliers ou logiciels métier (sous-traitants).</li>
+    </ul>
+    {{/if_agence_immobiliere}}
+
+    {{#if_photographe}}
+    <h3>Données spécifiques – Photographe</h3>
+    <ul>
+      <li><strong>Galeries en ligne :</strong> accès sécurisé (lien, mot de passe) ; images identifiables de personnes physiques (données biométriques indirectes).</li>
+      <li><strong>Prises de vue :</strong> droit à l’image des modèles et participants ; consentement ou cadre contractuel (CGV, autorisation de publication).</li>
+      <li><strong>Métadonnées techniques :</strong> EXIF, lieux et dates pouvant être liés à des personnes.</li>
+      <li><strong>Commandes et livrables :</strong> coordonnées clients, briefs, fichiers livrés.</li>
+    </ul>
+    {{/if_photographe}}
+
+    {{#if_coach_therapeute}}
+    <h3>Données spécifiques – Coach / Thérapeute</h3>
+    <ul>
+      <li><strong>Accompagnement :</strong> objectifs, suivi de séances, notes de coaching ou de thérapie (contenu potentiellement sensible).</li>
+      <li><strong>Formulaires et questionnaires :</strong> réponses transmises avant ou pendant l’accompagnement (santé, bien-être, situation personnelle selon les cas).</li>
+      <li><strong>Échanges :</strong> emails, messages, visioconférence (données hébergées par les outils utilisés).</li>
+      <li><strong>Rendez-vous :</strong> identité, disponibilités via agenda en ligne le cas échéant.</li>
+    </ul>
+    {{/if_coach_therapeute}}
+
+    {{#if_auto_ecole}}
+    <h3>Données spécifiques – Auto-école</h3>
+    <ul>
+      <li><strong>Élèves :</strong> identité, date de naissance, adresse, photo d’identité pour dossier permis, numéro NEPH si applicable.</li>
+      <li><strong>Mineurs :</strong> coordonnées et consentement du représentant légal pour l’inscription et le suivi.</li>
+      <li><strong>Suivi pédagogique :</strong> heures de conduite, évaluations, résultats aux examens, historique des leçons.</li>
+      <li><strong>Paiements :</strong> facturation, acomptes, moyens de paiement (via prestataire sécurisé si carte).</li>
+    </ul>
+    {{/if_auto_ecole}}
+
+    {{#if_veterinaire}}
+    <h3>Données spécifiques – Vétérinaire</h3>
+    <ul>
+      <li><strong>Clients (propriétaires) :</strong> identité, coordonnées, historique de relation.</li>
+      <li><strong>Animaux :</strong> identité de l’animal, espèce, dossier de soins, vaccinations, traitements — données liées au propriétaire et traitées pour les soins vétérinaires.</li>
+      <li><strong>Prise de rendez-vous :</strong> créneaux, urgences, rappels de soins.</li>
+      <li><strong>Facturation et commandes :</strong> actes, médicaments, dispositifs.</li>
+    </ul>
+    {{/if_veterinaire}}
+
+    {{#if_avocat}}
+    <h3>Données spécifiques – Avocat / Juriste</h3>
+    <ul>
+      <li><strong>Dossiers :</strong> identité des clients et des parties, pièces du dossier, correspondances, notes de travail, données judiciaires ou précontentieuses.</li>
+      <li><strong>Données particulièrement sensibles :</strong> selon les dossiers, données visées par les articles 9 et 10 du RGPD (sanctions, infractions, santé, opinions) — traitement strictement nécessaire à la défense et au conseil.</li>
+      <li><strong>Secret professionnel :</strong> cadre des articles 66-5 et suivants de la loi n° 71-1130 du 31 décembre 1971 et du règlement intérieur de la profession.</li>
+      <li><strong>Facturation et conflits d’intérêts :</strong> données nécessaires à la gestion du cabinet.</li>
+    </ul>
+    {{/if_avocat}}
+
     {{#if_autre}}
     <h3>Données spécifiques – Prestation de services</h3>
     <ul>
@@ -138,6 +217,18 @@
     <p><strong>Vidéosurveillance :</strong> base légale – intérêt légitime (sécurité des biens et des personnes) ou obligation légale selon le cas. Les images sont conservées au maximum <strong>30 jours</strong> sauf réquisition des autorités. Vous disposez d’un droit d’accès aux images vous concernant (demande écrite au responsable du traitement).</p>
     {{/if_commerce}}
 
+    {{#if_professionnel_sante}}
+    <p><strong>Données de santé (art. 9 RGPD) :</strong> le traitement repose notamment sur l’<strong>obligation légale</strong>, la <strong>mission d’intérêt public</strong> (soins) ou votre <strong>consentement explicite</strong> selon les cas (art. 9-2 RGPD). Les données sont couvertes par le <strong>secret professionnel</strong> et ne sont pas utilisées à des fins de marketing sans base autonome.</p>
+    {{/if_professionnel_sante}}
+
+    {{#if_coach_therapeute}}
+    <p><strong>Données sensibles :</strong> lorsque des informations relèvent de l’article 9 du RGPD, le traitement repose sur votre <strong>consentement explicite</strong> ou une autre base prévue au paragraphe 2 de l’article 9, précisée lors de la collecte.</p>
+    {{/if_coach_therapeute}}
+
+    {{#if_avocat}}
+    <p><strong>Secret professionnel et base légale :</strong> les traitements liés au conseil et à la défense reposent notamment sur l’<strong>exécution d’une mission d’intérêt public</strong> (art. 6-1-e) et l’<strong>exécution du contrat</strong> (art. 6-1-b). Les catégories particulières de données sont traitées dans les limites prévues à l’article 9 et par la réglementation de la profession.</p>
+    {{/if_avocat}}
+
     <!-- ========== 4. DURÉES DE CONSERVATION ========== -->
     <h2>4. Durée de conservation</h2>
     <p>Les données sont conservées pour la durée nécessaire aux finalités, puis archivées selon les prescriptions légales (ex. comptabilité, garanties). Références CNIL et durées types :</p>
@@ -147,6 +238,30 @@
       <li><strong>Cookies :</strong> 13 mois maximum pour les cookies non essentiels (CNIL).</li>
       <li><strong>Données de santé (allergies, etc.) :</strong> durée du service concerné ou consentement révocable ; suppression à la demande.</li>
       <li><strong>Vidéosurveillance :</strong> {{dureeVideosurveillance}}</li>
+      {{#if_professionnel_sante}}
+      <li><strong>Données de santé :</strong> conservation conformément aux obligations légales et déontologiques applicables à la profession exercée (durées souvent longues pour les dossiers de soins).</li>
+      {{/if_professionnel_sante}}
+      {{#if_comptable_expert}}
+      <li><strong>Dossiers comptables et fiscaux clients :</strong> souvent <strong>10 ans</strong> pour les pièces justificatives et obligations légales ; adapter selon votre activité.</li>
+      {{/if_comptable_expert}}
+      {{#if_agence_immobiliere}}
+      <li><strong>Dossiers immobiliers (vente, location) :</strong> durée du mandat et des obligations légales ; prospects non convertis : 3 ans après dernier contact (usage CNIL).</li>
+      {{/if_agence_immobiliere}}
+      {{#if_photographe}}
+      <li><strong>Images et galeries :</strong> durée prévue au contrat ; suppression ou retrait sur demande lorsque le droit à l’image ou le consentement le commande.</li>
+      {{/if_photographe}}
+      {{#if_coach_therapeute}}
+      <li><strong>Données d’accompagnement :</strong> durée de la relation contractuelle puis suppression ou anonymisation sauf obligation légale de conservation.</li>
+      {{/if_coach_therapeute}}
+      {{#if_auto_ecole}}
+      <li><strong>Dossiers élèves et permis :</strong> selon exigences de la formation et de l’administration ; pour les mineurs, respect du cadre parental et des bases légales applicables.</li>
+      {{/if_auto_ecole}}
+      {{#if_veterinaire}}
+      <li><strong>Dossiers cliniques et animaux :</strong> durées alignées sur les obligations vétérinaires, traçabilité des médicaments et prescription.</li>
+      {{/if_veterinaire}}
+      {{#if_avocat}}
+      <li><strong>Dossiers et correspondances :</strong> conservation selon prescriptions légales, déontologie et besoins de défense ; certaines pièces peuvent être conservées au-delà des délais civils usuels.</li>
+      {{/if_avocat}}
     </ul>
     <p>{{dureesSecteur}}</p>
 
