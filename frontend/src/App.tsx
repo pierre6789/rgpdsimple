@@ -306,7 +306,7 @@ function LandingPage() {
               href="#form"
               className="shimmer-btn inline-flex items-center rounded-full bg-white text-zinc-950 hover:bg-zinc-200 px-8 h-12 text-base font-medium shadow-lg shadow-white/10"
             >
-              Sécuriser mon activité avant le contrôle — 97 €
+              Sécuriser mon activité avant le contrôle — 1 €
               <ArrowRight className="ml-2 w-4 h-4" />
             </a>
             <a
@@ -698,7 +698,7 @@ function LandingPage() {
             href="#form"
             className="shimmer-btn inline-flex items-center rounded-full bg-white text-zinc-950 hover:bg-zinc-200 px-8 h-14 text-base font-medium shadow-lg shadow-white/20"
           >
-            Obtenir mes documents — 97 €
+            Obtenir mes documents — 1 €
             <ArrowRight className="ml-2 w-5 h-5" />
           </a>
           <p className="mt-4 text-sm text-zinc-500">Paiement unique • Documents par email en 2 min</p>
