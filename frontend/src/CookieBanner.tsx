@@ -44,14 +44,14 @@ export function CookieBanner() {
   return (
     <div
       id="cookie-banner"
-      className="fixed bottom-0 left-0 right-0 z-[9999] flex flex-wrap items-center justify-between gap-3 bg-zinc-900 text-white px-4 py-3 text-sm border-t border-zinc-800"
+      className="fixed bottom-0 left-0 right-0 z-[9999] flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 bg-white px-4 py-3 text-sm text-slate-600 shadow-[0_-4px_24px_rgba(15,23,42,0.08)]"
       role="dialog"
       aria-label="Gestion des cookies"
     >
       <span className="flex-1 min-w-0">
         RGPD Simple utilise des cookies pour le fonctionnement du site et la mesure d'audience.
         Vous pouvez accepter ou refuser les cookies non essentiels.{' '}
-        <Link to="/cookies" className="underline hover:text-zinc-300">
+        <Link to="/cookies" className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-700">
           En savoir plus
         </Link>
       </span>
@@ -59,14 +59,14 @@ export function CookieBanner() {
         <button
           type="button"
           onClick={accept}
-          className="rounded-full bg-emerald-500 hover:bg-emerald-400 text-white px-4 py-2 text-sm font-medium transition-colors"
+          className="rounded-full bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
         >
           Tout accepter
         </button>
         <button
           type="button"
           onClick={refuse}
-          className="rounded-full border border-zinc-500 bg-transparent hover:bg-zinc-800 text-white px-4 py-2 text-sm font-medium transition-colors"
+          className="rounded-full border border-slate-300 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-slate-400 hover:bg-slate-100"
         >
           Refuser
         </button>
