@@ -261,18 +261,20 @@ function LandingPage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-white px-4 pb-10 pt-24 md:pb-16 md:pt-28">
-        <div className="relative z-10 mx-auto max-w-4xl text-center">
+        <div className="relative z-10 mx-auto w-full min-w-0 max-w-4xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="mb-5 inline-flex max-w-full flex-wrap items-center justify-center gap-2 rounded-full border border-red-200 bg-red-50 px-3 py-2 text-left text-xs font-medium text-red-700 sm:text-sm"
+            className="mb-5 inline-flex max-w-full flex-wrap items-center justify-center gap-2 rounded-full border border-red-200 bg-red-50 px-3 py-2 text-left text-xs font-medium leading-snug text-red-700 sm:text-sm"
           >
             <span className="h-2 w-2 shrink-0 rounded-full bg-red-600 pulse-glow" />
-            <span>ALERTE : Contrôles CNIL 2026 • Les TPE ne sont plus épargnés</span>
+            <span className="text-balance break-words">
+              ALERTE : Contrôles CNIL 2026 • Les TPE ne sont plus épargnés
+            </span>
           </motion.div>
 
-          <h1 className="mb-4 text-[36px] font-bold leading-[1.1] tracking-tight text-slate-900 md:text-[56px]">
+          <h1 className="mb-4 break-words text-[36px] font-bold leading-[1.12] tracking-tight text-slate-900 md:text-[56px]">
             <span className="block overflow-hidden">
               <motion.span className="block" variants={textReveal} initial="hidden" animate="visible" custom={0}>
                 Prêt pour l'amende de la CNIL ?
@@ -295,7 +297,7 @@ function LandingPage() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.35 }}
-            className="mx-auto mb-5 line-clamp-2 max-w-2xl text-base leading-relaxed text-slate-500 sm:text-lg"
+            className="mx-auto mb-5 max-w-2xl text-balance text-base leading-relaxed text-slate-500 break-words sm:text-lg"
           >
             La CNIL a annoncé : 2026 c'est l'année du "grand ménage" chez les petites entreprises. Restaurants, artisans, consultants : vous êtes surveillés comme les grands. Un simple bandeau cookie mal configuré = sanction immédiate.
           </motion.p>
@@ -308,14 +310,14 @@ function LandingPage() {
           >
             <a
               href="#form"
-              className="inline-flex h-12 w-full items-center justify-center rounded-full bg-blue-600 px-6 text-base font-semibold text-white shadow-sm transition-all hover:bg-blue-700 hover:shadow-md sm:h-14 sm:w-auto sm:px-10 sm:text-lg"
+              className="inline-flex min-h-[3.25rem] w-full max-w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-4 py-3 text-center text-sm font-semibold leading-snug text-white shadow-sm transition-all hover:bg-blue-700 hover:shadow-md sm:min-h-[3.5rem] sm:w-auto sm:max-w-none sm:px-10 sm:text-base md:text-lg"
             >
-              Sécuriser mon activité avant le contrôle — 97 €
-              <ArrowRight className="ml-2 h-4 w-4 shrink-0 sm:h-5 sm:w-5" />
+              <span className="text-balance">Sécuriser mon activité avant le contrôle — 97 €</span>
+              <ArrowRight className="h-4 w-4 shrink-0 sm:h-5 sm:w-5" />
             </a>
             <a
               href="#pack"
-              className="inline-flex h-11 w-full items-center justify-center text-sm font-medium text-slate-500 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-slate-900 hover:decoration-slate-400 sm:h-14 sm:w-auto sm:text-base"
+              className="inline-flex min-h-[2.75rem] w-full items-center justify-center px-2 text-sm font-medium text-slate-500 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-slate-900 hover:decoration-slate-400 sm:min-h-0 sm:w-auto sm:text-base"
             >
               Voir le contenu du pack
             </a>
@@ -325,11 +327,11 @@ function LandingPage() {
 
       {/* Stat + trust bar */}
       <section className="border-y border-slate-200 bg-slate-50 py-6">
-        <div className="mx-auto max-w-4xl space-y-3 px-4 text-center text-sm text-slate-500">
-          <p className="leading-relaxed">
+        <div className="mx-auto max-w-4xl space-y-3 px-4 text-center text-xs leading-relaxed text-slate-500 break-words sm:text-sm">
+          <p className="text-balance">
             Paiement unique · Documents reçus en 2 min · Conformité garantie CNIL 2026
           </p>
-          <p>Déjà utilisé par 1127 artisans et TPE</p>
+          <p className="text-balance">Déjà utilisé par 1127 artisans et TPE</p>
         </div>
       </section>
 
@@ -340,7 +342,7 @@ function LandingPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-6 text-center text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl"
+            className="mb-6 text-balance text-center text-xl font-bold break-words text-slate-900 sm:text-2xl md:text-3xl"
           >
             Les contrôles CNIL concernent aussi les TPE. Nous sommes là pour vous mettre en règle.
           </motion.h2>
@@ -348,7 +350,7 @@ function LandingPage() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="mx-auto mb-14 max-w-2xl text-center text-slate-500"
+            className="mx-auto mb-14 max-w-2xl text-balance text-center leading-relaxed text-slate-500 break-words"
           >
             En 2025, des milliers de petites structures ont été contrôlées. Avec les bons documents, vous êtes protégé — et c'est exactement ce que nous vous fournissons.
           </motion.p>
@@ -382,8 +384,10 @@ function LandingPage() {
             animate={howInView ? { opacity: 1, y: 0 } : {}}
             className="mb-14 text-center"
           >
-            <h2 className="mb-4 text-3xl font-bold text-slate-900 sm:text-4xl">On règle ça ensemble en 3 étapes</h2>
-            <p className="mx-auto max-w-xl text-slate-500">
+            <h2 className="mb-4 text-balance text-3xl font-bold break-words text-slate-900 sm:text-4xl">
+              On règle ça ensemble en 3 étapes
+            </h2>
+            <p className="mx-auto max-w-xl text-balance leading-relaxed text-slate-500 break-words">
               Un processus simple, validé par des juristes. Vous êtes accompagné de A à Z.
             </p>
           </motion.div>
@@ -404,13 +408,13 @@ function LandingPage() {
                   initial={{ opacity: 0, y: 24 }}
                   animate={howInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.15 + i * 0.1 }}
-                  className="flex-1 rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
+                  className="min-w-0 flex-1 rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
                 >
                   <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white">
                     {step.num}
                   </div>
-                  <h3 className="mb-2 text-lg font-bold text-slate-900">{step.title}</h3>
-                  <p className="text-sm text-slate-500">{step.desc}</p>
+                  <h3 className="mb-2 text-balance text-lg font-bold break-words text-slate-900">{step.title}</h3>
+                  <p className="text-sm leading-relaxed text-slate-500 break-words">{step.desc}</p>
                 </motion.div>
               </React.Fragment>
             ))}
@@ -426,8 +430,10 @@ function LandingPage() {
             animate={packInView ? { opacity: 1, y: 0 } : {}}
             className="mb-14 text-center"
           >
-            <h2 className="mb-4 text-3xl font-bold text-slate-900 sm:text-4xl">Les 5 documents + 1 guide pour être en règle</h2>
-            <p className="mx-auto max-w-xl text-slate-500">
+            <h2 className="mb-4 text-balance text-3xl font-bold break-words text-slate-900 sm:text-4xl">
+              Les 5 documents + 1 guide pour être en règle
+            </h2>
+            <p className="mx-auto max-w-xl text-balance leading-relaxed text-slate-500 break-words">
               Tout ce que la CNIL exige pour une TPE ou un artisan. Rien à chercher ailleurs — on vous fournit le pack complet.
             </p>
           </motion.div>
@@ -456,8 +462,8 @@ function LandingPage() {
                 <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-slate-100">
                   <item.icon className={`h-5 w-5 ${item.iconClass}`} strokeWidth={1.75} />
                 </div>
-                <h3 className="mb-2 text-lg font-bold text-slate-900">{item.title}</h3>
-                <p className="text-sm text-slate-500">{item.desc}</p>
+                <h3 className="mb-2 text-balance text-lg font-bold break-words text-slate-900">{item.title}</h3>
+                <p className="text-sm leading-relaxed text-slate-500 break-words">{item.desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -474,7 +480,7 @@ function LandingPage() {
             className="mb-14 text-center"
           >
             <h2 className="mb-4 text-3xl font-bold text-slate-900 sm:text-4xl">Avis clients</h2>
-            <p className="mx-auto max-w-xl text-slate-500">
+            <p className="mx-auto max-w-xl text-balance leading-relaxed text-slate-500 break-words">
               Des TPE et artisans comme vous qui ont mis leur conformité RGPD en place sans s&apos;y perdre.
             </p>
           </motion.div>
@@ -494,7 +500,9 @@ function LandingPage() {
                     <Star key={si} className="h-4 w-4 shrink-0 fill-amber-500 text-amber-500" strokeWidth={0} />
                   ))}
                 </div>
-                <p className="mb-6 flex-1 text-sm italic leading-relaxed text-slate-600">&ldquo;{t.quote}&rdquo;</p>
+                <p className="mb-6 flex-1 text-balance text-sm italic leading-relaxed text-slate-600 break-words">
+                  &ldquo;{t.quote}&rdquo;
+                </p>
                 <div className="border-t border-slate-200 pt-4">
                   <p className="text-sm font-bold text-slate-900">{t.firstName}</p>
                   <p className="mt-0.5 text-xs text-slate-500">
@@ -511,7 +519,7 @@ function LandingPage() {
 
       {/* Form + CTA */}
       <section id="form" className="scroll-mt-24 bg-slate-50 px-4 py-20 md:scroll-mt-28 md:py-24">
-        <div className="mx-auto max-w-2xl">
+        <div className="mx-auto w-full min-w-0 max-w-2xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -712,22 +720,24 @@ function LandingPage() {
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mx-auto max-w-3xl text-center"
+          className="mx-auto w-full min-w-0 max-w-3xl text-center"
         >
-          <h2 className="mb-6 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+          <h2 className="mb-6 text-balance text-2xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
             Conformité RGPD : on s'en occupe pour vous.
           </h2>
-          <p className="mb-8 text-lg text-blue-100">
+          <p className="mb-8 text-balance text-base leading-relaxed text-blue-100 break-words sm:text-lg">
             Plus de stress, plus de dossiers à chercher. Vous remplissez le formulaire, nous vous envoyons les 5 documents conformes. Vous les mettez en ligne et vous êtes en règle.
           </p>
           <a
             href="#form"
-            className="inline-flex h-14 items-center justify-center rounded-full bg-white px-8 text-base font-semibold text-blue-600 shadow-md transition-colors hover:bg-slate-50"
+            className="mx-auto inline-flex min-h-[3.25rem] w-full max-w-md items-center justify-center gap-2 rounded-full bg-white px-4 py-3 text-center text-sm font-semibold leading-snug text-blue-600 shadow-md transition-colors hover:bg-slate-50 sm:w-auto sm:max-w-none sm:px-8 sm:text-base"
           >
-            Obtenir mes documents — 97 €
-            <ArrowRight className="ml-2 h-5 w-5" />
+            <span className="text-balance">Obtenir mes documents — 97 €</span>
+            <ArrowRight className="h-5 w-5 shrink-0" />
           </a>
-          <p className="mt-4 text-sm text-blue-100">Paiement unique • Documents par email en 2 min</p>
+          <p className="mt-4 text-balance text-xs text-blue-100 break-words sm:text-sm">
+            Paiement unique • Documents par email en 2 min
+          </p>
         </motion.div>
       </section>
 
@@ -751,7 +761,7 @@ function LandingPage() {
                     <Minus className="absolute hidden h-5 w-5 group-open:block" strokeWidth={2} aria-hidden />
                   </span>
                 </summary>
-                <p className="pb-4 text-sm leading-relaxed text-slate-500">{faq.a}</p>
+                <p className="pb-4 text-sm leading-relaxed text-slate-500 break-words">{faq.a}</p>
               </details>
             ))}
           </div>
