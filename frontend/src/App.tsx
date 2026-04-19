@@ -73,9 +73,9 @@ function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 border-b border-slate-200 bg-white/85 backdrop-blur-md"
     >
       <div className="relative mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
-        <Link to="/" className="flex shrink-0 items-center gap-2" aria-label="Accueil RGPD Simple">
-          <img src="/logo.png" alt="" className="h-8 w-auto" aria-hidden />
-          <span className="text-lg font-semibold tracking-tight text-blue-600">RGPD Simple</span>
+        <Link to="/" className="flex shrink-0 items-center">
+          <img src="/logo.png" alt="Logo" className="h-8 w-auto" />
+          <span className="sr-only">Accueil</span>
         </Link>
 
         <div className="relative hidden items-center gap-1 md:flex">
@@ -762,10 +762,10 @@ function LandingPage() {
       <footer className="border-t border-slate-800 bg-slate-900">
         <div className="mx-auto max-w-5xl px-4 py-12">
           <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-            <a href="#" className="flex items-center gap-2">
-              <img src="/logo.png" alt="" className="h-8 w-auto opacity-90" aria-hidden />
-              <span className="text-lg font-semibold text-slate-100">RGPD Simple</span>
-            </a>
+            <Link to="/" className="flex items-center">
+              <img src="/logo.png" alt="Logo" className="h-8 w-auto opacity-90" />
+              <span className="sr-only">Accueil</span>
+            </Link>
             <div className="flex items-center gap-2 rounded-full border border-slate-700 bg-slate-800/60 px-3 py-1.5">
               <span className="h-2 w-2 rounded-full bg-emerald-400 pulse-glow" />
               <span className="text-xs text-slate-400">Conformité TPE & artisans</span>
