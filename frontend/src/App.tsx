@@ -299,7 +299,9 @@ function LandingPage() {
             transition={{ duration: 0.5, delay: 0.35 }}
             className="mx-auto mb-5 max-w-2xl text-balance text-base leading-relaxed text-slate-500 break-words sm:text-lg"
           >
-            La CNIL a annoncé : 2026 c'est l'année du "grand ménage" chez les petites entreprises. Restaurants, artisans, consultants : vous êtes surveillés comme les grands. Un simple bandeau cookie mal configuré = sanction immédiate.
+            2026 : la CNIL s&apos;attaque aux TPE et artisans.
+            <br />
+            Un bandeau cookie mal configuré = amende immédiate.
           </motion.p>
 
           <motion.div
