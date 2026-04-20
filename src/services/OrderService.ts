@@ -20,6 +20,7 @@ const BUSINESS_TYPES = [
   "artisan_btp",
   "consultant",
   "ecommerce",
+  "impression_3d",
   "professionnel_sante",
   "comptable_expert",
   "agence_immobiliere",

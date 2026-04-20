@@ -102,6 +102,16 @@
     </ul>
     {{/if_ecommerce}}
 
+    {{#if_impression_3d}}
+    <h3>Données spécifiques – Impression 3D</h3>
+    <ul>
+      <li><strong>Fichiers de conception :</strong> fichiers 3D uploadés par le client (STL, OBJ, 3MF, STEP, etc.), métadonnées associées et historiques de version.</li>
+      <li><strong>Données de commande :</strong> dimensions, matériaux, quantités, finitions, contraintes de fabrication, commentaires techniques et validations.</li>
+      <li><strong>Sous-traitance d'impression :</strong> en cas de recours à un atelier partenaire, les fichiers strictement nécessaires à la fabrication peuvent être transmis dans un cadre contractuel conforme au RGPD.</li>
+      <li><strong>Conservation des fichiers :</strong> les fichiers sont conservés pendant la durée nécessaire à la fabrication, au SAV et à la gestion des réclamations, puis supprimés ou archivés selon les obligations légales applicables.</li>
+    </ul>
+    {{/if_impression_3d}}
+
     {{#if_professionnel_sante}}
     <h3>Données spécifiques – Professionnel de santé</h3>
     <ul>
@@ -250,6 +260,9 @@
       {{#if_photographe}}
       <li><strong>Images et galeries :</strong> durée prévue au contrat ; suppression ou retrait sur demande lorsque le droit à l’image ou le consentement le commande.</li>
       {{/if_photographe}}
+      {{#if_impression_3d}}
+      <li><strong>Fichiers de conception 3D :</strong> conservation pendant la fabrication et le SAV, puis suppression au plus tard 6 mois après livraison, sauf litige ou obligation légale.</li>
+      {{/if_impression_3d}}
       {{#if_coach_therapeute}}
       <li><strong>Données d’accompagnement :</strong> durée de la relation contractuelle puis suppression ou anonymisation sauf obligation légale de conservation.</li>
       {{/if_coach_therapeute}}
@@ -273,6 +286,9 @@
       <li>Les autorités compétentes en cas d’obligation légale ou de réquisition.</li>
     </ul>
     <p>{{sousTraitantsMention}}</p>
+    {{#if_impression_3d}}
+    <p><strong>Partage de fichiers de conception :</strong> lorsque la fabrication est sous-traitée, seuls les fichiers et paramètres strictement nécessaires sont transmis aux partenaires d'impression, dans un cadre contractuel conforme au RGPD.</p>
+    {{/if_impression_3d}}
     <p><strong>Transferts hors Union européenne :</strong> {{transfertsHorsUEMention}}</p>
 
     <!-- ========== 6. DROITS DES PERSONNES ========== -->

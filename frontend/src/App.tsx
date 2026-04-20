@@ -13,6 +13,7 @@ type BusinessType =
   | 'artisan_btp'
   | 'consultant'
   | 'ecommerce'
+  | 'impression_3d'
   | 'professionnel_sante'
   | 'comptable_expert'
   | 'agence_immobiliere'
@@ -571,6 +572,7 @@ function LandingPage() {
                     <option value="agence_immobiliere">Agence immobilière</option>
                     <option value="commerce">Commerce</option>
                     <option value="ecommerce">E-commerce</option>
+                    <option value="impression_3d">Impression 3D</option>
                   </optgroup>
                   <optgroup label="Bâtiment, automobile & artisanat">
                     <option value="artisan_btp">Artisan BTP</option>

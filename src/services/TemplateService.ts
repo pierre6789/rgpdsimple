@@ -11,6 +11,7 @@ const BUSINESS_TYPE_LABELS: Record<CustomerInput["businessType"], string> = {
   artisan_btp: "Artisanat du BTP",
   consultant: "Conseil / Consultant",
   ecommerce: "E-commerce",
+  impression_3d: "Impression 3D",
   professionnel_sante: "Professionnel de santé",
   comptable_expert: "Comptabilité / Expertise comptable",
   agence_immobiliere: "Agence immobilière",

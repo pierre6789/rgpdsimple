@@ -351,6 +351,23 @@
     </div>
     {{/if_avocat}}
 
+    {{#if_impression_3d}}
+    <div class="fiche">
+      <h2>Fiche 4 – Gestion des fichiers de conception clients (Impression 3D)</h2>
+      <table>
+        <tr><th>Nom du traitement</th><td>Gestion des fichiers 3D clients et des paramètres de fabrication</td></tr>
+        <tr><th>Finalités</th><td>Analyse technique des fichiers, préparation de fabrication, impression des pièces commandées, contrôle qualité, SAV et gestion des réclamations.</td></tr>
+        <tr><th>Catégories de personnes concernées</th><td>Clients particuliers et professionnels passant commande de pièces imprimées.</td></tr>
+        <tr><th>Catégories de données</th><td>Identité et coordonnées du client, fichiers de conception (STL, OBJ, etc.), paramètres de production (dimensions, matériaux, quantités, finitions), historique de commande et échanges techniques.</td></tr>
+        <tr><th>Base légale</th><td>Exécution du contrat (art. 6-1-b) ; intérêt légitime pour la sécurisation de la fabrication et la gestion des litiges (art. 6-1-f).</td></tr>
+        <tr><th>Destinataires / sous-traitants</th><td>Ateliers de fabrication partenaires en sous-traitance si nécessaire, prestataires logistiques (transporteurs), hébergeur de stockage des fichiers et outils de production.</td></tr>
+        <tr><th>Transferts hors UE</th><td>{{transfertsHorsUERegistre}}</td></tr>
+        <tr><th>Durée de conservation</th><td>Fichiers de conception et paramètres de fabrication : <strong>6 mois après la livraison</strong>, sauf conservation plus longue nécessaire en cas de litige, de garantie ou d'obligation légale.</td></tr>
+        <tr><th>Mesures de sécurité</th><td>Accès restreint aux fichiers (équipes habilitées), cloisonnement des dossiers clients, sauvegardes sécurisées, suppression/purge périodique des fichiers au terme de la durée de conservation.</td></tr>
+      </table>
+    </div>
+    {{/if_impression_3d}}
+
     {{#if_autre}}
     <div class="fiche">
       <h2>Fiche 4 – Gestion courante des prestations de services</h2>
