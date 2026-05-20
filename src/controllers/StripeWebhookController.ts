@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { stripe } from "../config/stripe";
 import { StripeService } from "../services/StripeService";
 import { OrderService } from "../services/OrderService";
+import { appendVente } from "../services/SheetsService";
 
 const orderService = new OrderService();
 const stripeService = new StripeService();
@@ -54,7 +55,22 @@ export class StripeWebhookController {
           console.warn("[Webhook] Impossible de récupérer la session Stripe:", e);
         }
       }
-      console.log("[Webhook] Traitement commande:", orderId, "email:", session.metadata?.customer_email || (session as any).customer_details?.email);
+      const affiliateVia = session.metadata?.affiliate_via || "direct";
+      const customerEmail =
+        session.customer_email ||
+        (session as import("stripe").Stripe.Checkout.Session & { customer_details?: { email?: string | null } })
+          .customer_details?.email ||
+        "";
+
+      console.log(
+        "[Webhook] Traitement commande:",
+        orderId,
+        "email:",
+        customerEmail,
+        "affiliate_via:",
+        affiliateVia
+      );
+
       try {
         await orderService.processPaidOrder(orderId, session);
         console.log("[Webhook] Commande traitée et email envoyé:", orderId);
@@ -65,6 +81,13 @@ export class StripeWebhookController {
         res.status(500).send(`Erreur traitement: ${msg}`);
         return;
       }
+
+      await appendVente({
+        affiliateVia,
+        amountCents: session.amount_total ?? 0,
+        email: customerEmail || "",
+        sessionId: session.id,
+      });
     }
 
     res.status(200).send();

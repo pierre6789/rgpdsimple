@@ -3,6 +3,7 @@ import { motion, useInView } from 'framer-motion'
 import { BrowserRouter, Link, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import { Menu, X, ArrowRight, FileText, Shield, Cookie, BookOpen, Star, Plus, Minus } from 'lucide-react'
 import { CookieBanner } from './CookieBanner'
+import { getAffiliateVia, setAffiliateCookie } from './affiliate'
 import './App.css'
 
 type BusinessType =
@@ -47,6 +48,22 @@ const navItems = [
 
 function scrollToFormSection() {
   document.getElementById('form')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
+
+/** Capture ?via=CODE dans un cookie 30 jours (site React sur Vercel) */
+function AffiliateCapture() {
+  const location = useLocation()
+
+  React.useEffect(() => {
+    const via = new URLSearchParams(location.search).get('via')
+    if (!via) return
+    const safe = via.trim()
+    if (!/^[A-Za-z0-9_-]+$/.test(safe) || safe.length > 64) return
+    setAffiliateCookie(safe)
+    console.log('[Affiliate] Code capturé (frontend):', safe)
+  }, [location.search])
+
+  return null
 }
 
 function Navbar() {
@@ -233,10 +250,12 @@ function LandingPage() {
     setError(null)
     setLoading(true)
     try {
+      const affiliateVia = getAffiliateVia()
       const res = await fetch('https://rgpdsimple.onrender.com/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, cgvAccepted: true }),
+        credentials: 'include',
+        body: JSON.stringify({ ...form, cgvAccepted: true, affiliate_via: affiliateVia }),
       })
       if (!res.ok) {
         const data = await res.json().catch(() => null)
@@ -1170,6 +1189,7 @@ function CgvSitePage() {
 function App() {
   return (
     <BrowserRouter>
+      <AffiliateCapture />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/success" element={<SuccessPage />} />

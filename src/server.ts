@@ -1,24 +1,36 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 
 import checkoutRouter from "./routes/checkout";
 import successRouter from "./routes/success";
 import webhookRouter from "./routes/webhook";
+import { affiliateCaptureMiddleware } from "./middleware/affiliateCapture";
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const frontendOrigin = process.env.APP_URL_FRONTEND || "http://localhost:5173";
+
 app.use(
   cors({
-    origin: process.env.APP_URL_FRONTEND || "http://localhost:5173",
+    origin: frontendOrigin,
+    credentials: true,
   })
 );
 
+app.use(cookieParser());
+
+// Capture ?via= sur toutes les routes (cookie affilié 30 jours)
+app.use(affiliateCaptureMiddleware);
+
 // Webhook Stripe : body brut obligatoire pour la vérification de signature (avant express.json)
-app.use("/api/webhook", express.raw({ type: "application/json" }), webhookRouter);
+const webhookRaw = express.raw({ type: "application/json" });
+app.use("/api/webhook", webhookRaw, webhookRouter);
+app.use("/webhook/stripe", webhookRaw, webhookRouter);
 
 app.use(express.json());
 
@@ -35,6 +47,8 @@ app.get("/api/debug-env", (_req, res) => {
     hasSmtpHost: Boolean(process.env.SMTP_HOST),
     hasSmtpUser: Boolean(process.env.SMTP_USER),
     hasSmtpPass: Boolean(process.env.SMTP_PASS),
+    hasGoogleSheetsId: Boolean(process.env.GOOGLE_SHEETS_ID),
+    hasGoogleServiceAccount: Boolean(process.env.GOOGLE_SERVICE_ACCOUNT_JSON),
   });
 });
 

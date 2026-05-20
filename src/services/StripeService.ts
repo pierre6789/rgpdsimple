@@ -2,7 +2,7 @@ import { stripe, STRIPE_PRODUCT_CONFIG } from "../config/stripe";
 import { Order } from "../models/Order";
 
 export class StripeService {
-  async createCheckoutSession(order: Order) {
+  async createCheckoutSession(order: Order, affiliateVia: string = "direct") {
     if (!stripe) {
       throw new Error(
         "Stripe n'est pas configuré. Ajoutez STRIPE_SECRET_KEY (clé de test) dans votre fichier .env."
@@ -44,8 +44,11 @@ export class StripeService {
         cgv_consent_accepted: order.cgvConsent?.accepted ? "1" : "0",
         cgv_consent_at: order.cgvConsent?.acceptedAt || "",
         cgv_consent_ip: order.cgvConsent?.clientIp || "",
+        affiliate_via: affiliateVia,
       },
     });
+
+    console.log("[Checkout] Session Stripe — affiliate_via:", affiliateVia);
 
     return session;
   }
