@@ -1,6 +1,9 @@
+import type Stripe from "stripe";
 import { google } from "googleapis";
+import { OrderService } from "./OrderService";
 
 const SHEET_TAB = "💰 Ventes";
+const orderService = new OrderService();
 const VA_COMMISSION_EUR = 15;
 
 export interface AppendVenteParams {
@@ -34,15 +37,20 @@ function getSheetsClient() {
   const spreadsheetId = process.env.GOOGLE_SHEETS_ID;
   const saJson = process.env.GOOGLE_SERVICE_ACCOUNT_JSON;
 
-  if (!spreadsheetId || !saJson) {
+  if (!spreadsheetId) {
+    console.error("[Sheets] GOOGLE_SHEETS_ID manquant dans les variables d'environnement");
+    return null;
+  }
+  if (!saJson) {
+    console.error("[Sheets] GOOGLE_SERVICE_ACCOUNT_JSON manquant dans les variables d'environnement");
     return null;
   }
 
   let credentials: Record<string, unknown>;
   try {
     credentials = JSON.parse(saJson) as Record<string, unknown>;
-  } catch {
-    console.error("[Sheets] GOOGLE_SERVICE_ACCOUNT_JSON invalide (JSON illisible)");
+  } catch (parseErr) {
+    console.error("[Sheets] GOOGLE_SERVICE_ACCOUNT_JSON invalide (JSON illisible):", parseErr);
     return null;
   }
 
@@ -54,12 +62,13 @@ function getSheetsClient() {
   return { sheets: google.sheets({ version: "v4", auth }), spreadsheetId };
 }
 
-/** Ajoute une ligne de vente dans l'onglet « 💰 Ventes » */
+/** Ajoute une ligne de vente dans l'onglet « 💰 Ventes » (lève une erreur si l'API échoue). */
 export async function appendVente(params: AppendVenteParams): Promise<void> {
   const client = getSheetsClient();
   if (!client) {
-    console.warn("[Sheets] Configuration manquante — vente non exportée (session:", params.sessionId, ")");
-    return;
+    throw new Error(
+      `Configuration Google Sheets incomplète — vente non exportée (session: ${params.sessionId})`
+    );
   }
 
   const now = new Date();
@@ -74,26 +83,61 @@ export async function appendVente(params: AppendVenteParams): Promise<void> {
     params.sessionId,
   ];
 
-  try {
-    await client.sheets.spreadsheets.values.append({
-      spreadsheetId: client.spreadsheetId,
-      range: `'${SHEET_TAB}'!A:H`,
-      valueInputOption: "USER_ENTERED",
-      insertDataOption: "INSERT_ROWS",
-      requestBody: {
-        values: [row],
-      },
-    });
-    console.log(
-      "[Sheets] Vente enregistrée — VA:",
-      params.affiliateVia,
-      "session:",
-      params.sessionId,
-      "email:",
-      params.email
-    );
-  } catch (err) {
-    const msg = err instanceof Error ? err.message : String(err);
-    console.error("[Sheets] Erreur appendVente (non bloquante):", msg, "session:", params.sessionId);
+  await client.sheets.spreadsheets.values.append({
+    spreadsheetId: client.spreadsheetId,
+    range: `'${SHEET_TAB}'!A:H`,
+    valueInputOption: "USER_ENTERED",
+    insertDataOption: "INSERT_ROWS",
+    requestBody: {
+      values: [row],
+    },
+  });
+
+  console.log(
+    "[Sheets] Vente enregistrée — VA:",
+    params.affiliateVia,
+    "session:",
+    params.sessionId,
+    "email:",
+    params.email
+  );
+}
+
+/**
+ * Exporte la vente affiliée (webhook ou page /success), une seule fois par commande.
+ */
+export async function exportAffiliateSaleIfNeeded(
+  orderId: string,
+  session: Stripe.Checkout.Session
+): Promise<void> {
+  const order = await orderService.getOrderById(orderId);
+  if (order?.sheetsExportedAt) {
+    console.log("[Sheets] Export déjà effectué pour la commande:", orderId);
+    return;
+  }
+
+  const affiliateVia = session.metadata?.affiliate_via || "direct";
+  const customerEmail =
+    session.customer_email || session.customer_details?.email || "";
+  const amountCents = session.amount_total ?? 0;
+
+  console.log("[Sheets] Tentative écriture...", {
+    orderId,
+    sessionId: session.id,
+    affiliateVia,
+    email: customerEmail,
+    amountCents,
+  });
+
+  await appendVente({
+    affiliateVia,
+    amountCents,
+    email: customerEmail,
+    sessionId: session.id,
+  });
+
+  if (order) {
+    order.sheetsExportedAt = new Date().toISOString();
+    await orderService.updateOrder(order);
   }
 }

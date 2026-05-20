@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { stripe } from "../config/stripe";
 import { StripeService } from "../services/StripeService";
 import { OrderService } from "../services/OrderService";
-import { appendVente } from "../services/SheetsService";
+import { exportAffiliateSaleIfNeeded } from "../services/SheetsService";
 
 const orderService = new OrderService();
 const stripeService = new StripeService();
@@ -39,7 +39,10 @@ export class StripeWebhookController {
       return;
     }
 
+    console.log("[Webhook] Événement Stripe reçu:", event.type, "id:", event.id);
+
     if (event.type === "checkout.session.completed") {
+      console.log("[Webhook] Handler checkout.session.completed — démarrage");
       const sessionFromEvent = event.data.object as import("stripe").Stripe.Checkout.Session;
       const orderId = (sessionFromEvent.client_reference_id || sessionFromEvent.metadata?.order_id) as string | undefined;
       if (!orderId) {
@@ -48,9 +51,10 @@ export class StripeWebhookController {
         return;
       }
       let session = sessionFromEvent;
-      if (!session.metadata?.customer_email) {
+      if (!session.metadata?.customer_email || session.amount_total == null) {
         try {
           session = await stripeService.retrieveSession(sessionFromEvent.id) as import("stripe").Stripe.Checkout.Session;
+          console.log("[Webhook] Session Stripe rechargée:", session.id, "amount_total:", session.amount_total);
         } catch (e) {
           console.warn("[Webhook] Impossible de récupérer la session Stripe:", e);
         }
@@ -82,12 +86,13 @@ export class StripeWebhookController {
         return;
       }
 
-      await appendVente({
-        affiliateVia,
-        amountCents: session.amount_total ?? 0,
-        email: customerEmail || "",
-        sessionId: session.id,
-      });
+      try {
+        await exportAffiliateSaleIfNeeded(orderId, session);
+      } catch (err) {
+        console.error("[Sheets] ERREUR:", err);
+      }
+    } else {
+      console.log("[Webhook] Événement ignoré (pas checkout.session.completed):", event.type);
     }
 
     res.status(200).send();

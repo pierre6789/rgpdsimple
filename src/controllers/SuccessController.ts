@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { StripeService } from "../services/StripeService";
 import { OrderService } from "../services/OrderService";
+import { exportAffiliateSaleIfNeeded } from "../services/SheetsService";
 const stripeService = new StripeService();
 const orderService = new OrderService();
 
@@ -25,11 +26,18 @@ export class SuccessController {
       }
 
       // Génération PDF + envoi email ici (fallback si le webhook Stripe ne se déclenche pas)
+      const stripeSession = session as import("stripe").Stripe.Checkout.Session;
       try {
-        await orderService.processPaidOrder(orderId, session as import("stripe").Stripe.Checkout.Session);
+        await orderService.processPaidOrder(orderId, stripeSession);
       } catch (err) {
         console.error("Erreur processPaidOrder dans /success:", err);
         // On redirige quand même pour ne pas bloquer l'utilisateur
+      }
+
+      try {
+        await exportAffiliateSaleIfNeeded(orderId, stripeSession);
+      } catch (err) {
+        console.error("[Sheets] ERREUR (page /success):", err);
       }
 
       const order = await orderService.getOrderById(orderId);
