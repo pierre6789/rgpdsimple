@@ -1,40 +1,13 @@
-import React, { useState, useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import React, { useState } from 'react'
+import { motion } from 'framer-motion'
 import { BrowserRouter, Link, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
-import { Menu, X, ArrowRight, FileText, Shield, Cookie, BookOpen, Star, Plus, Minus } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { CookieBanner } from './CookieBanner'
-import { getAffiliateVia, setAffiliateCookie } from './affiliate'
+import { setAffiliateCookie } from './affiliate'
+import { LandingPage } from './LandingPage'
 import './App.css'
 
-type BusinessType =
-  | 'restaurant'
-  | 'coiffeur'
-  | 'garage'
-  | 'commerce'
-  | 'artisan_btp'
-  | 'consultant'
-  | 'ecommerce'
-  | 'impression_3d'
-  | 'professionnel_sante'
-  | 'comptable_expert'
-  | 'agence_immobiliere'
-  | 'photographe'
-  | 'coach_therapeute'
-  | 'auto_ecole'
-  | 'veterinaire'
-  | 'avocat'
-  | 'autre'
-
-interface CheckoutPayload {
-  companyName: string
-  businessType: BusinessType | ''
-  address: string
-  email: string
-  website: string
-  collectsEmails: 'yes' | 'no'
-  hasCookies: 'yes' | 'no'
-}
-
+const PRICE_LABEL = '97 €'
 function useQuery() {
   const location = useLocation()
   return React.useMemo(() => new URLSearchParams(location.search), [location.search])
@@ -124,7 +97,7 @@ function Navbar() {
             onClick={goToForm}
             className="inline-flex items-center justify-center rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700 hover:shadow-md"
           >
-            Obtenir mes documents — 97 €
+            Obtenir mes documents — {PRICE_LABEL}
           </a>
         </div>
 
@@ -160,671 +133,12 @@ function Navbar() {
               onClick={goToForm}
               className="mt-2 inline-flex items-center justify-center rounded-full bg-blue-600 py-3 text-center text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700"
             >
-              Obtenir mes documents — 97 €
+              Obtenir mes documents — {PRICE_LABEL}
             </a>
           </div>
         </motion.div>
       )}
     </motion.header>
-  )
-}
-
-const textReveal = {
-  hidden: { y: '100%' },
-  visible: (i: number) => ({
-    y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const, delay: i * 0.1 },
-  }),
-}
-
-const CLIENT_TESTIMONIALS = [
-  {
-    quote:
-      'Enfin des documents clairs, pas un jargon incompréhensible. J’ai tout mis en ligne en une après-midi, le bandeau cookies inclus.',
-    firstName: 'Sophie',
-    role: 'Coiffeuse indépendante',
-    city: 'Lyon',
-  },
-  {
-    quote:
-      'Je traînais ça depuis des mois. Le pack correspond à mon activité et le registre m’a évité une erreur sur les traitements.',
-    firstName: 'Marc',
-    role: 'Artisan électricien',
-    city: 'Toulouse',
-  },
-  {
-    quote:
-      'Site e-commerce : la politique de confidentialité et les CGV étaient le point bloquant. Reçu par email, je n’ai eu qu’à adapter deux détails.',
-    firstName: 'Julie',
-    role: 'Gérante e-commerce',
-    city: 'Bordeaux',
-  },
-  {
-    quote:
-      'On nous demandait une politique RGPD pour une livraison partenaire. Rapide, propre, et le guide explique quoi modifier sur les allergènes.',
-    firstName: 'Thomas',
-    role: 'Restaurateur',
-    city: 'Nantes',
-  },
-  {
-    quote:
-      'En freelance, je voulais quelque chose de sérieux pour mes clients B2B. Les mentions et la politique sont cohérentes avec mon site.',
-    firstName: 'Claire',
-    role: 'Consultante en stratégie',
-    city: 'Paris',
-  },
-  {
-    quote:
-      'Petit commerce de quartier : pas le temps de m’y mettre. Un paiement, les PDF dans la boîte mail, et j’ai pu me concentrer sur la vente.',
-    firstName: 'Ahmed',
-    role: 'Commerçant',
-    city: 'Lille',
-  },
-] as const
-
-function LandingPage() {
-  const [form, setForm] = useState<CheckoutPayload>({
-    companyName: '',
-    businessType: '',
-    address: '',
-    email: '',
-    website: '',
-    collectsEmails: 'yes',
-    hasCookies: 'yes',
-  })
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const [cgvAccepted, setCgvAccepted] = useState(false)
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setForm((prev) => ({ ...prev, [name]: value }))
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!cgvAccepted) {
-      setError('Vous devez accepter les CGV pour continuer.')
-      return
-    }
-    setError(null)
-    setLoading(true)
-    try {
-      const affiliateVia = getAffiliateVia()
-      const res = await fetch('https://rgpdsimple.onrender.com/api/checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({ ...form, cgvAccepted: true, affiliate_via: affiliateVia }),
-      })
-      if (!res.ok) {
-        const data = await res.json().catch(() => null)
-        throw new Error(data?.message || 'Erreur lors de la création du paiement.')
-      }
-      const data = (await res.json()) as { url: string }
-      window.location.href = data.url
-    } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Une erreur s'est produite.")
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const packRef = useRef(null)
-  const packInView = useInView(packRef, { once: true, margin: '-80px' })
-  const howRef = useRef(null)
-  const howInView = useInView(howRef, { once: true, margin: '-80px' })
-
-  return (
-    <main className="min-h-screen bg-white text-slate-900">
-      <Navbar />
-
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-white px-4 pb-10 pt-24 md:pb-16 md:pt-28">
-        <div className="relative z-10 mx-auto w-full min-w-0 max-w-4xl text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="mb-5 inline-flex max-w-full flex-wrap items-center justify-center gap-2 rounded-full border border-red-200 bg-red-50 px-3 py-2 text-left text-xs font-medium leading-snug text-red-700 sm:text-sm"
-          >
-            <span className="h-2 w-2 shrink-0 rounded-full bg-red-600 pulse-glow" />
-            <span className="text-balance break-words">
-              ALERTE : Contrôles CNIL 2026 • Les TPE ne sont plus épargnés
-            </span>
-          </motion.div>
-
-          <h1 className="mb-4 break-words text-[36px] font-bold leading-[1.12] tracking-tight text-slate-900 md:text-[56px]">
-            <span className="block overflow-hidden">
-              <motion.span className="block" variants={textReveal} initial="hidden" animate="visible" custom={0}>
-                Prêt pour l'amende de la CNIL ?
-              </motion.span>
-            </span>
-            <span className="mt-2 block overflow-hidden">
-              <motion.span
-                className="block font-bold text-red-600"
-                variants={textReveal}
-                initial="hidden"
-                animate="visible"
-                custom={1}
-              >
-                Vous avez encore 6 heures.
-              </motion.span>
-            </span>
-          </h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.35 }}
-            className="mx-auto mb-5 max-w-2xl text-balance text-base leading-relaxed text-slate-500 break-words sm:text-lg"
-          >
-            2026 : la CNIL s&apos;attaque aux TPE et artisans.
-            <br />
-            Un bandeau cookie mal configuré = amende immédiate.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.45 }}
-            className="flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-4"
-          >
-            <a
-              href="#form"
-              className="inline-flex min-h-[3.25rem] w-full max-w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-4 py-3 text-center text-sm font-semibold leading-snug text-white shadow-sm transition-all hover:bg-blue-700 hover:shadow-md sm:min-h-[3.5rem] sm:w-auto sm:max-w-none sm:px-10 sm:text-base md:text-lg"
-            >
-              <span className="text-balance">Sécuriser mon activité avant le contrôle — 97 €</span>
-              <ArrowRight className="h-4 w-4 shrink-0 sm:h-5 sm:w-5" />
-            </a>
-            <a
-              href="#pack"
-              className="inline-flex min-h-[2.75rem] w-full items-center justify-center px-2 text-sm font-medium text-slate-500 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-slate-900 hover:decoration-slate-400 sm:min-h-0 sm:w-auto sm:text-base"
-            >
-              Voir le contenu du pack
-            </a>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Stat + trust bar */}
-      <section className="border-y border-slate-200 bg-slate-50 py-6">
-        <div className="mx-auto max-w-4xl space-y-3 px-4 text-center text-xs leading-relaxed text-slate-500 break-words sm:text-sm">
-          <p className="text-balance">
-            Paiement unique · Documents reçus en 2 min · Conformité garantie CNIL 2026
-          </p>
-          <p className="text-balance">Déjà utilisé par 1127 artisans et TPE</p>
-        </div>
-      </section>
-
-      {/* Stats + réassurance */}
-      <section className="bg-slate-50 px-4 py-20 md:py-24">
-        <div className="mx-auto max-w-4xl">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-6 text-balance text-center text-xl font-bold break-words text-slate-900 sm:text-2xl md:text-3xl"
-          >
-            Les contrôles CNIL concernent aussi les TPE. Nous sommes là pour vous mettre en règle.
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="mx-auto mb-14 max-w-2xl text-balance text-center leading-relaxed text-slate-500 break-words"
-          >
-            En 2025, des milliers de petites structures ont été contrôlées. Avec les bons documents, vous êtes protégé — et c'est exactement ce que nous vous fournissons.
-          </motion.p>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {[
-              { num: '847', desc: 'TPE sanctionnées en 2025 pour défaut de politique de confidentialité' },
-              { num: '1127+', desc: 'Artisans et TPE déjà mis en règle avec nos documents' },
-              { num: '5', desc: 'Documents obligatoires prêts pour vous en quelques minutes' },
-            ].map((stat, i) => (
-              <motion.div
-                key={stat.num}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="relative overflow-hidden rounded-xl border border-slate-200 bg-white p-6 pl-7 text-center shadow-sm transition-shadow before:pointer-events-none before:absolute before:left-0 before:top-4 before:bottom-4 before:w-[3px] before:rounded-r-md before:bg-blue-600 hover:shadow-md"
-              >
-                <div className="mb-3 text-[40px] font-bold leading-none text-blue-600">{stat.num}</div>
-                <p className="text-sm text-slate-500">{stat.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* How it works */}
-      <section id="how" ref={howRef} className="bg-white px-4 py-20 md:py-24">
-        <div className="mx-auto max-w-5xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={howInView ? { opacity: 1, y: 0 } : {}}
-            className="mb-14 text-center"
-          >
-            <h2 className="mb-4 text-balance text-3xl font-bold break-words text-slate-900 sm:text-4xl">
-              On règle ça ensemble en 3 étapes
-            </h2>
-            <p className="mx-auto max-w-xl text-balance leading-relaxed text-slate-500 break-words">
-              Un processus simple, validé par des juristes. Vous êtes accompagné de A à Z.
-            </p>
-          </motion.div>
-
-          <div className="flex flex-col gap-6 md:flex-row md:items-stretch md:justify-center md:gap-2">
-            {[
-              { num: '1', title: 'Vous répondez à quelques questions', desc: 'On identifie ce dont vous avez besoin selon votre activité. Simple et rapide.' },
-              { num: '2', title: 'Vous recevez vos 5 documents', desc: 'Générés sur mesure en 2 minutes. Politique de confidentialité, mentions légales, registre, CGV, bandeau cookies.' },
-              { num: '3', title: 'Vous êtes en règle et serein', desc: 'Documents conformes et datés. Vous les installez sur votre site et on est là si vous avez des questions.' },
-            ].map((step, i) => (
-              <React.Fragment key={step.num}>
-                {i > 0 && (
-                  <div className="hidden shrink-0 items-center justify-center px-1 md:flex md:pt-10">
-                    <ArrowRight className="h-6 w-6 text-blue-600" aria-hidden />
-                  </div>
-                )}
-                <motion.div
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={howInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.15 + i * 0.1 }}
-                  className="min-w-0 flex-1 rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
-                >
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white">
-                    {step.num}
-                  </div>
-                  <h3 className="mb-2 text-balance text-lg font-bold break-words text-slate-900">{step.title}</h3>
-                  <p className="text-sm leading-relaxed text-slate-500 break-words">{step.desc}</p>
-                </motion.div>
-              </React.Fragment>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Bento - Contenu du pack */}
-      <section id="pack" ref={packRef} className="bg-slate-50 px-4 py-20 md:py-24">
-        <div className="mx-auto max-w-5xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={packInView ? { opacity: 1, y: 0 } : {}}
-            className="mb-14 text-center"
-          >
-            <h2 className="mb-4 text-balance text-3xl font-bold break-words text-slate-900 sm:text-4xl">
-              Les 5 documents + 1 guide pour être en règle
-            </h2>
-            <p className="mx-auto max-w-xl text-balance leading-relaxed text-slate-500 break-words">
-              Tout ce que la CNIL exige pour une TPE ou un artisan. Rien à chercher ailleurs — on vous fournit le pack complet.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={packInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.15 }}
-            className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
-          >
-            {[
-              { icon: BookOpen, title: 'Guide à compléter', desc: 'Envoyé avec les 5 PDF : où et quoi renseigner pour une conformité optimale', iconClass: 'text-amber-600' },
-              { icon: Shield, title: 'Politique de confidentialité', desc: 'Conforme mise à jour CNIL Mai 2026', iconClass: 'text-blue-600' },
-              { icon: FileText, title: 'Mentions légales', desc: 'Tous les champs obligatoires inclus', iconClass: 'text-slate-700' },
-              { icon: FileText, title: 'CGV sur-mesure', desc: 'Adapté à votre secteur (santé, immo, photo, BTP, etc.)', iconClass: 'text-emerald-600' },
-              { icon: FileText, title: 'Registre des traitements', desc: 'Tableau exact tel que publié par la CNIL', iconClass: 'text-violet-600' },
-              { icon: Cookie, title: 'Bandeau cookies', desc: 'Code HTML prêt à copier coller 1 clic', iconClass: 'text-orange-600' },
-            ].map((item, i) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={packInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.2 + i * 0.06 }}
-                className="group rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:border-blue-600 hover:shadow-md"
-              >
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-slate-100">
-                  <item.icon className={`h-5 w-5 ${item.iconClass}`} strokeWidth={1.75} />
-                </div>
-                <h3 className="mb-2 text-balance text-lg font-bold break-words text-slate-900">{item.title}</h3>
-                <p className="text-sm leading-relaxed text-slate-500 break-words">{item.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Avis clients */}
-      <section className="border-t border-slate-200 bg-white px-4 py-20 md:py-24">
-        <div className="mx-auto max-w-5xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-14 text-center"
-          >
-            <h2 className="mb-4 text-3xl font-bold text-slate-900 sm:text-4xl">Avis clients</h2>
-            <p className="mx-auto max-w-xl text-balance leading-relaxed text-slate-500 break-words">
-              Des TPE et artisans comme vous qui ont mis leur conformité RGPD en place sans s&apos;y perdre.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {CLIENT_TESTIMONIALS.map((t, i) => (
-              <motion.article
-                key={`${t.firstName}-${t.city}`}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.06 }}
-                className="flex flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-md"
-              >
-                <div className="mb-4 flex gap-0.5" aria-hidden>
-                  {Array.from({ length: 5 }).map((_, si) => (
-                    <Star key={si} className="h-4 w-4 shrink-0 fill-amber-500 text-amber-500" strokeWidth={0} />
-                  ))}
-                </div>
-                <p className="mb-6 flex-1 text-balance text-sm italic leading-relaxed text-slate-600 break-words">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-                <div className="border-t border-slate-200 pt-4">
-                  <p className="text-sm font-bold text-slate-900">{t.firstName}</p>
-                  <p className="mt-0.5 text-xs text-slate-500">
-                    {t.role}
-                    <span className="text-slate-400"> · </span>
-                    {t.city}
-                  </p>
-                </div>
-              </motion.article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Form + CTA */}
-      <section id="form" className="scroll-mt-24 bg-slate-50 px-4 py-20 md:scroll-mt-28 md:py-24">
-        <div className="mx-auto w-full min-w-0 max-w-2xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="relative rounded-xl border border-slate-200 bg-white p-6 shadow-xl sm:p-8"
-          >
-            <div className="mb-6 text-center">
-              <h2 className="mb-2 text-2xl font-bold text-slate-900">Mettre mon activité en règle</h2>
-              <p className="text-sm text-slate-500">
-                Remplissez ce formulaire une seule fois (~2 min). Nous préparons vos documents et vous les envoyons par email. On règle ça ensemble.
-              </p>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label htmlFor="companyName" className="mb-1 block text-sm font-medium text-slate-500">
-                  Nom de l'entreprise
-                </label>
-                <input
-                  id="companyName"
-                  name="companyName"
-                  value={form.companyName}
-                  onChange={handleChange}
-                  required
-                  className="w-full rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600/20"
-                  placeholder="Mon entreprise SARL"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="businessType" className="mb-1 block text-sm font-medium text-slate-500">
-                  Type d&apos;activité
-                  <span className="mt-0.5 block text-xs font-normal text-slate-400">
-                    Regroupé par famille — ordre alphabétique dans chaque groupe
-                  </span>
-                </label>
-                <select
-                  id="businessType"
-                  name="businessType"
-                  value={form.businessType}
-                  onChange={handleChange}
-                  required
-                  className="w-full rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600/20"
-                >
-                  <option value="">Sélectionnez…</option>
-                  <optgroup label="Commerce, vente & immobilier">
-                    <option value="agence_immobiliere">Agence immobilière</option>
-                    <option value="commerce">Commerce</option>
-                    <option value="ecommerce">E-commerce</option>
-                    <option value="impression_3d">Impression 3D</option>
-                  </optgroup>
-                  <optgroup label="Bâtiment, automobile & artisanat">
-                    <option value="artisan_btp">Artisan BTP</option>
-                    <option value="auto_ecole">Auto-école</option>
-                    <option value="garage">Garage</option>
-                  </optgroup>
-                  <optgroup label="Conseil, droit & finance">
-                    <option value="avocat">Avocat / Juriste</option>
-                    <option value="comptable_expert">Comptable / Expert-comptable</option>
-                    <option value="consultant">Consultant</option>
-                  </optgroup>
-                  <optgroup label="Santé, bien-être & animaux">
-                    <option value="coach_therapeute">Coach / Thérapeute</option>
-                    <option value="professionnel_sante">Professionnel de santé</option>
-                    <option value="veterinaire">Vétérinaire</option>
-                  </optgroup>
-                  <optgroup label="Accueil du public & création">
-                    <option value="coiffeur">Coiffeur</option>
-                    <option value="photographe">Photographe</option>
-                    <option value="restaurant">Restaurant</option>
-                  </optgroup>
-                  <optgroup label="Autre">
-                    <option value="autre">Autre</option>
-                  </optgroup>
-                </select>
-              </div>
-
-              <div>
-                <label htmlFor="address" className="mb-1 block text-sm font-medium text-slate-500">
-                  Adresse complète
-                </label>
-                <textarea
-                  id="address"
-                  name="address"
-                  rows={3}
-                  value={form.address}
-                  onChange={handleChange}
-                  required
-                  className="w-full resize-y rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600/20"
-                  placeholder="123 rue Example, 75001 Paris"
-                />
-              </div>
-
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <div>
-                  <label htmlFor="email" className="mb-1 block text-sm font-medium text-slate-500">
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600/20"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="website" className="mb-1 block text-sm font-medium text-slate-500">
-                    Site web (optionnel)
-                  </label>
-                  <input
-                    id="website"
-                    name="website"
-                    type="url"
-                    value={form.website}
-                    onChange={handleChange}
-                    placeholder="https://…"
-                    className="w-full rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600/20"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <span className="mb-2 block text-sm font-medium text-slate-500">Collectez-vous des emails clients ?</span>
-                <div className="flex gap-4">
-                  {(['yes', 'no'] as const).map((v) => (
-                    <label key={v} className="flex cursor-pointer items-center gap-2 text-sm text-slate-600">
-                      <input
-                        type="radio"
-                        name="collectsEmails"
-                        value={v}
-                        checked={form.collectsEmails === v}
-                        onChange={handleChange}
-                        className="border-slate-300 text-blue-600 focus:ring-blue-600/30"
-                      />
-                      {v === 'yes' ? 'Oui' : 'Non'}
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <span className="mb-2 block text-sm font-medium text-slate-500">Site web avec cookies ?</span>
-                <div className="flex gap-4">
-                  {(['yes', 'no'] as const).map((v) => (
-                    <label key={v} className="flex cursor-pointer items-center gap-2 text-sm text-slate-600">
-                      <input
-                        type="radio"
-                        name="hasCookies"
-                        value={v}
-                        checked={form.hasCookies === v}
-                        onChange={handleChange}
-                        className="border-slate-300 text-blue-600 focus:ring-blue-600/30"
-                      />
-                      {v === 'yes' ? 'Oui' : 'Non'}
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              <div className="pt-1">
-                <label className="flex cursor-pointer items-start gap-3 text-sm text-slate-600">
-                  <input
-                    type="checkbox"
-                    checked={cgvAccepted}
-                    onChange={(e) => setCgvAccepted(e.target.checked)}
-                    className="mt-1 h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-2 focus:ring-blue-600/30"
-                  />
-                  <span>
-                    J&apos;accepte les{' '}
-                    <Link to="/cgv" className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-700">
-                      CGV
-                    </Link>{' '}
-                    et je reconnais que la livraison commence immédiatement après paiement.
-                  </span>
-                </label>
-              </div>
-
-              {error && <p className="text-sm text-red-600">{error}</p>}
-
-              <button
-                type="submit"
-                disabled={loading || !cgvAccepted}
-                className="w-full rounded-xl bg-blue-600 py-3.5 px-6 text-base font-semibold text-white shadow-sm transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                {loading ? 'Redirection…' : 'Valider et recevoir mes documents'}
-              </button>
-            </form>
-            <p className="mt-3 text-center text-xs text-slate-500">Paiement sécurisé par Stripe. Réception des 5 PDF par email.</p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="bg-blue-600 px-4 py-20 md:py-24">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mx-auto w-full min-w-0 max-w-3xl text-center"
-        >
-          <h2 className="mb-6 text-balance text-2xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-            Conformité RGPD : on s'en occupe pour vous.
-          </h2>
-          <p className="mb-8 text-balance text-base leading-relaxed text-blue-100 break-words sm:text-lg">
-            Plus de stress, plus de dossiers à chercher. Vous remplissez le formulaire, nous vous envoyons les 5 documents conformes. Vous les mettez en ligne et vous êtes en règle.
-          </p>
-          <a
-            href="#form"
-            className="mx-auto inline-flex min-h-[3.25rem] w-full max-w-md items-center justify-center gap-2 rounded-full bg-white px-4 py-3 text-center text-sm font-semibold leading-snug text-blue-600 shadow-md transition-colors hover:bg-slate-50 sm:w-auto sm:max-w-none sm:px-8 sm:text-base"
-          >
-            <span className="text-balance">Obtenir mes documents — 97 €</span>
-            <ArrowRight className="h-5 w-5 shrink-0" />
-          </a>
-          <p className="mt-4 text-balance text-xs text-blue-100 break-words sm:text-sm">
-            Paiement unique • Documents par email en 2 min
-          </p>
-        </motion.div>
-      </section>
-
-      {/* FAQ */}
-      <section id="faq" className="border-t border-slate-200 bg-white px-4 py-16 md:py-20">
-        <div className="mx-auto max-w-2xl">
-          <h2 className="mb-10 text-center text-2xl font-bold text-slate-900">Questions fréquentes</h2>
-          <div>
-            {[
-              { q: "J'ai déjà un site depuis des années sans problème, suis-je vraiment concerné ?", a: "La CNIL a élargi ses contrôles aux TPE et artisans depuis 2025. Beaucoup de petites structures n'avaient pas les documents à jour et ont été mises en demeure. Avec nos 5 documents, vous couvrez les attentes habituelles et vous êtes serein en cas de contrôle." },
-              { q: 'Ces documents suffisent-ils pour être conforme au RGPD ?', a: 'Ils couvrent les éléments attendus pour une TPE/artisan (information des personnes, mentions obligatoires, registre, cookies). Pour des cas très spécifiques, un accompagnement juridique reste recommandé.' },
-              { q: "Que se passe-t-il après le paiement ?", a: "Vos documents sont préparés à partir de vos réponses puis envoyés par email à l'adresse indiquée. Sur la page de confirmation, nous vous proposons aussi une option d'installation sur votre site (documents + bandeau cookies) si vous préférez nous laisser faire la mise en place." },
-              { q: "Proposez-vous d'installer les documents et le bandeau cookie sur mon site ?", a: "Oui. Après votre achat, nous vous proposons une option payante pour installer nous-mêmes les mentions légales, la politique de confidentialité, les CGV et le bandeau cookies sur votre site. Vous verrez l'offre sur la page de confirmation après le paiement ; vous pouvez aussi nous contacter à rgpdsimple@gmail.com pour en faire la demande." },
-              { q: "Puis-je modifier les modèles ensuite ?", a: "Oui. Les modèles sont fournis en PDF ; vous pouvez les adapter ou faire relire par un juriste." },
-            ].map((faq, i) => (
-              <details key={i} className="group border-b border-slate-200">
-                <summary className="flex cursor-pointer list-none items-start justify-between gap-3 py-4 text-left text-sm font-medium text-slate-900 sm:text-base">
-                  <span className="min-w-0 flex-1 pr-2">{faq.q}</span>
-                  <span className="relative mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center text-blue-600">
-                    <Plus className="h-5 w-5 group-open:hidden" strokeWidth={2} aria-hidden />
-                    <Minus className="absolute hidden h-5 w-5 group-open:block" strokeWidth={2} aria-hidden />
-                  </span>
-                </summary>
-                <p className="pb-4 text-sm leading-relaxed text-slate-500 break-words">{faq.a}</p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="border-t border-slate-800 bg-slate-900">
-        <div className="mx-auto max-w-5xl px-4 py-12">
-          <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-            <Link to="/" className="flex items-center">
-              <img src="/logo.png" alt="Logo" className="h-8 w-auto opacity-90" />
-              <span className="sr-only">Accueil</span>
-            </Link>
-            <div className="flex items-center gap-2 rounded-full border border-slate-700 bg-slate-800/60 px-3 py-1.5">
-              <span className="h-2 w-2 rounded-full bg-emerald-400 pulse-glow" />
-              <span className="text-xs text-slate-400">Conformité TPE & artisans</span>
-            </div>
-          </div>
-          <p className="mt-6 text-center text-sm text-slate-400 sm:text-left">
-            Outil d'aide à la conformité RGPD. Ne remplace pas un conseil juridique personnalisé.
-          </p>
-          <div className="mt-4 flex flex-wrap justify-center gap-4 text-xs text-slate-400 sm:justify-start">
-            <a href="/mentions-legales" className="transition-colors hover:text-white">
-              Mentions légales
-            </a>
-            <a href="/politique-confidentialite" className="transition-colors hover:text-white">
-              Politique de confidentialité
-            </a>
-            <a href="/cookies" className="transition-colors hover:text-white">
-              Cookies
-            </a>
-            <a href="/cgv" className="transition-colors hover:text-white">
-              CGV
-            </a>
-          </div>
-          <p className="mt-4 text-sm text-slate-500">&copy; {new Date().getFullYear()} RGPD Simple</p>
-        </div>
-      </footer>
-    </main>
   )
 }
 
@@ -838,7 +152,7 @@ function SuccessPage() {
     <main className="min-h-screen bg-slate-50 text-slate-900">
       <Navbar />
 
-      <section className="flex min-h-screen flex-col items-center justify-center px-4 pb-16 pt-24">
+      <section className="flex min-h-screen flex-col items-center justify-center px-4 pb-16 pt-36">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -862,7 +176,7 @@ function SuccessPage() {
             </p>
             <a
               href={`mailto:${INSTALLATION_CONTACT_EMAIL}?subject=Installation%20RGPD%20147€&body=Email%20de%20commande%20:%20${encodeURIComponent(email || '')}`}
-              className="inline-flex items-center rounded-full bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700"
+              className="inline-flex items-center rounded-md bg-red-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-red-700"
             >
               Demander l'installation
             </a>
@@ -888,7 +202,7 @@ function PrivacyPage() {
   return (
     <main className="min-h-screen bg-white text-slate-900">
       <Navbar />
-      <section className="px-4 pb-16 pt-28">
+      <section className="px-4 pb-16 pt-36">
         <div className="mx-auto max-w-3xl">
           <h1 className="mb-2 text-3xl font-bold text-slate-900">Politique de confidentialité</h1>
           <p className="mb-8 text-sm text-slate-500">Dernière mise à jour : 1er avril 2026</p>
@@ -971,7 +285,7 @@ function LegalPage() {
   return (
     <main className="min-h-screen bg-white text-slate-900">
       <Navbar />
-      <section className="px-4 pb-16 pt-28">
+      <section className="px-4 pb-16 pt-36">
         <div className="mx-auto max-w-3xl">
           <h1 className="mb-2 text-3xl font-bold text-slate-900">Mentions légales</h1>
           <p className="mb-8 text-sm text-slate-500">Dernière mise à jour : 1er avril 2026</p>
@@ -1044,7 +358,7 @@ function CookiesPage() {
   return (
     <main className="min-h-screen bg-white text-slate-900">
       <Navbar />
-      <section className="px-4 pb-16 pt-28">
+      <section className="px-4 pb-16 pt-36">
         <div className="mx-auto max-w-3xl">
           <h1 className="mb-2 text-3xl font-bold text-slate-900">Politique Cookies</h1>
           <p className="mb-8 text-sm text-slate-500">Dernière mise à jour : 1er avril 2026</p>
@@ -1087,7 +401,7 @@ function CgvSitePage() {
   return (
     <main className="min-h-screen bg-white text-slate-900">
       <Navbar />
-      <section className="px-4 pb-16 pt-28">
+      <section className="px-4 pb-16 pt-36">
         <div className="mx-auto max-w-3xl">
           <h1 className="mb-2 text-3xl font-bold text-slate-900">Conditions générales de vente</h1>
           <p className="mb-8 text-sm text-slate-500">Dernière mise à jour : 1er avril 2026 — RGPDSimple</p>
@@ -1191,7 +505,15 @@ function App() {
     <BrowserRouter>
       <AffiliateCapture />
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <Navbar />
+              <LandingPage />
+            </>
+          }
+        />
         <Route path="/success" element={<SuccessPage />} />
         <Route path="/politique-confidentialite" element={<PrivacyPage />} />
         <Route path="/mentions-legales" element={<LegalPage />} />

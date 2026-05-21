@@ -18,6 +18,77 @@
   }
 }
 
+/* LP-inspired utilities */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes alert-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.5); }
+}
+@keyframes underline-reveal {
+  to { transform: scaleX(1); }
+}
+
+.alert-bar {
+  background: linear-gradient(90deg, #7f1d1d, #dc2626, #991b1b, #dc2626);
+  background-size: 300% 100%;
+  animation: gradient-shift 4s ease infinite;
+}
+.alert-bar-dot {
+  animation: alert-pulse 1.5s ease infinite;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-up-delay-1 { transition-delay: 0.1s; }
+.fade-up-delay-2 { transition-delay: 0.2s; }
+.fade-up-delay-3 { transition-delay: 0.3s; }
+
+.hero-highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #dc2626;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: underline-reveal 0.5s ease 0.8s both;
+}
+
+.btn-primary-lp {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg bg-red-600 px-8 py-4 text-base font-bold text-white shadow-[0_4px_24px_rgba(220,38,38,0.3)] transition-all hover:-translate-y-0.5 hover:bg-red-700 hover:shadow-[0_8px_32px_rgba(220,38,38,0.4)];
+}
+.btn-secondary-lp {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg bg-brand-navy px-8 py-4 text-base font-bold text-white shadow-[0_4px_24px_rgba(26,60,143,0.25)] transition-all hover:-translate-y-0.5 hover:bg-brand-navy-dark;
+}
+.btn-submit-lp {
+  @apply flex w-full items-center justify-center gap-2 rounded-[10px] bg-gradient-to-br from-brand-navy to-blue-600 py-4 text-base font-bold text-white shadow-[0_4px_24px_rgba(26,60,143,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(26,60,143,0.4)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0;
+}
+
+.steps-line::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #e2e8f0;
+}
+@media (max-width: 640px) {
+  .steps-line::before { left: 24px; }
+}
+
 /* Shimmer CTA button */
 .shimmer-btn {
   @apply relative overflow-hidden;

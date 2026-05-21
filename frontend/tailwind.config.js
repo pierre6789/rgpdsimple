@@ -5,6 +5,15 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        display: ['Syne', 'Inter', 'system-ui', 'sans-serif'],
+      },
+      colors: {
+        brand: {
+          red: '#dc2626',
+          'red-dark': '#991b1b',
+          navy: '#1a3c8f',
+          'navy-dark': '#0f2557',
+        },
       },
       animation: {
         marquee: 'marquee 30s linear infinite',
