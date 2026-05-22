@@ -205,7 +205,7 @@ function PrivacyPage() {
       <section className="px-4 pb-16 pt-36">
         <div className="mx-auto max-w-3xl">
           <h1 className="mb-2 text-3xl font-bold text-slate-900">Politique de confidentialité</h1>
-          <p className="mb-8 text-sm text-slate-500">Dernière mise à jour : 1er avril 2026</p>
+          <p className="mb-8 text-sm text-slate-500">Dernière mise à jour : 21 mai 2026</p>
           <p className="mb-6 text-sm text-slate-600">
             Cette politique explique comment <strong>RGPDSimple</strong> traite les données personnelles,
             conformément au RGPD et à la loi « Informatique et Libertés ».
@@ -244,9 +244,14 @@ function PrivacyPage() {
             <li>Autres données : durée strictement nécessaire à la finalité.</li>
           </ul>
           <h2 className="mb-2 text-xl font-semibold text-slate-900">5. Destinataires et transferts hors UE</h2>
-          <p className="text-sm text-slate-600 mb-2">Destinataires : OVH (hébergement), Stripe (paiement), Mailtrap (email transactionnel).</p>
+          <p className="text-sm text-slate-600 mb-2">
+            Destinataires : Vercel Inc. (hébergement), Stripe Inc. (paiement), Mailtrap (email transactionnel), Google LLC
+            (analytics), Meta Platforms Inc. (publicité).
+          </p>
           <p className="text-sm text-slate-600 mb-6">
-            Transferts hors UE : Aucun transfert hors UE.
+            Transferts hors UE : Vercel, Stripe, Google et Meta sont des prestataires américains. Ces transferts sont
+            encadrés par des Clauses Contractuelles Types (CCT) approuvées par la Commission européenne, conformément à
+            l&apos;article 46 du RGPD.
           </p>
           <h2 className="mb-2 text-xl font-semibold text-slate-900">6. Vos droits</h2>
           <p className="text-sm text-slate-600 mb-6">
@@ -265,7 +270,13 @@ function PrivacyPage() {
           </p>
           <h2 className="mb-2 text-xl font-semibold text-slate-900">8. Cookies</h2>
           <p className="text-sm text-slate-600 mb-6">
-            Nous n&apos;utilisons pas de cookies d&apos;audience ni marketing. Seuls des cookies strictement nécessaires peuvent être déposés pour le fonctionnement du site.
+            Le site utilise des cookies strictement nécessaires, ainsi que des cookies de mesure d&apos;audience (Google
+            Analytics 4) et publicitaires (Meta Pixel), déposés uniquement après votre consentement via le bandeau
+            cookies. Pour le détail des catégories et durées, consultez la page{' '}
+            <Link to="/cookies" className="font-medium text-blue-600 underline hover:text-blue-700">
+              Cookies
+            </Link>
+            .
           </p>
           <h2 className="mb-2 text-xl font-semibold text-slate-900">9. Transparence IA (AI Act)</h2>
           <p className="text-sm text-slate-600 mb-6">
@@ -307,11 +318,11 @@ function LegalPage() {
           <p className="text-sm text-slate-600 mb-6">Pierre Vuillermet (Gérant)</p>
           <h2 className="mb-2 text-xl font-semibold text-slate-900">3. Hébergeur</h2>
           <p className="text-sm text-slate-600 mb-6">
-            OVH
+            Vercel Inc.
             <br />
-            2, rue Kellermann, 59100 Roubaix
+            440 N Barranca Ave #4133, Covina, CA 91723, États-Unis
             <br />
-            <a href="https://www.ovhcloud.com/fr/" className="font-medium text-blue-600 underline hover:text-blue-700" target="_blank" rel="noreferrer">https://www.ovhcloud.com/fr/</a>
+            <a href="https://vercel.com" className="font-medium text-blue-600 underline hover:text-blue-700" target="_blank" rel="noreferrer">https://vercel.com</a>
           </p>
           <h2 className="mb-2 text-xl font-semibold text-slate-900">4. Propriété intellectuelle</h2>
           <p className="text-sm text-slate-600 mb-6">
@@ -361,7 +372,7 @@ function CookiesPage() {
       <section className="px-4 pb-16 pt-36">
         <div className="mx-auto max-w-3xl">
           <h1 className="mb-2 text-3xl font-bold text-slate-900">Politique Cookies</h1>
-          <p className="mb-8 text-sm text-slate-500">Dernière mise à jour : 1er avril 2026</p>
+          <p className="mb-8 text-sm text-slate-500">Dernière mise à jour : 21 mai 2026</p>
           <p className="text-sm text-slate-600 mb-6">
             Cette page explique comment RGPDSimple utilise les cookies et traceurs sur <a href="https://www.rgpdsimple.fr" className="font-medium text-blue-600 underline hover:text-blue-700" target="_blank" rel="noreferrer">https://www.rgpdsimple.fr</a>.
           </p>
@@ -370,10 +381,18 @@ function CookiesPage() {
             Un cookie est un petit fichier texte déposé sur votre terminal lors de la visite d&apos;un site.
           </p>
           <h2 className="mb-2 text-xl font-semibold text-slate-900">2. Catégories de cookies</h2>
-          <ul className="list-inside list-disc text-sm text-slate-600 mb-6 space-y-1">
-            <li>Cookies strictement nécessaires (fonctionnement du site).</li>
-            <li>Cookies de mesure d&apos;audience : non utilisés actuellement.</li>
-            <li>Cookies marketing/publicitaires : non utilisés actuellement.</li>
+          <ul className="list-inside list-disc text-sm text-slate-600 mb-6 space-y-2">
+            <li>
+              <strong>Cookies strictement nécessaires</strong> — fonctionnement du site (session, sécurité).
+            </li>
+            <li>
+              <strong>Cookies de mesure d&apos;audience</strong> — Google Analytics 4 (Google LLC, USA). Déposés
+              uniquement après consentement. Durée : 13 mois max.
+            </li>
+            <li>
+              <strong>Cookies publicitaires</strong> — Meta Pixel (Meta Platforms, USA). Déposés uniquement après
+              consentement. Durée : 13 mois max.
+            </li>
           </ul>
           <h2 className="mb-2 text-xl font-semibold text-slate-900">3. Base légale</h2>
           <p className="text-sm text-slate-600 mb-6">
