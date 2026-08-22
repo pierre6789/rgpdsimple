@@ -47,36 +47,14 @@ app.get("/api/debug-env", (_req, res) => {
     hasStripeWebhookSecret: Boolean(process.env.STRIPE_WEBHOOK_SECRET),
     hasStripeSecretKey: Boolean(process.env.STRIPE_SECRET_KEY),
     hasMailtrapApiToken: Boolean(process.env.MAILTRAP_API_TOKEN),
-    smtpHost: process.env.SMTP_HOST || null,
-    smtpPort: process.env.SMTP_PORT || null,
+    hasSmtpHost: Boolean(process.env.SMTP_HOST),
     hasSmtpUser: Boolean(process.env.SMTP_USER),
     hasSmtpPass: Boolean(process.env.SMTP_PASS),
-    emailFrom: process.env.EMAIL_FROM || null,
+    hasEmailFrom: Boolean(process.env.EMAIL_FROM),
     hasSupabaseUrl: Boolean(process.env.SUPABASE_URL),
     hasSupabaseServiceKey: Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY),
     allowedOrigins,
   });
-});
-
-// TEMPORAIRE — diagnostic email : tente un envoi et renvoie l'erreur exacte.
-// À retirer une fois l'envoi validé. Protégé par une clé pour éviter les abus.
-app.get("/api/test-email", async (req, res) => {
-  if (req.query.key !== "diag-rgpd-2026") {
-    res.status(403).json({ error: "forbidden" });
-    return;
-  }
-  const to =
-    typeof req.query.to === "string" && req.query.to.includes("@")
-      ? req.query.to
-      : "pierrevuillermet1@gmail.com";
-  const fromResolved = (process.env.EMAIL_FROM || "").trim().replace(/^"(.*)"$/, "$1");
-  try {
-    const { EmailService } = await import("./services/EmailService");
-    await new EmailService().sendDocuments(to, []);
-    res.json({ ok: true, to, from: fromResolved });
-  } catch (e) {
-    res.json({ ok: false, to, from: fromResolved, error: e instanceof Error ? e.message : String(e) });
-  }
 });
 
 // En local uniquement : on démarre le serveur HTTP. Sur Vercel (serverless),
