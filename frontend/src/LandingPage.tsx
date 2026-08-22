@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import landingHtml from './design/landing.html?raw'
 import './design/design.css'
 
-// URL de l'API (backend). Définie via VITE_API_URL dans Vercel (frontend).
-// Fallback : ancien backend Render (le temps de basculer sur la nouvelle API Vercel).
-const API_BASE = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/$/, '') || 'https://rgpdsimple.onrender.com'
+// URL de l'API (backend). Surchargeable via VITE_API_URL (Vercel front) ;
+// par défaut, l'API serverless Vercel.
+const API_BASE = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/$/, '') || 'https://rgpdsimple-api.vercel.app'
 const CHECKOUT_URL = `${API_BASE}/api/checkout`
 
 /** Libellés du menu déroulant (design) -> valeurs attendues par le backend. */
