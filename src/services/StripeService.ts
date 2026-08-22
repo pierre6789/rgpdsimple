@@ -11,8 +11,10 @@ export class StripeService {
 
     // Success reste côté backend pour traiter la commande (fallback si webhook Stripe absent)
     const successUrl = `${process.env.APP_URL || "http://localhost:3000"}/success?orderId=${order.id}&session_id={CHECKOUT_SESSION_ID}`;
-    // Cancel doit renvoyer vers le site frontend, pas vers l'API backend
-    const cancelUrl = `${process.env.APP_URL_FRONTEND || "http://localhost:5173"}/`;
+    // Cancel doit renvoyer vers le site frontend, pas vers l'API backend.
+    // APP_URL_FRONTEND peut lister plusieurs origines (CORS) : on prend la première.
+    const frontendBase = (process.env.APP_URL_FRONTEND || "http://localhost:5173").split(",")[0].trim();
+    const cancelUrl = `${frontendBase}/`;
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",

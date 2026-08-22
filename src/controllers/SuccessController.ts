@@ -34,7 +34,9 @@ export class SuccessController {
       }
 
       const order = await orderService.getOrderById(orderId);
-      const frontendUrl = process.env.APP_URL_FRONTEND || "http://localhost:5173";
+      // APP_URL_FRONTEND peut lister plusieurs origines (CORS) séparées par des virgules :
+      // pour la redirection, on prend la première (domaine canonique).
+      const frontendUrl = (process.env.APP_URL_FRONTEND || "http://localhost:5173").split(",")[0].trim();
       const email = encodeURIComponent(order?.customer.email ?? (session as any).customer_details?.email ?? "");
       // Toujours pointer vers l'email de contact client (pas EMAIL_FROM qui peut être no-reply)
       const supportEmail = encodeURIComponent(process.env.SUPPORT_EMAIL || "contact@rgpdsimple.fr");
