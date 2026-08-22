@@ -21,7 +21,7 @@ function PrivacyPage() {
   return (
     <LegalLayout>
           <h1 className="mb-2 text-3xl font-bold text-slate-900">Politique de confidentialité</h1>
-          <p className="mb-8 text-sm text-slate-500">Dernière mise à jour : 21 mai 2026</p>
+          <p className="mb-8 text-sm text-slate-500">Dernière mise à jour : août 2026</p>
           <p className="mb-6 text-sm text-slate-600">
             Cette politique explique comment <strong>RGPDSimple</strong> traite les données personnelles,
             conformément au RGPD et à la loi « Informatique et Libertés ».
@@ -56,7 +56,7 @@ function PrivacyPage() {
           <ul className="text-sm text-slate-600 mb-6 list-disc list-inside space-y-1">
             <li>Prospects : 3 ans après le dernier contact.</li>
             <li>Facturation / comptabilité : 10 ans à compter de la clôture de l&apos;exercice.</li>
-            <li>Cookies non essentiels : 13 mois maximum.</li>
+            <li>Cookies et traceurs : durée de vie 13 mois max ; données de mesure d&apos;audience 25 mois max ; conservation de votre choix (accepter/refuser) ~6 mois (recommandations CNIL).</li>
             <li>Autres données : durée strictement nécessaire à la finalité.</li>
           </ul>
           <h2 className="mb-2 text-xl font-semibold text-slate-900">5. Destinataires et transferts hors UE</h2>
@@ -66,13 +66,15 @@ function PrivacyPage() {
           </p>
           <p className="text-sm text-slate-600 mb-6">
             Transferts hors UE : Vercel, Stripe, Google et Meta sont des prestataires américains. Ces transferts sont
-            encadrés par des Clauses Contractuelles Types (CCT) approuvées par la Commission européenne, conformément à
-            l&apos;article 46 du RGPD.
+            encadrés par le <strong>Data Privacy Framework</strong> (décision d&apos;adéquation UE–USA du 10 juillet 2023,
+            pour les prestataires certifiés) et/ou par des <strong>Clauses Contractuelles Types</strong> (art. 46 du RGPD).
           </p>
           <h2 className="mb-2 text-xl font-semibold text-slate-900">6. Vos droits</h2>
           <p className="text-sm text-slate-600 mb-6">
-            Vous disposez des droits d&apos;accès, rectification, effacement, limitation, opposition, portabilité et directives
-            post-mortem.
+            Vous disposez des droits d&apos;accès, rectification, effacement, limitation, opposition, portabilité, directives
+            post-mortem et, lorsqu&apos;un traitement repose sur votre consentement, du droit de le <strong>retirer à tout moment</strong>.
+            <br />
+            Nos services ne sont pas destinés aux mineurs de moins de 15 ans (consentement du titulaire de l&apos;autorité parentale requis pour un service en ligne, art. 8 RGPD).
             <br />
             Contact : <a href="mailto:contact@rgpdsimple.fr" className="font-medium text-blue-600 underline hover:text-blue-700">contact@rgpdsimple.fr</a>.
             <br />
@@ -96,7 +98,7 @@ function PrivacyPage() {
           </p>
           <h2 className="mb-2 text-xl font-semibold text-slate-900">9. Transparence IA (AI Act)</h2>
           <p className="text-sm text-slate-600 mb-6">
-            Nous n&apos;utilisons pas d&apos;outils d&apos;IA pour prendre des décisions automatisées sur les personnes.
+            Nous n&apos;utilisons pas d&apos;outil d&apos;IA (chatbot, décision automatisée, profilage) pour traiter vos données. Le cas échéant, la transparence requise par l&apos;article 50 du Règlement (UE) 2024/1689 (AI Act) serait assurée.
           </p>
           <h2 className="mb-2 text-xl font-semibold text-slate-900">10. Mise à jour de la politique</h2>
           <p className="text-sm text-slate-600">
@@ -110,12 +112,16 @@ function LegalPage() {
   return (
     <LegalLayout>
           <h1 className="mb-2 text-3xl font-bold text-slate-900">Mentions légales</h1>
-          <p className="mb-8 text-sm text-slate-500">Dernière mise à jour : 1er avril 2026</p>
-          <h2 className="mb-2 text-xl font-semibold text-slate-900">1. Éditeur du site (LCEN)</h2>
+          <p className="mb-8 text-sm text-slate-500">Dernière mise à jour : août 2026</p>
+          <h2 className="mb-2 text-xl font-semibold text-slate-900">1. Éditeur du site</h2>
           <p className="text-sm text-slate-600 mb-6">
-            RGPDSimple, Entreprise individuelle
+            En application de l&apos;article 1-1 de la loi n° 2004-575 du 21 juin 2004 (LCEN, modifiée par la loi « SREN » du 21 mai 2024), le site est édité par :
+            <br />
+            RGPDSimple — Pierre Vuillermet, entrepreneur individuel (EI)
             <br />
             SIRET : 92108885200022
+            <br />
+            TVA non applicable, art. 293 B du CGI (franchise en base de TVA)
             <br />
             Adresse : 84 rue pélident, 84300, Cavaillon
             <br />
@@ -146,23 +152,23 @@ function LegalPage() {
             <br />
             Politique de confidentialité : <a href="/politique-confidentialite" className="font-medium text-blue-600 underline hover:text-blue-700">consulter la page dédiée</a>.
           </p>
-          <h2 className="mb-2 text-xl font-semibold text-slate-900">6. Médiateur de la consommation (B2C)</h2>
+          <h2 className="mb-2 text-xl font-semibold text-slate-900">6. Médiateur de la consommation</h2>
           <p className="text-sm text-slate-600 mb-6">
-            En cours d&apos;adhésion.
+            Pour toute vente à un consommateur (B2C) et conformément aux articles L.612-1 et L.616-1 du Code de la consommation, un médiateur de la consommation peut être saisi gratuitement, après une réclamation écrite préalable restée sans réponse satisfaisante.
             <br />
-            En cas de réclamation : <a href="mailto:contact@rgpdsimple.fr" className="font-medium text-blue-600 underline hover:text-blue-700">contact@rgpdsimple.fr</a>
+            Médiateur : [nom, adresse postale et site internet du médiateur — à compléter dès l&apos;adhésion].
             <br />
-            Les coordonnées du médiateur seront publiées dès validation de l&apos;adhésion.
+            Réclamation préalable : <a href="mailto:contact@rgpdsimple.fr" className="font-medium text-blue-600 underline hover:text-blue-700">contact@rgpdsimple.fr</a>
           </p>
-          <h2 className="mb-2 text-xl font-semibold text-slate-900">7. Point de contact (DSA)</h2>
+          <h2 className="mb-2 text-xl font-semibold text-slate-900">7. Point de contact</h2>
           <p className="text-sm text-slate-600 mb-6">
-            <a href="mailto:contact@rgpdsimple.fr" className="font-medium text-blue-600 underline hover:text-blue-700">contact@rgpdsimple.fr</a>
+            Le Digital Services Act (règlement (UE) 2022/2065) ne s&apos;applique pas à ce site, qui commercialise ses propres produits sans héberger de contenus de tiers. Point de contact : <a href="mailto:contact@rgpdsimple.fr" className="font-medium text-blue-600 underline hover:text-blue-700">contact@rgpdsimple.fr</a>.
           </p>
-          <h2 className="mb-2 text-xl font-semibold text-slate-900">8. Engagement environnemental (Loi REEN)</h2>
-          <p className="text-sm text-slate-600 mb-6">Nous nous engageons à limiter l&apos;empreinte environnementale de nos services numériques en appliquant des principes d&apos;éco-conception (pages allégées, ressources optimisées, limitation des scripts non essentiels) et en nous appuyant sur un hébergement professionnel.</p>
-          <h2 className="mb-2 text-xl font-semibold text-slate-900">9. Accessibilité numérique (RGAA)</h2>
+          <h2 className="mb-2 text-xl font-semibold text-slate-900">8. Engagement environnemental</h2>
+          <p className="text-sm text-slate-600 mb-6">À titre volontaire (aucune obligation légale ne s&apos;impose à une TPE au titre de la loi REEN), nous limitons l&apos;empreinte de nos services numériques : pages allégées, ressources optimisées, hébergement professionnel.</p>
+          <h2 className="mb-2 text-xl font-semibold text-slate-900">9. Accessibilité numérique</h2>
           <p className="text-sm text-slate-600 mb-6">
-            Statut : Totalement conforme
+            En tant que micro-entreprise (moins de 10 salariés et moins de 2 M€), RGPDSimple est exemptée des obligations d&apos;accessibilité de l&apos;European Accessibility Act (directive (UE) 2019/882, applicable depuis le 28 juin 2025). Nous veillons néanmoins à une accessibilité raisonnable.
             <br />
             Contact accessibilité : <a href="mailto:contact@rgpdsimple.fr" className="font-medium text-blue-600 underline hover:text-blue-700">contact@rgpdsimple.fr</a>
           </p>
@@ -178,7 +184,7 @@ function CookiesPage() {
   return (
     <LegalLayout>
           <h1 className="mb-2 text-3xl font-bold text-slate-900">Politique Cookies</h1>
-          <p className="mb-8 text-sm text-slate-500">Dernière mise à jour : 21 mai 2026</p>
+          <p className="mb-8 text-sm text-slate-500">Dernière mise à jour : août 2026</p>
           <p className="text-sm text-slate-600 mb-6">
             Cette page explique comment RGPDSimple utilise les cookies et traceurs sur <a href="https://www.rgpdsimple.fr" className="font-medium text-blue-600 underline hover:text-blue-700" target="_blank" rel="noreferrer">https://www.rgpdsimple.fr</a>.
           </p>
@@ -206,7 +212,7 @@ function CookiesPage() {
           </p>
           <h2 className="mb-2 text-xl font-semibold text-slate-900">4. Durée de conservation</h2>
           <p className="text-sm text-slate-600 mb-6">
-            Les cookies non essentiels sont conservés au maximum 13 mois.
+            Durée de vie des traceurs : 13 mois maximum. Données de mesure d&apos;audience : 25 mois maximum. Conservation de votre choix (accepter/refuser) : environ 6 mois, avant nouvelle sollicitation (recommandations CNIL).
           </p>
           <h2 className="mb-2 text-xl font-semibold text-slate-900">5. Gérer vos choix</h2>
           <p className="text-sm text-slate-600 mb-6">
@@ -224,7 +230,7 @@ function CgvSitePage() {
   return (
     <LegalLayout>
           <h1 className="mb-2 text-3xl font-bold text-slate-900">Conditions générales de vente</h1>
-          <p className="mb-8 text-sm text-slate-500">Dernière mise à jour : 1er avril 2026 — RGPDSimple</p>
+          <p className="mb-8 text-sm text-slate-500">Dernière mise à jour : août 2026 — RGPDSimple</p>
 
           <h2 className="mb-2 text-xl font-semibold text-slate-900">1. Objet</h2>
           <p className="text-sm text-slate-600 mb-6">
@@ -242,8 +248,9 @@ function CgvSitePage() {
           <p className="text-sm text-slate-600 mb-6">
             Le Pack comprend la préparation et l&apos;envoi par email des documents indiqués sur la page d&apos;accueil au
             moment de la commande (politique de confidentialité, mentions légales, CGV modèle client, registre des
-            traitements, bandeau cookies, guide à compléter). Le prix TTC en vigueur est affiché sur le site avant le
-            paiement. RGPDSimple se réserve le droit de modifier ses tarifs ; le prix applicable est celui affiché au
+            traitements, bandeau cookies, guide à compléter). Le prix en vigueur est affiché sur le site avant le
+            paiement ; il est net de taxe (« TVA non applicable, art. 293 B du CGI », franchise en base de TVA).
+            RGPDSimple se réserve le droit de modifier ses tarifs ; le prix applicable est celui affiché au
             moment de la validation de la commande.
           </p>
 
@@ -273,20 +280,23 @@ function CgvSitePage() {
 
           <h2 className="mb-2 text-xl font-semibold text-slate-900">6. Droit de rétractation et exécution immédiate</h2>
           <p className="text-sm text-slate-600 mb-6">
-            Pour les consommateurs, le délai légal de rétractation est de 14 jours. Le Pack étant un contenu numérique
-            fourni immédiatement après paiement et sur mesure à partir de vos réponses, vous reconnaissez qu&apos;à compter
-            de la livraison par email, l&apos;exécution du contrat a commencé avec votre accord et que, sauf droit légal
-            impératif, vous ne pouvez plus exercer votre droit de rétractation une fois la livraison effectuée. Pour toute
-            demande avant livraison, écrivez à{' '}
+            Pour les consommateurs, le délai légal de rétractation est de 14 jours (art. L221-18 du Code de la consommation).
+            Le Pack étant un contenu numérique fourni immédiatement après paiement, le client, lors de sa commande :
+            (1) <strong>demande expressément</strong> que la fourniture commence dès la validation du paiement, et
+            (2) <strong>reconnaît qu&apos;il perdra son droit de rétractation</strong> dès le début de l&apos;exécution
+            (art. L221-28 13° et L221-25 du Code de la consommation). Ces deux éléments sont recueillis par cases distinctes
+            non pré-cochées et confirmés par email. À défaut, le client conserve son droit de rétractation de 14 jours. Pour
+            toute demande, écrivez à{' '}
             <a href="mailto:contact@rgpdsimple.fr" className="font-medium text-blue-600 underline hover:text-blue-700">contact@rgpdsimple.fr</a>.
           </p>
 
           <h2 className="mb-2 text-xl font-semibold text-slate-900">7. Conformité et garanties</h2>
           <p className="text-sm text-slate-600 mb-6">
-            Vous bénéficiez de la garantie légale de conformité pour les biens numériques et des dispositions du Code de la
-            consommation applicables. Les documents sont des modèles à compléter et à adapter ; ils ne constituent pas un
-            conseil juridique personnalisé. RGPDSimple ne saurait être tenue responsable de l&apos;usage que vous faites
-            des documents sur votre site ou auprès de tiers.
+            Vous bénéficiez de la garantie légale de conformité des contenus numériques (art. L224-25-1 et suivants du Code
+            de la consommation) : pendant 2 ans à compter de la fourniture, la mise en conformité peut être demandée et, à
+            défaut, une réduction du prix ou le remboursement. Les documents sont des modèles à compléter et à adapter ; ils
+            ne constituent pas un conseil juridique personnalisé. RGPDSimple ne saurait être tenue responsable de l&apos;usage
+            que vous faites des documents sur votre site ou auprès de tiers.
           </p>
 
           <h2 className="mb-2 text-xl font-semibold text-slate-900">8. Option installation sur site (147 €)</h2>
@@ -297,9 +307,9 @@ function CgvSitePage() {
 
           <h2 className="mb-2 text-xl font-semibold text-slate-900">9. Médiation</h2>
           <p className="text-sm text-slate-600 mb-6">
-            Conformément aux articles L.612-1 et suivants du Code de la consommation, en cas de litige, le consommateur
-            peut recourir gratuitement à un médiateur de la consommation. Les coordonnées du médiateur seront communiquées
-            sur les mentions légales dès adhésion effective. En attendant :{' '}
+            Conformément aux articles L.612-1 et L.616-1 du Code de la consommation, après une réclamation écrite préalable
+            restée sans réponse satisfaisante, le consommateur peut recourir gratuitement à un médiateur de la consommation.
+            Les coordonnées du médiateur figurent aux mentions légales dès l&apos;adhésion. Réclamation préalable :{' '}
             <a href="mailto:contact@rgpdsimple.fr" className="font-medium text-blue-600 underline hover:text-blue-700">contact@rgpdsimple.fr</a>.
           </p>
 
