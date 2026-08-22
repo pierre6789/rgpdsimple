@@ -1,5 +1,5 @@
 import type Stripe from "stripe";
-import { google } from "googleapis";
+import { sheets as sheetsApi, auth as googleAuth } from "@googleapis/sheets";
 import { OrderService } from "./OrderService";
 
 const SHEET_TAB = "💰 Ventes";
@@ -54,12 +54,12 @@ function getSheetsClient() {
     return null;
   }
 
-  const auth = new google.auth.GoogleAuth({
+  const authClient = new googleAuth.GoogleAuth({
     credentials,
     scopes: ["https://www.googleapis.com/auth/spreadsheets"],
   });
 
-  return { sheets: google.sheets({ version: "v4", auth }), spreadsheetId };
+  return { sheets: sheetsApi({ version: "v4", auth: authClient }), spreadsheetId };
 }
 
 /** Ajoute une ligne de vente dans l'onglet « 💰 Ventes » (lève une erreur si l'API échoue). */

@@ -38,8 +38,21 @@ type TemplateKey =
 
 export class TemplateService {
   private loadTemplate(fileName: string): string {
-    const filePath = path.join(process.cwd(), "src", "templates", "documents", fileName);
-    return fs.readFileSync(filePath, "utf-8");
+    // Plusieurs bases possibles selon l'environnement (local vs Vercel serverless,
+    // où les templates sont inclus via "includeFiles" dans vercel.json).
+    const candidates = [
+      path.join(process.cwd(), "src", "templates", "documents", fileName),
+      path.join(__dirname, "..", "templates", "documents", fileName),
+      path.join(__dirname, "..", "..", "src", "templates", "documents", fileName),
+    ];
+    for (const filePath of candidates) {
+      try {
+        return fs.readFileSync(filePath, "utf-8");
+      } catch {
+        // on essaie le chemin suivant
+      }
+    }
+    throw new Error(`Template introuvable: ${fileName}`);
   }
 
   /** Traite les blocs conditionnels {{#if_secteur}}...{{/if_secteur}} : ne garde que le bloc du secteur de la commande */

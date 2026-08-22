@@ -1,27 +1,37 @@
-import fs from "fs";
-import path from "path";
 import { Order } from "../models/Order";
+import { getSupabase } from "../lib/supabaseClient";
 
-const ORDERS_FILE = path.join(__dirname, "..", "..", "data", "orders.json");
+/** Fallback en mémoire quand Supabase n'est pas configuré (dev/local). */
+const memory = new Map<string, Order>();
 
-function ensureFileExists() {
-  if (!fs.existsSync(ORDERS_FILE)) {
-    fs.writeFileSync(ORDERS_FILE, JSON.stringify({ orders: [] }, null, 2), "utf-8");
-  }
-}
+const TABLE = "orders";
 
 export class StorageService {
-  async getAllOrders(): Promise<Order[]> {
-    ensureFileExists();
-    const raw = fs.readFileSync(ORDERS_FILE, "utf-8");
-    const parsed = JSON.parse(raw) as { orders: Order[] };
-    return parsed.orders || [];
+  async getOrder(id: string): Promise<Order | undefined> {
+    const sb = getSupabase();
+    if (!sb) return memory.get(id);
+
+    const { data, error } = await sb.from(TABLE).select("data").eq("id", id).maybeSingle();
+    if (error) {
+      console.error("[Supabase] getOrder échec:", error.message);
+      return undefined;
+    }
+    return (data?.data as Order) ?? undefined;
   }
 
-  async saveAllOrders(orders: Order[]): Promise<void> {
-    ensureFileExists();
-    const data = { orders };
-    fs.writeFileSync(ORDERS_FILE, JSON.stringify(data, null, 2), "utf-8");
+  async upsertOrder(order: Order): Promise<void> {
+    const sb = getSupabase();
+    if (!sb) {
+      memory.set(order.id, order);
+      return;
+    }
+
+    const { error } = await sb
+      .from(TABLE)
+      .upsert({ id: order.id, data: order, updated_at: new Date().toISOString() });
+    if (error) {
+      // On log mais on ne bloque pas le tunnel : la commande vit aussi dans les metadata Stripe.
+      console.error("[Supabase] upsertOrder échec:", error.message);
+    }
   }
 }
-

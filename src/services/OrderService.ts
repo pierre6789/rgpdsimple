@@ -66,7 +66,6 @@ function orderFromStripeSession(session: Stripe.Checkout.Session): Order {
 
 export class OrderService {
   async createPendingOrder(customer: CustomerInput, cgvConsent: { acceptedAt: string; clientIp: string }): Promise<Order> {
-    const orders = await storage.getAllOrders();
     const now = new Date().toISOString();
 
     const order: Order = {
@@ -82,26 +81,17 @@ export class OrderService {
       },
     };
 
-    orders.push(order);
-    await storage.saveAllOrders(orders);
+    await storage.upsertOrder(order);
 
     return order;
   }
 
   async updateOrder(order: Order): Promise<void> {
-    const orders = await storage.getAllOrders();
-    const idx = orders.findIndex((o) => o.id === order.id);
-    if (idx === -1) {
-      orders.push(order);
-    } else {
-      orders[idx] = order;
-    }
-    await storage.saveAllOrders(orders);
+    await storage.upsertOrder(order);
   }
 
   async getOrderById(id: string): Promise<Order | undefined> {
-    const orders = await storage.getAllOrders();
-    return orders.find((o) => o.id === id);
+    return storage.getOrder(id);
   }
 
   /** Traite une commande payée (PDF + email). order peut venir du fichier ou des metadata Stripe. */

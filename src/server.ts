@@ -13,11 +13,21 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const frontendOrigin = process.env.APP_URL_FRONTEND || "http://localhost:5173";
+// Origines autorisées (CORS) : liste séparée par des virgules dans APP_URL_FRONTEND.
+// Ex. "https://rgpdsimple.fr,https://www.rgpdsimple.fr". localhost autorisé par défaut en dev.
+const allowedOrigins = (process.env.APP_URL_FRONTEND || "http://localhost:5173")
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
 
 app.use(
   cors({
-    origin: frontendOrigin,
+    origin(origin, callback) {
+      // Pas d'origine (server-to-server, curl, redirections Stripe) : on laisse passer.
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) return callback(null, true);
+      return callback(null, false);
+    },
     credentials: true,
   })
 );
@@ -38,7 +48,7 @@ app.use(express.json());
 app.use("/api", checkoutRouter);
 app.use("/", successRouter);
 
-// Diagnostic (sans exposer les secrets) : vérifier que la config webhook + SMTP est prête
+// Diagnostic (sans exposer les secrets) : vérifier que la config est prête
 app.get("/api/debug-env", (_req, res) => {
   res.json({
     hasStripeWebhookSecret: Boolean(process.env.STRIPE_WEBHOOK_SECRET),
@@ -47,12 +57,20 @@ app.get("/api/debug-env", (_req, res) => {
     hasSmtpHost: Boolean(process.env.SMTP_HOST),
     hasSmtpUser: Boolean(process.env.SMTP_USER),
     hasSmtpPass: Boolean(process.env.SMTP_PASS),
+    hasSupabaseUrl: Boolean(process.env.SUPABASE_URL),
+    hasSupabaseServiceKey: Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY),
     hasGoogleSheetsId: Boolean(process.env.GOOGLE_SHEETS_ID),
     hasGoogleServiceAccount: Boolean(process.env.GOOGLE_SERVICE_ACCOUNT_JSON),
+    allowedOrigins,
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Serveur RGPD API démarré sur http://localhost:${PORT}`);
-});
+// En local uniquement : on démarre le serveur HTTP. Sur Vercel (serverless),
+// c'est la fonction api/index.ts qui utilise l'app exportée ci-dessous.
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`Serveur RGPD API démarré sur http://localhost:${PORT}`);
+  });
+}
 
+export default app;
