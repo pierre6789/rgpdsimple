@@ -1,33 +1,17 @@
-import React, { useState } from 'react'
-import { motion } from 'framer-motion'
-import { BrowserRouter, Link, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
+import { useEffect, type ReactNode } from 'react'
+import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-dom'
 import { CookieBanner } from './CookieBanner'
 import { setAffiliateCookie } from './affiliate'
 import { LandingPage } from './LandingPage'
+import { SuccessPage } from './SuccessPage'
+import { DesignHeader, DesignFooter } from './DesignChrome'
 import './App.css'
-
-const PRICE_LABEL = '97 €'
-function useQuery() {
-  const location = useLocation()
-  return React.useMemo(() => new URLSearchParams(location.search), [location.search])
-}
-
-const navItems = [
-  { label: 'Fonctionnement', href: '#how' },
-  { label: 'Contenu du pack', href: '#pack' },
-  { label: 'FAQ', href: '#faq' },
-]
-
-function scrollToFormSection() {
-  document.getElementById('form')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-}
 
 /** Capture ?via=CODE dans un cookie 30 jours (site React sur Vercel) */
 function AffiliateCapture() {
   const location = useLocation()
 
-  React.useEffect(() => {
+  useEffect(() => {
     const via = new URLSearchParams(location.search).get('via')
     if (!via) return
     const safe = via.trim()
@@ -39,171 +23,20 @@ function AffiliateCapture() {
   return null
 }
 
-function Navbar() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
-  const [mobileOpen, setMobileOpen] = useState(false)
-  const location = useLocation()
-  const navigate = useNavigate()
-
-  const goToForm = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault()
-    setMobileOpen(false)
-    if (location.pathname === '/') {
-      scrollToFormSection()
-      return
-    }
-    navigate('/')
-    window.setTimeout(() => scrollToFormSection(), 150)
-  }
-
+/** Layout des pages légales : header + footer du design + contenu typographié. */
+function LegalLayout({ children }: { children: ReactNode }) {
   return (
-    <motion.header
-      initial={{ y: -24, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 border-b border-slate-200 bg-white/85 backdrop-blur-md"
-    >
-      <div className="relative mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
-        <Link to="/" className="flex shrink-0 items-center">
-          <img src="/logo.png" alt="Logo" className="h-8 w-auto" />
-          <span className="sr-only">Accueil</span>
-        </Link>
-
-        <div className="relative hidden items-center gap-1 md:flex">
-          {navItems.map((item, index) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="relative rounded-full px-4 py-2 text-sm text-slate-500 transition-colors hover:text-slate-900"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              {hoveredIndex === index && (
-                <motion.div
-                  layoutId="nav-hover"
-                  className="absolute inset-0 rounded-full bg-slate-100"
-                  initial={false}
-                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                />
-              )}
-              <span className="relative z-10">{item.label}</span>
-            </a>
-          ))}
-        </div>
-
-        <div className="hidden shrink-0 md:block">
-          <a
-            href="/#form"
-            onClick={goToForm}
-            className="inline-flex items-center justify-center rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700 hover:shadow-md"
-          >
-            Obtenir mes documents — {PRICE_LABEL}
-          </a>
-        </div>
-
-        <button
-          type="button"
-          className="rounded-lg p-2 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 md:hidden"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Menu"
-        >
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
-      </div>
-
-      {mobileOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="border-t border-slate-200 bg-white px-4 py-4 shadow-lg md:hidden"
-        >
-          <div className="mx-auto flex max-w-6xl flex-col gap-1">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="rounded-xl px-4 py-3 text-sm text-slate-600 transition-colors hover:bg-slate-50 hover:text-slate-900"
-                onClick={() => setMobileOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
-            <a
-              href="/#form"
-              onClick={goToForm}
-              className="mt-2 inline-flex items-center justify-center rounded-full bg-blue-600 py-3 text-center text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700"
-            >
-              Obtenir mes documents — {PRICE_LABEL}
-            </a>
-          </div>
-        </motion.div>
-      )}
-    </motion.header>
-  )
-}
-
-const INSTALLATION_CONTACT_EMAIL = 'rgpdsimple@gmail.com'
-
-function SuccessPage() {
-  const query = useQuery()
-  const email = query.get('email')
-
-  return (
-    <main className="min-h-screen bg-slate-50 text-slate-900">
-      <Navbar />
-
-      <section className="flex min-h-screen flex-col items-center justify-center px-4 pb-16 pt-36">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="relative z-10 mx-auto max-w-lg text-center"
-        >
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 shadow-sm">
-            <span className="h-2 w-2 rounded-full bg-emerald-500 pulse-glow" />
-            <span className="text-sm text-slate-600">Paiement confirmé</span>
-          </div>
-          <h1 className="mb-4 text-3xl font-bold text-slate-900 sm:text-4xl">Vos documents sont en route</h1>
-          <p className="mb-2 text-slate-600">
-            Vos 5 documents RGPD sont prêts et envoyés par email à <strong className="text-slate-900">{email || 'votre adresse'}</strong>.
-          </p>
-          <p className="mb-8 text-sm text-slate-500">Pensez à vérifier les spams si vous ne voyez pas l'email.</p>
-
-          <div className="rounded-xl border border-slate-200 bg-white p-6 text-left shadow-md">
-            <h2 className="mb-2 text-lg font-semibold text-slate-900">Installation sur votre site en 24h — 147 €</h2>
-            <p className="mb-4 text-sm text-slate-500">
-              Nous installons mentions légales, politique de confidentialité, CGV et bandeau cookies sur votre site.
-            </p>
-            <a
-              href={`mailto:${INSTALLATION_CONTACT_EMAIL}?subject=Installation%20RGPD%20147€&body=Email%20de%20commande%20:%20${encodeURIComponent(email || '')}`}
-              className="inline-flex items-center rounded-md bg-red-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-red-700"
-            >
-              Demander l'installation
-            </a>
-            <p className="mt-3 text-xs text-slate-500">
-              Si le bouton ne fonctionne pas, envoyez un email à{' '}
-              <a href={`mailto:${INSTALLATION_CONTACT_EMAIL}`} className="font-medium text-blue-600 underline hover:text-blue-700">
-                {INSTALLATION_CONTACT_EMAIL}
-              </a>{' '}
-              avec votre adresse de commande pour demander l&apos;installation.
-            </p>
-          </div>
-
-          <a href="/" className="mt-8 inline-block text-sm font-medium text-slate-500 transition-colors hover:text-slate-900">
-            ← Retour à l'accueil
-          </a>
-        </motion.div>
-      </section>
-    </main>
+    <div className="rgpd-design legal-page">
+      <DesignHeader />
+      <main className="legal-prose">{children}</main>
+      <DesignFooter />
+    </div>
   )
 }
 
 function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-white text-slate-900">
-      <Navbar />
-      <section className="px-4 pb-16 pt-36">
-        <div className="mx-auto max-w-3xl">
+    <LegalLayout>
           <h1 className="mb-2 text-3xl font-bold text-slate-900">Politique de confidentialité</h1>
           <p className="mb-8 text-sm text-slate-500">Dernière mise à jour : 21 mai 2026</p>
           <p className="mb-6 text-sm text-slate-600">
@@ -286,18 +119,13 @@ function PrivacyPage() {
           <p className="text-sm text-slate-600">
             Cette politique peut être mise à jour pour tenir compte des évolutions légales et techniques.
           </p>
-        </div>
-      </section>
-    </main>
+    </LegalLayout>
   )
 }
 
 function LegalPage() {
   return (
-    <main className="min-h-screen bg-white text-slate-900">
-      <Navbar />
-      <section className="px-4 pb-16 pt-36">
-        <div className="mx-auto max-w-3xl">
+    <LegalLayout>
           <h1 className="mb-2 text-3xl font-bold text-slate-900">Mentions légales</h1>
           <p className="mb-8 text-sm text-slate-500">Dernière mise à jour : 1er avril 2026</p>
           <h2 className="mb-2 text-xl font-semibold text-slate-900">1. Éditeur du site (LCEN)</h2>
@@ -359,18 +187,13 @@ function LegalPage() {
           <p className="text-sm text-slate-600">
             Détails sur la page <a href="/cookies" className="font-medium text-blue-600 underline hover:text-blue-700">Cookies</a>.
           </p>
-        </div>
-      </section>
-    </main>
+    </LegalLayout>
   )
 }
 
 function CookiesPage() {
   return (
-    <main className="min-h-screen bg-white text-slate-900">
-      <Navbar />
-      <section className="px-4 pb-16 pt-36">
-        <div className="mx-auto max-w-3xl">
+    <LegalLayout>
           <h1 className="mb-2 text-3xl font-bold text-slate-900">Politique Cookies</h1>
           <p className="mb-8 text-sm text-slate-500">Dernière mise à jour : 21 mai 2026</p>
           <p className="text-sm text-slate-600 mb-6">
@@ -410,18 +233,13 @@ function CookiesPage() {
           <p className="text-sm text-slate-600">
             Pour toute question : <a href="mailto:contact@rgpdsimple.fr" className="font-medium text-blue-600 underline hover:text-blue-700">contact@rgpdsimple.fr</a>.
         </p>
-      </div>
-      </section>
-    </main>
+    </LegalLayout>
   )
 }
 
 function CgvSitePage() {
   return (
-    <main className="min-h-screen bg-white text-slate-900">
-      <Navbar />
-      <section className="px-4 pb-16 pt-36">
-        <div className="mx-auto max-w-3xl">
+    <LegalLayout>
           <h1 className="mb-2 text-3xl font-bold text-slate-900">Conditions générales de vente</h1>
           <p className="mb-8 text-sm text-slate-500">Dernière mise à jour : 1er avril 2026 — RGPDSimple</p>
 
@@ -513,9 +331,7 @@ function CgvSitePage() {
             Les présentes CGV sont soumises au droit français. Pour les consommateurs, compétence des tribunaux conformément
             au Code de la consommation.
           </p>
-        </div>
-      </section>
-    </main>
+    </LegalLayout>
   )
 }
 
@@ -524,15 +340,7 @@ function App() {
     <BrowserRouter>
       <AffiliateCapture />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Navbar />
-              <LandingPage />
-            </>
-          }
-        />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/success" element={<SuccessPage />} />
         <Route path="/politique-confidentialite" element={<PrivacyPage />} />
         <Route path="/mentions-legales" element={<LegalPage />} />

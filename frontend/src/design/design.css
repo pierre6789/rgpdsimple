@@ -1,0 +1,92 @@
+/* Styles de base scopés au design Claude Design (LP + Confirmation).
+   Scopé sous .rgpd-design pour ne pas impacter les pages légales (Tailwind). */
+
+.rgpd-design,
+.rgpd-design *,
+.rgpd-design *::before,
+.rgpd-design *::after {
+  box-sizing: border-box;
+}
+
+.rgpd-design {
+  color: #0f172a;
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.rgpd-design a {
+  color: #1d4ed8;
+  text-decoration: none;
+}
+.rgpd-design a:hover {
+  color: #1a3c8f;
+}
+
+.rgpd-design input,
+.rgpd-design select,
+.rgpd-design button,
+.rgpd-design textarea {
+  font-family: Inter, system-ui, sans-serif;
+}
+
+/* Décalage des ancres sous le header sticky (~69px) */
+.rgpd-design [id] {
+  scroll-margin-top: 84px;
+}
+
+/* ---- Pages légales harmonisées avec la charte ---- */
+.legal-page {
+  min-height: 100vh;
+  background: #ffffff;
+}
+.legal-prose {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 56px 24px 88px;
+}
+.legal-prose h1 {
+  font-family: Sora, system-ui, sans-serif;
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #0f172a;
+  margin: 0 0 6px;
+}
+.legal-prose h2 {
+  font-family: Sora, system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a3c8f;
+  margin: 30px 0 8px;
+}
+.legal-prose p,
+.legal-prose li {
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: #475569;
+}
+.legal-prose p {
+  margin: 0 0 14px;
+}
+.legal-prose ul {
+  margin: 0 0 18px;
+  padding-left: 20px;
+  list-style: disc;
+}
+.legal-prose li {
+  margin-bottom: 6px;
+}
+.legal-prose a {
+  color: #1d4ed8;
+  font-weight: 500;
+}
+.legal-prose a:hover {
+  color: #1a3c8f;
+}
+/* La date "Dernière mise à jour" (1er <p> sous le titre) en gris discret */
+.legal-prose h1 + p {
+  color: #94a3b8;
+  font-size: 13px;
+  margin-bottom: 28px;
+}
