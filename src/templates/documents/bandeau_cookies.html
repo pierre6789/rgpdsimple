@@ -3,51 +3,115 @@
   <head>
     <meta charset="utf-8" />
     <title>Bandeau cookies - {{nomEntreprise}}</title>
+    <style>
+      body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 12px; line-height: 1.5; color: #1f2937; max-width: 800px; margin: 0 auto; padding: 24px; }
+      h1 { font-size: 18px; color: #111827; margin-top: 0; border-bottom: 1px solid #e5e7eb; padding-bottom: 8px; }
+      h2 { font-size: 14px; color: #111827; margin-top: 20px; }
+      p { margin: 8px 0; }
+      ul { margin: 8px 0; padding-left: 22px; }
+      pre { background: #0f172a; color: #e5e7eb; padding: 14px; border-radius: 8px; font-size: 10.5px; line-height: 1.45; overflow-x: auto; white-space: pre-wrap; }
+      .tip { background: #eff6ff; border-left: 4px solid #2563eb; padding: 8px 12px; margin: 10px 0; }
+      .warn { background: #fef2f2; border-left: 4px solid #dc2626; padding: 8px 12px; margin: 10px 0; }
+      .legal-notice { font-size: 11px; color: #6b7280; margin-top: 24px; }
+      code { background: #f3f4f6; padding: 1px 4px; border-radius: 3px; }
+    </style>
   </head>
   <body>
-    <h1>Code HTML du bandeau cookies</h1>
-    <p>À intégrer sur votre site (par exemple dans le fichier de layout global) :</p>
+    <h1>Bandeau cookies conforme CNIL — {{nomEntreprise}}</h1>
+    <p><strong>Dernière mise à jour : août 2026.</strong> Ce bandeau respecte les règles de la CNIL (lignes directrices et recommandation « cookies et autres traceurs ») : information préalable, <strong>« Tout refuser » aussi simple que « Tout accepter »</strong>, aucun traceur non essentiel déposé avant le choix, possibilité de <strong>modifier ses choix à tout moment</strong>, et conservation du choix pendant ~6 mois.</p>
+
+    <div class="warn">
+      <strong>Règle d'or CNIL :</strong> aucun cookie de mesure d'audience non exemptée (Google Analytics 4) ni publicitaire (Meta/Facebook Pixel, Google Ads…) ne doit être chargé <strong>avant</strong> le clic « Tout accepter ». Placez leurs scripts <strong>uniquement</strong> dans la fonction <code>chargerTraceurs()</code> ci-dessous. C'est le point n°1 des sanctions CNIL.
+    </div>
+
+    <h2>Code à intégrer sur votre site</h2>
+    <p>Collez ce code juste avant la balise <code>&lt;/body&gt;</code> de toutes vos pages (ou dans le gabarit global) :</p>
     <pre>
-&lt;div id="cookie-banner" style="position:fixed;bottom:0;left:0;right:0;background:#111827;color:#ffffff;padding:12px 16px;font-size:14px;z-index:9999;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;"&gt;
-  &lt;span style="margin-bottom:8px;"&gt;
-    {{nomEntreprise}} utilise des cookies pour le fonctionnement du site et la mesure d'audience. 
-    Vous pouvez accepter ou refuser les cookies non essentiels.
-  &lt;/span&gt;
-  &lt;div&gt;
-    &lt;button onclick="acceptCookies()" style="margin-right:8px;padding:8px 12px;border-radius:999px;border:none;background:#10b981;color:#ffffff;cursor:pointer;"&gt;Tout accepter&lt;/button&gt;
-    &lt;button onclick="refuseCookies()" style="padding:8px 12px;border-radius:999px;border:1px solid #e5e7eb;background:#111827;color:#ffffff;cursor:pointer;"&gt;Refuser&lt;/button&gt;
+&lt;!-- ===== Bandeau cookies {{nomEntreprise}} (conforme CNIL) ===== --&gt;
+&lt;div id="cookie-banner" role="dialog" aria-label="Gestion des cookies" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#0f172a;color:#fff;padding:16px;font-size:14px;line-height:1.5;z-index:99999;box-shadow:0 -2px 16px rgba(0,0,0,.25);"&gt;
+  &lt;div style="max-width:1000px;margin:0 auto;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;"&gt;
+    &lt;p style="margin:0;flex:1 1 320px;min-width:260px;"&gt;
+      {{nomEntreprise}} utilise des cookies pour le fonctionnement du site et, avec votre accord, la mesure d'audience et le marketing.
+      Vous pouvez accepter, refuser ou modifier vos choix à tout moment.
+      &lt;a href="/politique-de-confidentialite" style="color:#93c5fd;text-decoration:underline;"&gt;En savoir plus&lt;/a&gt;.
+    &lt;/p&gt;
+    &lt;div style="display:flex;gap:10px;flex-wrap:wrap;"&gt;
+      &lt;button type="button" onclick="cookieConsent.refuser()" style="padding:10px 18px;border-radius:8px;border:1px solid #cbd5e1;background:#fff;color:#0f172a;font-weight:600;cursor:pointer;"&gt;Tout refuser&lt;/button&gt;
+      &lt;button type="button" onclick="cookieConsent.accepter()" style="padding:10px 18px;border-radius:8px;border:none;background:#2563eb;color:#fff;font-weight:600;cursor:pointer;"&gt;Tout accepter&lt;/button&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
+
+&lt;!-- Lien permanent pour rouvrir/modifier les choix (à placer aussi dans votre pied de page) --&gt;
+&lt;button type="button" id="cookie-reopen" onclick="cookieConsent.ouvrir()" style="position:fixed;bottom:12px;left:12px;z-index:99998;padding:8px 12px;border-radius:8px;border:1px solid #cbd5e1;background:#fff;color:#0f172a;font-size:12px;cursor:pointer;box-shadow:0 1px 6px rgba(0,0,0,.15);"&gt;Cookies&lt;/button&gt;
+
 &lt;script&gt;
-  function setCookie(name, value, days) {
-    var expires = "";
-    if (days) {
-      var date = new Date();
-      date.setTime(date.getTime() + (days*24*60*60*1000));
-      expires = "; expires=" + date.toUTCString();
+  var cookieConsent = (function () {
+    var NOM = "cookie_consent";
+    var DUREE_JOURS = 182; // ~6 mois (recommandation CNIL pour la conservation du choix)
+
+    function ecrire(valeur) {
+      var d = new Date();
+      d.setTime(d.getTime() + DUREE_JOURS * 24 * 60 * 60 * 1000);
+      document.cookie = NOM + "=" + valeur + "; expires=" + d.toUTCString() + "; path=/; SameSite=Lax";
+      // Conseil : conservez aussi une preuve du consentement (date + version) côté serveur si possible.
     }
-    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-  }
-  function hideBanner() {
-    var banner = document.getElementById("cookie-banner");
-    if (banner) banner.style.display = "none";
-  }
-  function acceptCookies() {
-    setCookie("cookie_consent", "accepted", 180);
-    hideBanner();
-    // Initialiser ici vos outils de mesure d'audience / marketing
-  }
-  function refuseCookies() {
-    setCookie("cookie_consent", "refused", 180);
-    hideBanner();
-  }
-  (function() {
-    if (document.cookie.indexOf("cookie_consent=") !== -1) {
-      hideBanner();
+    function lire() {
+      var m = document.cookie.match(new RegExp("(?:^|; )" + NOM + "=([^;]*)"));
+      return m ? m[1] : null;
     }
+    function afficher() { document.getElementById("cookie-banner").style.display = "block"; }
+    function masquer() { document.getElementById("cookie-banner").style.display = "none"; }
+
+    function chargerTraceurs() {
+      // ===================================================================
+      // ⬇️ PLACEZ ICI, ET SEULEMENT ICI, vos scripts nécessitant le consentement
+      //    (Google Analytics 4, Meta/Facebook Pixel, Google Ads, etc.).
+      //    Ils ne se chargeront qu'après un clic sur « Tout accepter ».
+      // Exemple GA4 :
+      // var s = document.createElement('script');
+      // s.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX'; s.async = true;
+      // document.head.appendChild(s);
+      // window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}
+      // gtag('js', new Date()); gtag('config', 'G-XXXXXXX');
+      // ===================================================================
+    }
+
+    return {
+      accepter: function () { ecrire("accepted"); masquer(); chargerTraceurs(); },
+      refuser:  function () { ecrire("refused"); masquer(); },
+      ouvrir:   function () { afficher(); }, // rouvrir pour modifier ses choix
+      init: function () {
+        var choix = lire();
+        if (choix === "accepted") { chargerTraceurs(); }   // consentement déjà donné
+        else if (choix !== "refused") { afficher(); }       // aucun choix -> on demande
+      }
+    };
   })();
+  cookieConsent.init();
 &lt;/script&gt;
+&lt;!-- ===== Fin bandeau cookies ===== --&gt;
     </pre>
+
+    <div class="tip">
+      <strong>À personnaliser :</strong>
+      <ul>
+        <li>Le lien « En savoir plus » (<code>/politique-de-confidentialite</code>) doit pointer vers votre page Politique de confidentialité ou Cookies.</li>
+        <li>Placez le bouton « Cookies » (ou un lien « Gérer les cookies ») aussi dans votre <strong>pied de page</strong>, sur toutes les pages, pour permettre le retrait du consentement.</li>
+        <li>Mettez vos scripts GA4 / Meta Pixel <strong>uniquement</strong> dans <code>chargerTraceurs()</code>.</li>
+      </ul>
+    </div>
+
+    <h2>Bon à savoir (règles CNIL)</h2>
+    <ul>
+      <li><strong>Refuser = accepter :</strong> les deux boutons sont au même niveau, même format, dès le 1er écran.</li>
+      <li><strong>Pas de dépôt avant le choix</strong> (hors cookies strictement nécessaires, exemptés de consentement).</li>
+      <li><strong>Durée de vie des traceurs :</strong> 13 mois maximum ; données de mesure d'audience : 25 mois maximum.</li>
+      <li><strong>Conservation du choix :</strong> ~6 mois, puis on redemande.</li>
+      <li><strong>GA4 et Meta Pixel</strong> ne sont <strong>pas</strong> exemptés : ils exigent le consentement.</li>
+      <li>Pour une gestion par catégories (audience / marketing séparés) ou un site à fort trafic, une solution de gestion du consentement (CMP) certifiée peut être pertinente.</li>
+    </ul>
+
+    <p class="legal-notice">Bandeau fourni par RGPD Simple. Conforme aux lignes directrices CNIL (cookies et autres traceurs). Adaptez le lien et l'emplacement des scripts à votre site.</p>
   </body>
 </html>
-

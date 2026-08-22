@@ -15,27 +15,31 @@
   </head>
   <body>
     <h1>Mentions légales</h1>
-    <p><strong>Dernière mise à jour : 1er avril 2026.</strong> Ce document est fourni à titre d’information et doit être complété avec les données exactes de votre structure.</p>
+    <p><strong>Dernière mise à jour : août 2026.</strong> Ce document est fourni à titre d’information et doit être complété avec les données exactes de votre structure.</p>
 
-    <!-- ========== SOCLE COMMUN (LCEN) ========== -->
-    <h2>1. Éditeur du site (LCEN)</h2>
-    <p>Le site <strong>{{siteWeb}}</strong> est édité par :</p>
+    <!-- ========== SOCLE COMMUN (LCEN art. 1-1) ========== -->
+    <h2>1. Éditeur du site</h2>
+    <p>En application de l’article 1-1 de la loi n° 2004-575 du 21 juin 2004 (LCEN, modifiée par la loi n° 2024-449 du 21 mai 2024 dite « SREN »), le site <strong>{{siteWeb}}</strong> est édité par :</p>
     <p>
       <strong>{{nomEntreprise}}</strong><br />
+      [Entreprise individuelle : Prénom NOM, entrepreneur individuel (EI) — à compléter]<br />
       {{adresseComplete}}<br />
       SIRET : {{numeroSiret}}<br />
+      Immatriculation : [RCS de « ville » pour une activité commerciale, ou RNE (Registre National des Entreprises) pour une activité artisanale — à compléter]<br />
       Téléphone : {{telephoneContact}}<br />
-      Email : {{emailContact}}
+      Email : {{emailContact}}<br />
+      TVA : « TVA non applicable, art. 293 B du CGI » (franchise en base) — ou n° de TVA intracommunautaire si vous êtes assujetti.
     </p>
 
     <h2>2. Directeur de la publication</h2>
     <p>{{directeurPublication}}</p>
 
-    <h2>3. Hébergeur (LCEN, art. 6-III-2)</h2>
-    <p>Le site est hébergé par :</p>
+    <h2>3. Hébergeur</h2>
+    <p>Conformément à la LCEN, l’hébergeur du site est :</p>
     <p>
       <strong>{{hebergeurNom}}</strong><br />
-      {{hebergeurAdresse}}
+      {{hebergeurAdresse}}<br />
+      Téléphone : [numéro de téléphone de l’hébergeur — à compléter]
     </p>
 
     <!-- ========== PROPRIÉTÉ INTELLECTUELLE ========== -->
@@ -61,19 +65,20 @@
       {{mediateurUrl}}
     </p>
 
-    <!-- ========== DSA – Point de contact (SPOC) ========== -->
-    <h2>8. Point de contact (Règlement DSA – Services numériques)</h2>
-    <p>Conformément au Règlement (UE) 2022/2065 (Digital Services Act), les autorités compétentes et les utilisateurs peuvent contacter {{nomEntreprise}} à l’adresse suivante :</p>
+    <!-- ========== Point de contact (DSA – applicable seulement aux plateformes) ========== -->
+    <h2>8. Point de contact</h2>
+    <p>Le Règlement (UE) 2022/2065 (Digital Services Act) ne s’applique qu’aux services intermédiaires et plateformes hébergeant des contenus de tiers (avis, commentaires, forum, place de marché). Un site vendant uniquement ses propres produits ou services n’entre pas dans son champ. À titre de bonne pratique, un point de contact reste indiqué :</p>
     <p><strong>Contact :</strong> {{spocContact}}</p>
+    <p><em>[Si vous ajoutez des avis clients publiés, un forum ou une place de marché, vous pourriez relever du DSA : vérifiez alors vos obligations.]</em></p>
 
-    <!-- ========== LOI REEN (Numérique responsable) ========== -->
-    <h2>9. Engagement environnemental (Loi REEN)</h2>
+    <!-- ========== Numérique responsable (REEN – volontaire pour une TPE) ========== -->
+    <h2>9. Engagement environnemental (numérique responsable)</h2>
     <p>{{reenMention}}</p>
 
-    <!-- ========== ACCESSIBILITÉ (Directive (UE) 2019/882) ========== -->
-    <h2>10. Accessibilité numérique (RGAA)</h2>
-    <p>Conformément à la directive (UE) 2019/882 et au Référentiel général d’amélioration de l’accessibilité (RGAA), le statut de conformité de ce site est : <strong>{{rgaaStatut}}</strong>.</p>
-    <p>Pour toute demande d’accessibilité, vous pouvez nous contacter à : {{emailContact}}.</p>
+    <!-- ========== ACCESSIBILITÉ (European Accessibility Act – exemption micro) ========== -->
+    <h2>10. Accessibilité numérique</h2>
+    <p>L’European Accessibility Act (directive (UE) 2019/882, applicable en France depuis le 28 juin 2025) impose l’accessibilité des services de commerce électronique aux consommateurs. Les <strong>micro-entreprises</strong> (moins de 10 salariés <strong>et</strong> moins de 2 M€ de chiffre d’affaires/bilan) en sont toutefois <strong>exemptées</strong>. Le RGAA, lui, s’applique au secteur public. Statut : <strong>{{rgaaStatut}}</strong></p>
+    <p>Pour toute demande liée à l’accessibilité, vous pouvez nous contacter à : {{emailContact}}.</p>
 
     <!-- ========== BLOCS CONDITIONNELS PAR SECTEUR ========== -->
     <h2>11. Mentions spécifiques à l’activité</h2>
@@ -86,13 +91,13 @@
 
     {{#if_coiffeur}}
     <h3>Activité : Coiffure</h3>
-    <p><strong>Immatriculation :</strong> {{nomEntreprise}} est immatriculée au Répertoire des Métiers (CMA) sous le numéro {{numeroRM}}.</p>
+    <p><strong>Immatriculation :</strong> {{nomEntreprise}} est immatriculée au Registre National des Entreprises (RNE, qui a remplacé le Répertoire des Métiers depuis le 1er janvier 2023) sous le numéro {{numeroRM}}.</p>
     <p><strong>Titre professionnel :</strong> Titulaire du titre professionnel exigé (BP Coiffure ou équivalent), obtenu à {{lieuObtentionTitre}}.</p>
     {{/if_coiffeur}}
 
     {{#if_garage}}
     <h3>Activité : Garage / Réparation automobile</h3>
-    <p><strong>Immatriculation :</strong> {{nomEntreprise}} est immatriculée au RCS et/ou au Répertoire des Métiers (numéros à compléter selon situation).</p>
+    <p><strong>Immatriculation :</strong> {{nomEntreprise}} est immatriculée au RCS et/ou au Registre National des Entreprises (RNE) (numéros à compléter selon situation).</p>
     <p><strong>Agrément :</strong> En cas d’activité de dépannage, remorquage ou centre VHU, numéro d’agrément préfectoral : {{agrementPrefectoral}}.</p>
     <p><strong>Médiation secteur automobile :</strong> En cas de litige, le client peut s’adresser au médiateur de la consommation dédié à l’automobile (ex. FNA, CNPA ou autre), dont les coordonnées figurent au paragraphe 7 ou à compléter.</p>
     {{/if_garage}}
@@ -105,7 +110,7 @@
 
     {{#if_artisan_btp}}
     <h3>Activité : Artisan BTP</h3>
-    <p><strong>Immatriculation :</strong> {{nomEntreprise}} est immatriculée au Répertoire des Métiers.</p>
+    <p><strong>Immatriculation :</strong> {{nomEntreprise}} est immatriculée au Registre National des Entreprises (RNE).</p>
     <p><strong>Assurance décennale :</strong> Conformément à l’article L.241-1 du Code des assurances, {{nomEntreprise}} est couverte par une assurance responsabilité décennale souscrite auprès de :</p>
     <p>
       <strong>{{assuranceDecennaleNom}}</strong><br />

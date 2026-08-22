@@ -79,8 +79,8 @@ export class TemplateService {
       mediateurCoordonnees: "[Coordonnées du médiateur – À compléter]",
       mediateurUrl: "[Lien vers la fiche du médiateur – À compléter]",
       spocContact: c.email,
-      reenMention: "Conformément à la loi relative à la réduction de l'empreinte environnementale du numérique (REEN), nous nous engageons à favoriser l'éco-conception du site et/ou à recourir à un hébergement dont l'engagement environnemental est connu. [Précisions à compléter selon votre situation.]",
-      rgaaStatut: "[Totalement conforme / Partiellement conforme / Non conforme – À compléter]",
+      reenMention: "À titre volontaire — la loi REEN n'impose pas d'obligation directe aux TPE/micro-entreprises —, nous appliquons des principes d'éco-conception (pages allégées, ressources optimisées, limitation des scripts non essentiels) et privilégions un hébergement responsable lorsque c'est possible. [Facultatif : adaptez ou supprimez cette mention.]",
+      rgaaStatut: "Non applicable en l'état : en tant que micro-entreprise (moins de 10 salariés et moins de 2 M€ de chiffre d'affaires/bilan), vous êtes exempté des obligations d'accessibilité numérique de l'European Accessibility Act. [Si vous dépassez durablement ces seuils, une mise en conformité (norme EN 301 549 / RGAA) devient obligatoire.]",
       // Secteur restaurant
       licenceDebitBoissons: "[Catégorie et numéro de licence – À compléter]",
       lienAllergenes: "[lien ou « sur demande en établissement » – À compléter]",
@@ -112,17 +112,17 @@ export class TemplateService {
       contactDirigeant: "[Nom du dirigeant – À compléter]",
       dpoCoordonnees: `Non désigné ; pour toute demande relative aux données personnelles, contacter : ${c.email}`,
       destinatairesClients: "[À compléter : liste des sous-traitants ayant accès aux données clients (hébergeur, CRM, emailing).]",
-      transfertsHorsUERegistre: "[À compléter si transferts hors UE : pays et garanties (CCT, adéquation). Sinon : « Aucun transfert hors Union européenne. »]",
+      transfertsHorsUERegistre: "[À compléter : « Aucun transfert hors Union européenne », OU pays concernés et garanties. Pour des outils américains (hébergeur, paiement, analytics), préciser : Data Privacy Framework (décision d'adéquation UE–USA du 10 juillet 2023, pour les prestataires certifiés) et/ou Clauses Contractuelles Types (art. 46 RGPD).]",
       sousTraitantsCompta: "[Préciser : logiciel comptable, expert-comptable, hébergeur.]",
       // Politique de confidentialité – socle
       baseLegaleSecteur: "",
-      dureeVideosurveillance: "30 jours (sauf conservation prolongée en cas de litige ou réquisition).",
+      dureeVideosurveillance: "1 mois maximum (souvent quelques jours ; recommandation CNIL), sauf conservation prolongée en cas de litige ou de réquisition des autorités.",
       dureesSecteur: "",
       sousTraitantsMention: "Liste des sous-traitants ayant accès à des données (hébergeur, outil de paiement, emailing, etc.) : [À compléter – nom, finalité, pays]. Ils sont soumis à des obligations contractuelles conformes au RGPD (art. 28).",
-      transfertsHorsUEMention: "[À compléter si transferts hors UE : pays concernés et garanties (Clauses Contractuelles Types / Décision d’adéquation / autres garanties appropriées). Si aucun transfert hors UE : « Aucun transfert de données en dehors de l’Union européenne. »]",
+      transfertsHorsUEMention: "Si vous n'utilisez que des prestataires situés dans l'Union européenne : « Aucun transfert de données en dehors de l'Union européenne. » Si vous utilisez des outils américains (ex. hébergeur, paiement, mesure d'audience), les transferts sont encadrés par le Data Privacy Framework (décision d'adéquation UE–USA du 10 juillet 2023, pour les prestataires certifiés) et/ou par des Clauses Contractuelles Types (art. 46 RGPD). [À adapter selon vos outils ; le Data Privacy Framework fait l'objet d'un recours en cours devant la CJUE — prévoir les CCT en garantie de repli.]",
       securiteMention:
         "Nous mettons en œuvre des mesures techniques et organisationnelles adaptées pour protéger vos données (accès restreint, mots de passe robustes, chiffrement lorsque pertinent, sauvegardes). L’authentification à deux facteurs (MFA) n’est pas utilisée sur les accès courants. [Précisez vos mesures complémentaires si besoin.]",
-      aiActMention: "Nous n’utilisons pas d’outils d’intelligence artificielle (chatbots IA, algorithme de prise de décision automatisée ou de profilage) pour traiter vos données. Si tel devait être le cas à l’avenir, nous vous en informerions et assurerions la transparence requise par le Règlement (UE) sur l’IA (AI Act). [À adapter si vous utilisez déjà des outils IA.]",
+      aiActMention: "Nous n’utilisons pas d’outil d’intelligence artificielle (chatbot conversationnel, décision automatisée ou profilage) pour traiter vos données. Si vous utilisez un chatbot IA, publiez des contenus générés par IA ou des contenus manipulés (« deepfakes »), vous devez en informer clairement les utilisateurs, conformément à l’article 50 du Règlement (UE) 2024/1689 (AI Act), applicable depuis le 2 août 2026. [À adapter selon vos usages : sans outil d’IA, aucune obligation ni mention n’est requise.]",
     };
 
     let out = this.processConditionals(template, c.businessType);
