@@ -58,6 +58,27 @@ app.get("/api/debug-env", (_req, res) => {
   });
 });
 
+// TEMPORAIRE — diagnostic email : tente un envoi et renvoie l'erreur exacte.
+// À retirer une fois l'envoi validé. Protégé par une clé pour éviter les abus.
+app.get("/api/test-email", async (req, res) => {
+  if (req.query.key !== "diag-rgpd-2026") {
+    res.status(403).json({ error: "forbidden" });
+    return;
+  }
+  const to =
+    typeof req.query.to === "string" && req.query.to.includes("@")
+      ? req.query.to
+      : "pierrevuillermet1@gmail.com";
+  const fromResolved = (process.env.EMAIL_FROM || "").trim().replace(/^"(.*)"$/, "$1");
+  try {
+    const { EmailService } = await import("./services/EmailService");
+    await new EmailService().sendDocuments(to, []);
+    res.json({ ok: true, to, from: fromResolved });
+  } catch (e) {
+    res.json({ ok: false, to, from: fromResolved, error: e instanceof Error ? e.message : String(e) });
+  }
+});
+
 // En local uniquement : on démarre le serveur HTTP. Sur Vercel (serverless),
 // c'est la fonction api/index.ts qui utilise l'app exportée ci-dessous.
 if (!process.env.VERCEL) {
