@@ -1,27 +1,10 @@
-import { useEffect, type ReactNode } from 'react'
-import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-dom'
+import { type ReactNode } from 'react'
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import { CookieBanner } from './CookieBanner'
-import { setAffiliateCookie } from './affiliate'
 import { LandingPage } from './LandingPage'
 import { SuccessPage } from './SuccessPage'
 import { DesignHeader, DesignFooter } from './DesignChrome'
 import './App.css'
-
-/** Capture ?via=CODE dans un cookie 30 jours (site React sur Vercel) */
-function AffiliateCapture() {
-  const location = useLocation()
-
-  useEffect(() => {
-    const via = new URLSearchParams(location.search).get('via')
-    if (!via) return
-    const safe = via.trim()
-    if (!/^[A-Za-z0-9_-]+$/.test(safe) || safe.length > 64) return
-    setAffiliateCookie(safe)
-    console.log('[Affiliate] Code capturé (frontend):', safe)
-  }, [location.search])
-
-  return null
-}
 
 /** Layout des pages légales : header + footer du design + contenu typographié. */
 function LegalLayout({ children }: { children: ReactNode }) {
@@ -338,7 +321,6 @@ function CgvSitePage() {
 function App() {
   return (
     <BrowserRouter>
-      <AffiliateCapture />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/success" element={<SuccessPage />} />

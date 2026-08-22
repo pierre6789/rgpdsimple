@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getAffiliateVia } from './affiliate'
 import landingHtml from './design/landing.html?raw'
 import './design/design.css'
 
@@ -201,7 +200,6 @@ export function LandingPage() {
           const res = await fetch(CHECKOUT_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            credentials: 'include',
             body: JSON.stringify({
               companyName,
               businessType,
@@ -211,7 +209,6 @@ export function LandingPage() {
               collectsEmails: state.collectsEmails,
               hasCookies: state.hasCookies,
               cgvAccepted: true,
-              affiliate_via: getAffiliateVia(),
             }),
           })
           if (!res.ok) {

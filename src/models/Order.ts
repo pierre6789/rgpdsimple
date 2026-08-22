@@ -21,7 +21,5 @@ export interface Order {
   cgvConsent?: CgvConsentRecord;
   /** Horodatage de la confirmation du paiement côté serveur (webhook ou page succès). */
   paymentConfirmedAt?: string;
-  /** Horodatage de l'export affilié vers Google Sheets (évite les doublons webhook + /success). */
-  sheetsExportedAt?: string;
 }
 

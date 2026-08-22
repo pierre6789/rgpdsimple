@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { OrderService } from "../services/OrderService";
 import { StripeService } from "../services/StripeService";
 import { CustomerInput } from "../models/CustomerInput";
-import { getAffiliateViaFromRequest } from "../middleware/affiliateCapture";
 
 const orderService = new OrderService();
 const stripeService = new StripeService();
@@ -40,11 +39,8 @@ export class CheckoutController {
       const acceptedAt = new Date().toISOString();
       const clientIp = clientIpFromRequest(req);
 
-      const affiliateVia = getAffiliateViaFromRequest(req);
-      console.log("[Checkout] Code affilié pour cette commande:", affiliateVia);
-
       const order = await orderService.createPendingOrder(input, { acceptedAt, clientIp });
-      const session = await stripeService.createCheckoutSession(order, affiliateVia);
+      const session = await stripeService.createCheckoutSession(order);
 
       res.status(200).json({ url: session.url });
     } catch (error) {

@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { stripe } from "../config/stripe";
 import { StripeService } from "../services/StripeService";
 import { OrderService } from "../services/OrderService";
-import { exportAffiliateSaleIfNeeded } from "../services/SheetsService";
 
 const orderService = new OrderService();
 const stripeService = new StripeService();
@@ -59,21 +58,13 @@ export class StripeWebhookController {
           console.warn("[Webhook] Impossible de récupérer la session Stripe:", e);
         }
       }
-      const affiliateVia = session.metadata?.affiliate_via || "direct";
       const customerEmail =
         session.customer_email ||
         (session as import("stripe").Stripe.Checkout.Session & { customer_details?: { email?: string | null } })
           .customer_details?.email ||
         "";
 
-      console.log(
-        "[Webhook] Traitement commande:",
-        orderId,
-        "email:",
-        customerEmail,
-        "affiliate_via:",
-        affiliateVia
-      );
+      console.log("[Webhook] Traitement commande:", orderId, "email:", customerEmail);
 
       try {
         await orderService.processPaidOrder(orderId, session);
@@ -86,11 +77,6 @@ export class StripeWebhookController {
         return;
       }
 
-      try {
-        await exportAffiliateSaleIfNeeded(orderId, session);
-      } catch (err) {
-        console.error("[Sheets] ERREUR:", err);
-      }
     } else {
       console.log("[Webhook] Événement ignoré (pas checkout.session.completed):", event.type);
     }

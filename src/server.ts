@@ -1,12 +1,10 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import cookieParser from "cookie-parser";
 
 import checkoutRouter from "./routes/checkout";
 import successRouter from "./routes/success";
 import webhookRouter from "./routes/webhook";
-import { affiliateCaptureMiddleware } from "./middleware/affiliateCapture";
 
 dotenv.config();
 
@@ -32,11 +30,6 @@ app.use(
   })
 );
 
-app.use(cookieParser());
-
-// Capture ?via= sur toutes les routes (cookie affilié 30 jours)
-app.use(affiliateCaptureMiddleware);
-
 // Webhook Stripe : body brut obligatoire pour la vérification de signature (avant express.json)
 const webhookRaw = express.raw({ type: "application/json" });
 app.use("/api/webhook", webhookRaw, webhookRouter);
@@ -59,8 +52,6 @@ app.get("/api/debug-env", (_req, res) => {
     hasSmtpPass: Boolean(process.env.SMTP_PASS),
     hasSupabaseUrl: Boolean(process.env.SUPABASE_URL),
     hasSupabaseServiceKey: Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY),
-    hasGoogleSheetsId: Boolean(process.env.GOOGLE_SHEETS_ID),
-    hasGoogleServiceAccount: Boolean(process.env.GOOGLE_SERVICE_ACCOUNT_JSON),
     allowedOrigins,
   });
 });
