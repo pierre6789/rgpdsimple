@@ -4,6 +4,16 @@ import { PdfDocumentBuffer } from "./PdfService";
 
 const MAILTRAP_SEND_URL = "https://send.api.mailtrap.io/api/send";
 
+/** Extrait {name, email} d'une valeur au format "Nom <email>" ou "email" nu. */
+function parseFromAddress(raw: string): { email: string; name: string } {
+  const m = raw.match(/^\s*(.*?)\s*<([^>]+)>\s*$/);
+  if (m) {
+    const name = (m[1] || "").replace(/^"|"$/g, "").trim();
+    return { email: m[2].trim(), name: name || "RGPD Simple" };
+  }
+  return { email: raw.trim(), name: "RGPD Simple" };
+}
+
 export class EmailService {
   private transporter = nodemailer.createTransport({
     host: EMAIL_CONFIG.host,
@@ -40,7 +50,7 @@ export class EmailService {
     }));
 
     const body = {
-      from: { email: EMAIL_CONFIG.from, name: "RGPD Simple" },
+      from: parseFromAddress(EMAIL_CONFIG.from),
       to: [{ email: recipient }],
       subject: "Vos documents RGPD personnalisés",
       text:
