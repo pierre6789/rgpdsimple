@@ -30,7 +30,36 @@ export const ESSENTIALS = [
   },
 ]
 
-const ALL = [...ESSENTIALS, ...METIER_LINKS]
+/** Guides pratiques / outils. */
+export const PRACTICAL = [
+  {
+    path: '/blog/rgpd-formulaire-contact',
+    title: 'Mention RGPD formulaire de contact (générateur gratuit)',
+    description: "Le texte à copier-coller sous votre formulaire + ce qu'il doit contenir.",
+  },
+  {
+    path: '/blog/bandeau-cookies-conforme',
+    title: 'Bandeau cookies conforme CNIL 2026',
+    description: 'Les règles, les erreurs fréquentes et la checklist.',
+  },
+  {
+    path: '/blog/duree-conservation-donnees',
+    title: 'Combien de temps conserver les données clients ?',
+    description: 'Le tableau des durées de conservation RGPD.',
+  },
+  {
+    path: '/blog/rgpd-newsletter',
+    title: 'RGPD et newsletter : consentement et désabonnement',
+    description: 'Opt-in, exception clients, mentions et preuve du consentement.',
+  },
+  {
+    path: '/blog/amende-cnil',
+    title: "Amende CNIL pour une TPE : combien et comment l'éviter",
+    description: 'Les montants réels et comment se protéger.',
+  },
+]
+
+const ALL = [...ESSENTIALS, ...PRACTICAL, ...METIER_LINKS]
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -70,6 +99,11 @@ export function BlogIndex() {
 
       <h2>Guides essentiels</h2>
       {ESSENTIALS.map((a) => (
+        <Card key={a.path} {...a} />
+      ))}
+
+      <h2>Guides pratiques &amp; outils</h2>
+      {PRACTICAL.map((a) => (
         <Card key={a.path} {...a} />
       ))}
 

@@ -242,3 +242,69 @@
     gap: 28px !important;
   }
 }
+/* Générateurs / outils gratuits (lead-magnets) */
+.content-prose .tool-box {
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 24px;
+  margin: 20px 0;
+  background: #f8fafc;
+}
+.content-prose .tool-field {
+  display: block;
+  margin-bottom: 14px;
+}
+.content-prose .tool-field label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+.content-prose .tool-field input,
+.content-prose .tool-field select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: Inter, sans-serif;
+  background: #fff;
+  color: #0f172a;
+}
+.content-prose .tool-output {
+  position: relative;
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: 10px;
+  padding: 18px 18px 16px;
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  margin-top: 8px;
+}
+.content-prose .tool-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 10px 18px;
+  background: #2563eb;
+  color: #fff !important;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: Inter, sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+}
+.content-prose .tool-copy:hover {
+  background: #1d4ed8;
+}
+.content-prose .tool-note {
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 10px;
+}

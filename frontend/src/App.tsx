@@ -12,6 +12,11 @@ import { RgpdAutoEntrepreneur } from './pages/blog/RgpdAutoEntrepreneur'
 import { RgpdEcommerce } from './pages/blog/RgpdEcommerce'
 import { GuideRgpdTpe } from './pages/blog/GuideRgpdTpe'
 import { RgpdObligatoirePourQui } from './pages/blog/RgpdObligatoirePourQui'
+import { RgpdFormulaireContact } from './pages/blog/RgpdFormulaireContact'
+import { DureeConservationDonnees } from './pages/blog/DureeConservationDonnees'
+import { RgpdNewsletter } from './pages/blog/RgpdNewsletter'
+import { BandeauCookiesConforme } from './pages/blog/BandeauCookiesConforme'
+import { AmendeCnil } from './pages/blog/AmendeCnil'
 import { MetierArticle } from './pages/blog/MetierArticle'
 import { METIERS } from './pages/blog/metiers'
 import './App.css'
@@ -360,6 +365,11 @@ export function AppRoutes() {
       <Route path="/blog/rgpd-obligatoire-pour-qui" element={<RgpdObligatoirePourQui />} />
       <Route path="/blog/rgpd-auto-entrepreneur" element={<RgpdAutoEntrepreneur />} />
       <Route path="/blog/rgpd-ecommerce" element={<RgpdEcommerce />} />
+      <Route path="/blog/rgpd-formulaire-contact" element={<RgpdFormulaireContact />} />
+      <Route path="/blog/duree-conservation-donnees" element={<DureeConservationDonnees />} />
+      <Route path="/blog/rgpd-newsletter" element={<RgpdNewsletter />} />
+      <Route path="/blog/bandeau-cookies-conforme" element={<BandeauCookiesConforme />} />
+      <Route path="/blog/amende-cnil" element={<AmendeCnil />} />
       {METIERS.map((m) => (
         <Route key={m.slug} path={`/blog/${m.slug}`} element={<MetierArticle metier={m} />} />
       ))}
