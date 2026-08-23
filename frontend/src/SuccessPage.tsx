@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { Seo } from './Seo'
 import confirmationHtml from './design/confirmation.html?raw'
 import './design/design.css'
 
@@ -65,5 +66,15 @@ export function SuccessPage() {
     })
   }, [navigate, email])
 
-  return <div ref={containerRef} className="rgpd-design" dangerouslySetInnerHTML={{ __html: html }} />
+  return (
+    <>
+      <Seo
+        title="Merci — vos documents RGPD sont en route | RGPD Simple"
+        description="Confirmation de votre commande RGPD Simple : vos documents sont envoyés par email."
+        path="/success"
+        noindex
+      />
+      <div ref={containerRef} className="rgpd-design" dangerouslySetInnerHTML={{ __html: html }} />
+    </>
+  )
 }

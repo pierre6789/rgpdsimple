@@ -15,8 +15,19 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Documents RGPD conformes CNIL 2026 pour TPE et artisans. Politique de confidentialité, mentions légales, CGV, registre des traitements, bandeau cookies. 97 € une fois, reçu par email en 2 minutes." />
-    <title>RGPD Simple — Documents conformes CNIL pour TPE et artisans | 97 €</title>
+    <meta name="theme-color" content="#1a3c8f" />
+    <!-- Titre + description définis PAR PAGE via React 19 (voir src/Seo.tsx). OG statiques (accueil) pour les crawlers sociaux qui n'exécutent pas le JS. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="RGPD Simple" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:title" content="RGPD Simple — La conformité RGPD des TPE, réglée en quelques minutes" />
+    <meta property="og:description" content="5 documents RGPD conformes CNIL, personnalisés pour votre activité, livrés par email. 97 €, sans avocat." />
+    <meta property="og:url" content="https://www.rgpdsimple.fr/" />
+    <meta property="og:image" content="https://www.rgpdsimple.fr/logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="RGPD Simple — Conformité RGPD des TPE" />
+    <meta name="twitter:description" content="5 documents RGPD conformes CNIL, livrés par email. 97 €, sans avocat." />
+    <meta name="twitter:image" content="https://www.rgpdsimple.fr/logo.png" />
     <!-- Meta Pixel Code -->
     <script>
       !function(f,b,e,v,n,t,s)
@@ -35,6 +46,74 @@
       src="https://www.facebook.com/tr?id=1515272140157396&ev=PageView&noscript=1"/>
     </noscript>
     <!-- End Meta Pixel Code -->
+    <!-- Données structurées (SEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.rgpdsimple.fr/#organization",
+          "name": "RGPD Simple",
+          "url": "https://www.rgpdsimple.fr/",
+          "logo": "https://www.rgpdsimple.fr/logo.png",
+          "email": "contact@rgpdsimple.fr",
+          "address": { "@type": "PostalAddress", "addressLocality": "Cavaillon", "postalCode": "84300", "addressCountry": "FR" }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.rgpdsimple.fr/#website",
+          "url": "https://www.rgpdsimple.fr/",
+          "name": "RGPD Simple",
+          "inLanguage": "fr-FR",
+          "publisher": { "@id": "https://www.rgpdsimple.fr/#organization" }
+        },
+        {
+          "@type": "Product",
+          "name": "Pack conformité RGPD pour TPE et artisans",
+          "description": "5 documents RGPD conformes CNIL personnalisés (politique de confidentialité, mentions légales, CGV, registre des traitements, bandeau cookies) et un guide, livrés par email.",
+          "brand": { "@id": "https://www.rgpdsimple.fr/#organization" },
+          "offers": {
+            "@type": "Offer",
+            "price": "97",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock",
+            "url": "https://www.rgpdsimple.fr/"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Ma petite entreprise est-elle vraiment concernée par le RGPD ?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Oui. Le RGPD s'applique dès qu'une entreprise collecte des données personnelles : un formulaire de contact, un fichier clients ou de simples cookies suffisent. La taille de l'entreprise ne change pas l'obligation, seulement la manière, plus simple, de s'y conformer." }
+            },
+            {
+              "@type": "Question",
+              "name": "Les 5 documents suffisent-ils pour être en règle ?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Pour la grande majorité des TPE et artisans, oui. Le pack couvre les obligations fondamentales : information des personnes, gestion des cookies, registre interne des traitements et CGV adaptées à votre secteur. Pour les activités très spécifiques, une consultation juridique complémentaire peut être utile." }
+            },
+            {
+              "@type": "Question",
+              "name": "Que se passe-t-il après le paiement ?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Vous recevez une confirmation de commande immédiate. Vos documents sont générés à partir de vos réponses et envoyés par email en quelques minutes, en PDF, prêts à être publiés sur votre site." }
+            },
+            {
+              "@type": "Question",
+              "name": "Puis-je modifier les documents ensuite ?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Oui. Vous recevez tous les documents en PDF et pouvez les adapter si votre activité évolue. Le guide inclus explique quels éléments peuvent être modifiés." }
+            },
+            {
+              "@type": "Question",
+              "name": "Ai-je besoin d'un avocat ?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Pour une TPE avec une activité standard, non. La loi n'impose pas le recours à un avocat pour se mettre en conformité RGPD. RGPD Simple fournit des documents adaptés à votre situation, sans les honoraires d'un cabinet." }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->

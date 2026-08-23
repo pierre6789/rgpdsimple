@@ -4,6 +4,7 @@ import { CookieBanner } from './CookieBanner'
 import { LandingPage } from './LandingPage'
 import { SuccessPage } from './SuccessPage'
 import { DesignHeader, DesignFooter } from './DesignChrome'
+import { Seo } from './Seo'
 import './App.css'
 
 /** Layout des pages légales : header + footer du design + contenu typographié. */
@@ -20,6 +21,7 @@ function LegalLayout({ children }: { children: ReactNode }) {
 function PrivacyPage() {
   return (
     <LegalLayout>
+          <Seo title="Politique de confidentialité | RGPD Simple" description="Comment RGPD Simple traite vos données personnelles : finalités, bases légales, durées de conservation, transferts et vos droits (RGPD)." path="/politique-confidentialite" />
           <h1 className="mb-2 text-3xl font-bold text-slate-900">Politique de confidentialité</h1>
           <p className="mb-8 text-sm text-slate-500">Dernière mise à jour : août 2026</p>
           <p className="mb-6 text-sm text-slate-600">
@@ -111,6 +113,7 @@ function PrivacyPage() {
 function LegalPage() {
   return (
     <LegalLayout>
+          <Seo title="Mentions légales | RGPD Simple" description="Mentions légales de RGPD Simple : éditeur, hébergeur, médiation, contact." path="/mentions-legales" />
           <h1 className="mb-2 text-3xl font-bold text-slate-900">Mentions légales</h1>
           <p className="mb-8 text-sm text-slate-500">Dernière mise à jour : août 2026</p>
           <h2 className="mb-2 text-xl font-semibold text-slate-900">1. Éditeur du site</h2>
@@ -183,6 +186,7 @@ function LegalPage() {
 function CookiesPage() {
   return (
     <LegalLayout>
+          <Seo title="Politique cookies | RGPD Simple" description="Cookies et traceurs utilisés par RGPD Simple : catégories, base légale, durées et gestion de vos choix." path="/cookies" />
           <h1 className="mb-2 text-3xl font-bold text-slate-900">Politique Cookies</h1>
           <p className="mb-8 text-sm text-slate-500">Dernière mise à jour : août 2026</p>
           <p className="text-sm text-slate-600 mb-6">
@@ -229,6 +233,7 @@ function CookiesPage() {
 function CgvSitePage() {
   return (
     <LegalLayout>
+          <Seo title="Conditions générales de vente (CGV) | RGPD Simple" description="CGV de RGPD Simple : commande, paiement, livraison, rétractation, garanties et médiation." path="/cgv" />
           <h1 className="mb-2 text-3xl font-bold text-slate-900">Conditions générales de vente</h1>
           <p className="mb-8 text-sm text-slate-500">Dernière mise à jour : août 2026 — RGPDSimple</p>
 

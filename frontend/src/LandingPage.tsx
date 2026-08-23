@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Seo } from './Seo'
 import landingHtml from './design/landing.html?raw'
 import './design/design.css'
 
@@ -228,5 +229,14 @@ export function LandingPage() {
     }
   }, [navigate])
 
-  return <div ref={containerRef} className="rgpd-design" dangerouslySetInnerHTML={{ __html: landingHtml }} />
+  return (
+    <>
+      <Seo
+        title="RGPD Simple — La conformité RGPD des TPE, réglée en quelques minutes"
+        description="Générez 5 documents RGPD conformes CNIL, personnalisés pour votre TPE ou artisanat, livrés par email en quelques minutes. 97 €, paiement unique, sans avocat."
+        path="/"
+      />
+      <div ref={containerRef} className="rgpd-design" dangerouslySetInnerHTML={{ __html: landingHtml }} />
+    </>
+  )
 }
