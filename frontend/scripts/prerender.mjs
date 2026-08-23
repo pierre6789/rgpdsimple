@@ -1,172 +1,98 @@
-// Prérendu statique (SSG) post-build.
-// Sert dist/ localement, ouvre chaque route dans un Chromium headless,
-// laisse React rendre (titre/meta/JSON-LD + contenu), puis écrit le HTML
-// complet dans dist/<route>/index.html. Vercel sert ces fichiers en
-// priorité (le filesystem passe avant le rewrite SPA), et retombe sur le
-// SPA pour les routes non prérendues (ex. /success, en noindex).
+// Prérendu statique (SSG) sans navigateur — 100 % Node, donc identique en
+// local et sur Vercel (aucune dépendance à Chromium / libs système).
 //
-// FAIL-SOFT : si le navigateur ne se lance pas, on log un avertissement et
-// on sort en code 0 — le build reste un SPA fonctionnel, jamais cassé.
+// Pipeline (voir package.json > build) :
+//   1. vite build                -> dist/ (client, SPA)
+//   2. vite build --ssr ...       -> dist-ssr/entry-server.js
+//   3. node scripts/prerender.mjs -> ce script
+//
+// Pour chaque route : render(url) via renderToString, on relocalise les
+// balises <head> (title/description/canonical/robots) + le JSON-LD dans le
+// <head> du template, et on injecte le contenu dans <div id="root">. Vercel
+// sert dist/<route>/index.html avant le rewrite SPA (filesystem-first) ;
+// /success reste servi par le SPA (noindex).
+//
+// FAIL-SOFT : toute erreur -> avertissement + sortie 0 (le SPA reste livré).
 
-import { createServer } from 'node:http'
-import { readFileSync, existsSync, mkdirSync, writeFileSync, statSync } from 'node:fs'
-import { join, dirname, extname, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'node:fs'
+import { join, dirname, resolve } from 'node:path'
+import { fileURLToPath, pathToFileURL } from 'node:url'
+import { parse } from 'node-html-parser'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const DIST = resolve(__dirname, '..', 'dist')
-const PORT = 5321
+const ROOT = resolve(__dirname, '..')
+const DIST = join(ROOT, 'dist')
+const SSR_DIR = join(ROOT, 'dist-ssr')
 
-// Routes à prérendre (indexables). /success reste SPA (noindex).
-const ROUTES = [
-  '/',
-  '/prix',
-  '/blog/controle-cnil-2026',
-  '/mentions-legales',
-  '/cgv',
-  '/politique-confidentialite',
-  '/cookies',
-]
+// Routes indexables. /success reste SPA (noindex).
+const ROUTES = ['/', '/prix', '/blog/controle-cnil-2026', '/mentions-legales', '/cgv', '/politique-confidentialite', '/cookies']
 
-// Hôtes externes bloqués pendant le prérendu (analytics/tag managers) :
-// inutiles au contenu et peuvent empêcher le networkidle de se stabiliser.
-const BLOCK_HOSTS = ['googletagmanager.com', 'google-analytics.com', 'connect.facebook.net', 'facebook.com']
-
-const MIME = {
-  '.html': 'text/html; charset=utf-8',
-  '.js': 'text/javascript; charset=utf-8',
-  '.mjs': 'text/javascript; charset=utf-8',
-  '.css': 'text/css; charset=utf-8',
-  '.json': 'application/json; charset=utf-8',
-  '.svg': 'image/svg+xml',
-  '.xml': 'application/xml; charset=utf-8',
-  '.txt': 'text/plain; charset=utf-8',
-  '.ico': 'image/x-icon',
-  '.png': 'image/png',
-  '.jpg': 'image/jpeg',
-  '.jpeg': 'image/jpeg',
-  '.webp': 'image/webp',
-  '.woff': 'font/woff',
-  '.woff2': 'font/woff2',
-}
-
-function warn(msg) {
-  console.warn(`[prerender] ${msg}`)
-}
-
-if (!existsSync(join(DIST, 'index.html'))) {
-  warn('dist/index.html introuvable — prérendu ignoré.')
-  process.exit(0)
-}
-
-// Template SPA original, servi tel quel pour toutes les routes (fallback),
-// même après avoir écrit des fichiers prérendus sur le disque.
-const INDEX_TEMPLATE = readFileSync(join(DIST, 'index.html'), 'utf8')
-
-const server = createServer((req, res) => {
-  try {
-    const urlPath = decodeURIComponent((req.url || '/').split('?')[0])
-    const ext = extname(urlPath)
-    if (ext) {
-      const filePath = join(DIST, urlPath)
-      if (existsSync(filePath) && statSync(filePath).isFile()) {
-        res.writeHead(200, { 'Content-Type': MIME[ext] || 'application/octet-stream' })
-        res.end(readFileSync(filePath))
-        return
-      }
-      res.writeHead(404)
-      res.end('not found')
-      return
-    }
-    // Route applicative -> template SPA propre
-    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' })
-    res.end(INDEX_TEMPLATE)
-  } catch (e) {
-    res.writeHead(500)
-    res.end(String(e))
-  }
-})
-
-async function resolveBrowser() {
-  const puppeteer = (await import('puppeteer')).default
-  const args = ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
-  // Chromium intégré à puppeteer (téléchargé à l'install) — fonctionne au
-  // build sur Vercel comme en local.
-  try {
-    return await puppeteer.launch({ headless: true, args })
-  } catch (e) {
-    // Fallback : Chrome/Edge système (surchargeable via PRERENDER_CHROME).
-    const candidates = [
-      process.env.PRERENDER_CHROME,
-      'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
-      'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
-      'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe',
-      '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-      '/usr/bin/google-chrome',
-      '/usr/bin/chromium-browser',
-    ].filter(Boolean)
-    const executablePath = candidates.find((p) => existsSync(p))
-    if (!executablePath) throw e
-    return puppeteer.launch({ executablePath, headless: true, args })
-  }
-}
+// Sélecteurs des balises à remonter dans <head>.
+const HEAD_SELECTOR = 'title, meta[name="description"], link[rel="canonical"], meta[name="robots"], script[type="application/ld+json"]'
 
 const STATUS_FILE = join(DIST, '_prerender-status.txt')
-function writeStatus(text) {
+const warn = (m) => console.warn(`[prerender] ${m}`)
+const writeStatus = (t) => {
   try {
-    writeFileSync(STATUS_FILE, `${text}\n`, 'utf8')
+    writeFileSync(STATUS_FILE, `${t}\n`, 'utf8')
   } catch {}
+}
+
+async function loadRender() {
+  if (!existsSync(SSR_DIR)) throw new Error('dist-ssr introuvable (étape vite --ssr manquante)')
+  // Le bundle SSR porte le nom de l'entrée : entry-server.js (sinon, 1er .js).
+  const candidates = readdirSync(SSR_DIR).filter((f) => f.endsWith('.js'))
+  const file = candidates.includes('entry-server.js') ? 'entry-server.js' : candidates[0]
+  if (!file) throw new Error('aucun bundle .js dans dist-ssr')
+  const mod = await import(pathToFileURL(join(SSR_DIR, file)).href)
+  if (typeof mod.render !== 'function') throw new Error('export render() absent du bundle SSR')
+  return mod.render
+}
+
+function buildPage(template, appHtml) {
+  const dom = parse(appHtml, { comment: true })
+  const headNodes = dom.querySelectorAll(HEAD_SELECTOR)
+  const headHtml = headNodes.map((n) => n.toString()).join('\n    ')
+  headNodes.forEach((n) => n.remove())
+  const rootHtml = dom.toString()
+
+  let out = template
+  if (headHtml) out = out.replace('</head>', `    ${headHtml}\n  </head>`)
+  out = out.replace('<div id="root"></div>', `<div id="root">${rootHtml}</div>`)
+  return out
 }
 
 async function run() {
   writeStatus('started')
-  await new Promise((r) => server.listen(PORT, r))
+  if (!existsSync(join(DIST, 'index.html'))) {
+    warn('dist/index.html introuvable — prérendu ignoré.')
+    writeStatus('no-dist')
+    return
+  }
+  const template = readFileSync(join(DIST, 'index.html'), 'utf8')
 
-  let browser
+  let render
   try {
-    browser = await resolveBrowser()
+    render = await loadRender()
   } catch (e) {
-    warn(`navigateur indisponible (${e.message}) — build SPA conservé.`)
-    writeStatus(`browser-unavailable: ${e.message}`)
-    server.close()
+    warn(`bundle SSR indisponible (${e.message}) — build SPA conservé.`)
+    writeStatus(`ssr-unavailable: ${e.message}`)
     return
   }
 
   let ok = 0
-  try {
-    for (const route of ROUTES) {
-      const page = await browser.newPage()
-      try {
-        await page.setRequestInterception(true)
-        page.on('request', (r) => {
-          const url = r.url()
-          if (BLOCK_HOSTS.some((h) => url.includes(h))) r.abort()
-          else r.continue()
-        })
-        await page.goto(`http://localhost:${PORT}${route}`, {
-          waitUntil: 'networkidle0',
-          timeout: 30000,
-        })
-        // Attendre que React ait posé le <title> (marqueur de rendu terminé).
-        await page.waitForFunction(() => !!document.title && document.title.length > 3, { timeout: 15000 })
-        await new Promise((r) => setTimeout(r, 250))
-
-        const html = await page.evaluate(() => '<!DOCTYPE html>\n' + document.documentElement.outerHTML)
-
-        const outPath = route === '/' ? join(DIST, 'index.html') : join(DIST, route, 'index.html')
-        mkdirSync(dirname(outPath), { recursive: true })
-        writeFileSync(outPath, html, 'utf8')
-        ok++
-        console.log(`[prerender] ${route} -> ${outPath.replace(DIST, 'dist')}`)
-      } catch (e) {
-        warn(`échec sur ${route}: ${e.message}`)
-      } finally {
-        await page.close().catch(() => {})
-      }
+  for (const route of ROUTES) {
+    try {
+      const appHtml = render(route)
+      const page = buildPage(template, appHtml)
+      const outPath = route === '/' ? join(DIST, 'index.html') : join(DIST, route, 'index.html')
+      mkdirSync(dirname(outPath), { recursive: true })
+      writeFileSync(outPath, page, 'utf8')
+      ok++
+      console.log(`[prerender] ${route} -> ${outPath.replace(DIST, 'dist')}`)
+    } catch (e) {
+      warn(`échec sur ${route}: ${e.message}`)
     }
-  } finally {
-    await browser.close().catch(() => {})
-    server.close()
   }
   writeStatus(`done: ${ok}/${ROUTES.length}`)
   console.log(`[prerender] terminé : ${ok}/${ROUTES.length} routes.`)
@@ -174,8 +100,6 @@ async function run() {
 
 run().catch((e) => {
   warn(`erreur inattendue (${e.message}) — build SPA conservé.`)
-  try {
-    server.close()
-  } catch {}
+  writeStatus(`error: ${e.message}`)
   process.exit(0)
 })

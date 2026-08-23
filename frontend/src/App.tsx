@@ -335,19 +335,27 @@ function CgvSitePage() {
   )
 }
 
+/** Table des routes, partagée par le rendu client (BrowserRouter) et le
+ *  prérendu serveur SSG (StaticRouter dans entry-server.tsx). */
+export function AppRoutes() {
+  return (
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/success" element={<SuccessPage />} />
+      <Route path="/politique-confidentialite" element={<PrivacyPage />} />
+      <Route path="/mentions-legales" element={<LegalPage />} />
+      <Route path="/cookies" element={<CookiesPage />} />
+      <Route path="/cgv" element={<CgvSitePage />} />
+      <Route path="/prix" element={<PrixPage />} />
+      <Route path="/blog/controle-cnil-2026" element={<ControleCnil2026 />} />
+    </Routes>
+  )
+}
+
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/success" element={<SuccessPage />} />
-        <Route path="/politique-confidentialite" element={<PrivacyPage />} />
-        <Route path="/mentions-legales" element={<LegalPage />} />
-        <Route path="/cookies" element={<CookiesPage />} />
-        <Route path="/cgv" element={<CgvSitePage />} />
-        <Route path="/prix" element={<PrixPage />} />
-        <Route path="/blog/controle-cnil-2026" element={<ControleCnil2026 />} />
-      </Routes>
+      <AppRoutes />
       <CookieBanner />
     </BrowserRouter>
   )
