@@ -211,3 +211,26 @@
   font-weight: 600;
   color: #1a3c8f;
 }
+/* Cartes d'articles (index du blog) */
+.content-prose .article-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px 22px;
+  margin: 16px 0;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.content-prose .article-card:hover {
+  border-color: #bfdbfe;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
+}
+.content-prose .article-card h2 {
+  font-size: 20px;
+  margin-top: 0;
+}
+.content-prose .article-card h2 a {
+  text-decoration: none;
+}
+.content-prose .article-card p {
+  color: #475569;
+  font-size: 15px;
+}

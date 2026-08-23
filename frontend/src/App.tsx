@@ -6,7 +6,10 @@ import { SuccessPage } from './SuccessPage'
 import { DesignHeader, DesignFooter } from './DesignChrome'
 import { Seo } from './Seo'
 import { PrixPage } from './pages/PrixPage'
+import { BlogIndex } from './pages/blog/BlogIndex'
 import { ControleCnil2026 } from './pages/blog/ControleCnil2026'
+import { RgpdAutoEntrepreneur } from './pages/blog/RgpdAutoEntrepreneur'
+import { RgpdEcommerce } from './pages/blog/RgpdEcommerce'
 import './App.css'
 
 /** Layout des pages légales : header + footer du design + contenu typographié. */
@@ -347,7 +350,10 @@ export function AppRoutes() {
       <Route path="/cookies" element={<CookiesPage />} />
       <Route path="/cgv" element={<CgvSitePage />} />
       <Route path="/prix" element={<PrixPage />} />
+      <Route path="/blog" element={<BlogIndex />} />
       <Route path="/blog/controle-cnil-2026" element={<ControleCnil2026 />} />
+      <Route path="/blog/rgpd-auto-entrepreneur" element={<RgpdAutoEntrepreneur />} />
+      <Route path="/blog/rgpd-ecommerce" element={<RgpdEcommerce />} />
     </Routes>
   )
 }

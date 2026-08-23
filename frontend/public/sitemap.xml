@@ -13,7 +13,25 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://www.rgpdsimple.fr/blog</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.rgpdsimple.fr/blog/controle-cnil-2026</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.rgpdsimple.fr/blog/rgpd-auto-entrepreneur</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.rgpdsimple.fr/blog/rgpd-ecommerce</loc>
     <lastmod>2026-08-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

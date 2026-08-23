@@ -2,9 +2,9 @@
 // local et sur Vercel (aucune dépendance à Chromium / libs système).
 //
 // Pipeline (voir package.json > build) :
-//   1. vite build                -> dist/ (client, SPA)
-//   2. vite build --ssr ...       -> dist-ssr/entry-server.js
-//   3. node scripts/prerender.mjs -> ce script
+//   1. vite build                 -> dist/ (client, SPA)
+//   2. vite build --ssr ...        -> dist-ssr/entry-server.js
+//   3. node scripts/prerender.mjs  -> ce script
 //
 // Pour chaque route : render(url) via renderToString, on relocalise les
 // balises <head> (title/description/canonical/robots) + le JSON-LD dans le
@@ -25,18 +25,23 @@ const DIST = join(ROOT, 'dist')
 const SSR_DIR = join(ROOT, 'dist-ssr')
 
 // Routes indexables. /success reste SPA (noindex).
-const ROUTES = ['/', '/prix', '/blog/controle-cnil-2026', '/mentions-legales', '/cgv', '/politique-confidentialite', '/cookies']
+const ROUTES = [
+  '/',
+  '/prix',
+  '/blog',
+  '/blog/controle-cnil-2026',
+  '/blog/rgpd-auto-entrepreneur',
+  '/blog/rgpd-ecommerce',
+  '/mentions-legales',
+  '/cgv',
+  '/politique-confidentialite',
+  '/cookies',
+]
 
 // Sélecteurs des balises à remonter dans <head>.
 const HEAD_SELECTOR = 'title, meta[name="description"], link[rel="canonical"], meta[name="robots"], script[type="application/ld+json"]'
 
-const STATUS_FILE = join(DIST, '_prerender-status.txt')
 const warn = (m) => console.warn(`[prerender] ${m}`)
-const writeStatus = (t) => {
-  try {
-    writeFileSync(STATUS_FILE, `${t}\n`, 'utf8')
-  } catch {}
-}
 
 async function loadRender() {
   if (!existsSync(SSR_DIR)) throw new Error('dist-ssr introuvable (étape vite --ssr manquante)')
@@ -63,10 +68,8 @@ function buildPage(template, appHtml) {
 }
 
 async function run() {
-  writeStatus('started')
   if (!existsSync(join(DIST, 'index.html'))) {
     warn('dist/index.html introuvable — prérendu ignoré.')
-    writeStatus('no-dist')
     return
   }
   const template = readFileSync(join(DIST, 'index.html'), 'utf8')
@@ -76,7 +79,6 @@ async function run() {
     render = await loadRender()
   } catch (e) {
     warn(`bundle SSR indisponible (${e.message}) — build SPA conservé.`)
-    writeStatus(`ssr-unavailable: ${e.message}`)
     return
   }
 
@@ -94,12 +96,10 @@ async function run() {
       warn(`échec sur ${route}: ${e.message}`)
     }
   }
-  writeStatus(`done: ${ok}/${ROUTES.length}`)
   console.log(`[prerender] terminé : ${ok}/${ROUTES.length} routes.`)
 }
 
 run().catch((e) => {
   warn(`erreur inattendue (${e.message}) — build SPA conservé.`)
-  writeStatus(`error: ${e.message}`)
   process.exit(0)
 })

@@ -34,6 +34,13 @@ function wireChromeLinks(root: HTMLElement, navigate: NavigateFunction) {
         e.preventDefault()
         navigate('/' + href)
       })
+    } else if (href.startsWith('/')) {
+      // Lien interne réel (ex. /prix, /blog, /#commande) : vrai href pour les
+      // crawlers, navigation SPA pour l'utilisateur.
+      a.addEventListener('click', (e) => {
+        e.preventDefault()
+        navigate(href)
+      })
     }
     // mailto: et autres liens externes : comportement natif
   })
