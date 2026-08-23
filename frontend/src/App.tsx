@@ -5,6 +5,8 @@ import { LandingPage } from './LandingPage'
 import { SuccessPage } from './SuccessPage'
 import { DesignHeader, DesignFooter } from './DesignChrome'
 import { Seo } from './Seo'
+import { PrixPage } from './pages/PrixPage'
+import { ControleCnil2026 } from './pages/blog/ControleCnil2026'
 import './App.css'
 
 /** Layout des pages légales : header + footer du design + contenu typographié. */
@@ -343,6 +345,8 @@ function App() {
         <Route path="/mentions-legales" element={<LegalPage />} />
         <Route path="/cookies" element={<CookiesPage />} />
         <Route path="/cgv" element={<CgvSitePage />} />
+        <Route path="/prix" element={<PrixPage />} />
+        <Route path="/blog/controle-cnil-2026" element={<ControleCnil2026 />} />
       </Routes>
       <CookieBanner />
     </BrowserRouter>

@@ -61,6 +61,72 @@ const LEGAL_ROUTES: Record<string, string> = {
   'gestion des cookies': '/cookies',
 }
 
+/** Données structurées propres à l'accueil (Product + FAQ). Organisation/WebSite sont statiques dans index.html. */
+const HOME_JSON_LD = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Product',
+      name: 'Pack conformité RGPD pour TPE et artisans',
+      description:
+        '5 documents RGPD conformes CNIL personnalisés (politique de confidentialité, mentions légales, CGV, registre des traitements, bandeau cookies) et un guide, livrés par email.',
+      brand: { '@id': 'https://www.rgpdsimple.fr/#organization' },
+      offers: {
+        '@type': 'Offer',
+        price: '97',
+        priceCurrency: 'EUR',
+        availability: 'https://schema.org/InStock',
+        url: 'https://www.rgpdsimple.fr/',
+      },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Ma petite entreprise est-elle vraiment concernée par le RGPD ?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: "Oui. Le RGPD s'applique dès qu'une entreprise collecte des données personnelles : un formulaire de contact, un fichier clients ou de simples cookies suffisent. La taille de l'entreprise ne change pas l'obligation, seulement la manière, plus simple, de s'y conformer.",
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Les 5 documents suffisent-ils pour être en règle ?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: "Pour la grande majorité des TPE et artisans, oui. Le pack couvre les obligations fondamentales : information des personnes, gestion des cookies, registre interne des traitements et CGV adaptées à votre secteur. Pour les activités très spécifiques, une consultation juridique complémentaire peut être utile.",
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Que se passe-t-il après le paiement ?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Vous recevez une confirmation de commande immédiate. Vos documents sont générés à partir de vos réponses et envoyés par email en quelques minutes, en PDF, prêts à être publiés sur votre site.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Puis-je modifier les documents ensuite ?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: "Oui. Vous recevez tous les documents en PDF et pouvez les adapter si votre activité évolue. Le guide inclus explique quels éléments peuvent être modifiés.",
+          },
+        },
+        {
+          '@type': 'Question',
+          name: "Ai-je besoin d'un avocat ?",
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: "Pour une TPE avec une activité standard, non. La loi n'impose pas le recours à un avocat pour se mettre en conformité RGPD. RGPD Simple fournit des documents adaptés à votre situation, sans les honoraires d'un cabinet.",
+          },
+        },
+      ],
+    },
+  ],
+}
+
 const YN_COMMON =
   'padding:10px 20px;border-radius:8px;font-size:14px;cursor:pointer;transition:.15s;font-family:Inter,sans-serif;'
 const YN_SELECTED = 'border:1px solid rgb(37,99,235);background:rgb(239,246,255);color:rgb(29,78,216);font-weight:600;'
@@ -74,6 +140,13 @@ export function LandingPage() {
     const root = containerRef.current
     if (!root || root.dataset.wired === '1') return
     root.dataset.wired = '1'
+
+    // --- Scroll vers l'ancre (#commande…) si on arrive depuis un lien externe (CTA) ---
+    const hash = window.location.hash
+    if (hash.length > 1) {
+      const target = root.querySelector(hash)
+      if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 120)
+    }
 
     // --- Liens (logo + pages légales) ---
     root.querySelectorAll<HTMLAnchorElement>('a[href="#"]').forEach((a) => {
@@ -236,6 +309,7 @@ export function LandingPage() {
         description="Générez 5 documents RGPD conformes CNIL, personnalisés pour votre TPE ou artisanat, livrés par email en quelques minutes. 97 €, paiement unique, sans avocat."
         path="/"
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(HOME_JSON_LD) }} />
       <div ref={containerRef} className="rgpd-design" dangerouslySetInnerHTML={{ __html: landingHtml }} />
     </>
   )
