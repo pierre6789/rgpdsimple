@@ -8,6 +8,25 @@
 import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router'
 import { AppRoutes } from './App'
+import { METIERS } from './pages/blog/metiers'
+
+/** Liste des routes indexables à prérendre (SSG). Source unique consommée par
+ *  scripts/prerender.mjs. /success reste SPA (noindex). */
+export const routes: string[] = [
+  '/',
+  '/prix',
+  '/blog',
+  '/blog/guide-rgpd-tpe',
+  '/blog/controle-cnil-2026',
+  '/blog/rgpd-obligatoire-pour-qui',
+  '/blog/rgpd-auto-entrepreneur',
+  '/blog/rgpd-ecommerce',
+  ...METIERS.map((m) => `/blog/${m.slug}`),
+  '/mentions-legales',
+  '/cgv',
+  '/politique-confidentialite',
+  '/cookies',
+]
 
 export function render(url: string): string {
   return renderToString(

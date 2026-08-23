@@ -24,26 +24,16 @@ const ROOT = resolve(__dirname, '..')
 const DIST = join(ROOT, 'dist')
 const SSR_DIR = join(ROOT, 'dist-ssr')
 
-// Routes indexables. /success reste SPA (noindex).
-const ROUTES = [
-  '/',
-  '/prix',
-  '/blog',
-  '/blog/controle-cnil-2026',
-  '/blog/rgpd-auto-entrepreneur',
-  '/blog/rgpd-ecommerce',
-  '/mentions-legales',
-  '/cgv',
-  '/politique-confidentialite',
-  '/cookies',
-]
+// Routes indexables : fournies par le bundle SSR (source unique). Ce fallback
+// ne sert que si l'export `routes` venait à manquer.
+const FALLBACK_ROUTES = ['/', '/prix', '/blog', '/mentions-legales', '/cgv', '/politique-confidentialite', '/cookies']
 
 // Sélecteurs des balises à remonter dans <head>.
 const HEAD_SELECTOR = 'title, meta[name="description"], link[rel="canonical"], meta[name="robots"], script[type="application/ld+json"]'
 
 const warn = (m) => console.warn(`[prerender] ${m}`)
 
-async function loadRender() {
+async function loadSsr() {
   if (!existsSync(SSR_DIR)) throw new Error('dist-ssr introuvable (étape vite --ssr manquante)')
   // Le bundle SSR porte le nom de l'entrée : entry-server.js (sinon, 1er .js).
   const candidates = readdirSync(SSR_DIR).filter((f) => f.endsWith('.js'))
@@ -51,7 +41,7 @@ async function loadRender() {
   if (!file) throw new Error('aucun bundle .js dans dist-ssr')
   const mod = await import(pathToFileURL(join(SSR_DIR, file)).href)
   if (typeof mod.render !== 'function') throw new Error('export render() absent du bundle SSR')
-  return mod.render
+  return mod
 }
 
 function buildPage(template, appHtml) {
@@ -74,18 +64,19 @@ async function run() {
   }
   const template = readFileSync(join(DIST, 'index.html'), 'utf8')
 
-  let render
+  let ssr
   try {
-    render = await loadRender()
+    ssr = await loadSsr()
   } catch (e) {
     warn(`bundle SSR indisponible (${e.message}) — build SPA conservé.`)
     return
   }
+  const routes = Array.isArray(ssr.routes) && ssr.routes.length ? ssr.routes : FALLBACK_ROUTES
 
   let ok = 0
-  for (const route of ROUTES) {
+  for (const route of routes) {
     try {
-      const appHtml = render(route)
+      const appHtml = ssr.render(route)
       const page = buildPage(template, appHtml)
       const outPath = route === '/' ? join(DIST, 'index.html') : join(DIST, route, 'index.html')
       mkdirSync(dirname(outPath), { recursive: true })
@@ -96,7 +87,7 @@ async function run() {
       warn(`échec sur ${route}: ${e.message}`)
     }
   }
-  console.log(`[prerender] terminé : ${ok}/${ROUTES.length} routes.`)
+  console.log(`[prerender] terminé : ${ok}/${routes.length} routes.`)
 }
 
 run().catch((e) => {

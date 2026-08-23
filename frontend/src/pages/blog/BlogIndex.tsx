@@ -1,11 +1,22 @@
 import { ContentLayout } from '../ContentLayout'
+import { METIER_LINKS } from './metiers'
 
-/** Liste des articles (source unique pour l'index et le maillage). */
-export const ARTICLES = [
+/** Guides thématiques (hors métiers). Le pilier en tête. */
+export const ESSENTIALS = [
+  {
+    path: '/blog/guide-rgpd-tpe',
+    title: 'Guide RGPD pour les TPE en 2026 (le guide complet)',
+    description: 'Obligations, documents, étapes de mise en conformité et coûts — le point de départ.',
+  },
+  {
+    path: '/blog/rgpd-obligatoire-pour-qui',
+    title: 'Le RGPD est-il obligatoire pour vous ?',
+    description: "La règle sans seuil, les cas concrets où vous êtes concerné et les rares exceptions.",
+  },
   {
     path: '/blog/controle-cnil-2026',
     title: 'Contrôle CNIL 2026 : ce qui attend les TPE',
-    description: "Qui est visé, ce que la CNIL vérifie, les amendes encourues et la checklist pour être prêt.",
+    description: "Qui est visé, ce que la CNIL vérifie, les amendes et la checklist pour être prêt.",
   },
   {
     path: '/blog/rgpd-auto-entrepreneur',
@@ -15,14 +26,16 @@ export const ARTICLES = [
   {
     path: '/blog/rgpd-ecommerce',
     title: "RGPD e-commerce : les documents obligatoires d'une boutique",
-    description: 'Documents obligatoires, cookies et tracking, sous-traitants et checklist de conformité.',
+    description: 'Documents obligatoires, cookies et tracking, sous-traitants et checklist.',
   },
 ]
+
+const ALL = [...ESSENTIALS, ...METIER_LINKS]
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  itemListElement: ARTICLES.map((a, i) => ({
+  itemListElement: ALL.map((a, i) => ({
     '@type': 'ListItem',
     position: i + 1,
     url: `https://www.rgpdsimple.fr${a.path}`,
@@ -30,11 +43,22 @@ const jsonLd = {
   })),
 }
 
+function Card({ path, title, description }: { path: string; title: string; description: string }) {
+  return (
+    <div className="article-card">
+      <h2 style={{ marginBottom: '6px' }}>
+        <a href={path}>{title}</a>
+      </h2>
+      <p style={{ margin: 0 }}>{description}</p>
+    </div>
+  )
+}
+
 export function BlogIndex() {
   return (
     <ContentLayout
       title="Guides RGPD pour les TPE et indépendants | RGPD Simple"
-      description="Guides RGPD clairs et à jour pour les TPE, artisans et indépendants : contrôles CNIL, auto-entrepreneur, e-commerce, cookies et documents obligatoires."
+      description="Guides RGPD clairs et à jour pour les TPE, artisans et indépendants : contrôles CNIL, auto-entrepreneur, e-commerce, métiers, cookies et documents obligatoires."
       path="/blog"
       jsonLd={jsonLd}
     >
@@ -44,13 +68,14 @@ export function BlogIndex() {
         conformité sans y passer des heures.
       </p>
 
-      {ARTICLES.map((a) => (
-        <div key={a.path} className="article-card">
-          <h2 style={{ marginBottom: '6px' }}>
-            <a href={a.path}>{a.title}</a>
-          </h2>
-          <p style={{ margin: 0 }}>{a.description}</p>
-        </div>
+      <h2>Guides essentiels</h2>
+      {ESSENTIALS.map((a) => (
+        <Card key={a.path} {...a} />
+      ))}
+
+      <h2>Le RGPD par métier</h2>
+      {METIER_LINKS.map((a) => (
+        <Card key={a.path} {...a} />
       ))}
 
       <div className="cta-box">
