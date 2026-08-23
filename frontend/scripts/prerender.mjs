@@ -88,37 +88,38 @@ const server = createServer((req, res) => {
 })
 
 async function resolveBrowser() {
-  const puppeteer = (await import('puppeteer-core')).default
-  // Sur Vercel (build Linux) : @sparticuz/chromium.
-  if (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_VERSION) {
-    const chromium = (await import('@sparticuz/chromium')).default
-    const executablePath = await chromium.executablePath()
-    return puppeteer.launch({
-      args: chromium.args,
-      executablePath,
-      headless: true,
-    })
+  const puppeteer = (await import('puppeteer')).default
+  const args = ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+  // Chromium intégré à puppeteer (téléchargé à l'install) — fonctionne au
+  // build sur Vercel comme en local.
+  try {
+    return await puppeteer.launch({ headless: true, args })
+  } catch (e) {
+    // Fallback : Chrome/Edge système (surchargeable via PRERENDER_CHROME).
+    const candidates = [
+      process.env.PRERENDER_CHROME,
+      'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+      'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
+      'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe',
+      '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+      '/usr/bin/google-chrome',
+      '/usr/bin/chromium-browser',
+    ].filter(Boolean)
+    const executablePath = candidates.find((p) => existsSync(p))
+    if (!executablePath) throw e
+    return puppeteer.launch({ executablePath, headless: true, args })
   }
-  // Local : Chrome/Edge du système (surchargeable via PRERENDER_CHROME).
-  const candidates = [
-    process.env.PRERENDER_CHROME,
-    'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
-    'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
-    'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe',
-    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-    '/usr/bin/google-chrome',
-    '/usr/bin/chromium-browser',
-  ].filter(Boolean)
-  const executablePath = candidates.find((p) => existsSync(p))
-  if (!executablePath) throw new Error('aucun Chromium local trouvé (définissez PRERENDER_CHROME)')
-  return puppeteer.launch({
-    executablePath,
-    headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  })
+}
+
+const STATUS_FILE = join(DIST, '_prerender-status.txt')
+function writeStatus(text) {
+  try {
+    writeFileSync(STATUS_FILE, `${text}\n`, 'utf8')
+  } catch {}
 }
 
 async function run() {
+  writeStatus('started')
   await new Promise((r) => server.listen(PORT, r))
 
   let browser
@@ -126,6 +127,7 @@ async function run() {
     browser = await resolveBrowser()
   } catch (e) {
     warn(`navigateur indisponible (${e.message}) — build SPA conservé.`)
+    writeStatus(`browser-unavailable: ${e.message}`)
     server.close()
     return
   }
@@ -166,6 +168,7 @@ async function run() {
     await browser.close().catch(() => {})
     server.close()
   }
+  writeStatus(`done: ${ok}/${ROUTES.length}`)
   console.log(`[prerender] terminé : ${ok}/${ROUTES.length} routes.`)
 }
 
