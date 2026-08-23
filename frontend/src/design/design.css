@@ -234,3 +234,11 @@
   color: #475569;
   font-size: 15px;
 }
+/* Footer : 4 colonnes sur desktop -> 2 sur mobile (le design est en styles
+   inline, d'où le !important pour surcharger la grille inline). */
+@media (max-width: 640px) {
+  .rgpd-design footer > div:first-child {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 28px !important;
+  }
+}
