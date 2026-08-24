@@ -90,12 +90,12 @@ export function AmendeCnil() {
       </ol>
 
       <div className="cta-box">
-        <h3>20 000 € évitables pour 97 €</h3>
+        <h3>20 000 € évitables pour 24,99 €</h3>
         <p>
           RGPD Simple génère les 5 documents conformes CNIL (dont le bandeau cookies), personnalisés pour votre
           activité et livrés par email. Sans avocat.
         </p>
-        <a className="cta-btn" href="/#commande">Me mettre en règle — 97 €</a>
+        <a className="cta-btn" href="/#commande">Me mettre en règle — 24,99 €</a>
         <p style={{ marginTop: '12px', marginBottom: 0, fontSize: '14px' }}>
           Voir aussi le <a href="/prix">comparatif des prix</a> et le <a href="/blog/guide-rgpd-tpe">guide complet</a>.
         </p>

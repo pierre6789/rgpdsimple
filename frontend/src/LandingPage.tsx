@@ -73,7 +73,7 @@ const HOME_JSON_LD = {
       brand: { '@id': 'https://www.rgpdsimple.fr/#organization' },
       offers: {
         '@type': 'Offer',
-        price: '97',
+        price: '24.99',
         priceCurrency: 'EUR',
         availability: 'https://schema.org/InStock',
         url: 'https://www.rgpdsimple.fr/',
@@ -224,7 +224,7 @@ export function LandingPage() {
     const form = root.querySelector('form')
     if (form) {
       const submitBtn = form.querySelector<HTMLButtonElement>('button[type="submit"]')
-      const submitLabel = submitBtn?.textContent || 'Obtenir mes documents — 97 €'
+      const submitLabel = submitBtn?.textContent || 'Obtenir mes documents — 24,99 €'
 
       // Zone d'erreur injectée au-dessus du bouton
       let errorEl: HTMLParagraphElement | null = null
@@ -307,7 +307,7 @@ export function LandingPage() {
     bar.className = 'mobile-cta-bar'
     const barLink = document.createElement('a')
     barLink.href = '#commande'
-    barLink.textContent = 'Obtenir mes documents — 97 €'
+    barLink.textContent = 'Obtenir mes documents — 24,99 €'
     bar.appendChild(barLink)
     root.appendChild(bar)
     const commande = root.querySelector('#commande')
@@ -331,7 +331,7 @@ export function LandingPage() {
     <>
       <Seo
         title="RGPD Simple — La conformité RGPD des TPE, réglée en quelques minutes"
-        description="Générez 5 documents RGPD conformes CNIL, personnalisés pour votre TPE ou artisanat, livrés par email en quelques minutes. 97 €, paiement unique, sans avocat."
+        description="Générez 5 documents RGPD conformes CNIL, personnalisés pour votre TPE ou artisanat, livrés par email en quelques minutes. 24,99 €, paiement unique, sans avocat."
         path="/"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(HOME_JSON_LD) }} />

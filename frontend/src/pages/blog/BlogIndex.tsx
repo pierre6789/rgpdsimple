@@ -116,9 +116,9 @@ export function BlogIndex() {
         <h3>Prêt à vous mettre en règle ?</h3>
         <p>
           RGPD Simple génère vos 5 documents conformes CNIL, personnalisés pour votre activité et livrés par email.
-          97 €, paiement unique, sans avocat.
+          24,99 €, paiement unique, sans avocat.
         </p>
-        <a className="cta-btn" href="/#commande">Obtenir mes documents — 97 €</a>
+        <a className="cta-btn" href="/#commande">Obtenir mes documents — 24,99 €</a>
         <p style={{ marginTop: '12px', marginBottom: 0, fontSize: '14px' }}>
           Voir aussi le <a href="/prix">comparatif des prix de la conformité RGPD</a>.
         </p>

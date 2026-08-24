@@ -111,9 +111,9 @@ export function RgpdEcommerce() {
         <h3>Le pack complet pour votre boutique — dont les CGV et le bandeau cookies</h3>
         <p>
           RGPD Simple génère les 5 documents conformes CNIL, personnalisés pour votre e-commerce et livrés par email.
-          97 €, paiement unique, sans avocat.
+          24,99 €, paiement unique, sans avocat.
         </p>
-        <a className="cta-btn" href="/#commande">Mettre ma boutique en règle — 97 €</a>
+        <a className="cta-btn" href="/#commande">Mettre ma boutique en règle — 24,99 €</a>
         <p style={{ marginTop: '12px', marginBottom: 0, fontSize: '14px' }}>
           Hésitation sur le budget ? Voir le <a href="/prix">comparatif des prix</a>.
         </p>

@@ -72,10 +72,10 @@ export function MetierArticle({ metier }: { metier: Metier }) {
       <div className="cta-box">
         <h3>Vos documents, personnalisés pour votre activité</h3>
         <p>
-          RGPD Simple génère les 5 documents conformes CNIL, adaptés à votre métier et livrés par email. 97 €,
+          RGPD Simple génère les 5 documents conformes CNIL, adaptés à votre métier et livrés par email. 24,99 €,
           paiement unique, sans avocat.
         </p>
-        <a className="cta-btn" href="/#commande">Me mettre en règle — 97 €</a>
+        <a className="cta-btn" href="/#commande">Me mettre en règle — 24,99 €</a>
         <p style={{ marginTop: '12px', marginBottom: 0, fontSize: '14px' }}>
           Comparer les solutions ? Voir le <a href="/prix">comparatif des prix</a> ou tous nos{' '}
           <a href="/blog">guides RGPD</a>.

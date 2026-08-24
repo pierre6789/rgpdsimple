@@ -15,7 +15,7 @@ const faq = [
   },
   {
     q: 'Quels documents dois-je avoir concrètement ?',
-    a: "Une politique de confidentialité, des mentions légales, un registre des traitements, un bandeau cookies conforme si votre site utilise des traceurs, et des CGV si vous vendez. RGPD Simple les génère personnalisés pour votre activité pour 97 €.",
+    a: "Une politique de confidentialité, des mentions légales, un registre des traitements, un bandeau cookies conforme si votre site utilise des traceurs, et des CGV si vous vendez. RGPD Simple les génère personnalisés pour votre activité pour 24,99 €.",
   },
 ]
 
@@ -108,9 +108,9 @@ export function RgpdAutoEntrepreneur() {
         <h3>Tous vos documents, personnalisés, en quelques minutes</h3>
         <p>
           RGPD Simple génère les 5 documents (politique, mentions, CGV, registre, bandeau cookies) adaptés à votre
-          activité d'indépendant, livrés par email. 97 €, paiement unique, sans avocat.
+          activité d'indépendant, livrés par email. 24,99 €, paiement unique, sans avocat.
         </p>
-        <a className="cta-btn" href="/#commande">Mettre mon activité en règle — 97 €</a>
+        <a className="cta-btn" href="/#commande">Mettre mon activité en règle — 24,99 €</a>
         <p style={{ marginTop: '12px', marginBottom: 0, fontSize: '14px' }}>
           Comparer avec un avocat ou une agence ? Voir le <a href="/prix">comparatif des prix</a>.
         </p>

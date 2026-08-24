@@ -14,7 +14,8 @@ export const stripe: Stripe | null = stripeSecretKey ? new Stripe(stripeSecretKe
 
 export const STRIPE_PRODUCT_CONFIG = {
   name: "Pack documents RGPD TPE / artisans",
-  amount: APP_CONFIG.basePriceEuros * 100,
+  // Math.round pour éviter les erreurs de flottant (24.99 * 100 = 2498.9999…).
+  amount: Math.round(APP_CONFIG.basePriceEuros * 100),
   currency: APP_CONFIG.currency,
 };
 

@@ -3,7 +3,7 @@ import { ContentLayout } from './ContentLayout'
 const faq = [
   {
     q: 'Combien coûte une mise en conformité RGPD pour une TPE ?',
-    a: "Cela va de 0 € (documents faits soi-même) à plus de 1 500 € (agence ou DPO externalisé). Pour une TPE ou un artisan, une solution clé en main comme RGPD Simple coûte 97 € en paiement unique pour les 5 documents essentiels personnalisés.",
+    a: "Cela va de 0 € (documents faits soi-même) à plus de 1 500 € (agence ou DPO externalisé). Pour une TPE ou un artisan, une solution clé en main comme RGPD Simple coûte 24,99 € en paiement unique pour les 5 documents essentiels personnalisés.",
   },
   {
     q: 'Faut-il payer un avocat pour être conforme au RGPD ?',
@@ -29,7 +29,7 @@ export function PrixPage() {
   return (
     <ContentLayout
       title="Combien coûte une mise en conformité RGPD ? (Prix 2026)"
-      description="DIY gratuit, RGPD Simple à 97 €, avocat ou agence à 1 500 € et plus : le comparatif des prix pour mettre votre TPE en conformité RGPD en 2026."
+      description="DIY gratuit, RGPD Simple à 24,99 €, avocat ou agence à 1 500 € et plus : le comparatif des prix pour mettre votre TPE en conformité RGPD en 2026."
       path="/prix"
       jsonLd={jsonLd}
     >
@@ -37,12 +37,13 @@ export function PrixPage() {
       <p className="lead">
         La conformité RGPD peut coûter de <strong>0 €</strong> (en la faisant vous-même) à plus de{' '}
         <strong>1 500 €</strong> (avec une agence ou un DPO). Pour une TPE ou un artisan, le bon rapport
-        temps/prix/sécurité se situe autour de <strong>97 €</strong> pour un pack de documents personnalisés,
+        temps/prix/sécurité se situe autour de <strong>24,99 €</strong> pour un pack de documents personnalisés,
         sans avocat.
       </p>
       <p className="meta">Mis à jour : août 2026</p>
 
       <h2>Comparatif des prix (2026)</h2>
+      <div style={{ overflowX: 'auto' }}>
       <table>
         <thead>
           <tr>
@@ -61,7 +62,7 @@ export function PrixPage() {
           </tr>
           <tr className="highlight-col">
             <td>RGPD Simple</td>
-            <td>97 € (paiement unique)</td>
+            <td>24,99 € (paiement unique)</td>
             <td>5 documents personnalisés + guide, livrés par email en quelques minutes</td>
             <td>TPE, artisans, indépendants qui veulent être en règle vite</td>
           </tr>
@@ -79,6 +80,7 @@ export function PrixPage() {
           </tr>
         </tbody>
       </table>
+      </div>
 
       <h2>Pourquoi une telle différence de prix ?</h2>
       <p>
@@ -98,7 +100,7 @@ export function PrixPage() {
         </li>
         <li>
           <strong>TPE / artisan qui veut être en règle vite et sans risque :</strong> un pack de documents
-          personnalisés à 97 € est le meilleur compromis.
+          personnalisés à 24,99 € est le meilleur compromis.
         </li>
         <li>
           <strong>Données sensibles, gros volumes, profilage :</strong> l'accompagnement d'un avocat ou d'un DPO
@@ -107,12 +109,12 @@ export function PrixPage() {
       </ul>
 
       <div className="cta-box">
-        <h3>Vos 5 documents RGPD pour 97 €, en quelques minutes</h3>
+        <h3>Vos 5 documents RGPD pour 24,99 €, en quelques minutes</h3>
         <p>
           Politique de confidentialité, mentions légales, CGV, registre des traitements et bandeau cookies —
           personnalisés pour votre activité, livrés par email. Paiement unique, sans abonnement, sans avocat.
         </p>
-        <a className="cta-btn" href="/#commande">Obtenir mes documents — 97 €</a>
+        <a className="cta-btn" href="/#commande">Obtenir mes documents — 24,99 €</a>
       </div>
 
       <h2>Questions fréquentes</h2>

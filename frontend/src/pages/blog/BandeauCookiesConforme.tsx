@@ -90,9 +90,9 @@ export function BandeauCookiesConforme() {
         <h3>Un bandeau cookies conforme, inclus dans le pack</h3>
         <p>
           Le pack RGPD Simple inclut un bandeau cookies conforme CNIL, prêt à intégrer, en plus de vos 4 autres
-          documents. 97 €, livrés par email, sans avocat.
+          documents. 24,99 €, livrés par email, sans avocat.
         </p>
-        <a className="cta-btn" href="/#commande">Obtenir mon bandeau + mes documents — 97 €</a>
+        <a className="cta-btn" href="/#commande">Obtenir mon bandeau + mes documents — 24,99 €</a>
         <p style={{ marginTop: '12px', marginBottom: 0, fontSize: '14px' }}>
           À lire aussi : <a href="/blog/controle-cnil-2026">Contrôle CNIL 2026</a>.
         </p>

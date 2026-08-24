@@ -107,9 +107,9 @@ export function ControleCnil2026() {
         <h3>Soyez prêt en quelques minutes</h3>
         <p>
           RGPD Simple génère vos 5 documents conformes CNIL (dont le bandeau cookies), personnalisés pour votre
-          activité et livrés par email. 97 €, paiement unique, sans avocat.
+          activité et livrés par email. 24,99 €, paiement unique, sans avocat.
         </p>
-        <a className="cta-btn" href="/#commande">Mettre mon activité en règle — 97 €</a>
+        <a className="cta-btn" href="/#commande">Mettre mon activité en règle — 24,99 €</a>
         <p style={{ marginTop: '12px', marginBottom: 0, fontSize: '14px' }}>
           Vous hésitez sur le budget ? Voir le <a href="/prix">comparatif des prix de la conformité RGPD</a>.
         </p>

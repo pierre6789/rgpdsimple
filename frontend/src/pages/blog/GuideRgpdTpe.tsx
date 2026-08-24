@@ -12,7 +12,7 @@ const faq = [
   },
   {
     q: 'Combien coûte une mise en conformité RGPD ?',
-    a: "De 0 € en faisant tout soi-même (long et risqué) à plus de 1 500 € via une agence, en passant par ~490 € chez un avocat. Un pack clé en main comme RGPD Simple coûte 97 € et couvre les 5 documents essentiels.",
+    a: "De 0 € en faisant tout soi-même (long et risqué) à plus de 1 500 € via une agence, en passant par ~490 € chez un avocat. Un pack clé en main comme RGPD Simple coûte 24,99 € et couvre les 5 documents essentiels.",
   },
   {
     q: 'Faut-il un DPO en TPE ?',
@@ -104,7 +104,7 @@ export function GuideRgpdTpe() {
       <h2>Combien ça coûte ?</h2>
       <p>
         Se mettre en conformité peut coûter de 0 € (tout faire soi-même, long et risqué) à plus de 1 500 € via une
-        agence. Un pack clé en main se situe autour de 97 €. Nous détaillons chaque option dans le{' '}
+        agence. Un pack clé en main se situe autour de 24,99 €. Nous détaillons chaque option dans le{' '}
         <a href="/prix">comparatif des prix de la conformité RGPD</a>.
       </p>
 
@@ -128,9 +128,9 @@ export function GuideRgpdTpe() {
         <h3>Passez à l'action en quelques minutes</h3>
         <p>
           RGPD Simple génère vos 5 documents conformes CNIL, personnalisés pour votre activité et livrés par email.
-          97 €, paiement unique, sans avocat.
+          24,99 €, paiement unique, sans avocat.
         </p>
-        <a className="cta-btn" href="/#commande">Obtenir mes documents — 97 €</a>
+        <a className="cta-btn" href="/#commande">Obtenir mes documents — 24,99 €</a>
       </div>
 
       <h2>Questions fréquentes</h2>

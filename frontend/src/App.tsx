@@ -311,10 +311,7 @@ function CgvSitePage() {
 
           <h2 className="mb-2 text-xl font-semibold text-slate-900">7. Conformité et garanties</h2>
           <p className="text-sm text-slate-600 mb-6">
-<strong>Garantie commerciale « satisfait ou remboursé » :</strong> à titre commercial et en complément de vos droits légaux, RGPDSimple vous rembourse sur simple demande par email, à <a href="mailto:contact@rgpdsimple.fr" className="font-medium text-blue-600 underline hover:text-blue-700">contact@rgpdsimple.fr</a>, dans un délai de 14 jours à compter de l&apos;achat.
-            <br />
-            <br />
-            Par ailleurs, vous bénéficiez de la garantie légale de conformité des contenus numériques (art. L224-25-1 et suivants du Code
+            Vous bénéficiez de la garantie légale de conformité des contenus numériques (art. L224-25-1 et suivants du Code
             de la consommation) : pendant 2 ans à compter de la fourniture, la mise en conformité peut être demandée et, à
             défaut, une réduction du prix ou le remboursement. Les documents sont des modèles à compléter et à adapter ; ils
             ne constituent pas un conseil juridique personnalisé. RGPDSimple ne saurait être tenue responsable de l&apos;usage

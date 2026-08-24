@@ -144,9 +144,9 @@ export function RgpdFormulaireContact() {
         <h3>La mention, c'est un début. Le pack complet, c'est la conformité.</h3>
         <p>
           Cette mention informe vos visiteurs, mais la conformité RGPD repose sur 5 documents. RGPD Simple les génère
-          personnalisés pour votre activité, livrés par email. 97 €, sans avocat.
+          personnalisés pour votre activité, livrés par email. 24,99 €, sans avocat.
         </p>
-        <a className="cta-btn" href="/#commande">Obtenir mes 5 documents — 97 €</a>
+        <a className="cta-btn" href="/#commande">Obtenir mes 5 documents — 24,99 €</a>
         <p style={{ marginTop: '12px', marginBottom: 0, fontSize: '14px' }}>
           Voir aussi le <a href="/blog/guide-rgpd-tpe">guide RGPD complet</a> et le <a href="/prix">comparatif des prix</a>.
         </p>

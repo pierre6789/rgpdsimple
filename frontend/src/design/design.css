@@ -234,12 +234,52 @@
   color: #475569;
   font-size: 15px;
 }
-/* Footer : 4 colonnes sur desktop -> 2 sur mobile (le design est en styles
-   inline, d'où le !important pour surcharger la grille inline). */
-@media (max-width: 640px) {
+/* ===================== Responsive mobile =====================
+   Le design (export) est entièrement en styles inline : on surcharge
+   avec !important. Cible les motifs de style plutôt que les data-dc-tpl
+   (robuste aux ré-exports). */
+@media (max-width: 768px) {
+  /* Toutes les grilles de mise en page passent en 1 colonne
+     (hero, contexte, étapes, pack, avis, réassurance, formulaire, paires
+     de champs, panneau de commande 380px+1fr...). */
+  .rgpd-design [style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* Footer : 2 colonnes (plus lisible qu'une seule) — plus spécifique donc
+     l'emporte sur la règle générale ci-dessus. */
   .rgpd-design footer > div:first-child {
     grid-template-columns: 1fr 1fr !important;
     gap: 28px !important;
+  }
+  /* Mockup décoratif du hero (cartes fixes en rotation = débordement) : masqué. */
+  .rgpd-design [style*="height: 490px"] {
+    display: none !important;
+  }
+  /* Entête : on ne garde que le logo (les liens de nav et le CTA sont
+     masqués ; le hero et la barre collante portent le CTA sur mobile). */
+  .rgpd-design header nav,
+  .rgpd-design header a[href="#commande"] {
+    display: none !important;
+  }
+  /* Titres plus compacts sur petit écran. */
+  .rgpd-design h1[style*="55px"] {
+    font-size: 32px !important;
+    line-height: 1.15 !important;
+  }
+  .rgpd-design h2[style*="font-size: 34px"] {
+    font-size: 25px !important;
+  }
+  /* Aération verticale réduite. */
+  .rgpd-design [style*="padding: 96px 24px"] {
+    padding: 56px 20px !important;
+  }
+  .rgpd-design [style*="padding: 88px 24px 100px"] {
+    padding: 40px 20px 56px !important;
+  }
+  /* Panneaux internes (récap commande, formulaire) : padding réduit. */
+  .rgpd-design [style*="padding: 38px 40px"],
+  .rgpd-design [style*="padding: 38px 34px"] {
+    padding: 26px 20px !important;
   }
 }
 /* Générateurs / outils gratuits (lead-magnets) */

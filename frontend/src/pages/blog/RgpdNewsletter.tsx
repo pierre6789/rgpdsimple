@@ -91,9 +91,9 @@ export function RgpdNewsletter() {
         <h3>Vos documents RGPD, prêts à l'emploi</h3>
         <p>
           RGPD Simple génère votre politique de confidentialité et vos mentions, qui couvrent la gestion de vos
-          contacts et de votre prospection. 97 €, livrés par email, sans avocat.
+          contacts et de votre prospection. 24,99 €, livrés par email, sans avocat.
         </p>
-        <a className="cta-btn" href="/#commande">Obtenir mes documents — 97 €</a>
+        <a className="cta-btn" href="/#commande">Obtenir mes documents — 24,99 €</a>
         <p style={{ marginTop: '12px', marginBottom: 0, fontSize: '14px' }}>
           Voir aussi : <a href="/blog/rgpd-formulaire-contact">mention RGPD formulaire de contact</a>.
         </p>

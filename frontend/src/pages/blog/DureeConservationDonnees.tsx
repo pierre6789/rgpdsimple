@@ -106,9 +106,9 @@ export function DureeConservationDonnees() {
         <h3>Des documents qui intègrent déjà les bonnes durées</h3>
         <p>
           RGPD Simple génère votre politique de confidentialité et votre registre avec des durées de conservation
-          adaptées à votre activité. 97 €, livrés par email, sans avocat.
+          adaptées à votre activité. 24,99 €, livrés par email, sans avocat.
         </p>
-        <a className="cta-btn" href="/#commande">Obtenir mes documents — 97 €</a>
+        <a className="cta-btn" href="/#commande">Obtenir mes documents — 24,99 €</a>
         <p style={{ marginTop: '12px', marginBottom: 0, fontSize: '14px' }}>
           Voir aussi le <a href="/blog/guide-rgpd-tpe">guide RGPD complet</a>.
         </p>
