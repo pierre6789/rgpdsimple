@@ -386,3 +386,9 @@
     display: block;
   }
 }
+/* Bouton de commande désactivé (avant que le JS ne câble le formulaire, ou
+   pendant la redirection) : indice visuel qu'il n'est pas encore prêt. */
+.rgpd-design form button[type='submit']:disabled {
+  opacity: 0.55;
+  cursor: progress;
+}

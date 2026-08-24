@@ -247,8 +247,10 @@ export function LandingPage() {
           (i.placeholder || '').toLowerCase().includes(needle.toLowerCase()),
         )
 
+      let submitting = false
       form.addEventListener('submit', async (e) => {
         e.preventDefault()
+        if (submitting) return
         showError(null)
 
         const companyName = (byPlaceholder('boulangerie')?.value || '').trim()
@@ -266,14 +268,20 @@ export function LandingPage() {
         if (!email) return showError('Veuillez indiquer votre email.')
         if (!cgvAccepted) return showError('Vous devez accepter les CGV pour continuer.')
 
+        submitting = true
         if (submitBtn) {
           submitBtn.disabled = true
           submitBtn.textContent = 'Redirection…'
         }
+        // Timeout : si l'API ne répond pas (cold start, réseau), on ne laisse
+        // jamais le bouton bloqué.
+        const controller = new AbortController()
+        const timeoutId = setTimeout(() => controller.abort(), 25000)
         try {
           const res = await fetch(CHECKOUT_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
+            signal: controller.signal,
             body: JSON.stringify({
               companyName,
               businessType,
@@ -289,16 +297,32 @@ export function LandingPage() {
             const data = await res.json().catch(() => null)
             throw new Error(data?.message || 'Erreur lors de la création du paiement.')
           }
-          const data = (await res.json()) as { url: string }
+          const data = (await res.json()) as { url?: string }
+          if (!data?.url) throw new Error('Réponse invalide du serveur, merci de réessayer.')
           window.location.href = data.url
+          return // navigation en cours : on laisse le bouton désactivé
         } catch (err) {
-          showError(err instanceof Error ? err.message : "Une erreur s'est produite.")
+          const aborted = err instanceof DOMException && err.name === 'AbortError'
+          showError(
+            aborted
+              ? 'Le serveur met trop de temps à répondre. Merci de réessayer.'
+              : err instanceof Error
+                ? err.message
+                : "Une erreur s'est produite.",
+          )
+          submitting = false
           if (submitBtn) {
             submitBtn.disabled = false
             submitBtn.textContent = submitLabel
           }
+        } finally {
+          clearTimeout(timeoutId)
         }
       })
+
+      // Le bouton n'est cliquable qu'une fois le handler attaché : évite les
+      // clics « perdus » pendant le chargement du JS sur la page prérendue.
+      if (submitBtn) submitBtn.disabled = false
     }
 
     // --- CTA collant sur mobile : apparaît après le hero, se masque quand le
