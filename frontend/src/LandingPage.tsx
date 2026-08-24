@@ -300,6 +300,31 @@ export function LandingPage() {
         }
       })
     }
+
+    // --- CTA collant sur mobile : apparaît après le hero, se masque quand le
+    //     formulaire de commande est à l'écran (pour ne pas le recouvrir). ---
+    const bar = document.createElement('div')
+    bar.className = 'mobile-cta-bar'
+    const barLink = document.createElement('a')
+    barLink.href = '#commande'
+    barLink.textContent = 'Obtenir mes documents — 97 €'
+    bar.appendChild(barLink)
+    root.appendChild(bar)
+    const commande = root.querySelector('#commande')
+    const onScroll = () => {
+      const past = window.scrollY > 520
+      let nearForm = false
+      if (commande) nearForm = commande.getBoundingClientRect().top < window.innerHeight * 0.9
+      bar.classList.toggle('visible', past && !nearForm)
+    }
+    barLink.addEventListener('click', (e) => {
+      e.preventDefault()
+      commande?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    })
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+
+    return () => window.removeEventListener('scroll', onScroll)
   }, [navigate])
 
   return (
