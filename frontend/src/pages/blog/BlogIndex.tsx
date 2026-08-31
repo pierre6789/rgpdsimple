@@ -38,6 +38,11 @@ export const PRACTICAL = [
     description: 'Évaluez votre conformité et découvrez les documents qu’il vous manque.',
   },
   {
+    path: '/generateur-mentions-legales',
+    title: 'Générateur de mentions légales (gratuit)',
+    description: 'Vos mentions légales prêtes à copier en 1 minute.',
+  },
+  {
     path: '/blog/rgpd-formulaire-contact',
     title: 'Mention RGPD formulaire de contact (générateur gratuit)',
     description: "Le texte à copier-coller sous votre formulaire + ce qu'il doit contenir.",

@@ -16,6 +16,7 @@ export const routes: string[] = [
   '/',
   '/prix',
   '/test-conformite-rgpd',
+  '/generateur-mentions-legales',
   '/blog',
   '/blog/guide-rgpd-tpe',
   '/blog/controle-cnil-2026',
