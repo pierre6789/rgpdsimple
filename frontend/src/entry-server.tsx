@@ -15,6 +15,7 @@ import { METIERS } from './pages/blog/metiers'
 export const routes: string[] = [
   '/',
   '/prix',
+  '/test-conformite-rgpd',
   '/blog',
   '/blog/guide-rgpd-tpe',
   '/blog/controle-cnil-2026',

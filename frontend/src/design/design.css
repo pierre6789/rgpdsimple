@@ -348,6 +348,59 @@
   color: #64748b;
   margin-top: 10px;
 }
+/* Quiz / test de conformité (lead-magnet) */
+.content-prose .quiz-q {
+  padding: 14px 0;
+  border-bottom: 1px solid #e8edf4;
+}
+.content-prose .quiz-label {
+  margin: 0 0 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f172a;
+  line-height: 1.5;
+}
+.content-prose .quiz-opts {
+  display: flex;
+  gap: 10px;
+}
+.content-prose .quiz-opt {
+  padding: 8px 22px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #fff;
+  color: #475569;
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.15s;
+}
+.content-prose .quiz-opt.is-active {
+  border-color: #2563eb;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-weight: 600;
+}
+.content-prose .quiz-opt.is-no {
+  border-color: #f59e0b;
+  background: #fffbeb;
+  color: #b45309;
+}
+.content-prose .quiz-result {
+  margin-top: 18px;
+  padding: 20px 22px;
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  background: #f8fafc;
+}
+.content-prose .quiz-score {
+  font-size: 18px;
+  color: #0f172a;
+}
+.content-prose .quiz-score strong {
+  color: #1d4ed8;
+}
 /* CTA collant mobile (injecté par LandingPage) */
 .rgpd-design .mobile-cta-bar {
   display: none;

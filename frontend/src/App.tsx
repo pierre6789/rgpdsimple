@@ -6,6 +6,7 @@ import { SuccessPage } from './SuccessPage'
 import { DesignHeader, DesignFooter } from './DesignChrome'
 import { Seo } from './Seo'
 import { PrixPage } from './pages/PrixPage'
+import { TestConformiteRgpd } from './pages/TestConformiteRgpd'
 import { BlogIndex } from './pages/blog/BlogIndex'
 import { ControleCnil2026 } from './pages/blog/ControleCnil2026'
 import { RgpdAutoEntrepreneur } from './pages/blog/RgpdAutoEntrepreneur'
@@ -359,6 +360,7 @@ export function AppRoutes() {
       <Route path="/cookies" element={<CookiesPage />} />
       <Route path="/cgv" element={<CgvSitePage />} />
       <Route path="/prix" element={<PrixPage />} />
+      <Route path="/test-conformite-rgpd" element={<TestConformiteRgpd />} />
       <Route path="/blog" element={<BlogIndex />} />
       <Route path="/blog/guide-rgpd-tpe" element={<GuideRgpdTpe />} />
       <Route path="/blog/controle-cnil-2026" element={<ControleCnil2026 />} />

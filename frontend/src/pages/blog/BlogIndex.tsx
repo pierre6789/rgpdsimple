@@ -33,6 +33,11 @@ export const ESSENTIALS = [
 /** Guides pratiques / outils. */
 export const PRACTICAL = [
   {
+    path: '/test-conformite-rgpd',
+    title: 'Test de conformité RGPD (gratuit, 2 min)',
+    description: 'Évaluez votre conformité et découvrez les documents qu’il vous manque.',
+  },
+  {
     path: '/blog/rgpd-formulaire-contact',
     title: 'Mention RGPD formulaire de contact (générateur gratuit)',
     description: "Le texte à copier-coller sous votre formulaire + ce qu'il doit contenir.",
