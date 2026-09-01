@@ -195,6 +195,17 @@ export function GenerateurMentionsLegales() {
       <h2>Vos mentions légales en 1 minute</h2>
       <Generator />
 
+      <figure className="doc-preview">
+        <img
+          src="/apercu-pack-rgpd.svg"
+          alt="Aperçu du pack RGPD Simple : politique de confidentialité, mentions légales et CGV au format PDF, conformes CNIL et personnalisées"
+          width={880}
+          height={480}
+          loading="lazy"
+        />
+        <figcaption>Au-delà des mentions légales : les 5 documents RGPD, personnalisés et conformes CNIL.</figcaption>
+      </figure>
+
       <div className="cta-box">
         <h3>Les mentions légales, c'est la base. Il vous manque 4 documents.</h3>
         <p>

@@ -211,6 +211,27 @@
   font-weight: 600;
   color: #1a3c8f;
 }
+/* Aperçu produit (image de preuve) */
+.content-prose img {
+  max-width: 100%;
+  height: auto;
+}
+.content-prose figure.doc-preview {
+  margin: 10px 0 26px;
+}
+.content-prose figure.doc-preview img {
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  display: block;
+  border-radius: 14px;
+  border: 1px solid #e8edf4;
+}
+.content-prose figure.doc-preview figcaption {
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 8px;
+}
 /* Cartes d'articles (index du blog) */
 .content-prose .article-card {
   border: 1px solid #e2e8f0;

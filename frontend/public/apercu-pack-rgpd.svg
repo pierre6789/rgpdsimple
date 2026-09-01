@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 480" width="880" height="480" font-family="Inter, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#eff6ff"/>
+    </linearGradient>
+    <linearGradient id="shield" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#1a3c8f"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="20" flood-color="#1a3c8f" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+
+  <rect width="880" height="480" rx="20" fill="url(#bg)"/>
+
+  <!-- carte arrière 1 : CGV -->
+  <g transform="rotate(-7 250 250)" filter="url(#shadow)">
+    <rect x="150" y="120" width="300" height="360" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="176" y="158" font-size="15" font-weight="700" fill="#1a3c8f">CGV</text>
+  </g>
+  <!-- carte arrière 2 : Mentions légales -->
+  <g transform="rotate(6 640 250)" filter="url(#shadow)">
+    <rect x="470" y="110" width="300" height="360" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="496" y="148" font-size="15" font-weight="700" fill="#1a3c8f">Mentions légales</text>
+  </g>
+
+  <!-- carte avant : Politique de confidentialité -->
+  <g filter="url(#shadow)">
+    <rect x="300" y="70" width="330" height="380" rx="16" fill="#ffffff" stroke="#e2e8f0"/>
+    <!-- header -->
+    <g transform="translate(324 100)">
+      <path d="M10 0 L22 4.5 v9 c0 7.4 -5.1 13.4 -12 16.5 C4.1 26.9 -2 20.9 -2 13.5 V4.5 Z" transform="translate(2 2) scale(0.85)" fill="url(#shield)"/>
+      <text x="34" y="19" font-size="15" font-weight="600" fill="#0f172a">Politique de confidentialité</text>
+      <rect x="250" y="4" width="34" height="20" rx="5" fill="none" stroke="#e2e8f0"/>
+      <text x="256" y="18" font-size="10" font-weight="700" fill="#64748b">PDF</text>
+    </g>
+    <!-- corps -->
+    <g transform="translate(324 150)">
+      <rect x="0" y="0" width="220" height="12" rx="6" fill="#e2e8f0"/>
+      <text x="0" y="34" font-size="11" fill="#64748b">Établie pour : <tspan font-weight="700" fill="#1a3c8f">Votre entreprise</tspan></text>
+      <rect x="0" y="48" width="110" height="9" rx="4.5" fill="#dbeafe"/>
+      <rect x="0" y="68" width="282" height="9" rx="4.5" fill="#eef2f7"/>
+      <rect x="0" y="86" width="266" height="9" rx="4.5" fill="#eef2f7"/>
+      <rect x="0" y="104" width="228" height="9" rx="4.5" fill="#eef2f7"/>
+      <rect x="0" y="128" width="126" height="9" rx="4.5" fill="#dbeafe"/>
+      <rect x="0" y="148" width="282" height="9" rx="4.5" fill="#eef2f7"/>
+      <rect x="0" y="166" width="250" height="9" rx="4.5" fill="#eef2f7"/>
+      <rect x="0" y="184" width="200" height="9" rx="4.5" fill="#eef2f7"/>
+    </g>
+    <!-- badges -->
+    <g transform="translate(324 402)">
+      <rect x="0" y="0" width="132" height="26" rx="13" fill="#eff6ff"/>
+      <path d="M10 6 L18 9 v4.5 c0 3.7 -2.6 6.7 -6 8.2 C6.6 20.2 4 17.2 4 13.5 V9 Z" transform="translate(2 0) scale(0.8)" fill="none" stroke="#1d4ed8" stroke-width="2"/>
+      <text x="26" y="17" font-size="11.5" font-weight="600" fill="#1d4ed8">Conforme CNIL</text>
+      <rect x="144" y="0" width="94" height="26" rx="13" fill="#f8fafc" stroke="#eef2f7"/>
+      <text x="156" y="17" font-size="11.5" font-weight="600" fill="#64748b">Personnalisé</text>
+    </g>
+  </g>
+</svg>

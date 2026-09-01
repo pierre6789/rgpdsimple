@@ -28,12 +28,12 @@ const jsonLd = {
 export function PrixPage() {
   return (
     <ContentLayout
-      title="Combien coûte une mise en conformité RGPD ? (Prix 2026)"
-      description="DIY gratuit, RGPD Simple à 24,99 €, avocat ou agence à 1 500 € et plus : le comparatif des prix pour mettre votre TPE en conformité RGPD en 2026."
+      title="Prix conformité RGPD pour une TPE : le comparatif (2026)"
+      description="Combien coûte la conformité RGPD d'une TPE ou d'un auto-entrepreneur ? DIY gratuit, RGPD Simple à 24,99 €, avocat ou agence à 1 500 €+ : le comparatif des prix 2026."
       path="/prix"
       jsonLd={jsonLd}
     >
-      <h1>Combien coûte une mise en conformité RGPD en 2026 ?</h1>
+      <h1>Combien coûte la conformité RGPD d'une TPE ou d'un auto-entrepreneur ?</h1>
       <p className="lead">
         La conformité RGPD peut coûter de <strong>0 €</strong> (en la faisant vous-même) à plus de{' '}
         <strong>1 500 €</strong> (avec une agence ou un DPO). Pour une TPE ou un artisan, le bon rapport
@@ -41,6 +41,17 @@ export function PrixPage() {
         sans avocat.
       </p>
       <p className="meta">Mis à jour : août 2026</p>
+
+      <figure className="doc-preview">
+        <img
+          src="/apercu-pack-rgpd.svg"
+          alt="Aperçu du pack RGPD Simple : politique de confidentialité, mentions légales et CGV au format PDF, conformes CNIL et personnalisées"
+          width={880}
+          height={480}
+          loading="lazy"
+        />
+        <figcaption>Un aperçu des documents générés — personnalisés et conformes CNIL.</figcaption>
+      </figure>
 
       <h2>Comparatif des prix (2026)</h2>
       <div style={{ overflowX: 'auto' }}>

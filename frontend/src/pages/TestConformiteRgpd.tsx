@@ -144,6 +144,17 @@ export function TestConformiteRgpd() {
       <h2>Faites le test (gratuit)</h2>
       <Quiz />
 
+      <figure className="doc-preview">
+        <img
+          src="/apercu-pack-rgpd.svg"
+          alt="Aperçu du pack RGPD Simple : politique de confidentialité, mentions légales et CGV au format PDF, conformes CNIL et personnalisées"
+          width={880}
+          height={480}
+          loading="lazy"
+        />
+        <figcaption>Les documents qu'il vous manque, générés et personnalisés pour votre activité.</figcaption>
+      </figure>
+
       <div className="cta-box">
         <h3>Il vous manque des documents ? On les génère pour vous.</h3>
         <p>
