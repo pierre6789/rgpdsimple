@@ -24,8 +24,9 @@ const jsonLd = {
       description:
         "Newsletter et RGPD : consentement opt-in, mentions à l'inscription, exception clients, désabonnement et preuve du consentement.",
       inLanguage: 'fr-FR',
-      author: { '@type': 'Organization', name: 'RGPD Simple' },
-      publisher: { '@type': 'Organization', name: 'RGPD Simple', logo: { '@type': 'ImageObject', url: 'https://www.rgpdsimple.fr/logo.png' } },
+      image: ['https://www.rgpdsimple.fr/logo.png'],
+      author: { '@id': 'https://www.rgpdsimple.fr/#organization' },
+      publisher: { '@id': 'https://www.rgpdsimple.fr/#organization' },
       datePublished: '2026-08-23',
       dateModified: '2026-08-23',
       mainEntityOfPage: 'https://www.rgpdsimple.fr/blog/rgpd-newsletter',

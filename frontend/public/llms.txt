@@ -1,14 +1,49 @@
 # RGPD Simple
 
-> Service de génération de documents RGPD conformes CNIL pour TPE et artisans français. Politique de confidentialité, mentions légales, CGV, registre des traitements, bandeau cookies. Paiement unique 97 €, livraison par email.
+> Génération de documents de conformité RGPD pour les TPE, artisans et indépendants français. Répondez à un court questionnaire et recevez par email 5 documents personnalisés (politique de confidentialité, mentions légales, CGV, registre des traitements, bandeau cookies conforme CNIL) + un guide de mise en conformité. Paiement unique 24,99 €, sans avocat, sans abonnement.
 
-## Liens principaux
+## Outils gratuits
+- Test de conformité RGPD (quiz, 2 min) : https://www.rgpdsimple.fr/test-conformite-rgpd
+- Générateur de mentions légales : https://www.rgpdsimple.fr/generateur-mentions-legales
+- Générateur de mention RGPD pour formulaire de contact : https://www.rgpdsimple.fr/blog/rgpd-formulaire-contact
+- Comparateur des prix de la conformité RGPD : https://www.rgpdsimple.fr/prix
 
-- Accueil: https://www.rgpdsimple.fr/
-- Politique de confidentialité: https://www.rgpdsimple.fr/politique-confidentialite
-- Mentions légales: https://www.rgpdsimple.fr/mentions-legales
-- Cookies: https://www.rgpdsimple.fr/cookies
+## Guides RGPD
+- Accueil : https://www.rgpdsimple.fr/
+- Tous les guides : https://www.rgpdsimple.fr/blog
+- Guide RGPD pour les TPE (guide complet) : https://www.rgpdsimple.fr/blog/guide-rgpd-tpe
+- Le RGPD est-il obligatoire pour vous ? : https://www.rgpdsimple.fr/blog/rgpd-obligatoire-pour-qui
+- Contrôle CNIL 2026 : https://www.rgpdsimple.fr/blog/controle-cnil-2026
+- Amende CNIL pour une TPE : https://www.rgpdsimple.fr/blog/amende-cnil
+- RGPD auto-entrepreneur : https://www.rgpdsimple.fr/blog/rgpd-auto-entrepreneur
+- RGPD e-commerce : https://www.rgpdsimple.fr/blog/rgpd-ecommerce
+- Bandeau cookies conforme CNIL : https://www.rgpdsimple.fr/blog/bandeau-cookies-conforme
+- Durées de conservation des données : https://www.rgpdsimple.fr/blog/duree-conservation-donnees
+- RGPD et newsletter : https://www.rgpdsimple.fr/blog/rgpd-newsletter
 
-## Contact
+## Guides RGPD par métier
+- Coiffeur & salon de beauté : https://www.rgpdsimple.fr/blog/rgpd-coiffeur
+- Restaurant : https://www.rgpdsimple.fr/blog/rgpd-restaurant
+- Artisan du BTP : https://www.rgpdsimple.fr/blog/rgpd-artisan-btp
+- Photographe : https://www.rgpdsimple.fr/blog/rgpd-photographe
+- Garage automobile : https://www.rgpdsimple.fr/blog/rgpd-garage-automobile
+- Commerce de proximité : https://www.rgpdsimple.fr/blog/rgpd-commerce
+- Consultant / freelance : https://www.rgpdsimple.fr/blog/rgpd-consultant
+- Santé & bien-être : https://www.rgpdsimple.fr/blog/rgpd-sante-bien-etre
+- Agence immobilière : https://www.rgpdsimple.fr/blog/rgpd-agence-immobiliere
+- Coach / thérapeute : https://www.rgpdsimple.fr/blog/rgpd-coach
+- Auto-école : https://www.rgpdsimple.fr/blog/rgpd-auto-ecole
+- Expert-comptable : https://www.rgpdsimple.fr/blog/rgpd-expert-comptable
+- Avocat : https://www.rgpdsimple.fr/blog/rgpd-avocat
+- Vétérinaire : https://www.rgpdsimple.fr/blog/rgpd-veterinaire
+- Impression 3D : https://www.rgpdsimple.fr/blog/rgpd-impression-3d
 
-- Email: contact@rgpdsimple.fr
+## Pages légales
+- Mentions légales : https://www.rgpdsimple.fr/mentions-legales
+- Politique de confidentialité : https://www.rgpdsimple.fr/politique-confidentialite
+- Conditions générales de vente : https://www.rgpdsimple.fr/cgv
+- Politique cookies : https://www.rgpdsimple.fr/cookies
+
+## Contact & éditeur
+- Email : contact@rgpdsimple.fr
+- Éditeur : RGPD Simple — Pierre Vuillermet, entreprise individuelle (EI), Cavaillon, France

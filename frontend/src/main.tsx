@@ -7,7 +7,17 @@ import App from './App.tsx'
 // Nettoyage SSG : sur une page prérendue, retirer les balises <head> que
 // React va réinjecter (title/description/canonical/robots) pour éviter les
 // doublons après la reprise côté client. No-op en dev ou en fallback SPA.
-for (const sel of ['title', 'meta[name="description"]', 'link[rel="canonical"]', 'meta[name="robots"]']) {
+for (const sel of [
+  'title',
+  'meta[name="description"]',
+  'link[rel="canonical"]',
+  'meta[name="robots"]',
+  'meta[property="og:title"]',
+  'meta[property="og:description"]',
+  'meta[property="og:url"]',
+  'meta[name="twitter:title"]',
+  'meta[name="twitter:description"]',
+]) {
   document.head.querySelectorAll(sel).forEach((el) => el.remove())
 }
 

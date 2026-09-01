@@ -43,8 +43,9 @@ const jsonLd = {
       description:
         "Générez gratuitement les mentions légales de votre site en 1 minute : éditeur, hébergeur, directeur de publication. Texte prêt à copier.",
       inLanguage: 'fr-FR',
-      author: { '@type': 'Organization', name: 'RGPD Simple' },
-      publisher: { '@type': 'Organization', name: 'RGPD Simple', logo: { '@type': 'ImageObject', url: 'https://www.rgpdsimple.fr/logo.png' } },
+      image: ['https://www.rgpdsimple.fr/logo.png'],
+      author: { '@id': 'https://www.rgpdsimple.fr/#organization' },
+      publisher: { '@id': 'https://www.rgpdsimple.fr/#organization' },
       datePublished: '2026-08-26',
       dateModified: '2026-08-26',
       mainEntityOfPage: 'https://www.rgpdsimple.fr/generateur-mentions-legales',

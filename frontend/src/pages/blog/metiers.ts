@@ -159,7 +159,7 @@ export const METIERS: Metier[] = [
   },
   {
     slug: 'rgpd-garage-automobile',
-    title: 'RGPD garage automobile : fichier clients & véhicules (2026)',
+    title: 'RGPD garage automobile : clients & véhicules (2026)',
     description:
       'Garage, carrosserie, centre auto : RGPD du fichier clients, des données véhicules, des rappels d’entretien par SMS et de la vidéosurveillance. Vos obligations.',
     h1: 'RGPD pour les garages automobiles : vos obligations',
@@ -229,7 +229,7 @@ export const METIERS: Metier[] = [
   },
   {
     slug: 'rgpd-consultant',
-    title: 'RGPD consultant & freelance : CRM, prospection, contrats (2026)',
+    title: 'RGPD consultant & freelance : vos obligations (2026)',
     description:
       'Consultant, freelance, prestataire B2B : RGPD du CRM, de la prospection, des contrats et de la sous-traitance de données. Vos obligations, simplement.',
     h1: 'RGPD pour les consultants et freelances',
@@ -297,7 +297,7 @@ export const METIERS: Metier[] = [
   },
   {
     slug: 'rgpd-agence-immobiliere',
-    title: 'RGPD agence immobilière : fichiers & pièces justificatives (2026)',
+    title: 'RGPD agence immobilière : obligations & fichiers (2026)',
     description:
       'Agence immobilière : RGPD des fichiers acquéreurs/locataires, des pièces justificatives (ID, avis d’imposition), de la prospection et des durées. Vos obligations.',
     h1: 'RGPD pour les agences immobilières',
@@ -399,7 +399,7 @@ export const METIERS: Metier[] = [
   },
   {
     slug: 'rgpd-expert-comptable',
-    title: 'RGPD expert-comptable : sous-traitance, paie, sécurité (2026)',
+    title: 'RGPD expert-comptable : sous-traitance & paie (2026)',
     description:
       'Expert-comptable, cabinet comptable : RGPD du rôle de sous-traitant, des données de paie, de la sécurité et des durées légales. Vos obligations.',
     h1: 'RGPD pour les experts-comptables',
@@ -467,7 +467,7 @@ export const METIERS: Metier[] = [
   },
   {
     slug: 'rgpd-veterinaire',
-    title: 'RGPD vétérinaire : fichier clients & rappels vaccins (2026)',
+    title: 'RGPD vétérinaire : clients & rappels vaccins (2026)',
     description:
       'Cabinet ou clinique vétérinaire : RGPD du fichier des propriétaires, des rappels de vaccins par SMS, des ordonnances et du paiement. Vos obligations.',
     h1: 'RGPD pour les vétérinaires',

@@ -20,6 +20,11 @@ export function Seo({ title, description, path, noindex = false }: SeoProps) {
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={url} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:url" content={url} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
       {noindex && <meta name="robots" content="noindex, nofollow" />}
     </>
   )

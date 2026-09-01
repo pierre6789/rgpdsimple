@@ -28,8 +28,9 @@ const jsonLd = {
       description:
         "Boutique en ligne et RGPD : les documents obligatoires, la gestion des cookies et du tracking, les sous-traitants et la checklist de conformité.",
       inLanguage: 'fr-FR',
-      author: { '@type': 'Organization', name: 'RGPD Simple' },
-      publisher: { '@type': 'Organization', name: 'RGPD Simple', logo: { '@type': 'ImageObject', url: 'https://www.rgpdsimple.fr/logo.png' } },
+      image: ['https://www.rgpdsimple.fr/logo.png'],
+      author: { '@id': 'https://www.rgpdsimple.fr/#organization' },
+      publisher: { '@id': 'https://www.rgpdsimple.fr/#organization' },
       datePublished: '2026-08-23',
       dateModified: '2026-08-23',
       mainEntityOfPage: 'https://www.rgpdsimple.fr/blog/rgpd-ecommerce',

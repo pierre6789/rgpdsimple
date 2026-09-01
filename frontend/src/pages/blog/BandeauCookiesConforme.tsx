@@ -24,8 +24,9 @@ const jsonLd = {
       description:
         "Les règles d'un bandeau cookies conforme à la CNIL en 2026 : refuser aussi simple qu'accepter, rien avant consentement, erreurs fréquentes et checklist.",
       inLanguage: 'fr-FR',
-      author: { '@type': 'Organization', name: 'RGPD Simple' },
-      publisher: { '@type': 'Organization', name: 'RGPD Simple', logo: { '@type': 'ImageObject', url: 'https://www.rgpdsimple.fr/logo.png' } },
+      image: ['https://www.rgpdsimple.fr/logo.png'],
+      author: { '@id': 'https://www.rgpdsimple.fr/#organization' },
+      publisher: { '@id': 'https://www.rgpdsimple.fr/#organization' },
       datePublished: '2026-08-23',
       dateModified: '2026-08-23',
       mainEntityOfPage: 'https://www.rgpdsimple.fr/blog/bandeau-cookies-conforme',

@@ -36,8 +36,9 @@ const jsonLd = {
       description:
         "Test de conformité RGPD gratuit en 2 minutes pour les TPE : évaluez votre conformité et découvrez les documents qu'il vous manque.",
       inLanguage: 'fr-FR',
-      author: { '@type': 'Organization', name: 'RGPD Simple' },
-      publisher: { '@type': 'Organization', name: 'RGPD Simple', logo: { '@type': 'ImageObject', url: 'https://www.rgpdsimple.fr/logo.png' } },
+      image: ['https://www.rgpdsimple.fr/logo.png'],
+      author: { '@id': 'https://www.rgpdsimple.fr/#organization' },
+      publisher: { '@id': 'https://www.rgpdsimple.fr/#organization' },
       datePublished: '2026-08-26',
       dateModified: '2026-08-26',
       mainEntityOfPage: 'https://www.rgpdsimple.fr/test-conformite-rgpd',

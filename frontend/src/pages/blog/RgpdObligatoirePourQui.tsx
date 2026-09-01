@@ -28,8 +28,9 @@ const jsonLd = {
       description:
         "RGPD obligatoire pour qui ? La règle sans seuil, les cas concrets où vous êtes concerné et les rares exceptions. Pour TPE, auto-entrepreneurs et associations.",
       inLanguage: 'fr-FR',
-      author: { '@type': 'Organization', name: 'RGPD Simple' },
-      publisher: { '@type': 'Organization', name: 'RGPD Simple', logo: { '@type': 'ImageObject', url: 'https://www.rgpdsimple.fr/logo.png' } },
+      image: ['https://www.rgpdsimple.fr/logo.png'],
+      author: { '@id': 'https://www.rgpdsimple.fr/#organization' },
+      publisher: { '@id': 'https://www.rgpdsimple.fr/#organization' },
       datePublished: '2026-08-23',
       dateModified: '2026-08-23',
       mainEntityOfPage: 'https://www.rgpdsimple.fr/blog/rgpd-obligatoire-pour-qui',

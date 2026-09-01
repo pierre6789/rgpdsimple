@@ -349,6 +349,21 @@ function CgvSitePage() {
   )
 }
 
+function NotFoundPage() {
+  return (
+    <LegalLayout>
+      <Seo title="Page introuvable | RGPD Simple" description="Cette page n'existe pas ou a été déplacée." path="/404" noindex />
+      <h1 className="mb-2 text-3xl font-bold text-slate-900">Page introuvable</h1>
+      <p className="mb-6 text-sm text-slate-600">La page que vous cherchez n'existe pas ou a été déplacée.</p>
+      <p className="text-sm text-slate-600">
+        <a href="/" className="font-medium text-blue-600 underline hover:text-blue-700">Retour à l&apos;accueil</a>
+        {' · '}
+        <a href="/blog" className="font-medium text-blue-600 underline hover:text-blue-700">Voir les guides RGPD</a>
+      </p>
+    </LegalLayout>
+  )
+}
+
 /** Table des routes, partagée par le rendu client (BrowserRouter) et le
  *  prérendu serveur SSG (StaticRouter dans entry-server.tsx). */
 export function AppRoutes() {
@@ -377,6 +392,7 @@ export function AppRoutes() {
       {METIERS.map((m) => (
         <Route key={m.slug} path={`/blog/${m.slug}`} element={<MetierArticle metier={m} />} />
       ))}
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   )
 }

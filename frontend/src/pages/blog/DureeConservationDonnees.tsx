@@ -36,8 +36,9 @@ const jsonLd = {
       description:
         "Durées de conservation RGPD pour une TPE : clients, prospects, factures, cookies, vidéosurveillance… Le tableau récapitulatif et les bonnes pratiques.",
       inLanguage: 'fr-FR',
-      author: { '@type': 'Organization', name: 'RGPD Simple' },
-      publisher: { '@type': 'Organization', name: 'RGPD Simple', logo: { '@type': 'ImageObject', url: 'https://www.rgpdsimple.fr/logo.png' } },
+      image: ['https://www.rgpdsimple.fr/logo.png'],
+      author: { '@id': 'https://www.rgpdsimple.fr/#organization' },
+      publisher: { '@id': 'https://www.rgpdsimple.fr/#organization' },
       datePublished: '2026-08-23',
       dateModified: '2026-08-23',
       mainEntityOfPage: 'https://www.rgpdsimple.fr/blog/duree-conservation-donnees',

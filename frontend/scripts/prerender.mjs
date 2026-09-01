@@ -29,7 +29,8 @@ const SSR_DIR = join(ROOT, 'dist-ssr')
 const FALLBACK_ROUTES = ['/', '/prix', '/blog', '/mentions-legales', '/cgv', '/politique-confidentialite', '/cookies']
 
 // Sélecteurs des balises à remonter dans <head>.
-const HEAD_SELECTOR = 'title, meta[name="description"], link[rel="canonical"], meta[name="robots"], script[type="application/ld+json"]'
+const HEAD_SELECTOR =
+  'title, meta[name="description"], link[rel="canonical"], meta[name="robots"], meta[property="og:title"], meta[property="og:description"], meta[property="og:url"], meta[name="twitter:title"], meta[name="twitter:description"], script[type="application/ld+json"]'
 
 const warn = (m) => console.warn(`[prerender] ${m}`)
 

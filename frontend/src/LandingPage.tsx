@@ -68,6 +68,7 @@ const HOME_JSON_LD = {
     {
       '@type': 'Product',
       name: 'Pack conformité RGPD pour TPE et artisans',
+      image: ['https://www.rgpdsimple.fr/logo.png'],
       description:
         '5 documents RGPD conformes CNIL personnalisés (politique de confidentialité, mentions légales, CGV, registre des traitements, bandeau cookies) et un guide, livrés par email.',
       brand: { '@id': 'https://www.rgpdsimple.fr/#organization' },
@@ -354,8 +355,8 @@ export function LandingPage() {
   return (
     <>
       <Seo
-        title="RGPD Simple — La conformité RGPD des TPE, réglée en quelques minutes"
-        description="Générez 5 documents RGPD conformes CNIL, personnalisés pour votre TPE ou artisanat, livrés par email en quelques minutes. 24,99 €, paiement unique, sans avocat."
+        title="RGPD Simple — Conformité RGPD des TPE en quelques minutes"
+        description="Générez 5 documents RGPD conformes CNIL, personnalisés pour votre TPE, livrés par email. 24,99 €, paiement unique, sans avocat."
         path="/"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(HOME_JSON_LD) }} />
